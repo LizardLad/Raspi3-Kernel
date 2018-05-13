@@ -1,7 +1,5 @@
 #include "headers/project.h"
 
-unsigned char master_boot_record_array[512]; //Put buffer here because it is needed by all functions here
-
 /**
  * Get the starting LBA address of the first partition
  * so that we know where our FAT file system starts, and
@@ -23,9 +21,9 @@ int fat_getpartition()
 			uart_puts("ERROR: Wrong partition type\n");
 			return 0;
 		}
-		partitionlba=*((unsigned int*)((unsigned long)&_end+0x1C6));
+		partitionlba=*((unsigned int*)((unsigned long)master_boot_record+0x1C6));
 		// read the boot record
-		if(!sd_readblock(partitionlba,&_end,1)) {
+		if(!sd_readblock(partitionlba, master_boot_record, 1)) {
 			uart_puts("ERROR: Unable to read boot record\n");
 			return 0;
 		}

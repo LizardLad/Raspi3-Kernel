@@ -16,14 +16,14 @@ void main()
 		}
 	}
 	
-	//unsigned int cluster = 0;
+	unsigned int cluster = 0;
 
 	// initialize EMMC and detect SD card type
 	if(sd_init()==SD_OK) 
 	{
 			// read the master boot record and find our partition
-		//if(fat_getpartition())
-		//{
+		if(fat_getpartition())
+		{
 			// find out file in root directory entries
 			//cluster=fat_getcluster("LICENC~1BRO");
 			//if(cluster==0)
@@ -33,15 +33,15 @@ void main()
 			//if(cluster)
 			//{
 				// read into memory
-				//uart_dump(fat_readfile(cluster));
+			//	uart_dump(fat_readfile(cluster));
 			//	lfb_dump(fat_readfile(cluster));
 			//}
-			//cluster = text_file_dump("LICENC~1BRO");
-		//} 
-		//else 
-		//{
-		//	uart_puts("FAT partition not found???\n");
-		//}
+			cluster = text_file_dump("LICENC~1BRO");
+		} 
+		else 
+		{
+			uart_puts("FAT partition not found???\n");
+		}
 	}
 
 	//fat_listdirectory();

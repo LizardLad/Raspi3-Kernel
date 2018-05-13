@@ -39,6 +39,7 @@ typedef struct {
 
 // get the end of bss segment from linker
 extern unsigned char _end;
+unsigned char master_boot_record_array[512];
 unsigned int partitionlba;
 
 int fat_getpartition();
