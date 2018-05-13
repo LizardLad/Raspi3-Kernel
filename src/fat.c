@@ -1,5 +1,7 @@
 #include "headers/project.h"
 
+unsigned char master_boot_record_array[512]; //Put buffer here because it is needed by all functions here
+
 /**
  * Get the starting LBA address of the first partition
  * so that we know where our FAT file system starts, and
@@ -7,23 +9,21 @@
  */
 int fat_getpartition()
 {
-	unsigned char *mbr=&_end;
-	bpb_t *bpb=(bpb_t*)&_end;
+	unsigned char *master_boot_record=&(master_boot_record_array[0]);
+	bpb_t *bpb=(bpb_t*)&(master_boot_record_array[0]);
 	// read the partitioning table
-	if(sd_readblock(0,&_end,1)) {
+	if(sd_readblock(0, master_boot_record, 1)) {
 		// check magic
-		if(mbr[510]!=0x55 || mbr[511]!=0xAA) {
+		if(master_boot_record[510]!=0x55 || master_boot_record[511]!=0xAA) {
 			uart_puts("ERROR: Bad magic in MBR\n");
 			return 0;
 		}
 		// check partition type
-		if(mbr[0x1C2]!=0xE/*FAT16 LBA*/ && mbr[0x1C2]!=0xC/*FAT32 LBA*/) {
+		if(master_boot_record[0x1C2]!=0xE/*FAT16 LBA*/ && master_boot_record[0x1C2]!=0xC/*FAT32 LBA*/) {
 			uart_puts("ERROR: Wrong partition type\n");
 			return 0;
 		}
-		//lfb_print(0, 0, "Got to this line.");
-	partitionlba=*((unsigned int*)((unsigned long)&_end+0x1C6));
-	//lfb_print(0, 1, "I even got past it");
+		partitionlba=*((unsigned int*)((unsigned long)&_end+0x1C6));
 		// read the boot record
 		if(!sd_readblock(partitionlba,&_end,1)) {
 			uart_puts("ERROR: Unable to read boot record\n");
@@ -45,8 +45,10 @@ int fat_getpartition()
  */
 unsigned int fat_getcluster(char *fn)
 {
-	bpb_t *bpb=(bpb_t*)&_end;
-	fatdir_t *dir=(fatdir_t*)(&_end+512);
+
+	bpb_t *bpb=(bpb_t*)&(master_boot_record_array[0]);
+	unsigned char fatdir_buffer[512];
+	fatdir_t *dir=(fatdir_t*)(&(fatdir_buffer[0]));
 	unsigned int root_sec, s;
 	// find the root directory's LBA
 	root_sec=((bpb->spf16?bpb->spf16:bpb->spf32)*bpb->nf)+bpb->rsc;
@@ -88,8 +90,8 @@ unsigned int fat_getcluster(char *fn)
 
 void fat_listdirectory()
 {
-	bpb_t *bpb=(bpb_t*)&_end;
-	fatdir_t *dir=(fatdir_t*)&_end;
+	bpb_t *bpb=(bpb_t*)(&(master_boot_record_array[0]));
+	fatdir_t *dir=(fatdir_t*)(&(master_boot_record_array[0]));
 	unsigned int root_sec, s;
 	// find the root directory's LBA
 	root_sec=((bpb->spf16?bpb->spf16:bpb->spf32)*bpb->nf)+bpb->rsc;
@@ -116,16 +118,16 @@ void fat_listdirectory()
 	{
 		uart_puts("\nAttrib Cluster  Size     Name\n");
 		// iterate on each entry and print out
-	int lfn_entries = 0;
-		for(;dir->name[0]!=0;dir++) {
-		//is it a LFN entry
-		if(dir->attr[0]&1 && dir->attr[0]&2 && dir->attr[0]&4 && dir->attr[0]&8) {
-			lfb_print(0, 0, "LFN Entry");
-			lfb_print(0, lfn_entries + 3, &dir->name[0]);
-			lfn_entries++;
-		}
-
-		// is it a valid entry?
+		int lfn_entries = 0;
+		for(;dir->name[0]!=0;dir++) 
+		{
+			//is it a LFN entry
+			if(dir->attr[0]&1 && dir->attr[0]&2 && dir->attr[0]&4 && dir->attr[0]&8) {
+				lfb_print(0, 0, "LFN Entry");
+				lfb_print(0, lfn_entries + 3, &dir->name[0]);
+				lfn_entries++;
+			}
+			// is it a valid entry?
 			if((dir->name[0]==0xE5 || dir->attr[0]==0xF) && !(dir->attr[0]&1 && dir->attr[0]&2 && dir->attr[0]&4 && dir->attr[0]&8)) continue;
 			// decode attributes
 			uart_send(dir->attr[0]& 1?'R':'.');  // read-only
@@ -146,7 +148,9 @@ void fat_listdirectory()
 			uart_puts(dir->name);
 			uart_puts("\n");
 		}
-	} else {
+	} 
+	else 
+	{
 		uart_puts("ERROR: Unable to load root directory\n");
 	}
 }
@@ -157,7 +161,7 @@ void fat_listdirectory()
 char *fat_readfile(unsigned int cluster)
 {
 	// BIOS Parameter Block
-	bpb_t *bpb=(bpb_t*)&_end;
+	bpb_t *bpb=(bpb_t*)(&(master_boot_record_array[0]));
 	// File allocation tables. We choose between FAT16 and FAT32 dynamically
 	unsigned int *fat32=(unsigned int*)(&_end+bpb->rsc*512);
 	unsigned short *fat16=(unsigned short*)fat32;
@@ -171,7 +175,8 @@ char *fat_readfile(unsigned int cluster)
 	s>>=8;
 	s&=0xFFFF;
 	s<<=5;
-	if(bpb->spf16>0) {
+	if(bpb->spf16>0)
+	{
 		// adjust for FAT16
 		data_sec+=(s+511)>>9;
 	}
