@@ -1,12 +1,5 @@
 #include "headers/project.h"
 
-#define CONVERT_PIXEL(data,pixel) {\
-pixel[0] = (((data[0] - 33) << 2) | ((data[1] - 33) >> 4)); \
-pixel[1] = ((((data[1] - 33) & 0xF) << 4) | ((data[2] - 33) >> 2)); \
-pixel[2] = ((((data[2] - 33) & 0x3) << 6) | ((data[3] - 33))); \
-data += 4; \
-}
-
 /* PC Screen Font as used by Linux Console */
 typedef struct {
 	unsigned int magic;
@@ -29,56 +22,56 @@ unsigned char *lfb;
  */
 void lfb_init()
 {
-	mbox[0] = 35*4;
-	mbox[1] = MBOX_REQUEST;
+	mailbox[0] = 35*4;
+	mailbox[1] = MBOX_REQUEST;
 
-	mbox[2] = 0x48003;  //set phy wh
-	mbox[3] = 8;
-	mbox[4] = 8;
-	mbox[5] = 1024;         //FrameBufferInfo.width
-	mbox[6] = 768;          //FrameBufferInfo.height
+	mailbox[2] = 0x48003;  //set phy wh
+	mailbox[3] = 8;
+	mailbox[4] = 8;
+	mailbox[5] = 1024;         //FrameBufferInfo.width
+	mailbox[6] = 768;          //FrameBufferInfo.height
 
-	mbox[7] = 0x48004;  //set virt wh
-	mbox[8] = 8;
-	mbox[9] = 8;
-	mbox[10] = 1024;        //FrameBufferInfo.virtual_width
-	mbox[11] = 768;         //FrameBufferInfo.virtual_height
+	mailbox[7] = 0x48004;  //set virt wh
+	mailbox[8] = 8;
+	mailbox[9] = 8;
+	mailbox[10] = 1024;        //FrameBufferInfo.virtual_width
+	mailbox[11] = 768;         //FrameBufferInfo.virtual_height
 	
-	mbox[12] = 0x48009; //set virt offset
-	mbox[13] = 8;
-	mbox[14] = 8;
-	mbox[15] = 0;           //FrameBufferInfo.x_offset
-	mbox[16] = 0;           //FrameBufferInfo.y.offset
+	mailbox[12] = 0x48009; //set virt offset
+	mailbox[13] = 8;
+	mailbox[14] = 8;
+	mailbox[15] = 0;           //FrameBufferInfo.x_offset
+	mailbox[16] = 0;           //FrameBufferInfo.y.offset
 	
-	mbox[17] = 0x48005; //set depth
-	mbox[18] = 4;
-	mbox[19] = 4;
-	mbox[20] = 32;          //FrameBufferInfo.depth
+	mailbox[17] = 0x48005; //set depth
+	mailbox[18] = 4;
+	mailbox[19] = 4;
+	mailbox[20] = 32;          //FrameBufferInfo.depth
 
-	mbox[21] = 0x48006; //set pixel order
-	mbox[22] = 4;
-	mbox[23] = 4;
-	mbox[24] = 1;           //RGB, not BGR preferably
+	mailbox[21] = 0x48006; //set pixel order
+	mailbox[22] = 4;
+	mailbox[23] = 4;
+	mailbox[24] = 1;           //RGB, not BGR preferably
 
-	mbox[25] = 0x40001; //get framebuffer, gets alignment on request
-	mbox[26] = 8;
-	mbox[27] = 8;
-	mbox[28] = 4096;        //FrameBufferInfo.pointer
-	mbox[29] = 0;           //FrameBufferInfo.size
+	mailbox[25] = 0x40001; //get framebuffer, gets alignment on request
+	mailbox[26] = 8;
+	mailbox[27] = 8;
+	mailbox[28] = 4096;        //FrameBufferInfo.pointer
+	mailbox[29] = 0;           //FrameBufferInfo.size
 
-	mbox[30] = 0x40008; //get pitch
-	mbox[31] = 4;
-	mbox[32] = 4;
-	mbox[33] = 0;           //FrameBufferInfo.pitch
+	mailbox[30] = 0x40008; //get pitch
+	mailbox[31] = 4;
+	mailbox[32] = 4;
+	mailbox[33] = 0;           //FrameBufferInfo.pitch
 
-	mbox[34] = MBOX_TAG_LAST;
+	mailbox[34] = MBOX_TAG_LAST;
 
-	if(mbox_call(MBOX_CH_PROP) && mbox[20]==32 && mbox[28]!=0) {
-		mbox[28]&=0x3FFFFFFF;
-		width=mbox[5];
-		height=mbox[6];
-		pitch=mbox[33];
-		lfb=(void*)((unsigned long)mbox[28]);
+	if(mailbox_call(MBOX_CH_PROP) && mailbox[20]==32 && mailbox[28]!=0) {
+		mailbox[28]&=0x3FFFFFFF;
+		width=mailbox[5];
+		height=mailbox[6];
+		pitch=mailbox[33];
+		lfb=(void*)((unsigned long)mailbox[28]);
 	} else {
 		uart_puts("Unable to set screen resolution to 1024x768x32\n");
 	}

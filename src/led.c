@@ -2,13 +2,13 @@
 
 void set_ACT_LED(bool on)
 {
-	mbox[0] = 8*4;
-	mbox[7] = 0;
-	mbox[1] = 0;
-	mbox[2] = 0x00038041;
-	mbox[3] = 8;
-	mbox[4] = 8;
-	mbox[5] = 130;
-	mbox[6] = (uint32_t)on;
-	mbox_call(0x8);
+	mailbox[0] = 8*4;
+	mailbox[7] = 0;
+	mailbox[1] = 0;
+	mailbox[2] = 0x00038041;
+	mailbox[3] = 8;
+	mailbox[4] = 8;
+	mailbox[5] = 130;
+	mailbox[6] = (uint32_t)on;
+	mailbox_call(0x8);
 }
