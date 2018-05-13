@@ -2,6 +2,7 @@
 #define PROJECT_H
 
 #include "color.h"
+#include "led.h"
 #include "delays.h"
 #include "string.h"
 #include "fat.h"
