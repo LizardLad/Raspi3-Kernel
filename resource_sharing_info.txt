@@ -1,0 +1,10 @@
+When implementing multitasking resource locks need to be implemented
+GPIO states need to be avaliable
+delays don't need a lock
+LFB needs a lock
+mbox needs a lock
+sd is only used by fat.c so doesn't need a lock however if ext is to be implemented a lock
+needs to be in place
+uarts need locks
+init should only execute once
+stepper should have a method of checking if the stepper is already in motion
