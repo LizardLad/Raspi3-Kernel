@@ -6,9 +6,9 @@ void core1_main()
 	for(int i = 0; i < 12; i++)
 	{
 		set_ACT_LED(true);
-		wait_msec(100000);
+		wait_usec(100000);
 		set_ACT_LED(false);
-		wait_msec(100000);
+		wait_usec(100000);
 	}
 	lfb_print(0, 1, "Flashing Done");
 }
