@@ -42,8 +42,8 @@ bool gpio_setup(unsigned int gpio, GPIOMODE mode);
 bool gpio_input(unsigned int gpio);
 bool gpio_output(unsigned int gpio, bool on);
 
-void pinMode(unsigned int gpio, GPIOMODE mode);
-void digitalWrite(unsigned int gpio, unsigned int value);
-int digitalRead(unsigned int gpio);
+void pinMode(unsigned int gpio_pin, GPIOMODE mode);
+void digitalWrite(unsigned int gpio_pin, bool value);
+bool digitalRead(unsigned int gpio_pin);
 
 #endif
