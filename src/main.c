@@ -7,7 +7,7 @@ void main()
 	uart_init();
 	lfb_init();
 	gpio_setup(3, GPIO_OUTPUT);
-	while(1)
+	/*while(1)
 	{
 	int k = 0;
 	for(int pos = 0; pos <= 180; pos++)
@@ -29,7 +29,7 @@ void main()
 		wait_usec(20000 - i);
 		wait_usec(15000);
 	}
-	}
+	}*/
 
 	char r, g, b;
 	for(int x = 0; x < 1024; x++)
