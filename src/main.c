@@ -7,12 +7,21 @@ void main()
 	uart_init();
 	lfb_init();
 	gpio_setup(3, GPIO_OUTPUT);
-	while(1)
+	int j = 0;
+	while(j < 3)
 	{
 		gpio_output(3, true);
 		wait_usec(540); //Goto 0 degrees if 180 is desired use 2400us
 		gpio_output(3, false);
 		wait_usec(19460);
+		j++;
+	}
+	while(1)
+	{
+		gpio_output(3, true);
+		wait_usec(2400); //Goto 0 degrees if 180 is desired use 2400us
+		gpio_output(3, false);
+		wait_usec(17600);
 	}
 
 	char r, g, b;
