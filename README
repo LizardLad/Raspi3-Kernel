@@ -1,4 +1,5 @@
 To run this in QEMU please run 
 qemu-system-aarch64 -M raspi3 -drive file=raspi.iso,if=sd,format=raw -kernel kernel8.img -serial stdio
 
+I would like to acknowledge bztsrc for their awesome tutorials without them most of this wouldn't have been done.
 
