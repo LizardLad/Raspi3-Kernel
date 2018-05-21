@@ -11,5 +11,4 @@ void core1_main()
 		wait_usec(100000);
 	}
 	lfb_print(0, 1, "Flashing Done");
-	lfb_print(0, 2, "Mateo is good boi   ");
 }
