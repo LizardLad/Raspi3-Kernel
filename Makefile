@@ -20,7 +20,7 @@ $(BUILD)%.o: $(SOURCE)%.s
 	aarch64-linux-gnu-gcc -g $(CFLAGS) -c  $< -o $@
 
 $(BUILD)%.o: $(SOURCE)%.c
-	aarch64-linux-gnu-gcc -g $(CFLAGS) -c  $< -o $@ -lm 
+	aarch64-linux-gnu-gcc -g $(CFLAGS) -c  $< -o $@  
 
 $(FONTOBJ): $(FONT)
 	aarch64-linux-gnu-ld -r -b binary -o $(FONTOBJ) $(FONT)
