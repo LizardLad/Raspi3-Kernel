@@ -1,25 +1,46 @@
 #include "headers/project.h"
 
-void system_init()
+void set_cpu_clock(unsigned int clock_rate)
 {
-	/* set up clock for consistent divisor values */
 	mailbox[0] = 8*4;
-	mailbox[1] = MBOX_REQUEST;
-	mailbox[2] = MBOX_TAG_SETVOLTAGE; // set clock rate
+	mailbox[7] = 0;
+	mailbox[1] = 0;
+	mailbox[2] = 0x00038002;
 	mailbox[3] = 8;
-	mailbox[4] = 3;		//ARM CPU voltage
-	mailbox[5] = 3;
-	mailbox[7] = MBOX_TAG_LAST;
-	mailbox_call(MBOX_CH_PROP);
-	
-	/* set up clock for consistent divisor values */
-	mailbox[0] = 8*4;
-	mailbox[1] = MBOX_REQUEST;
-	mailbox[2] = MBOX_TAG_SETCLKRATE; // set clock rate
-	mailbox[3] = 12;
 	mailbox[4] = 8;
-	mailbox[5] = 3;           // ARM CPU clock
-	mailbox[6] = 500000000;   // 500Mhz
-	mailbox[7] = MBOX_TAG_LAST;
-	mailbox_call(MBOX_CH_PROP);
+	mailbox[5] = 3;
+	mailbox[6] = clock_rate;
+	mailbox_tag_write((unsigned int)&mailbox[0]);
+}
+
+void get_cpu_clock()
+{
+	;
+}
+
+unsigned int get_cpu_max_clock()
+{
+	mailbox[0] = 8 * 4; //TAG is 0x00030004
+	mailbox[7] = 0;
+	mailbox[1] = 0;
+	mailbox[2] = 0x00038004;
+        mailbox[3] = 8;
+        mailbox[4] = 8;
+        mailbox[5] = 3;
+        mailbox[6] = 0;
+	mailbox_tag_write((unsigned int)&mailbox[0]);
+	mailbox_tag_read(0x8);
+
+	if(mailbox[1] == 0x80000000)
+	{
+		return mailbox[6];
+	}
+
+	return 0; //Return 0 on error because returning non-zero is a clock rate!
+}
+
+void clocks_init()
+{
+	unsigned int max_clock = get_cpu_max_clock();
+	set_cpu_clock(max_clock);
 }

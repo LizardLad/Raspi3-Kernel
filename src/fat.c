@@ -21,6 +21,7 @@ int fat_getpartition()
 			uart_puts("ERROR: Wrong partition type\n");
 			return 0;
 		}
+		lfb_print(0, 0, "yep still same error");
 		partitionlba=*((unsigned int*)((unsigned long)master_boot_record+0x1C6));
 		// read the boot record
 		if(!sd_readblock(partitionlba, master_boot_record, 1)) {

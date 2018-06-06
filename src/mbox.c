@@ -14,6 +14,26 @@ volatile unsigned int  __attribute__((aligned(16))) mailbox[36];
 #define MBOX_FULL       0x80000000
 #define MBOX_EMPTY      0x40000000
 
+struct __attribute__((__packed__, aligned(4))) mbox_registers
+{
+        const volatile uint32_t read_0; // 0x00         Read data from VC to ARM
+        uint32_t unused[3];             // 0x04-0x0F
+        volatile uint32_t peek_0;       // 0x10
+        volatile uint32_t sender_0;     // 0x14
+        volatile uint32_t status_0;     // 0x18         Status of VC to ARM
+        volatile uint32_t config0;      // 0x1C
+        volatile uint32_t write_1;      // 0x20         Write data from ARM to VC
+        uint32_t unused_2[3];           // 0x24-0x2F
+        volatile uint32_t peek_1;       // 0x30
+        volatile uint32_t sender_1;     // 0x34
+        volatile uint32_t status_1;     // 0x38         Status of ARM to VC
+        volatile uint32_t config_1;     // 0x3C
+};
+
+_Static_assert((sizeof(struct mbox_registers) == 0x40), "Structure MailBoxRegisters should be 0x40 bytes in size");
+
+#define MAILBOX_FOR_READ_WRITES ((volatile __attribute__((aligned(4))) struct mbox_registers*)(unsigned int *)(MMIO_BASE + 0xB880))
+
 /**
  * Make a mailbox call. Returns 0 on failure, non-zero on success
  */
@@ -35,4 +55,35 @@ int mailbox_call(unsigned char ch)
 			return mailbox[1]==MBOX_RESPONSE;
 	}
 	return 0;
+}
+
+bool mailbox_tag_write(uint32_t message) 
+{
+	uint32_t value;	// Temporary read value
+	message &= ~(0xF); // Make sure 4 low channel bits are clear
+	message |= 0x8; // OR the channel bits to the value
+	do
+	{
+		value = MAILBOX_FOR_READ_WRITES->status_1; // Read mailbox1 status from GPU
+	} 
+	while ((value & MAIL_FULL) != 0); // Make sure arm mailbox is not full
+	MAILBOX_FOR_READ_WRITES->write_1 = message; // Write value to mailbox
+	return true; // Write success
+}
+
+uint32_t mailbox_tag_read () 
+{
+	uint32_t value;	// Temporary read value
+	do
+	{
+		do
+		{
+			value = MAILBOX_FOR_READ_WRITES->status_0; // Read mailbox0 status
+		} 
+		while ((value & MAIL_EMPTY) != 0); // Wait for data in mailbox
+		value = MAILBOX_FOR_READ_WRITES->read_0; // Read the mailbox
+	}
+	while ((value & 0xF) != 0x8); // We have response back
+	value &= ~(0xF); // Lower 4 low channel bits are not part of message
+	return value; // Return the value
 }
