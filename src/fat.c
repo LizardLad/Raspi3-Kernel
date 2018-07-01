@@ -23,6 +23,7 @@ int fat_getpartition()
 		}
 		lfb_print(0, 0, "yep still same error");
 		partitionlba=*((unsigned int*)((unsigned long)master_boot_record+0x1C6));
+		lfb_print(0, 1, "I can't get here");
 		// read the boot record
 		if(!sd_readblock(partitionlba, master_boot_record, 1)) {
 			uart_puts("ERROR: Unable to read boot record\n");
