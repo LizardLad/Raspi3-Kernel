@@ -80,18 +80,13 @@ void lfb_init()
 void lfb_draw_pixel(unsigned int x, unsigned int y, char r, char g, char b)
 {
 	unsigned char *ptr = lfb;
-	char pixel[4], data_array[4], *data;
-
-	data = &(data_array[0]);
-	data++;
+	uint32_t pixel;
+	char temp = 0;
 	
 	ptr += pitch * y;
-	ptr += 4 * x;
+	ptr += (x<<2);
 	
-	pixel[0] = r;
-	pixel[1] = g;
-	pixel[2] = b;
-	pixel[3] = 0;
+	pixel = (b<<16)|(g<<8)|r;
 
 	*((unsigned int *)ptr)=*((unsigned int *)&pixel);	
 }
