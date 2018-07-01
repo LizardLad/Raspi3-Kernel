@@ -8,7 +8,7 @@ void main()
 	clocks_init();
 	
 
-	char r, g, b;
+	/*char r, g, b;
 	unsigned int frame_count = 0;
 	char outbuff[50];
 	while(1)
@@ -32,8 +32,15 @@ void main()
 		frame_count++;
 		itoa(frame_count, outbuff);
 		lfb_print(0, 0, outbuff);
-	}
+	}*/
 
+	if(sd_init() == SD_OK)
+	{
+		if(fat_getpartition())
+		{
+			text_file_dump("LICENC~1BRO");
+		}
+	}
 
 	//asm(	"mov	x1, #0xe0\n"\
 	//	"mov	x2, #0x80000\n" \
