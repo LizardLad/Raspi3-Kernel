@@ -7,8 +7,8 @@
  */
 int fat_getpartition()
 {
-	unsigned char *master_boot_record=&(master_boot_record_array[0]);
-	bpb_t *bpb=(bpb_t*)&(master_boot_record_array[0]);
+	unsigned char *master_boot_record=(unsigned char *)&master_boot_record_array;
+	bpb_t *bpb=(bpb_t*)&master_boot_record_array;
 	// read the partitioning table
 	if(sd_readblock(0, master_boot_record, 1)) {
 		// check magic
@@ -21,7 +21,66 @@ int fat_getpartition()
 			uart_puts("ERROR: Wrong partition type\n");
 			return 0;
 		}
-		lfb_print(0, 0, "yep still same error");
+		wait_usec(10000);
+		for(int tempitter = 0; tempitter < 100; tempitter++)
+		{
+			tempitter = tempitter < 26 ? 0 : tempitter;
+			switch(tempitter){
+				case 0:
+					lfb_print(0, 0, "a");
+				case 1:
+					lfb_print(0, 0, "b");
+				case 2:
+					lfb_print(0, 0, "c");
+				case 3:
+					lfb_print(0, 0, "d");
+				case 4:
+					lfb_print(0, 0, "e");
+				case 5:
+					lfb_print(0, 0, "f");
+				case 6:
+					lfb_print(0, 0, "g");
+				case 7:
+					lfb_print(0, 0, "h");
+				case 8:
+					lfb_print(0, 0, "i");
+				case 9:
+					lfb_print(0, 0, "j");
+				case 10:
+					lfb_print(0, 0, "k");
+				case 11:
+					lfb_print(0, 0, "l");
+				case 12:
+					lfb_print(0, 0, "m");
+				case 13:
+					lfb_print(0, 0, "n");
+				case 14:
+					lfb_print(0, 0, "o");
+				case 15:
+					lfb_print(0, 0, "p");
+				case 16:
+					lfb_print(0, 0, "q");
+				case 17:
+					lfb_print(0, 0, "r");
+				case 18:
+					lfb_print(0, 0, "s");
+				case 19:
+					lfb_print(0, 0, "t");
+				case 20:
+					lfb_print(0, 0, "u");
+				case 21:
+					lfb_print(0, 0, "v");
+				case 22:
+					lfb_print(0, 0, "w");
+				case 23:
+					lfb_print(0, 0, "x");
+				case 24:
+					lfb_print(0, 0, "y");
+				case 25:
+					lfb_print(0, 0, "z");
+			}
+		}
+
 		partitionlba=*((unsigned int*)((unsigned long)master_boot_record+0x1C6));
 		lfb_print(0, 1, "I can't get here");
 		// read the boot record

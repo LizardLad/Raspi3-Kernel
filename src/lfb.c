@@ -81,7 +81,6 @@ void lfb_draw_pixel(unsigned int x, unsigned int y, char r, char g, char b)
 {
 	unsigned char *ptr = lfb;
 	uint32_t pixel;
-	char temp = 0;
 	
 	ptr += pitch * y;
 	ptr += (x<<2);
