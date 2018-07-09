@@ -22,19 +22,9 @@ int fat_getpartition()
 			return 0;
 		}
 
-		uint64_t temp_low = (*(uint64_t *)(master_boot_record+0x1C0)) << 48;
+		uint64_t temp_low = (*(uint64_t *)(master_boot_record+0x1C0)) >> 48;
 		uint64_t temp_high = (*(uint64_t *)(master_boot_record+0x1C8) & 0xFFFF);
-		partitionlba = (temp_high >> 16) | temp_low;
-
-		if(partitionlba == *((unsigned int *)((unsigned long)master_boot_record + 0x1C6))) lfb_print(0, 0, "Same");
-		else
-		{
-			unsigned int x = 0, y = 0;
-			lfb_hex(&x, &y, partitionlba);
-			y++;
-			x = 0;
-			lfb_hex(&x, &y, *((unsigned int *)((unsigned long)master_boot_record + 0x1C6)));
-		}
+		partitionlba = (temp_high << 16) | temp_low;
 
 		// read the boot record
 		if(!sd_readblock(partitionlba, master_boot_record, 1)) {
@@ -174,6 +164,7 @@ char *fat_readfile(unsigned int cluster)
 {
 	// BIOS Parameter Block
 	bpb_t *bpb=(bpb_t*)(&(master_boot_record_array[0]));
+	char *vbr = (char *)&master_boot_record_array;
 	// File allocation tables. We choose between FAT16 and FAT32 dynamically
 	unsigned int *fat32=(unsigned int*)(&_end+bpb->rsc*512);
 	unsigned short *fat16=(unsigned short*)fat32;
@@ -196,7 +187,8 @@ char *fat_readfile(unsigned int cluster)
 	data_sec+=partitionlba;
 	// dump important properties
 	uart_puts("FAT Bytes per Sector: ");
-	uart_hex(bpb->bps);
+	//uart_hex(bpb->bps);
+	uart_hex(vbr[11] + (vbr[12]<<8));
 	uart_puts("\nFAT Sectors per Cluster: ");
 	uart_hex(bpb->spc);
 	uart_puts("\nFAT Number of FAT: ");
@@ -208,8 +200,10 @@ char *fat_readfile(unsigned int cluster)
 	uart_puts("\nFAT First data sector: ");
 	uart_hex(data_sec);
 	uart_puts("\n");
+	lfb_print(0, 0, "Can get here");
 	// load FAT table
 	s=sd_readblock(partitionlba+1,(unsigned char*)&_end+512,(bpb->spf16?bpb->spf16:bpb->spf32)+bpb->rsc);
+	lfb_print(0, 1, "Can get here");
 	// end of FAT in memory
 	data=ptr=&_end+512+s;
 	// iterate on cluster chain
@@ -217,7 +211,7 @@ char *fat_readfile(unsigned int cluster)
 		// load all sectors in a cluster
 		sd_readblock((cluster-2)*bpb->spc+data_sec,ptr,bpb->spc);
 		// move pointer, sector per cluster * bytes per sector
-		ptr+=bpb->spc*bpb->bps;
+		ptr+=bpb->spc*(vbr[11] + (vbr[12]<<8));
 		// get the next cluster in chain
 		cluster=bpb->spf16>0?fat16[cluster]:fat32[cluster];
 	}

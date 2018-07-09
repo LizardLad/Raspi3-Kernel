@@ -34,46 +34,42 @@ unsigned int text_file_dump(char *fn)
 				uart_hex(((unsigned int)dir->ch)<<16|dir->cl);
 				uart_puts("\n");
 				// if so, return starting cluster
-		if(((unsigned int) dir->ch)<<16|dir->cl)
-		{	
-			if(dir->size > 0) lfb_print(0, 1, "size > 0");
-					char buffer[512];
-			itoa(dir->size, buffer);
-			lfb_print(0, 0, &buffer[0]);
-			unsigned int size = dir->size;
-			void *ptr = fat_readfile(((unsigned int)dir->ch)<<16|dir->cl);
-			unsigned long a, temp;
-				unsigned int x = 0, y = 0;
-				unsigned char c;
-			a = (unsigned long)ptr;
-				for(unsigned int bytes_copied = 0; bytes_copied < size; bytes_copied++)
+				if(((unsigned int) dir->ch)<<16|dir->cl)
 				{
+					unsigned int size = dir->size;
+					void *ptr = fat_readfile(((unsigned int)dir->ch)<<16|dir->cl); 
+					unsigned long a, temp;
+					unsigned int x = 0, y = 0;
+					unsigned char c;
+					a = (unsigned long)ptr;
+					for(unsigned int bytes_copied = 0; bytes_copied < size; bytes_copied++)
+					{
 						c=*((unsigned char *)(a));
 						temp = (c<32||c>127?'.':c);
 						if(c == '\n')
 						{
-								y++;
-								x = 0;
-								//lfb_print(x, y, (char *)&temp);
+							y++;
+							x = 0;
 						}
 						else if(c != '\r')
 						{
-								lfb_print(x, y, (char *)&temp);
-								x++;
+							lfb_print(x, y, (char *)&temp);
+							x++;
 						}
-				else
-				{
-					x = 0;
+						else
+						{
+							x = 0;
+						}
+						a++;
+					}
 				}
-				a++;
-			}
-		}
-		return 0;
-
+				return 0;
 			}
 		}
 		uart_puts("ERROR: file not found\n");
-	} else {
+	} 
+	else 
+	{
 		uart_puts("ERROR: Unable to load root directory\n");
 	}
 	return 0;

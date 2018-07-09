@@ -2,12 +2,11 @@
 
 void dynamic_memory_alloc_init_stage_1()
 {
-	extern unsigned char _start, _end;
+	extern unsigned char _end;
 	
-	StartOfProgram = &_start;
-	EndOfProgram = &_end + 512;
+	EndOfProgram = &_end;
 	TotalSpaceAvaliable = (unsigned char *)MMIO_BASE - EndOfProgram;
-	ChunkSize = 1000;
+	ChunkSize = 1024;
 	NumberOfChunks = TotalSpaceAvaliable / ChunkSize;
 }
 

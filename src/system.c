@@ -10,7 +10,7 @@ void set_cpu_clock(unsigned int clock_rate)
 	mailbox[4] = 8;
 	mailbox[5] = 3;
 	mailbox[6] = clock_rate;
-	mailbox_tag_write((unsigned int)&mailbox[0]);
+	mailbox_tag_write((unsigned int)((uintptr_t)&(mailbox[0])));
 }
 
 void get_cpu_clock()
@@ -28,7 +28,7 @@ unsigned int get_cpu_max_clock()
         mailbox[4] = 8;
         mailbox[5] = 3;
         mailbox[6] = 0;
-	mailbox_tag_write((unsigned int)&mailbox[0]);
+	mailbox_tag_write((unsigned int)((uintptr_t)&(mailbox[0])));
 	mailbox_tag_read(0x8);
 
 	if(mailbox[1] == 0x80000000)
