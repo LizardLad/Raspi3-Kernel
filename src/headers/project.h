@@ -17,5 +17,6 @@
 #include "malloc.h"
 #include "system.h"
 #include "file.h"
+#include "sound.h"
 
 #endif

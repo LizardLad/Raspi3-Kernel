@@ -5,6 +5,8 @@ TARGET = kernel8.img
 LINKER = link.ld
 FONT = src/font/font.psf
 FONTOBJ = build/font.o
+AUDIO = src/audio/The_Amazons.bin
+AUDIOOBJ = build/the_amazons.o
 LIBS = lib/libopenlibm.a
 LIBOBJS = build/libopenlibm.o
 ASMOBJS = $(patsubst $(SOURCE)%.s,$(BUILD)%.o,$(wildcard $(SOURCE)*.s))
@@ -24,13 +26,16 @@ $(BUILD)%.o: $(SOURCE)%.c
 
 $(FONTOBJ): $(FONT)
 	aarch64-linux-gnu-ld -r -b binary -o $(FONTOBJ) $(FONT)
+
+$(AUDIOOBJ): $(AUDIO)
+	aarch64-linux-gnu-ld -r -b binary -o $(AUDIOOBJ) $(AUDIO)
 	
 $(BUILD)%.o: $(NONOPTIMISED)%.c
 	aarch64-linux-gnu-gcc $(CFLAGSNOOP) -c $< -o $@
 
 
-kernel8.img: $(ASMOBJS) $(COBJS) $(FONTOBJ) $(COBJSNOOP)
-	aarch64-linux-gnu-ld -nostdlib -nostartfiles $(FONTOBJ) $(ASMOBJS) $(COBJSNOOP) $(COBJS) -L lib -l openlibm -T $(LINKER) -o $(BUILD)kernel.elf
+kernel8.img: $(ASMOBJS) $(COBJS) $(FONTOBJ) $(COBJSNOOP) $(AUDIOOBJ)
+	aarch64-linux-gnu-ld -nostdlib -nostartfiles $(FONTOBJ) $(AUDIOOBJ) $(ASMOBJS) $(COBJSNOOP) $(COBJS) -L lib -l openlibm -T $(LINKER) -o $(BUILD)kernel.elf
 	aarch64-linux-gnu-objcopy $(BUILD)kernel.elf -O binary $(TARGET)
 
 clean:

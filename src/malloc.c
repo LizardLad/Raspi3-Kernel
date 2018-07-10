@@ -1,4 +1,4 @@
-#include "../headers/project.h"
+#include "headers/project.h"
 
 void dynamic_memory_alloc_init_stage_1()
 {

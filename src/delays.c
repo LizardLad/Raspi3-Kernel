@@ -44,7 +44,7 @@ void wait_usec(unsigned int usec)
  * This is done by
  * First do two seperate 32 bit reads of the SYSTEM_TIMER_LOW and SYSTEM_TIMER_HIGH
  * Then if the high bits changed during the LOW read then we have to read it again
- * no register will change in the time it takes to read them agian
+ * no register will change in the time it takes to read them again
  * Then join the two together to an unsigned long (64bit integer)
  */
 unsigned long get_system_timer()
