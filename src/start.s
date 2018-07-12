@@ -19,7 +19,15 @@ _start:
 	msr	hstr_el2, xzr						// Disable coprocessor traps to EL2
 	mov	x0, #3 << 20
 	msr	cpacr_el1, x0						// Enable FP/SIMD at EL1
-	
+
+//"================================================================"
+//  Enable CNTP for EL1
+//"================================================================"
+	mrs	x0, cnthctl_el2
+	orr	x0, x0, #3
+	msr	cnthctl_el2, x0
+	msr	cntvoff_el2, xzr
+
 //"================================================================"
 //  Initialize HCR_EL2 so EL1 is 64 bits for all Cores
 //"================================================================"
@@ -38,6 +46,12 @@ _start:
 	orr    x0, x0, #(0x1 << 2)            // The C bit on (data cache). 
 	orr    x0, x0, #(0x1 << 12)           // The I bit on (instruction cache)
 	msr	sctlr_el1, x0
+
+//"================================================================"
+//  Set up exception handlers
+//"================================================================"
+	ldr	x2, =_vectors
+	msr	vbar_el1, x2
 
 //"================================================================"
 //  Return to the EL1_SP1 mode from EL2 for all Cores
@@ -90,3 +104,43 @@ exit_el1:
 _hang:
 	wfe
 	b _hang
+
+
+//Important this code must be properly aligned!
+	.align 11
+_vectors:
+	//Synchronous
+	.align 7
+	mov x0, #0
+	mrs x1, esr_el1
+	mrs x2, elr_el1
+	mrs x3, spsr_el1
+	mrs x4, far_el1
+	b exc_handler
+
+	//IRQ
+	.align 7
+	mov x0, #1
+        mrs x1, esr_el1
+        mrs x2, elr_el1
+        mrs x3, spsr_el1
+        mrs x4, far_el1
+        b exc_handler
+
+	//FIQ
+	.align 7
+	mov x0, #2
+        mrs x1, esr_el1
+        mrs x2, elr_el1
+        mrs x3, spsr_el1
+        mrs x4, far_el1
+        b exc_handler
+
+	//SError
+	.align 7
+	mov x0, #3
+        mrs x1, esr_el1
+        mrs x2, elr_el1
+        mrs x3, spsr_el1
+        mrs x4, far_el1
+        b exc_handler

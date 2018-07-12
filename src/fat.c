@@ -116,7 +116,7 @@ void fat_listdirectory()
 	uart_hex(root_sec);
 	uart_puts("\n");
 	// load the root directory
-	if(sd_readblock(root_sec,(unsigned char*)&_end,s/512+1)) 
+	if(sd_readblock(root_sec,(unsigned char*)master_boot_record,s/512+1)) 
 	{
 		uart_puts("\nAttrib Cluster  Size     Name\n");
 		// iterate on each entry and print out
@@ -200,10 +200,8 @@ char *fat_readfile(unsigned int cluster)
 	uart_puts("\nFAT First data sector: ");
 	uart_hex(data_sec);
 	uart_puts("\n");
-	lfb_print(0, 0, "Can get here");
 	// load FAT table
 	s=sd_readblock(partitionlba+1,(unsigned char*)&_end+512,(bpb->spf16?bpb->spf16:bpb->spf32)+bpb->rsc);
-	lfb_print(0, 1, "Can get here");
 	// end of FAT in memory
 	data=ptr=&_end+512+s;
 	// iterate on cluster chain

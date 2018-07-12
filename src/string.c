@@ -41,3 +41,37 @@ void itoa(int n, char s[])
 	s[i] = '\0'; 
 	reverse(s); 
 }
+
+char *strtok_r(char *input, char *delim, char **save_ptr)
+{
+	char no = 0;
+        if(input == NULL || delim == NULL || input[0] == '\0' || delim[0] == '\0') return NULL;
+        for(int i = 0; input[i] != '\0'; i++)
+        {
+                if(input[i] == delim[0])
+                {
+                        int save_point = i;
+                        i--;
+			no = 0;
+                        //I found the delimiter now if multi character delim figure out if this is the one
+                        for(int j = 0; delim[j] != '\0'; j++)
+                        {
+                                i++;
+                                if(input[i] != delim[j]) 
+				{
+					no = 1;
+					break;
+				}
+                        }
+			if(no == 0)
+			{
+				//If I get here it has succseeded
+                        	input[save_point] = '\0';
+                        	i++;
+                        	*save_ptr = &(input[i++]);
+                        	return &(input[0]);
+			}
+                }
+        }
+        return NULL;
+}

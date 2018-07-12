@@ -5,18 +5,22 @@ void main()
 	// set up serial console
 	uart_init();
 	lfb_init();
-	clocks_init();
-	
-	init_audio_jack();
-	play_16bit_unsigned_audio((char *)&_binary_src_audio_The_Amazons_bin_start, (char *)&_binary_src_audio_The_Amazons_bin_end);
+	//clocks_init();
+	dynamic_memory_alloc_init();
 
-	if(sd_init() == SD_OK)
-	{
-		if(fat_getpartition())
-		{
-			text_file_dump("LICENC~1BRO");
-		}
-	}
+	printf("Hello World! %3x %s", malloc(12 * sizeof(char)), "Well hello there");
+	if(malloc(12) == NULL) lfb_print(0, 2, "NULL");
+
+	//init_audio_jack();
+	//play_16bit_unsigned_audio((char *)&_binary_src_audio_The_Amazons_bin_start, (char *)&_binary_src_audio_The_Amazons_bin_end);
+
+	//if(sd_init() == SD_OK)
+	//{
+	//	if(fat_getpartition())
+	//	{
+	//		text_file_dump("LICENC~1BRO");
+	//	}
+	//}
 
 	//asm(	"mov	x1, #0xe0\n"\
 	//	"mov	x2, #0x80000\n" \

@@ -18,5 +18,7 @@
 #include "system.h"
 #include "file.h"
 #include "sound.h"
+#include "sprintf.h"
+#include "printf.h"
 
 #endif

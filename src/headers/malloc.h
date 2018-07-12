@@ -7,14 +7,14 @@
 
 #define size_t uint64_t
 
-void dynamic_memory_alloc_init_stage_1();
-void dynamic_memory_alloc_init(char allocated[]);
-char *malloc(size_t amountToAllocate, char allocated[]);
+void dynamic_memory_alloc_init();
+char *malloc(size_t amountToAllocate);
 void free(char *PointerToFree);
 
 unsigned char *EndOfProgram;
 unsigned long TotalSpaceAvaliable;
 unsigned long ChunkSize;
 unsigned long NumberOfChunks;
+char allocated[1032160]; // This is th largest it would need to be I did the math as if the kenel had 0 size
 
 #endif
