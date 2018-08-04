@@ -20,5 +20,7 @@
 #include "sound.h"
 #include "sprintf.h"
 #include "printf.h"
+#include "console.h"
+#include "debug.h"
 
 #endif

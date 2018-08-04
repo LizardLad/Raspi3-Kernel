@@ -1,5 +1,10 @@
 #include "headers/project.h"
 
+//FIXME I need to finish this file so
+//TODO
+//use lacaroche's patches without them the code will only work in simulation and not in real hardware
+
+
 /**
  * Get the starting LBA address of the first partition
  * so that we know where our FAT file system starts, and
@@ -92,8 +97,9 @@ unsigned int fat_getcluster(char *fn)
 
 void fat_listdirectory()
 {
-	bpb_t *bpb=(bpb_t*)(&(master_boot_record_array[0]));
-	fatdir_t *dir=(fatdir_t*)(&(master_boot_record_array[0]));
+	unsigned char *master_boot_record=(unsigned char *)&master_boot_record_array;
+	bpb_t *bpb=(bpb_t*)(master_boot_record);
+	fatdir_t *dir=(fatdir_t*)(master_boot_record);
 	unsigned int root_sec, s;
 	// find the root directory's LBA
 	root_sec=((bpb->spf16?bpb->spf16:bpb->spf32)*bpb->nf)+bpb->rsc;
@@ -125,8 +131,8 @@ void fat_listdirectory()
 		{
 			//is it a LFN entry
 			if(dir->attr[0]&1 && dir->attr[0]&2 && dir->attr[0]&4 && dir->attr[0]&8) {
-				lfb_print(0, 0, "LFN Entry");
-				lfb_print(0, lfn_entries + 3, &dir->name[0]);
+				//lfb_print(0, 0, "LFN Entry");
+				//lfb_print(0, lfn_entries + 3, &dir->name[0]);
 				lfn_entries++;
 			}
 			// is it a valid entry?

@@ -1,20 +1,6 @@
 #include "headers/project.h"
 
-/* PC Screen Font as used by Linux Console */
-typedef struct {
-	unsigned int magic;
-	unsigned int version;
-	unsigned int headersize;
-	unsigned int flags;
-	unsigned int numglyph;
-	unsigned int bytesperglyph;
-	unsigned int height;
-	unsigned int width;
-	unsigned char glyphs;
-} __attribute__((packed)) psf_t;
-extern volatile unsigned char _binary_src_font_font_psf_start;
-
-unsigned int width, height, pitch;
+unsigned int pitch;
 unsigned char *lfb;
 
 /**
@@ -68,8 +54,8 @@ void lfb_init()
 
 	if(mailbox_call(MBOX_CH_PROP) && mailbox[20]==32 && mailbox[28]!=0) {
 		mailbox[28]&=0x3FFFFFFF;
-		width=mailbox[5];
-		height=mailbox[6];
+		lfb_width=mailbox[5];
+		lfb_height=mailbox[6];
 		pitch=mailbox[33];
 		lfb=(void*)((unsigned long)mailbox[28]);
 	} else {
@@ -109,19 +95,23 @@ void lfb_print(int x, int y, char *s)
 		// handle carrige return
 		if(*s=='\r') {
 			x=0;
-		} else
-		// new line
-		if(*s=='\n') {
+		} 
+		else if(*s=='\n') 
+		{
 			x=0; y++;
-		} else {
+		}
+		else if(*s != 255)
+		{
 			// display a character
-			for(j=0;j<font->height;j++){
+			for(j=0;j<font->height;j++)
+			{
 				// display one row
 				line=offs;
 				mask=1<<(font->width-1);
-				for(i=0;i<font->width;i++){
+				for(i=0;i<font->width;i++)
+				{
 					// if bit set, we use white color, otherwise black
-			*((unsigned int*)(lfb + line))=((int)*glyph) & mask ? 0xFFFFFF : 0;
+					*((unsigned int*)(lfb + line))=((int)*glyph) & mask ? 0xFFFFFF : 0;
 					mask>>=1;
 					line+=4;
 				}
