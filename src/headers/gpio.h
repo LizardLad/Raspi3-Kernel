@@ -2,6 +2,7 @@
 #define GPIO_H
 
 #include "stdbool.h"
+#include "stdint.h"
 
 #define MMIO_BASE       0x3F000000
 
@@ -38,9 +39,71 @@ typedef enum {
 	GPIO_ALTFUNC3 = 0b111								// 7
 } GPIOMODE;
 
-bool gpio_setup(unsigned int gpio, GPIOMODE mode);
+typedef struct
+{
+	uint8_t gpio_pin_1 : 1;
+	uint8_t gpio_pin_2 : 1;
+	uint8_t gpio_pin_3 : 1;
+	uint8_t gpio_pin_4 : 1;
+	uint8_t gpio_pin_5 : 1;
+	uint8_t gpio_pin_6 : 1;
+	uint8_t gpio_pin_7 : 1;
+	uint8_t gpio_pin_8 : 1;
+	uint8_t gpio_pin_9 : 1;
+	uint8_t gpio_pin_10 : 1;
+	uint8_t gpio_pin_11 : 1;
+	uint8_t gpio_pin_12 : 1;
+	uint8_t gpio_pin_13 : 1;
+	uint8_t gpio_pin_14 : 1;
+	uint8_t gpio_pin_15 : 1;
+	uint8_t gpio_pin_16 : 1;
+	uint8_t gpio_pin_17 : 1;
+	uint8_t gpio_pin_18 : 1;
+	uint8_t gpio_pin_19 : 1;
+	uint8_t gpio_pin_20 : 1;
+	uint8_t gpio_pin_21 : 1;
+	uint8_t gpio_pin_22 : 1;
+	uint8_t gpio_pin_23 : 1;
+	uint8_t gpio_pin_24 : 1;
+	uint8_t gpio_pin_25 : 1;
+	uint8_t gpio_pin_26 : 1;
+	uint8_t gpio_pin_27 : 1;
+	uint8_t gpio_pin_28 : 1;
+	uint8_t gpio_pin_29 : 1;
+	uint8_t gpio_pin_30 : 1;
+	uint8_t gpio_pin_31 : 1;
+	uint8_t gpio_pin_32 : 1;
+	uint8_t gpio_pin_33 : 1;
+	uint8_t gpio_pin_34 : 1;
+	uint8_t gpio_pin_35 : 1;
+	uint8_t gpio_pin_36 : 1;
+	uint8_t gpio_pin_37 : 1;
+	uint8_t gpio_pin_38 : 1;
+	uint8_t gpio_pin_39 : 1;
+	uint8_t gpio_pin_40 : 1;
+	uint8_t gpio_pin_41 : 1;
+	uint8_t gpio_pin_42 : 1;
+	uint8_t gpio_pin_43 : 1;
+	uint8_t gpio_pin_44 : 1;
+	uint8_t gpio_pin_45 : 1;
+	uint8_t gpio_pin_46 : 1;
+	uint8_t gpio_pin_47 : 1;
+	uint8_t gpio_pin_48 : 1;
+	uint8_t gpio_pin_49 : 1;
+	uint8_t gpio_pin_50 : 1;
+	uint8_t gpio_pin_51 : 1;
+	uint8_t gpio_pin_52 : 1;
+	uint8_t gpio_pin_53 : 1;
+	uint8_t gpio_pin_54 : 1;
+} get_gpio_pin_status_t;
+
+get_gpio_pin_status_t gpio_pin_status;
+
+bool gpio_setup(unsigned int gpio_pin, GPIOMODE mode);
 bool gpio_input(unsigned int gpio);
 bool gpio_output(unsigned int gpio, bool on);
+
+unsigned char get_gpio_pin_status(unsigned int gpio_pin);
 
 void pinMode(unsigned int gpio_pin, GPIOMODE mode);
 void digitalWrite(unsigned int gpio_pin, bool value);

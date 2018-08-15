@@ -13,7 +13,7 @@ int init_audio_jack()
 
 	*(PWM_BASE + 0x0) = 0x20 + 0x100 + 0x2000 + 0x1 + 0x40;
 
-	lfb_print(0, 2, "Well there were no unaligned exeptions");
+	printf("[INFO] Audio Init Finished");
 
 	return 0;
 }
@@ -21,10 +21,16 @@ int init_audio_jack()
 //I really hope this works!
 int play_16bit_unsigned_audio(char *start, char *end)
 {
-	if(end < start) return 1;
-	lfb_print(0, 3, "End isn't less than start.");
-	if((start - end) % 2 != 0) return 2;
-	lfb_print(0, 4, "Is a multiple of two so it is 16bit");
+	if(end < start) 
+	{
+		printf("[ERROR] End is less than start.");
+		return 1;
+	}
+	if((start - end) % 2 == 0)
+	{
+		printf("[ERROR] Isn't a multiple of two so it isn't 16bit");
+		return 2;
+	}
 	//FIFO write
 	for(int i = 0; &(start[i]) != end; i++)
 	{
@@ -38,6 +44,6 @@ int play_16bit_unsigned_audio(char *start, char *end)
 		//FIFO wait
 		while(*PWM_STA != 0x1);
 	}
-	lfb_print(0, 5, "Completed Audio");
+	printf("[INFO] Completed Audio");
 	return 0;
 }

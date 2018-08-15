@@ -42,6 +42,81 @@ bool gpio_setup(unsigned int gpio_pin, GPIOMODE mode)
 }
 
 /*
+ * gpio_init()
+ * This function initializes the get_gpio_pin_status struct so it can be 
+ * used
+ * It doesn't have a return value and it has no inputs
+ */
+void gpio_init()
+{
+	gpio_pin_status.gpio_pin_1 = 0;
+	gpio_pin_status.gpio_pin_2 = 0;
+	gpio_pin_status.gpio_pin_3 = 0;
+	gpio_pin_status.gpio_pin_4 = 0;
+	gpio_pin_status.gpio_pin_5 = 0;
+	gpio_pin_status.gpio_pin_6 = 0;
+	gpio_pin_status.gpio_pin_7 = 0;
+	gpio_pin_status.gpio_pin_8 = 0;
+	gpio_pin_status.gpio_pin_9 = 0;
+	gpio_pin_status.gpio_pin_10 = 0;
+	gpio_pin_status.gpio_pin_11 = 0;
+	gpio_pin_status.gpio_pin_12 = 0;
+	gpio_pin_status.gpio_pin_13 = 0;
+	gpio_pin_status.gpio_pin_14 = 0;
+	gpio_pin_status.gpio_pin_15 = 0;
+	gpio_pin_status.gpio_pin_16 = 0;
+	gpio_pin_status.gpio_pin_17 = 0;
+	gpio_pin_status.gpio_pin_18 = 0;
+	gpio_pin_status.gpio_pin_19 = 0;
+	gpio_pin_status.gpio_pin_20 = 0;
+	gpio_pin_status.gpio_pin_21 = 0;
+	gpio_pin_status.gpio_pin_22 = 0;
+	gpio_pin_status.gpio_pin_23 = 0;
+	gpio_pin_status.gpio_pin_24 = 0;
+	gpio_pin_status.gpio_pin_25 = 0;
+	gpio_pin_status.gpio_pin_26 = 0;
+	gpio_pin_status.gpio_pin_27 = 0;
+	gpio_pin_status.gpio_pin_28 = 0;
+	gpio_pin_status.gpio_pin_29 = 0;
+	gpio_pin_status.gpio_pin_30 = 0;
+	gpio_pin_status.gpio_pin_31 = 0;
+	gpio_pin_status.gpio_pin_32 = 0;
+	gpio_pin_status.gpio_pin_33 = 0;
+	gpio_pin_status.gpio_pin_34 = 0;
+	gpio_pin_status.gpio_pin_35 = 0;
+	gpio_pin_status.gpio_pin_36 = 0;
+	gpio_pin_status.gpio_pin_37 = 0;
+	gpio_pin_status.gpio_pin_38 = 0;
+	gpio_pin_status.gpio_pin_39 = 0;
+	gpio_pin_status.gpio_pin_40 = 0;
+	gpio_pin_status.gpio_pin_41 = 0;
+	gpio_pin_status.gpio_pin_42 = 0;
+	gpio_pin_status.gpio_pin_43 = 0;
+	gpio_pin_status.gpio_pin_44 = 0;
+	gpio_pin_status.gpio_pin_45 = 0;
+	gpio_pin_status.gpio_pin_46 = 0;
+	gpio_pin_status.gpio_pin_47 = 0;
+	gpio_pin_status.gpio_pin_48 = 0;
+	gpio_pin_status.gpio_pin_49 = 0;
+	gpio_pin_status.gpio_pin_50 = 0;
+	gpio_pin_status.gpio_pin_51 = 0;
+	gpio_pin_status.gpio_pin_52 = 0;
+	gpio_pin_status.gpio_pin_53 = 0;
+	gpio_pin_status.gpio_pin_54 = 0;
+}
+
+/*
+ * get_gpio_pin_status(unsigned int gpio_pin)
+ * This has a boolean return value that shows the current status of
+ * whether a pin is activated as an output or not it returns 2 if the pin
+ * is currently an input. A 0 is returned if the pin is currently off and
+ * A 1 is returned if the pin is on and giving 3.3v
+ * The only input is the gpio pin
+ */
+
+//TODO write the above function and track GPIO modes
+
+/*
  * gpio_input(unsigned int gpio_pin)
  * This function returns whether a GPIO pin is receiving a voltage or not
  * it returns true if it is and false if it isn't

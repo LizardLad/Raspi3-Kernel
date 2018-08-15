@@ -3,11 +3,12 @@
 void dynamic_memory_alloc_init()
 {
 	extern unsigned char _end;
-	EndOfProgram = &_end;
-	TotalSpaceAvaliable = (unsigned char *)MMIO_BASE - EndOfProgram;
-	ChunkSize = 1024;
-	NumberOfChunks = TotalSpaceAvaliable / ChunkSize;
-	for(unsigned long i = 0; i < NumberOfChunks; i++) 
+	end_of_program = &_end;
+	end_of_cpu_memory = get_gpu_memory_address_start();
+	total_space_avaliable = (unsigned char *)end_of_cpu_memory - end_of_program;
+	chunk_size = 1024;
+	number_of_chunks = total_space_avaliable / chunk_size;
+	for(unsigned long i = 0; i < number_of_chunks; i++) 
 	{
 		allocated[i] = 0;
 		connected_chunk[i] = 0;
@@ -15,15 +16,15 @@ void dynamic_memory_alloc_init()
 
 }
 
-char *malloc(size_t amountToAllocate)
+char *malloc(size_t amount_to_allocate)
 {
 	//Remember to ofset all allocations by EndOfProgram
 	//Remember to check if any chunk end hits MMIO_BASE
 	
-	amountToAllocate = (((amountToAllocate + 1024 - 1) / 1024) * 1024);
-	uint64_t number_of_chunks_to_allocate = amountToAllocate / 1024;
+	amount_to_allocate = (((amount_to_allocate + 1024 - 1) / 1024) * 1024);
+	uint64_t number_of_chunks_to_allocate = amount_to_allocate / 1024;
 
-	for(unsigned long i = 0; i < NumberOfChunks; i++)
+	for(unsigned long i = 0; i < number_of_chunks; i++)
 	{
 		if(allocated[i] == 0)
 		{
@@ -37,7 +38,7 @@ char *malloc(size_t amountToAllocate)
 			}
 			if(chunk_allocated_in_space == 0)
 			{
-				uint64_t temp = amountToAllocate;
+				uint64_t temp = amount_to_allocate;
 				for(uint64_t j = i; j < i + number_of_chunks_to_allocate; j++)
                         	{
 					connected_chunk[j] = 1;
@@ -48,8 +49,8 @@ char *malloc(size_t amountToAllocate)
 					}
 					temp -= 1024;
                         	}
-				unsigned char *x = EndOfProgram + (i << 10);
-				if(x[amountToAllocate] < MMIO_BASE)
+				unsigned char *x = end_of_program + (i << 10);
+				if(x[amount_to_allocate] < (uint64_t)end_of_cpu_memory)
 				{
 					return (char *)x;
 				}
@@ -68,7 +69,7 @@ int free(void *p_to_free)
 	//WARNING THIS FUNCTION FAILS SILENTLY (But it shouldn't fail XD)
 	//TODO add compadibility with latest version of malloc
 	unsigned long i = 0;
-	i = ((p_to_free - (void *)EndOfProgram) >> 10);
+	i = ((p_to_free - (void *)end_of_program) >> 10);
 	allocated[i] = 0;
 	//We also have to find out if it is a connected chunk to do this:
 	if(connected_chunk[i] == 0) return 0;

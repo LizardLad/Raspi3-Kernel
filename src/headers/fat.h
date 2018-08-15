@@ -5,11 +5,13 @@
 typedef struct {
     char            jmp[3];
     char            oem[8];
-    unsigned short  bps;
+    unsigned char   bps0;
+    unsigned char   bps1;
     unsigned char   spc;
     unsigned short  rsc;
     unsigned char   nf;
-    unsigned short  nr;
+    unsigned char   nr0;
+    unsigned char   nr1;
     unsigned short  ts16;
     unsigned char   media;
     unsigned short  spf16;
@@ -45,6 +47,6 @@ unsigned int partitionlba;
 int fat_getpartition();
 unsigned int fat_getcluster(char *fn);
 void fat_listdirectory();
-char *fat_readfile(unsigned int cluster);
+char fat_readfile(unsigned int cluster);
 
 #endif

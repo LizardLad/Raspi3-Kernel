@@ -22,5 +22,6 @@
 #include "printf.h"
 #include "console.h"
 #include "debug.h"
+#include "gpu_memory.h"
 
 #endif

@@ -50,8 +50,8 @@ _start:
 //"================================================================"
 //  Set up exception handlers
 //"================================================================"
-	ldr	x2, =_vectors
-	msr	vbar_el1, x2
+	ldr	x0, =_vectors
+	msr	vbar_el1, x0
 
 //"================================================================"
 //  Return to the EL1_SP1 mode from EL2 for all Cores
@@ -160,10 +160,10 @@ dbg_saveregs:
 	ret
 
 	// important, code has to be properly aligned
-	.align 11
+	.balign 0x800
 _vectors:
 	// synchronous
-	.align  7
+	.balign  0x80
 	mov     x0, #1
 	bl      set_ACT_LED
 	str     x30, [sp, #-16]!     // push x30
@@ -174,7 +174,7 @@ _vectors:
 	eret
 
 	// IRQ
-	.align  7
+	.balign  0x80
 	str     x30, [sp, #-16]!     // push x30
 	bl      dbg_saveregs
 	mov     x0, #1
@@ -183,7 +183,7 @@ _vectors:
 	eret
 
 	// FIQ
-	.align  7
+	.balign  0x80
 	str     x30, [sp, #-16]!     // push x30
 	bl      dbg_saveregs
 	mov     x0, #2
@@ -192,10 +192,10 @@ _vectors:
 	eret
 
 	// SError
-	.align  7
+	.balign  0x80
 	str     x30, [sp, #-16]!     // push x30
 	bl      dbg_saveregs
 	mov     x0, #3
 	bl      dbg_decodeexc
 	bl      dbg_main
-eret
+	eret

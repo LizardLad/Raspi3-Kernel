@@ -1,11 +1,11 @@
 #include "headers/project.h"
 
-unsigned int text_file_dump(char *fn)
+/*unsigned int text_file_dump(char *fn)
 {
 	bpb_t *bpb=(bpb_t*)(&(master_boot_record_array[0]));
 	unsigned char fatdir_buffer[512];
-	fatdir_t *dir=(fatdir_t*)(&(fatdir_buffer[0]));
-	unsigned int root_sec, s;
+	fatdir_t *dir=(fatdir_t*)(&(fatdir_buffer[0]));*
+		unsigned int root_sec, s;
 	// find the root directory's LBA
 	root_sec=((bpb->spf16?bpb->spf16:bpb->spf32)*bpb->nf)+bpb->rsc;
 	//WARNING gcc generates bad code for bpb->nr, causing unaligned exception
@@ -74,3 +74,5 @@ unsigned int text_file_dump(char *fn)
 	}
 	return 0;
 }
+*/
+
