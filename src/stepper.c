@@ -1,6 +1,6 @@
 #include "headers/project.h"
 
-void Stepper2WireInit(int number_of_steps, int motor_pin_1, int motor_pin_2, StepperMotor *Stepper)
+void Stepper2WireInit(int32_t number_of_steps, int32_t motor_pin_1, int32_t motor_pin_2, StepperMotor *Stepper)
 {
   Stepper->step_number = 0;    // which step the motor is on
   Stepper->direction = 0;      // motor direction
@@ -29,7 +29,7 @@ void Stepper2WireInit(int number_of_steps, int motor_pin_1, int motor_pin_2, Ste
  *   constructor for four-pin version
  *   Sets which wires should control the motor.
  */
-void Stepper4WireInit(int number_of_steps, int motor_pin_1, int motor_pin_2, int motor_pin_3, int motor_pin_4, StepperMotor *Stepper)
+void Stepper4WireInit(int32_t number_of_steps, int32_t motor_pin_1, int32_t motor_pin_2, int32_t motor_pin_3, int32_t motor_pin_4, StepperMotor *Stepper)
 {
   Stepper->step_number = 0;    // which step the motor is on
   Stepper->direction = 0;      // motor direction
@@ -59,7 +59,7 @@ void Stepper4WireInit(int number_of_steps, int motor_pin_1, int motor_pin_2, int
  *   constructor for five phase motor with five wires
  *   Sets which wires should control the motor.
  */
-void Stepper5WireInit(int number_of_steps, int motor_pin_1, int motor_pin_2, int motor_pin_3, int motor_pin_4, int motor_pin_5, StepperMotor *Stepper)
+void Stepper5WireInit(int32_t number_of_steps, int32_t motor_pin_1, int32_t motor_pin_2, int32_t motor_pin_3, int32_t motor_pin_4, int32_t motor_pin_5, StepperMotor *Stepper)
 {
   Stepper->step_number = 0;    // which step the motor is on
   Stepper->direction = 0;      // motor direction
@@ -87,7 +87,7 @@ void Stepper5WireInit(int number_of_steps, int motor_pin_1, int motor_pin_2, int
 /*
  * Sets the speed in revs per minute
  */
-void setStepperSpeed(long whatSpeed, StepperMotor *Stepper)
+void setStepperSpeed(int64_t whatSpeed, StepperMotor *Stepper)
 {
   Stepper->step_delay = 60L * 1000L * 1000L / Stepper->number_of_steps / whatSpeed;
 }
@@ -95,7 +95,7 @@ void setStepperSpeed(long whatSpeed, StepperMotor *Stepper)
 /*
  * Moves the motor forward or backwards.
  */
-void stepStepperMotor(int thisStep, StepperMotor *Stepper)
+void stepStepperMotor(int32_t thisStep, StepperMotor *Stepper)
 {
   if (Stepper->pin_count == 2)
   {
@@ -233,9 +233,9 @@ void stepStepperMotor(int thisStep, StepperMotor *Stepper)
  * Moves the motor steps_to_move steps.  If the number is negative,
  * the motor moves in the reverse direction.
  */
-void step(int steps_to_move, StepperMotor *Stepper)
+void step(int32_t steps_to_move, StepperMotor *Stepper)
 {
-  int steps_left = abs(steps_to_move);  // how many steps to take
+  int32_t steps_left = abs(steps_to_move);  // how many steps to take
 
   // determine direction based on whether steps_to_mode is + or -:
   if (steps_to_move > 0) { Stepper->direction = 1; }
@@ -245,7 +245,7 @@ void step(int steps_to_move, StepperMotor *Stepper)
   // decrement the number of steps, moving one step each time:
   while (steps_left > 0)
   {
-	unsigned long now = micros();
+	uint64_t now = micros();
 	// move only if the appropriate delay has passed:
 	if (now - Stepper->last_step_time >= Stepper->step_delay)
 	{

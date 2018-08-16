@@ -1,21 +1,21 @@
 #include "headers/project.h"
 
 /* PL011 UART registers */
-#define UART0_DR        ((volatile unsigned int*)(MMIO_BASE+0x00201000))
-#define UART0_FR        ((volatile unsigned int*)(MMIO_BASE+0x00201018))
-#define UART0_IBRD      ((volatile unsigned int*)(MMIO_BASE+0x00201024))
-#define UART0_FBRD      ((volatile unsigned int*)(MMIO_BASE+0x00201028))
-#define UART0_LCRH      ((volatile unsigned int*)(MMIO_BASE+0x0020102C))
-#define UART0_CR        ((volatile unsigned int*)(MMIO_BASE+0x00201030))
-#define UART0_IMSC      ((volatile unsigned int*)(MMIO_BASE+0x00201038))
-#define UART0_ICR       ((volatile unsigned int*)(MMIO_BASE+0x00201044))
+#define UART0_DR        ((volatile uint32_t*)(MMIO_BASE+0x00201000))
+#define UART0_FR        ((volatile uint32_t*)(MMIO_BASE+0x00201018))
+#define UART0_IBRD      ((volatile uint32_t*)(MMIO_BASE+0x00201024))
+#define UART0_FBRD      ((volatile uint32_t*)(MMIO_BASE+0x00201028))
+#define UART0_LCRH      ((volatile uint32_t*)(MMIO_BASE+0x0020102C))
+#define UART0_CR        ((volatile uint32_t*)(MMIO_BASE+0x00201030))
+#define UART0_IMSC      ((volatile uint32_t*)(MMIO_BASE+0x00201038))
+#define UART0_ICR       ((volatile uint32_t*)(MMIO_BASE+0x00201044))
 
 /**
  * Set baud rate and characteristics (115200 8N1) and map to GPIO
  */
 void uart_init()
 {
-	register unsigned int r;
+	register uint32_t r;
 	
 	/* initialize UART */
 	*UART0_CR = 0;         // turn off UART0
@@ -52,7 +52,7 @@ void uart_init()
 /**
  * Send a character
  */
-void uart_send(unsigned int c) {
+void uart_send(uint32_t c) {
 	/* wait until we can send */
 	do{asm volatile("nop");}while(*UART0_FR&0x20);
 	/* write the character to the buffer */
@@ -87,9 +87,9 @@ void uart_puts(char *s) {
 /**
  * Display a binary value in hexadecimal
  */
-void uart_hex(unsigned int d) {
-	unsigned int n;
-	int c;
+void uart_hex(uint32_t d) {
+	uint32_t n;
+	int32_t c;
 	for(c=28;c>=0;c-=4) {
 		// get highest tetrad
 		n=(d>>c)&0xF;
@@ -104,14 +104,14 @@ void uart_hex(unsigned int d) {
  */
 void uart_dump(void *ptr)
 {
-	unsigned long a,b,d;
+	uint64_t a,b,d;
 	unsigned char c;
-	for(a=(unsigned long)ptr;a<(unsigned long)ptr+512;a+=16) {
+	for(a=(uint64_t)ptr;a<(uint64_t)ptr+512;a+=16) {
 		uart_hex(a); uart_puts(": ");
 		for(b=0;b<16;b++) {
 			c=*((unsigned char*)(a+b));
-			d=(unsigned int)c;d>>=4;d&=0xF;d+=d>9?0x37:0x30;uart_send(d);
-			d=(unsigned int)c;d&=0xF;d+=d>9?0x37:0x30;uart_send(d);
+			d=(uint32_t)c;d>>=4;d&=0xF;d+=d>9?0x37:0x30;uart_send(d);
+			d=(uint32_t)c;d&=0xF;d+=d>9?0x37:0x30;uart_send(d);
 			uart_send(' ');
 			if(b%4==3)
 				uart_send(' ');

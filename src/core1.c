@@ -3,7 +3,7 @@
 void core1_main()
 {
 	lfb_special_print(0, 0, "Hello World", false, 0, 255, 0, 0, 0, 0);
-	for(int i = 0; i < 12; i++)
+	for(int32_t i = 0; i < 12; i++)
 	{
 		set_ACT_LED(true);
 		wait_usec(100000);

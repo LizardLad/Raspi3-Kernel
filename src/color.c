@@ -7,7 +7,7 @@ void hsv_to_rgb(double h, double s, double v, char *r, char *g, char *b)
 
 	(h == 360.0) ? (h = 0.0) : (h /= 60.0);
 
-	fract = h - (int)h;	
+	fract = h - (int64_t)h;	
 
 	P = v*(1.0 - s);
 	Q = v*(1.0 - s * fract);
@@ -48,7 +48,7 @@ void hsv_to_rgb(double h, double s, double v, char *r, char *g, char *b)
 
 
 
-unsigned int rgb_to_hex(char r, char g, char b)
+uint32_t rgb_to_hex(uint8_t r, uint8_t g, uint8_t b)
 {
 	return ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
 }

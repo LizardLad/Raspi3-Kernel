@@ -1,22 +1,22 @@
 #include "headers/project.h"
 
-#define EMMC_ARG2           ((volatile unsigned int*)(MMIO_BASE+0x00300000))
-#define EMMC_BLKSIZECNT     ((volatile unsigned int*)(MMIO_BASE+0x00300004))
-#define EMMC_ARG1           ((volatile unsigned int*)(MMIO_BASE+0x00300008))
-#define EMMC_CMDTM          ((volatile unsigned int*)(MMIO_BASE+0x0030000C))
-#define EMMC_RESP0          ((volatile unsigned int*)(MMIO_BASE+0x00300010))
-#define EMMC_RESP1          ((volatile unsigned int*)(MMIO_BASE+0x00300014))
-#define EMMC_RESP2          ((volatile unsigned int*)(MMIO_BASE+0x00300018))
-#define EMMC_RESP3          ((volatile unsigned int*)(MMIO_BASE+0x0030001C))
-#define EMMC_DATA           ((volatile unsigned int*)(MMIO_BASE+0x00300020))
-#define EMMC_STATUS         ((volatile unsigned int*)(MMIO_BASE+0x00300024))
-#define EMMC_CONTROL0       ((volatile unsigned int*)(MMIO_BASE+0x00300028))
-#define EMMC_CONTROL1       ((volatile unsigned int*)(MMIO_BASE+0x0030002C))
-#define EMMC_INTERRUPT      ((volatile unsigned int*)(MMIO_BASE+0x00300030))
-#define EMMC_INT_MASK       ((volatile unsigned int*)(MMIO_BASE+0x00300034))
-#define EMMC_INT_EN         ((volatile unsigned int*)(MMIO_BASE+0x00300038))
-#define EMMC_CONTROL2       ((volatile unsigned int*)(MMIO_BASE+0x0030003C))
-#define EMMC_SLOTISR_VER    ((volatile unsigned int*)(MMIO_BASE+0x003000FC))
+#define EMMC_ARG2           ((volatile uint32_t*)(MMIO_BASE+0x00300000))
+#define EMMC_BLKSIZECNT     ((volatile uint32_t*)(MMIO_BASE+0x00300004))
+#define EMMC_ARG1           ((volatile uint32_t*)(MMIO_BASE+0x00300008))
+#define EMMC_CMDTM          ((volatile uint32_t*)(MMIO_BASE+0x0030000C))
+#define EMMC_RESP0          ((volatile uint32_t*)(MMIO_BASE+0x00300010))
+#define EMMC_RESP1          ((volatile uint32_t*)(MMIO_BASE+0x00300014))
+#define EMMC_RESP2          ((volatile uint32_t*)(MMIO_BASE+0x00300018))
+#define EMMC_RESP3          ((volatile uint32_t*)(MMIO_BASE+0x0030001C))
+#define EMMC_DATA           ((volatile uint32_t*)(MMIO_BASE+0x00300020))
+#define EMMC_STATUS         ((volatile uint32_t*)(MMIO_BASE+0x00300024))
+#define EMMC_CONTROL0       ((volatile uint32_t*)(MMIO_BASE+0x00300028))
+#define EMMC_CONTROL1       ((volatile uint32_t*)(MMIO_BASE+0x0030002C))
+#define EMMC_INTERRUPT      ((volatile uint32_t*)(MMIO_BASE+0x00300030))
+#define EMMC_INT_MASK       ((volatile uint32_t*)(MMIO_BASE+0x00300034))
+#define EMMC_INT_EN         ((volatile uint32_t*)(MMIO_BASE+0x00300038))
+#define EMMC_CONTROL2       ((volatile uint32_t*)(MMIO_BASE+0x0030003C))
+#define EMMC_SLOTISR_VER    ((volatile uint32_t*)(MMIO_BASE+0x003000FC))
 
 // command flags
 #define CMD_NEED_APP        0x80000000
@@ -86,24 +86,24 @@
 #define ACMD41_CMD_CCS      0x40000000
 #define ACMD41_ARG_HC       0x51ff8000
 
-unsigned long sd_scr[2], sd_ocr, sd_rca, sd_err, sd_hv;
+uint64_t sd_scr[2], sd_ocr, sd_rca, sd_err, sd_hv;
 
 /**
  * Wait for data or command ready
  */
-int sd_status(unsigned int mask)
+int sd_status(uint32_t mask)
 {
-	int cnt = 500000; while((*EMMC_STATUS & mask) && !(*EMMC_INTERRUPT & INT_ERROR_MASK) && cnt--) wait_usec(1);
+	int32_t cnt = 500000; while((*EMMC_STATUS & mask) && !(*EMMC_INTERRUPT & INT_ERROR_MASK) && cnt--) wait_usec(1);
 	return (cnt <= 0 || (*EMMC_INTERRUPT & INT_ERROR_MASK)) ? SD_ERROR : SD_OK;
 }
 
 /**
  * Wait for interrupt
  */
-int sd_int(unsigned int mask)
+int32_t sd_int(uint32_t mask)
 {
-	unsigned int r, m=mask | INT_ERROR_MASK;
-	int cnt = 1000000; while(!(*EMMC_INTERRUPT & m) && cnt--) wait_usec(1);
+	uint32_t r, m=mask | INT_ERROR_MASK;
+	int32_t cnt = 1000000; while(!(*EMMC_INTERRUPT & m) && cnt--) wait_usec(1);
 	r=*EMMC_INTERRUPT;
 	if(cnt<=0 || (r & INT_CMD_TIMEOUT) || (r & INT_DATA_TIMEOUT) ) { *EMMC_INTERRUPT=r; return SD_TIMEOUT; } else
 	if(r & INT_ERROR_MASK) { *EMMC_INTERRUPT=r; return SD_ERROR; }
@@ -114,9 +114,9 @@ int sd_int(unsigned int mask)
 /**
  * Send a command
  */
-int sd_cmd(unsigned int code, unsigned int arg)
+int32_t sd_cmd(uint32_t code, uint32_t arg)
 {
-	int r=0;
+	int32_t r=0;
 	sd_err=SD_OK;
 	if(code&CMD_NEED_APP) {
 		r=sd_cmd(CMD_APP_CMD|(sd_rca?CMD_RSPNS_48:0),sd_rca);
@@ -148,13 +148,13 @@ int sd_cmd(unsigned int code, unsigned int arg)
  * read a block from sd card and return the number of bytes read
  * returns 0 on error.
  */
-int sd_readblock(unsigned int lba, unsigned char *buffer, unsigned int num)
+int32_t sd_readblock(uint32_t lba, unsigned char *buffer, uint32_t num)
 {
-	int r,c=0,d;
+	int32_t r,c=0,d;
 	if(num<1) num=1;
 	uart_puts("sd_readblock lba ");uart_hex(lba);uart_puts(" num ");uart_hex(num);uart_send('\n');
 	if(sd_status(SR_DAT_INHIBIT)) {sd_err=SD_TIMEOUT; return 0;}
-	unsigned int *buf=(unsigned int *)buffer;
+	uint32_t *buf=(uint32_t *)buffer;
 	if(sd_scr[0] & SCR_SUPP_CCS) {
 		if(num > 1 && (sd_scr[0] & SCR_SUPP_SET_BLKCNT)) {
 			sd_cmd(CMD_SET_BLOCKCNT,num);
@@ -182,10 +182,10 @@ int sd_readblock(unsigned int lba, unsigned char *buffer, unsigned int num)
 /**
  * set SD clock to frequency in Hz
  */
-int sd_clk(unsigned int f)
+int32_t sd_clk(uint32_t f)
 {
-	unsigned int d,c=41666666/f,x,s=32,h=0;
-	int cnt = 100000;
+	uint32_t d,c=41666666/f,x,s=32,h=0;
+	int32_t cnt = 100000;
 	while((*EMMC_STATUS & (SR_CMD_INHIBIT|SR_DAT_INHIBIT)) && cnt--) wait_usec(1);
 	if(cnt<=0) {
 		uart_puts("ERROR: timeout waiting for inhibit flag\n");
@@ -222,7 +222,7 @@ int sd_clk(unsigned int f)
  */
 int sd_init()
 {
-	long r,cnt,ccs=0;
+	int64_t r,cnt,ccs=0;
 	// GPIO_CD
 	r=*GPFSEL4; r&=~(7<<(7*3)); *GPFSEL4=r;
 	*GPPUD=2; wait_cycles(150); *GPPUDCLK1=(1<<15); wait_cycles(150); *GPPUD=0; *GPPUDCLK1=0;

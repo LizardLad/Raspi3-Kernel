@@ -1,28 +1,28 @@
 #ifndef LFB_H
 #define LFB_H
 
-unsigned int lfb_height, lfb_width;
+uint32_t lfb_height, lfb_width;
 
 /* PC Screen Font as used by Linux Console */
 typedef struct {
-        unsigned int magic;
-        unsigned int version;
-        unsigned int headersize;
-        unsigned int flags;
-        unsigned int numglyph;
-        unsigned int bytesperglyph;
-        unsigned int height;
-        unsigned int width;
+        uint32_t magic;
+        uint32_t version;
+        uint32_t headersize;
+        uint32_t flags;
+        uint32_t numglyph;
+        uint32_t bytesperglyph;
+        uint32_t height;
+        uint32_t width;
         unsigned char glyphs;
 } __attribute__((packed)) psf_t;
 extern volatile unsigned char _binary_src_font_font_psf_start;
 
 void lfb_init();
-void lfb_draw_pixel(unsigned int x, unsigned int y, char r, char g, char b);
-void lfb_hex(unsigned int *x, unsigned int *y, unsigned int d);
+void lfb_draw_pixel(uint32_t x, uint32_t y, char r, char g, char b);
+void lfb_hex(uint32_t *x, uint32_t *y, uint32_t d);
 void lfb_dump(void *ptr);
 void lfb_file_dump(void *ptr);
-void lfb_print(int x, int y, char *s);
-void lfb_special_print(int x, int y, char *s, bool set_background_color, char main_r, char main_g, char main_b, char back_r, char back_g, char back_b);
+void lfb_print(int32_t x,int32_t y, char *s);
+void lfb_special_print(int32_t x,int32_t y, char *s, bool set_background_color, char main_r, char main_g, char main_b, char back_r, char back_g, char back_b);
 
 #endif

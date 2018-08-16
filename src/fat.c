@@ -1,22 +1,22 @@
 #include "headers/project.h"
 
 fatdir_t *rootdir;
-unsigned int *fat32;
-unsigned int *cluster_buf;
-unsigned int cluster_size;
-unsigned int cluster;
-unsigned int buf_size;
-unsigned int current_pointer;
-unsigned int root_sec;
-unsigned int data_sec;
-unsigned int file_size;
+uint32_t *fat32;
+uint32_t *cluster_buf;
+uint32_t cluster_size;
+uint32_t cluster;
+uint32_t buf_size;
+uint32_t current_pointer;
+uint32_t root_sec;
+uint32_t data_sec;
+uint32_t file_size;
 
 /**
  * Get the starting LBA address of the first partition
  * so that we know where our FAT file system starts, and
  * read that volume's BIOS Parameter Block
  */
-int fat_getpartition()
+int32_t fat_getpartition()
 {
 	cluster_size=0;
 	cluster=0;
@@ -37,13 +37,13 @@ int fat_getpartition()
 
 		partitionlba = master_boot_record[0x1C6] + (master_boot_record[0x1C7] << 8) + (master_boot_record[0x1C8]<<16) + (master_boot_record[0x1C9]<<24);
 			
-		unsigned int s;
+		uint32_t s;
 		// find the root directory's LBA
 		root_sec=((bpb->spf16?bpb->spf16:bpb->spf32)*bpb->nf)+bpb->rsc;
 		s = (bpb->nr0 + (bpb->nr1 << 8)) * sizeof(fatdir_t);
 		
 		rootdir = (fatdir_t *)malloc(((((s*32)+512 - 1)/512)*512));
-		fat32 = (unsigned int*)malloc((bpb->spf16?bpb->spf16:bpb->spf32)*512);
+		fat32 = (uint32_t*)malloc((bpb->spf16?bpb->spf16:bpb->spf32)*512);
 
 		if(bpb->spf16==0) {
 			// adjust for FAT32
@@ -65,7 +65,7 @@ int fat_getpartition()
 		sd_readblock(root_sec,(unsigned char*)fat32,s/512+1);
 
 		cluster_size=bpb->spc*(bpb->bps0 + (bpb->bps1 << 8));
-		cluster_buf = (unsigned int*)malloc(cluster_size);
+		cluster_buf = (uint32_t*)malloc(cluster_size);
 		buf_size=cluster_size;
 
 		// read the boot record
@@ -87,7 +87,7 @@ int fat_getpartition()
 /**
  * Find a file in root directory entries
  */
-unsigned int fat_getcluster(char *fn)
+uint32_t fat_getcluster(char *fn)
 {
 	//bpb_t *bpb=(bpb_t*)&(master_boot_record_array[0]);	
 	fatdir_t *dir = rootdir;
@@ -101,11 +101,11 @@ unsigned int fat_getcluster(char *fn)
 			//uart_puts("FAT File ");
 			//uart_puts(fn);
 			//uart_puts(" starts at cluster: ");
-			//uart_hex(((unsigned int)dir->ch)<<16|dir->cl);
+			//uart_hex(((uint32_t)dir->ch)<<16|dir->cl);
 			//uart_puts("\n");
 			// if so, return starting cluster
 			file_size = dir->size;
-			return ((unsigned int)dir->ch)<<16|dir->cl;
+			return ((uint32_t)dir->ch)<<16|dir->cl;
 		}
 		uart_puts("ERROR: file not found\n");
 	}
@@ -117,7 +117,7 @@ void fat_listdirectory()
 	unsigned char *master_boot_record=(unsigned char *)&master_boot_record_array;
 	bpb_t *bpb=(bpb_t*)(master_boot_record);
 	fatdir_t *dir=(fatdir_t*)(master_boot_record);
-	unsigned int root_sec, s;
+	uint32_t root_sec, s;
 	// find the root directory's LBA
 	root_sec=((bpb->spf16?bpb->spf16:bpb->spf32)*bpb->nf)+bpb->rsc;
 	s = (bpb->nr0 + (bpb->nr1 << 8)) * sizeof(fatdir_t);
@@ -156,14 +156,14 @@ void fat_listdirectory()
 			uart_send(dir->attr[0]&32?'A':'.');  // archive
 			uart_send(' ');
 			// staring cluster
-			uart_hex(((unsigned int)dir->ch)<<16|dir->cl);
+			uart_hex(((uint32_t)dir->ch)<<16|dir->cl);
 			uart_send(' ');
 			// size
 			uart_hex(dir->size);
 			uart_send(' ');
 			// filename
 			dir->attr[0]=0;
-			uart_puts(dir->name);
+			uart_puts((char *)dir->name);
 			uart_puts("\n");
 		}
 	} 
@@ -177,14 +177,14 @@ void fat_listdirectory()
  * Read a file into memory
  * cluster_buf
  */
-char fat_readfile(unsigned int cluster)
+char fat_readfile(uint32_t cluster)
 {
 	// BIOS Parameter Block
 	bpb_t *bpb=(bpb_t*)(&(master_boot_record_array[0]));
 	// File allocation tables. We choose between FAT16 and FAT32 dynamically
-	unsigned short *fat16=(unsigned short*)fat32;
+	uint16_t *fat16=(uint16_t*)fat32;
 	// Data pointers
-	//unsigned int data_sec, s;
+	//uint32_t data_sec, s;
 	//unsigned char *data, *ptr;
 	// find the LBA of the first data sector
 	//data_sec=((bpb->spf16?bpb->spf16:bpb->spf32)*bpb->nf)+bpb->rsc;

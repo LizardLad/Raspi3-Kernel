@@ -6,24 +6,24 @@
 
 #define MMIO_BASE       0x3F000000
 
-#define GPFSEL0         ((volatile unsigned int*)(MMIO_BASE+0x00200000))
-#define GPFSEL1         ((volatile unsigned int*)(MMIO_BASE+0x00200004))
-#define GPFSEL2         ((volatile unsigned int*)(MMIO_BASE+0x00200008))
-#define GPFSEL3         ((volatile unsigned int*)(MMIO_BASE+0x0020000C))
-#define GPFSEL4         ((volatile unsigned int*)(MMIO_BASE+0x00200010))
-#define GPFSEL5         ((volatile unsigned int*)(MMIO_BASE+0x00200014))
-#define GPSET0          ((volatile unsigned int*)(MMIO_BASE+0x0020001C))
-#define GPSET1          ((volatile unsigned int*)(MMIO_BASE+0x00200020))
-#define GPCLR0          ((volatile unsigned int*)(MMIO_BASE+0x00200028))
-#define GPLEV0          ((volatile unsigned int*)(MMIO_BASE+0x00200034))
-#define GPLEV1          ((volatile unsigned int*)(MMIO_BASE+0x00200038))
-#define GPEDS0          ((volatile unsigned int*)(MMIO_BASE+0x00200040))
-#define GPEDS1          ((volatile unsigned int*)(MMIO_BASE+0x00200044))
-#define GPHEN0          ((volatile unsigned int*)(MMIO_BASE+0x00200064))
-#define GPHEN1          ((volatile unsigned int*)(MMIO_BASE+0x00200068))
-#define GPPUD           ((volatile unsigned int*)(MMIO_BASE+0x00200094))
-#define GPPUDCLK0       ((volatile unsigned int*)(MMIO_BASE+0x00200098))
-#define GPPUDCLK1       ((volatile unsigned int*)(MMIO_BASE+0x0020009C))
+#define GPFSEL0         ((volatile uint32_t*)(MMIO_BASE+0x00200000))
+#define GPFSEL1         ((volatile uint32_t*)(MMIO_BASE+0x00200004))
+#define GPFSEL2         ((volatile uint32_t*)(MMIO_BASE+0x00200008))
+#define GPFSEL3         ((volatile uint32_t*)(MMIO_BASE+0x0020000C))
+#define GPFSEL4         ((volatile uint32_t*)(MMIO_BASE+0x00200010))
+#define GPFSEL5         ((volatile uint32_t*)(MMIO_BASE+0x00200014))
+#define GPSET0          ((volatile uint32_t*)(MMIO_BASE+0x0020001C))
+#define GPSET1          ((volatile uint32_t*)(MMIO_BASE+0x00200020))
+#define GPCLR0          ((volatile uint32_t*)(MMIO_BASE+0x00200028))
+#define GPLEV0          ((volatile uint32_t*)(MMIO_BASE+0x00200034))
+#define GPLEV1          ((volatile uint32_t*)(MMIO_BASE+0x00200038))
+#define GPEDS0          ((volatile uint32_t*)(MMIO_BASE+0x00200040))
+#define GPEDS1          ((volatile uint32_t*)(MMIO_BASE+0x00200044))
+#define GPHEN0          ((volatile uint32_t*)(MMIO_BASE+0x00200064))
+#define GPHEN1          ((volatile uint32_t*)(MMIO_BASE+0x00200068))
+#define GPPUD           ((volatile uint32_t*)(MMIO_BASE+0x00200094))
+#define GPPUDCLK0       ((volatile uint32_t*)(MMIO_BASE+0x00200098))
+#define GPPUDCLK1       ((volatile uint32_t*)(MMIO_BASE+0x0020009C))
 
 #define HIGH			1
 #define LOW			0
@@ -99,14 +99,14 @@ typedef struct
 
 get_gpio_pin_status_t gpio_pin_status;
 
-bool gpio_setup(unsigned int gpio_pin, GPIOMODE mode);
-bool gpio_input(unsigned int gpio);
-bool gpio_output(unsigned int gpio, bool on);
+bool gpio_setup(uint32_t gpio_pin, GPIOMODE mode);
+bool gpio_input(uint32_t gpio);
+bool gpio_output(uint32_t gpio, bool on);
 
-unsigned char get_gpio_pin_status(unsigned int gpio_pin);
+uint8_t get_gpio_pin_status(uint32_t gpio_pin);
 
-void pinMode(unsigned int gpio_pin, GPIOMODE mode);
-void digitalWrite(unsigned int gpio_pin, bool value);
-bool digitalRead(unsigned int gpio_pin);
+void pinMode(uint32_t gpio_pin, GPIOMODE mode);
+void digitalWrite(uint32_t gpio_pin, bool value);
+bool digitalRead(uint32_t gpio_pin);
 
 #endif

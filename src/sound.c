@@ -2,7 +2,7 @@
 
 int init_audio_jack()
 {
-	*((volatile unsigned int *)(MMIO_BASE + 0x200000 + 0x10)) = (0x4 | 0x200000);
+	*((volatile uint32_t *)(MMIO_BASE + 0x200000 + 0x10)) = (0x4 | 0x200000);
 
 	*CM_PWMDIV = CM_PASS | 0x2000; //Set clock block 0
 
@@ -19,7 +19,7 @@ int init_audio_jack()
 }
 
 //I really hope this works!
-int play_16bit_unsigned_audio(char *start, char *end)
+int32_t play_16bit_unsigned_audio(char *start, char *end)
 {
 	if(end < start) 
 	{
@@ -32,7 +32,7 @@ int play_16bit_unsigned_audio(char *start, char *end)
 		return 2;
 	}
 	//FIFO write
-	for(int i = 0; &(start[i]) != end; i++)
+	for(int32_t i = 0; &(start[i]) != end; i++)
 	{
 		uint8_t sample_low = start[i];
 		uint8_t sample_high = start[i++];

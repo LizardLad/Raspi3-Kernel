@@ -1,6 +1,6 @@
 #ifndef _TYPES_H
 #define _TYPES_H
 
-typedef unsigned long size_t;
+typedef uint64_t size_t;
 
 #endif

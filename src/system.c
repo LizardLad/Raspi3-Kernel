@@ -1,6 +1,6 @@
 #include "headers/project.h"
 
-void set_cpu_clock(unsigned int clock_rate)
+void set_cpu_clock(uint32_t clock_rate)
 {
 	mailbox[0] = 8*4;
 	mailbox[7] = 0;
@@ -10,7 +10,7 @@ void set_cpu_clock(unsigned int clock_rate)
 	mailbox[4] = 8;
 	mailbox[5] = 3;
 	mailbox[6] = clock_rate;
-	mailbox_tag_write((unsigned int)((uintptr_t)&(mailbox[0])));
+	mailbox_tag_write((uint32_t)((uintptr_t)&(mailbox[0])));
 }
 
 void get_cpu_clock()
@@ -18,7 +18,7 @@ void get_cpu_clock()
 	;
 }
 
-unsigned int get_cpu_max_clock()
+uint32_t get_cpu_max_clock()
 {
 	mailbox[0] = 8 * 4; //TAG is 0x00030004
 	mailbox[7] = 0;
@@ -28,7 +28,7 @@ unsigned int get_cpu_max_clock()
         mailbox[4] = 8;
         mailbox[5] = 3;
         mailbox[6] = 0;
-	mailbox_tag_write((unsigned int)((uintptr_t)&(mailbox[0])));
+	mailbox_tag_write((uint32_t)((uintptr_t)&(mailbox[0])));
 	mailbox_tag_read(0x8);
 
 	if(mailbox[1] == 0x80000000)
@@ -41,6 +41,6 @@ unsigned int get_cpu_max_clock()
 
 void clocks_init()
 {
-	unsigned int max_clock = get_cpu_max_clock();
+	uint32_t max_clock = get_cpu_max_clock();
 	set_cpu_clock(max_clock);
 }

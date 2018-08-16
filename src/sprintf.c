@@ -1,9 +1,9 @@
 #include "headers/project.h"
 
-unsigned int vsprintf(char *dst, char* fmt, __builtin_va_list args)
+uint32_t vsprintf(char *dst, char* fmt, __builtin_va_list args)
 {
-    long int arg;
-    int len, sign, i;
+    int64_t arg;
+    int32_t len, sign, i;
     char *p, *orig=dst, tmpstr[19];
 
     // failsafes
@@ -34,17 +34,17 @@ unsigned int vsprintf(char *dst, char* fmt, __builtin_va_list args)
             }
             // character
             if(*fmt=='c') {
-                arg = __builtin_va_arg(args, int);
+                arg = __builtin_va_arg(args, int32_t);
                 *dst++ = (char)arg;
                 fmt++;
                 continue;
             } else
             // decimal number
             if(*fmt=='d') {
-                arg = __builtin_va_arg(args, int);
+                arg = __builtin_va_arg(args, int32_t);
                 // check input
                 sign=0;
-                if((int)arg<0) {
+                if((int32_t)arg<0) {
                     arg*=-1;
                     sign++;
                 }
@@ -72,7 +72,7 @@ unsigned int vsprintf(char *dst, char* fmt, __builtin_va_list args)
             } else
             // hex number
             if(*fmt=='x') {
-                arg = __builtin_va_arg(args, long int);
+                arg = __builtin_va_arg(args, int64_t);
                 // convert to string
                 i=16;
                 tmpstr[i]=0;
@@ -115,7 +115,7 @@ put:        *dst++ = *fmt;
 /**
  * Variable length arguments
  */
-unsigned int sprintf(char *dst, char* fmt, ...)
+uint32_t sprintf(char *dst, char* fmt, ...)
 {
     __builtin_va_list args;
     __builtin_va_start(args, fmt);

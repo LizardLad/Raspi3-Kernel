@@ -8,7 +8,7 @@ void dynamic_memory_alloc_init()
 	total_space_avaliable = (unsigned char *)end_of_cpu_memory - end_of_program;
 	chunk_size = 1024;
 	number_of_chunks = total_space_avaliable / chunk_size;
-	for(unsigned long i = 0; i < number_of_chunks; i++) 
+	for(uint64_t i = 0; i < number_of_chunks; i++) 
 	{
 		allocated[i] = 0;
 		connected_chunk[i] = 0;
@@ -24,7 +24,7 @@ char *malloc(size_t amount_to_allocate)
 	amount_to_allocate = (((amount_to_allocate + 1024 - 1) / 1024) * 1024);
 	uint64_t number_of_chunks_to_allocate = amount_to_allocate / 1024;
 
-	for(unsigned long i = 0; i < number_of_chunks; i++)
+	for(uint64_t i = 0; i < number_of_chunks; i++)
 	{
 		if(allocated[i] == 0)
 		{
@@ -68,7 +68,7 @@ int free(void *p_to_free)
 {
 	//WARNING THIS FUNCTION FAILS SILENTLY (But it shouldn't fail XD)
 	//TODO add compadibility with latest version of malloc
-	unsigned long i = 0;
+	uint64_t i = 0;
 	i = ((p_to_free - (void *)end_of_program) >> 10);
 	allocated[i] = 0;
 	//We also have to find out if it is a connected chunk to do this:

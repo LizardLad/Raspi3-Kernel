@@ -29,12 +29,12 @@
  * 7. Write the value from the previous instruction or the register
  * 8. Return true
  */
-bool gpio_setup(unsigned int gpio_pin, GPIOMODE mode)
+bool gpio_setup(uint32_t gpio_pin, GPIOMODE mode)
 {
-	unsigned int *GPFSEL = (unsigned int *)(MMIO_BASE + 0x200000 + 0x0); //Get register address
+	uint32_t *GPFSEL = (uint32_t *)(MMIO_BASE + 0x200000 + 0x0); //Get register address
 	if(gpio_pin > 54 || mode < 0 || mode > GPIO_ALTFUNC3) return false; //Check inputs
-	unsigned int bit_mask = ((gpio_pin % 10) * 3); //Create bit mask
-	unsigned int register_read = GPFSEL[gpio_pin / 10]; //Read the correct register
+	uint32_t bit_mask = ((gpio_pin % 10) * 3); //Create bit mask
+	uint32_t register_read = GPFSEL[gpio_pin / 10]; //Read the correct register
 	register_read &= ~(7 << bit_mask); //Clear the mode bits of the pin we want to set
 	register_read |= (mode << bit_mask); //Set the gpio mode
 	GPFSEL[gpio_pin / 10] = register_read; // Write to the register
@@ -106,7 +106,7 @@ void gpio_init()
 }
 
 /*
- * get_gpio_pin_status(unsigned int gpio_pin)
+ * get_gpio_pin_status(uint32_t gpio_pin)
  * This has a boolean return value that shows the current status of
  * whether a pin is activated as an output or not it returns 2 if the pin
  * is currently an input. A 0 is returned if the pin is currently off and
@@ -117,7 +117,7 @@ void gpio_init()
 //TODO write the above function and track GPIO modes
 
 /*
- * gpio_input(unsigned int gpio_pin)
+ * gpio_input(uint32_t gpio_pin)
  * This function returns whether a GPIO pin is receiving a voltage or not
  * it returns true if it is and false if it isn't
  * Only works if the pin mode is set to input
@@ -137,20 +137,20 @@ void gpio_init()
 	 // throw an error if is isn't the right gpio mode        //
 	 //////////////////////////////TODO/////////////////////////
 
-bool gpio_input(unsigned int gpio_pin)
+bool gpio_input(uint32_t gpio_pin)
 {
-	unsigned int *GPIO_LEVEL = (unsigned int *)(MMIO_BASE + 0x200000 + 0x34);
+	uint32_t *GPIO_LEVEL = (uint32_t *)(MMIO_BASE + 0x200000 + 0x34);
 	if(gpio_pin < 54) //The gpio_pin cannot be negative it is unsigned
 	{
-		unsigned int bit_to_write = 1 << (gpio_pin % 32);
-		unsigned int register_read = GPIO_LEVEL[gpio_pin / 32];
+		uint32_t bit_to_write = 1 << (gpio_pin % 32);
+		uint32_t register_read = GPIO_LEVEL[gpio_pin / 32];
 		if(register_read & bit_to_write) return true; //If the bit isn't set this evaluates to 0
 	}
 	return false;
 }
 
 /*
- * gpio_output(unsigned int gpio_pin, bool on)
+ * gpio_output(uint32_t gpio_pin, bool on)
  * If the output mode is set on a pin you can send a 3.3v signal on that pin or turn a pin off
  * 
  * To acomplish this we have to:
@@ -164,20 +164,20 @@ bool gpio_input(unsigned int gpio_pin)
  * 8. Return true on sucsess
  * 9. Return false if the GPIO set failed
  */
-bool gpio_output(unsigned int gpio_pin, bool on)
+bool gpio_output(uint32_t gpio_pin, bool on)
 {
 	if(gpio_pin < 54)
 	{
-		volatile unsigned int *clear_or_set_register_pointer;
-		unsigned int register_number = gpio_pin / 32;
-		unsigned int bit_to_write = 1 << (gpio_pin % 32);
+		volatile uint32_t *clear_or_set_register_pointer;
+		uint32_t register_number = gpio_pin / 32;
+		uint32_t bit_to_write = 1 << (gpio_pin % 32);
 		if(on)
 		{
-			clear_or_set_register_pointer = (unsigned int *)(GPSET0);
+			clear_or_set_register_pointer = (uint32_t *)(GPSET0);
 		}
 		else
 		{
-			clear_or_set_register_pointer = (unsigned int *)(GPCLR0);
+			clear_or_set_register_pointer = (uint32_t *)(GPCLR0);
 		}
 		clear_or_set_register_pointer[register_number] = bit_to_write;
 		return true;
@@ -190,17 +190,17 @@ bool gpio_output(unsigned int gpio_pin, bool on)
  * [WARNING] These functions fail silently
  */
 
-void pinMode(unsigned int gpio_pin, GPIOMODE mode)
+void pinMode(uint32_t gpio_pin, GPIOMODE mode)
 {
 	gpio_setup(gpio_pin, mode);
 }
 
-void digitalWrite(unsigned int gpio_pin, bool value)
+void digitalWrite(uint32_t gpio_pin, bool value)
 {
 	gpio_output(gpio_pin, value);
 }
 
-bool digitalRead(unsigned int gpio_pin)
+bool digitalRead(uint32_t gpio_pin)
 {
 	return gpio_input(gpio_pin);
 }

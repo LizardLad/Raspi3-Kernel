@@ -1,6 +1,7 @@
 #ifndef PROJECT_H
 #define PROJECT_H
 
+#include "stdint.h"
 #include "color.h"
 #include "led.h"
 #include "delays.h"

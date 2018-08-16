@@ -108,94 +108,144 @@ _hang:
 
 // save registers before we call any C code
 dbg_saveregs:
-	str     x0, [sp, #-16]!     // push x0
-	ldr     x0, =dbg_regs+8
-	str     x1, [x0], #8        // dbg_regs[1]=x1
-	ldr     x1, [sp, #16]       // pop x1
-	str     x1, [x0, #-16]!     // dbg_regs[0]=x1 (x0)
-	add     x0, x0, #16
-	str     x2, [x0], #8        // dbg_regs[2]=x2
-	str     x3, [x0], #8        // ...etc.
-	str     x4, [x0], #8
-	str     x5, [x0], #8
-	str     x6, [x0], #8
-	str     x7, [x0], #8
-	str     x8, [x0], #8
-	str     x9, [x0], #8
-	str     x10, [x0], #8
-	str     x11, [x0], #8
-	str     x12, [x0], #8
-	str     x13, [x0], #8
-	str     x14, [x0], #8
-	str     x15, [x0], #8
-	str     x16, [x0], #8
-	str     x17, [x0], #8
-	str     x18, [x0], #8
-	str     x19, [x0], #8
-	str     x20, [x0], #8
-	str     x21, [x0], #8
-	str     x22, [x0], #8
-	str     x23, [x0], #8
-	str     x24, [x0], #8
-	str     x25, [x0], #8
-	str     x26, [x0], #8
-	str     x27, [x0], #8
-	str     x28, [x0], #8
-	str     x29, [x0], #8
-	ldr     x1, [sp, #16]       // pop x30
-	str     x1, [x0], #8
-	// also read and store some system registers
+	ldr     x29, =dbg_regs     // We saved this register before call so fine to use it
+	str     x0, [x29], #8
+	str     x1, [x29], #8
+	str     x2, [x29], #8        // dbg_regs[2]=x2
+	str     x3, [x29], #8        // ...etc.
+	str     x4, [x29], #8
+	str     x5, [x29], #8
+	str     x6, [x29], #8
+	str     x7, [x29], #8
+	str     x8, [x29], #8
+	str     x9, [x29], #8
+	str     x10, [x29], #8
+	str     x11, [x29], #8
+	str     x12, [x29], #8
+	str     x13, [x29], #8
+	str     x14, [x29], #8
+	str     x15, [x29], #8
+	str     x16, [x29], #8
+	str     x17, [x29], #8
+	str     x18, [x29], #8
+	str     x19, [x29], #8
+	str     x20, [x29], #8
+	str     x21, [x29], #8
+	str     x22, [x29], #8
+	str     x23, [x29], #8
+	str     x24, [x29], #8
+	str     x25, [x29], #8
+	str     x26, [x29], #8 
+	str     x27, [x29], #8
+	str     x28, [x29], #8
+	/* remember we pushed r29, r30 at irq start */
+	mov	x0, sp            // current stack position
+	mov     x2, #(32*8)       // that is where stack was when we saved them (32registers * 8 bytes).. I think needs checking
+	add     x2,  x2, x0       // Now add current stack position
+	ldp	x0, x1, [x2], #0  // If I am right that is now original x29,x30 in x0, x1
+	str     x0, [x29], #8
+	str     x1, [x29], #8
+   // also read and store some system registers
 	mrs     x1, elr_el1
-	str     x1, [x0], #8
+	str     x1, [x29], #8
 	mrs     x1, spsr_el1
-	str     x1, [x0], #8
+	str     x1, [x29], #8
 	mrs     x1, esr_el1
-	str     x1, [x0], #8
+	str     x1, [x29], #8
 	mrs     x1, far_el1
-	str     x1, [x0], #8
+	str     x1, [x29], #8
 	mrs     x1, sctlr_el1
-	str     x1, [x0], #8
+	str     x1, [x29], #8
 	mrs     x1, tcr_el1
-	str     x1, [x0], #8
+	str     x1, [x29], #8
+	ret
+
+// Save all corruptible registers (x29,x30 are assumed done before call)
+register_save:
+	stp	x27, x28, [sp, #-16]!
+	stp	x25, x26, [sp, #-16]!
+	stp	x23, x24, [sp, #-16]!
+	stp	x21, x22, [sp, #-16]!
+	stp	x19, x20, [sp, #-16]!
+	stp	x17, x18, [sp, #-16]!
+	stp	x15, x16, [sp, #-16]!
+	stp	x13, x14, [sp, #-16]!
+	stp	x11, x12, [sp, #-16]!
+	stp	x9, x10, [sp, #-16]!
+	stp	x7, x8, [sp, #-16]!
+	stp	x5, x6, [sp, #-16]!
+	stp	x3, x4, [sp, #-16]!
+	stp	x1, x2, [sp, #-16]!
+	str	x0, [sp, #-16]!
+	ret
+
+// Restore all corruptible registers
+register_restore:
+	ldr	x0, [sp], #16
+	ldp	x1, x2, [sp], #16
+	ldp	x3, x4, [sp], #16
+	ldp	x5, x6, [sp], #16
+	ldp	x7, x8, [sp], #16
+	ldp	x9, x10, [sp], #16
+	ldp	x11, x12, [sp], #16
+	ldp	x13, x14, [sp], #16
+	ldp	x15, x16, [sp], #16
+	ldp	x17, x18, [sp], #16
+	ldp	x19, x20, [sp], #16
+	ldp	x21, x22, [sp], #16
+	ldp	x23, x24, [sp], #16
+	ldp	x25, x26, [sp], #16
+	ldp	x27, x28, [sp], #16
 	ret
 
 	// important, code has to be properly aligned
 	.balign 0x800
 _vectors:
 	// synchronous
-	.balign  0x80
+	.balign 0x80
+	stp	x29, x30, [sp, #-16]!	 // Save x30 link register and x29 just so we dont waste space
+	bl	register_save		 // Save corruptible registers .. it assumes x29,x30 saved
+	bl      dbg_saveregs
 	mov     x0, #1
 	bl      set_ACT_LED
-	str     x30, [sp, #-16]!     // push x30
-	bl      dbg_saveregs
 	mov     x0, #0
 	bl      dbg_decodeexc
 	bl      dbg_main
+	bl	register_restore	// restore corruptible registers .. does all but x29,x30
+	ldp	x29, x30, [sp], #16		// restore x29,x30 pulling stack back up 16
 	eret
 
 	// IRQ
 	.balign  0x80
-	str     x30, [sp, #-16]!     // push x30
+	stp	x29, x30, [sp, #-16]!	 // Save x30 link register and x29
 	bl      dbg_saveregs
 	mov     x0, #1
 	bl      dbg_decodeexc
 	bl      dbg_main
+	bl	register_restore	// restore corruptible registers .. does all but x29,x30
+	ldp	x29, x30, [sp], #16		// restore x29,x30 pulling stack back up 16
 	eret
 
 	// FIQ
 	.balign  0x80
-	str     x30, [sp, #-16]!     // push x30
+	stp	x29, x30, [sp, #-16]!	 // Save x30 link register and x29 just so we dont waste space
+	bl	register_save		 // Save corruptible registers .. it assumes x29,x30 saved
 	bl      dbg_saveregs
 	mov     x0, #2
 	bl      dbg_decodeexc
 	bl      dbg_main
+	bl	register_restore	// restore corruptible registers .. does all but x29,x30
+	ldp	x29, x30, [sp], #16		// restore x29,x30 pulling stack back up 16
 	eret
 
 	// SError
 	.balign  0x80
-	str     x30, [sp, #-16]!     // push x30
+	stp	x29, x30, [sp, #-16]!	 // Save x30 link register and x29 just so we dont waste space
+	bl	register_save		 // Save corruptible registers .. it assumes x29,x30 saved
 	bl      dbg_saveregs
 	mov     x0, #3
 	bl      dbg_decodeexc
 	bl      dbg_main
-	eret
+	bl	register_restore	// restore corruptible registers .. does all but x29,x30
+	ldp	x29, x30, [sp], #16		// restore x29,x30 pulling stack back up 16
+eret

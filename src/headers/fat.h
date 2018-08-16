@@ -3,50 +3,50 @@
 
 // the BIOS Parameter Block (in Volume Boot Record)
 typedef struct {
-    char            jmp[3];
-    char            oem[8];
-    unsigned char   bps0;
-    unsigned char   bps1;
-    unsigned char   spc;
-    unsigned short  rsc;
-    unsigned char   nf;
-    unsigned char   nr0;
-    unsigned char   nr1;
-    unsigned short  ts16;
-    unsigned char   media;
-    unsigned short  spf16;
-    unsigned short  spt;
-    unsigned short  nh;
-    unsigned int    hs;
-    unsigned int    ts32;
-    unsigned int    spf32;
-    unsigned int    flg;
-    unsigned int    rc;
-    char            vol[6];
-    char            fst[8];
-    char            dmy[20];
-    char            fst2[8];
+    int8_t		jmp[3];
+    int8_t		oem[8];
+    uint8_t		bps0;
+    uint8_t		bps1;
+    uint8_t		spc;
+    uint16_t		rsc;
+    uint8_t		nf;
+    uint8_t		nr0;
+    uint8_t		nr1;
+    uint16_t		ts16;
+    uint8_t		media;
+    uint16_t		spf16;
+    uint16_t		spt;
+    uint16_t		nh;
+    uint32_t		hs;
+    uint32_t		ts32;
+    uint32_t		spf32;
+    uint32_t		flg;
+    uint32_t		rc;
+    int8_t		vol[6];
+    int8_t		fst[8];
+    int8_t		dmy[20];
+    int8_t		fst2[8];
 } __attribute__((packed)) bpb_t;
 
 // directory entry structure
 typedef struct {
-    char            name[8];
-    char            ext[3];
-    char            attr[9];
-    unsigned short  ch;
-    unsigned int    attr2;
-    unsigned short  cl;
-    unsigned int    size;
+    int8_t	name[8];
+    int8_t	ext[3];
+    int8_t	attr[9];
+    uint16_t	ch;
+    uint32_t	attr2;
+    uint16_t	cl;
+    uint32_t	size;
 } __attribute__((packed)) fatdir_t;
 
 // get the end of bss segment from linker
-extern unsigned char _end;
-unsigned char master_boot_record_array[512] __attribute__((aligned(4)));
-unsigned int partitionlba;
+extern uint8_t _end;
+uint8_t master_boot_record_array[512] __attribute__((aligned(4)));
+uint32_t partitionlba;
 
-int fat_getpartition();
-unsigned int fat_getcluster(char *fn);
+int32_t fat_getpartition();
+uint32_t fat_getcluster(char *fn);
 void fat_listdirectory();
-char fat_readfile(unsigned int cluster);
+char fat_readfile(uint32_t cluster);
 
 #endif

@@ -1,15 +1,15 @@
 #include "headers/project.h"
 
-/*unsigned int text_file_dump(char *fn)
+/*uint32_t text_file_dump(char *fn)
 {
 	bpb_t *bpb=(bpb_t*)(&(master_boot_record_array[0]));
 	unsigned char fatdir_buffer[512];
 	fatdir_t *dir=(fatdir_t*)(&(fatdir_buffer[0]));*
-		unsigned int root_sec, s;
+	uint32_t root_sec, s;
 	// find the root directory's LBA
 	root_sec=((bpb->spf16?bpb->spf16:bpb->spf32)*bpb->nf)+bpb->rsc;
 	//WARNING gcc generates bad code for bpb->nr, causing unaligned exception
-	s=*((unsigned int*)&bpb->nf);
+	s=*((uint32_t*)&bpb->nf);
 	s>>=8;
 	s&=0xFFFF;
 	s<<=5;
@@ -31,18 +31,18 @@
 				uart_puts("FAT File ");
 				uart_puts(fn);
 				uart_puts(" starts at cluster: ");
-				uart_hex(((unsigned int)dir->ch)<<16|dir->cl);
+				uart_hex(((uint32_t)dir->ch)<<16|dir->cl);
 				uart_puts("\n");
 				// if so, return starting cluster
-				if(((unsigned int) dir->ch)<<16|dir->cl)
+				if(((uint32_t) dir->ch)<<16|dir->cl)
 				{
-					unsigned int size = dir->size;
-					void *ptr = fat_readfile(((unsigned int)dir->ch)<<16|dir->cl); 
+					uint32_t size = dir->size;
+					void *ptr = fat_readfile(((uint32_t)dir->ch)<<16|dir->cl); 
 					unsigned long a, temp;
-					unsigned int x = 0, y = 0;
+					uint32_t x = 0, y = 0;
 					unsigned char c;
 					a = (unsigned long)ptr;
-					for(unsigned int bytes_copied = 0; bytes_copied < size; bytes_copied++)
+					for(uint32_t bytes_copied = 0; bytes_copied < size; bytes_copied++)
 					{
 						c=*((unsigned char *)(a));
 						temp = (c<32||c>127?'.':c);

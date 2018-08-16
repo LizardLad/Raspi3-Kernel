@@ -2,7 +2,7 @@
 #define MBOX_H
 
 /* a properly aligned buffer */
-extern volatile unsigned int mailbox[36];
+extern volatile uint32_t mailbox[36];
 
 #define MBOX_REQUEST    0
 
@@ -26,7 +26,7 @@ extern volatile unsigned int mailbox[36];
 #define MAIL_EMPTY	0x40000000		/* Mailbox Status Register: Mailbox Empty */
 #define MAIL_FULL	0x80000000	/* Mailbox Status Register: Mailbox Full  */
 
-int mailbox_call(unsigned char ch);
+int32_t mailbox_call(uint8_t ch);
 bool mailbox_tag_write(uint32_t message);
 uint32_t mailbox_tag_read();
 

@@ -1,13 +1,13 @@
 #include "headers/project.h"
 
-#define SYSTEM_TIMER_LOW	((volatile unsigned int *)(MMIO_BASE+0x000003004))
-#define SYSTEM_TIMER_HIGH	((volatile unsigned int *)(MMIO_BASE+0x000003008))
+#define SYSTEM_TIMER_LOW	((volatile uint32_t *)(MMIO_BASE+0x000003004))
+#define SYSTEM_TIMER_HIGH	((volatile uint32_t *)(MMIO_BASE+0x000003008))
 
 /*
  * Wait a certain number of cycles using the CPU with multiple nop commands
  * Works with QEMU
  */
-void wait_cycles(unsigned int number_of_cycles_to_wait)
+void wait_cycles(uint32_t number_of_cycles_to_wait)
 {
 	if(number_of_cycles_to_wait) // If zero wasn't passed to the function
 	{
@@ -26,7 +26,7 @@ void wait_cycles(unsigned int number_of_cycles_to_wait)
  * Thirdly calculate the expire value for the counter
  * Finaly in a do while loop continue reading the counter until it reaches the expire value
  */
-void wait_usec(unsigned int usec)
+void wait_usec(uint32_t usec)
 {
 	register unsigned long frequency, current_count, expire_value;	
 	asm volatile ("mrs %0, cntfrq_el0" : "=r"(frequency)); // Get the frequency
@@ -47,9 +47,9 @@ void wait_usec(unsigned int usec)
  * no register will change in the time it takes to read them again
  * Then join the two together to an unsigned long (64bit integer)
  */
-unsigned long get_system_timer()
+uint64_t get_system_timer()
 {
-	unsigned int high_part, low_part;
+	uint32_t high_part, low_part;
 	high_part = -1; //Only set this because it has the posibility of 
 			//having 0 in the SYSTEM_TIMER_HIGH
 	high_part = *SYSTEM_TIMER_HIGH;
@@ -59,7 +59,7 @@ unsigned long get_system_timer()
 		high_part = *SYSTEM_TIMER_HIGH;
 		low_part  = *SYSTEM_TIMER_LOW;
 	}
-	return ((unsigned long)high_part << 32) | low_part; // Put the value of the high_part in the 
+	return ((uint64_t)high_part << 32) | low_part; // Put the value of the high_part in the 
 							    // 32 most significant bits and the
 							    // low_part in the 32 least significant bits
 }
@@ -75,9 +75,9 @@ unsigned long get_system_timer()
  * timer so this function needs to check for get_system_timer()
  * returning 0 and if it does then end this function
  */
-void wait_usec_system_timer(unsigned int number_of_micros_to_wait)
+void wait_usec_system_timer(uint32_t number_of_micros_to_wait)
 {
-	unsigned long current_time;
+	uint64_t current_time;
 	current_time = get_system_timer();
 	if(current_time)
 	{
@@ -93,12 +93,12 @@ void wait_usec_system_timer(unsigned int number_of_micros_to_wait)
  * division on the counter value with 4 and then check the output
  * and round the value to the closest multiple of four
  */
-unsigned long micros()
+uint64_t micros()
 {
-	unsigned long current_time = get_system_timer();
+	uint64_t current_time = get_system_timer();
 	if(current_time)
 	{
-		unsigned long current_time_modulo = current_time % 4;
+		uint64_t current_time_modulo = current_time % 4;
 		if(!current_time_modulo)
 		{
 			return current_time;

@@ -1,15 +1,15 @@
 #include "headers/project.h"
 
 /* mailbox message buffer */
-volatile unsigned int  __attribute__((aligned(16))) mailbox[36];
+volatile uint32_t  __attribute__((aligned(16))) mailbox[36];
 
 #define VIDEOCORE_MBOX  (MMIO_BASE+0x0000B880)
-#define MBOX_READ       ((volatile unsigned int*)(VIDEOCORE_MBOX+0x0))
-#define MBOX_POLL       ((volatile unsigned int*)(VIDEOCORE_MBOX+0x10))
-#define MBOX_SENDER     ((volatile unsigned int*)(VIDEOCORE_MBOX+0x14))
-#define MBOX_STATUS     ((volatile unsigned int*)(VIDEOCORE_MBOX+0x18))
-#define MBOX_CONFIG     ((volatile unsigned int*)(VIDEOCORE_MBOX+0x1C))
-#define MBOX_WRITE      ((volatile unsigned int*)(VIDEOCORE_MBOX+0x20))
+#define MBOX_READ       ((volatile uint32_t*)(VIDEOCORE_MBOX+0x0))
+#define MBOX_POLL       ((volatile uint32_t*)(VIDEOCORE_MBOX+0x10))
+#define MBOX_SENDER     ((volatile uint32_t*)(VIDEOCORE_MBOX+0x14))
+#define MBOX_STATUS     ((volatile uint32_t*)(VIDEOCORE_MBOX+0x18))
+#define MBOX_CONFIG     ((volatile uint32_t*)(VIDEOCORE_MBOX+0x1C))
+#define MBOX_WRITE      ((volatile uint32_t*)(VIDEOCORE_MBOX+0x20))
 #define MBOX_RESPONSE   0x80000000
 #define MBOX_FULL       0x80000000
 #define MBOX_EMPTY      0x40000000
@@ -32,25 +32,25 @@ struct __attribute__((__packed__, aligned(4))) mbox_registers
 
 _Static_assert((sizeof(struct mbox_registers) == 0x40), "Structure MailBoxRegisters should be 0x40 bytes in size");
 
-#define MAILBOX_FOR_READ_WRITES ((volatile __attribute__((aligned(4))) struct mbox_registers*)(unsigned int *)(MMIO_BASE + 0xB880))
+#define MAILBOX_FOR_READ_WRITES ((volatile __attribute__((aligned(4))) struct mbox_registers*)(uint32_t *)(MMIO_BASE + 0xB880))
 
 /**
  * Make a mailbox call. Returns 0 on failure, non-zero on success
  */
-int mailbox_call(unsigned char ch)
+int32_t mailbox_call(uint8_t ch)
 {
-	unsigned int r;
+	uint32_t r;
 	/* wait until we can write to the mailbox */
 	do{asm volatile("nop");}while(*MBOX_STATUS & MBOX_FULL);
 	/* write the address of our message to the mailbox with channel identifier */
-	*MBOX_WRITE = (((unsigned int)((unsigned long)&mailbox)&~0xF) | (ch&0xF));
+	*MBOX_WRITE = (((uint32_t)((uint64_t)&mailbox)&~0xF) | (ch&0xF));
 	/* now wait for the response */
 	while(1) {
 		/* is there a response? */
 		do{asm volatile("nop");}while(*MBOX_STATUS & MBOX_EMPTY);
 		r=*MBOX_READ;
 		/* is it a response to our message? */
-		if((unsigned char)(r&0xF)==ch && (r&~0xF)==(unsigned int)((unsigned long)&mailbox))
+		if((unsigned char)(r&0xF)==ch && (r&~0xF)==(uint32_t)((uint64_t)&mailbox))
 			/* is it a valid successful response? */
 			return mailbox[1]==MBOX_RESPONSE;
 	}

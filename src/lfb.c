@@ -1,6 +1,6 @@
 #include "headers/project.h"
 
-unsigned int pitch;
+uint32_t pitch;
 unsigned char *lfb;
 
 /**
@@ -57,13 +57,13 @@ void lfb_init()
 		lfb_width=mailbox[5];
 		lfb_height=mailbox[6];
 		pitch=mailbox[33];
-		lfb=(void*)((unsigned long)mailbox[28]);
+		lfb=(void*)((uint64_t)mailbox[28]);
 	} else {
 		uart_puts("Unable to set screen resolution to 1024x768x32\n");
 	}
 }
 
-void lfb_draw_pixel(unsigned int x, unsigned int y, char r, char g, char b)
+void lfb_draw_pixel(uint32_t x, uint32_t y, char r, char g, char b)
 {
 	unsigned char *ptr = lfb;
 	uint32_t pixel;
@@ -73,13 +73,13 @@ void lfb_draw_pixel(unsigned int x, unsigned int y, char r, char g, char b)
 	
 	pixel = (b<<16)|(g<<8)|r;
 
-	*((unsigned int *)ptr)=*((unsigned int *)&pixel);	
+	*((uint32_t *)ptr)=*((uint32_t *)&pixel);	
 }
 
 /**
  * Display a string
  */
-void lfb_print(int x, int y, char *s)
+void lfb_print(int32_t x, int32_t y, char *s)
 {
 	// get our font
 	psf_t *font = (psf_t*)&_binary_src_font_font_psf_start;
@@ -89,9 +89,9 @@ void lfb_print(int x, int y, char *s)
 		unsigned char *glyph = (unsigned char*)&_binary_src_font_font_psf_start +
 		 font->headersize + (*((unsigned char*)s)<font->numglyph?*s:0)*font->bytesperglyph;
 		// calculate the offset on screen
-		int offs = (y * font->height * pitch) + (x * (font->width) * 4); //There was a +1 on font->width
+		int32_t offs = (y * font->height * pitch) + (x * (font->width) * 4); //There was a +1 on font->width
 		// variables
-		int i,j, line, mask, bytesperline=(font->width+7)/8;
+		int32_t i,j, line, mask, bytesperline=(font->width+7)/8;
 		// handle carrige return
 		if(*s=='\r') {
 			x=0;
@@ -111,7 +111,7 @@ void lfb_print(int x, int y, char *s)
 				for(i=0;i<font->width;i++)
 				{
 					// if bit set, we use white color, otherwise black
-					*((unsigned int*)(lfb + line))=((int)*glyph) & mask ? 0xFFFFFF : 0;
+					*((uint32_t*)(lfb + line))=((int32_t)*glyph) & mask ? 0xFFFFFF : 0;
 					mask>>=1;
 					line+=4;
 				}
@@ -127,7 +127,7 @@ void lfb_print(int x, int y, char *s)
 }
 
 
-void lfb_special_print(int x, int y, char *s, bool set_background_color, char main_r, char main_g, char main_b, char back_r, char back_g, char back_b)
+void lfb_special_print(int32_t x, int32_t y, char *s, bool set_background_color, char main_r, char main_g, char main_b, char back_r, char back_g, char back_b)
 {
 	// get our font
 	psf_t *font = (psf_t*)&_binary_src_font_font_psf_start;
@@ -157,7 +157,7 @@ void lfb_special_print(int x, int y, char *s, bool set_background_color, char ma
 					// if bit set, we use white color, otherwise black
 			if(set_background_color == true)
 			{
-				*((unsigned int*)(lfb + line))=((int)*glyph) & mask ? rgb_to_hex(main_r, main_g, main_b) : rgb_to_hex(back_r, back_g, back_b);
+				*((uint32_t*)(lfb + line))=((int)*glyph) & mask ? rgb_to_hex(main_r, main_g, main_b) : rgb_to_hex(back_r, back_g, back_b);
 						mask>>=1;
 						line+=4;
 			}
@@ -165,7 +165,7 @@ void lfb_special_print(int x, int y, char *s, bool set_background_color, char ma
 			{
 				if(((int)*glyph) & mask)
 				{
-					*((unsigned int*)(lfb + line))= rgb_to_hex(main_r, main_g, main_b);
+					*((uint32_t*)(lfb + line))= rgb_to_hex(main_r, main_g, main_b);
 									mask>>=1;
 									line+=4;	    
 				}
@@ -187,10 +187,10 @@ void lfb_special_print(int x, int y, char *s, bool set_background_color, char ma
 	}
 }
 
-void lfb_hex(unsigned int *x, unsigned int *y, unsigned int d)
+void lfb_hex(uint32_t *x, uint32_t *y, uint32_t d)
 {
-	unsigned int n;
-	int c;
+	uint32_t n;
+	int32_t c;
 	for(c=28;c>=0;c-=4)
 	{
 		n=(d>>c)&0xF;
@@ -202,20 +202,20 @@ void lfb_hex(unsigned int *x, unsigned int *y, unsigned int d)
 
 void lfb_dump(void *ptr)
 {
-	unsigned long a,b,d, temp;
-	unsigned int x = 0, y = 0;
+	uint64_t a,b,d, temp;
+	uint32_t x = 0, y = 0;
 	unsigned char c;
-	for(a=(unsigned long)ptr;a<(unsigned long)ptr+512;a+=16) {
+	for(a=(uint64_t)ptr;a<(uint64_t)ptr+512;a+=16) {
 		lfb_hex(&x, &y, a); 
 	lfb_print(x, y, ": ");
 	x++;
 	x++;
 		for(b=0;b<16;b++) {
 			c=*((unsigned char*)(a+b));
-			d=(unsigned int)c;d>>=4;d&=0xF;d+=d>9?0x37:0x30;
+			d=(uint32_t)c;d>>=4;d&=0xF;d+=d>9?0x37:0x30;
 		lfb_print(x, y, (char *)&d);
 		x++;
-			d=(unsigned int)c;d&=0xF;d+=d>9?0x37:0x30;
+			d=(uint32_t)c;d&=0xF;d+=d>9?0x37:0x30;
 		lfb_print(x, y, (char *)&d);
 		x++;
 			lfb_print(x, y, " ");

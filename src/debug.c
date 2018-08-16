@@ -3,7 +3,7 @@
 #define DISASSEMBLER 1
 
 // array to store register values (see dbg_saveregs in start.S)
-unsigned long dbg_regs[37];
+uint64_t dbg_regs[37];
 // command line
 char cmd[256], dbg_running=0;
 
@@ -15,9 +15,9 @@ char cmd[256], dbg_running=0;
 /**
  * Decode exception cause
  */
-void dbg_decodeexc(unsigned long type)
+void dbg_decodeexc(uint64_t type)
 {
-	unsigned char cause=dbg_regs[33]>>26;
+	uint8_t cause=dbg_regs[33]>>26;
 
 	// print out interruption type
 	switch(type) {
@@ -79,7 +79,7 @@ void dbg_decodeexc(unsigned long type)
  */
 void dbg_getline()
 {
-	int i,cmdidx=0,cmdlast=0;
+	int32_t i,cmdidx=0,cmdlast=0;
 	char c;
 	cmd[0]=0;
 	// prompt
@@ -144,10 +144,10 @@ void dbg_getline()
 /**
  * helper function to parse the command line for arguments
  */
-unsigned long dbg_getoffs(int i)
+uint64_t dbg_getoffs(int32_t i)
 {
-	unsigned long base=0,ret=0;
-	int j=0,sign=0;
+	uint64_t base=0,ret=0;
+	int32_t j=0,sign=0;
 	// if starts with a register
 	if(cmd[i]=='x' || cmd[i]=='r') {
 		i++; if(cmd[i]>='0' && cmd[i]<='9') { j=cmd[i]-'0'; }
@@ -184,12 +184,12 @@ unsigned long dbg_getoffs(int i)
  */
 void dbg_main()
 {
-	unsigned long os=0, oe=0, a;
+	uint64_t os=0, oe=0, a;
 	char c;
 #if DISASSEMBLER
 	char str[64];
 #endif
-	int i;
+	int32_t i;
 
 	dbg_running++;
 
@@ -260,7 +260,7 @@ void dbg_main()
 				// disassemble AArch64 bytecode
 				while(os<oe) {
 					// print out address and instruction bytecode
-					printf("%8x: %8x",os,*((unsigned int*)os));
+					printf("%8x: %8x",os,*((uint32_t*)os));
 #if DISASSEMBLER
 					// disassemble and print out instruction mnemonic
 					os=disasm(os,str);
@@ -279,11 +279,11 @@ void dbg_main()
 					printf("%8x: ", a);
 					// hex representation
 					for(i=0;i<16;i++) {
-						printf("%2x%s ",*((unsigned char*)(a+i)),i%4==3?" ":"");
+						printf("%2x%s ",*((uint8_t*)(a+i)),i%4==3?" ":"");
 					}
 					// character representation
 					for(i=0;i<16;i++) {
-						c=*((unsigned char*)(a+i));
+						c=*((uint8_t*)(a+i));
 						printf("%c",c<32||c>=127?'.':c);
 					}
 					printf("\n");

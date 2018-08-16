@@ -19,7 +19,7 @@ size_t ammount_to_alloc_with_symbols(char *str, __builtin_va_list args)
 {
 	//The purpose of this function is to determine how much memory needs to be allocated to
 	//contain the output of vsprintf
-	unsigned long val = 0, len, counter;
+	uint64_t val = 0, len, counter;
 
 	val = strlen(str);
 
@@ -52,14 +52,14 @@ size_t ammount_to_alloc_with_symbols(char *str, __builtin_va_list args)
 			if(*str == 'c')
 			{
 				val--;				//Becuase there are two characters 
-				__builtin_va_arg(args, int);	//denoting a char %c and only one is
+				__builtin_va_arg(args, int32_t);	//denoting a char %c and only one is
 			}					//needed
 		
 			//Check for %d
 			if(*str == 'd')
 			{
 				val += 18;			//Was 20 but reduced by two 
-				__builtin_va_arg(args, int);	//because %d already has space
+				__builtin_va_arg(args, int32_t);	//because %d already has space
 								//allocated
 			}
 	
@@ -67,7 +67,7 @@ size_t ammount_to_alloc_with_symbols(char *str, __builtin_va_list args)
 			if(*str == 'x')
 			{
 				val += 18;				//Was 20 but reduced by two
-				__builtin_va_arg(args, long int);	//because %x already has space
+				__builtin_va_arg(args, int64_t);	//because %x already has space
 			}						//allocated
 
 			//Check for %f
