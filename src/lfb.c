@@ -236,3 +236,4 @@ void lfb_dump(void *ptr)
 		y++;
 	}
 }
+

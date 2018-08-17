@@ -203,11 +203,27 @@ register_restore:
 _vectors:
 	// synchronous
 	.balign 0x80
+	b _hang
+
+	// IRQ
+	.balign 0x80
+	b _hang	
+
+	// FIQ
+	.balign 0x80
+	b _hang	
+
+	// SError
+	.balign 0x80
+	b _hang	
+
+	// synchronous
+	.balign 0x80
 	stp	x29, x30, [sp, #-16]!	 // Save x30 link register and x29 just so we dont waste space
 	bl	register_save		 // Save corruptible registers .. it assumes x29,x30 saved
 	bl      dbg_saveregs
-	mov     x0, #1
-	bl      set_ACT_LED
+	//mov     x0, #1
+	//bl      set_ACT_LED
 	mov     x0, #0
 	bl      dbg_decodeexc
 	bl      dbg_main

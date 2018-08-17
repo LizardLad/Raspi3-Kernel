@@ -3,7 +3,7 @@
 #define DISASSEMBLER 1
 
 // array to store register values (see dbg_saveregs in start.S)
-uint64_t dbg_regs[37];
+uint64_t dbg_regs[38];
 // command line
 char cmd[256], dbg_running=0;
 
