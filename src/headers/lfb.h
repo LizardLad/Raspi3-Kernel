@@ -25,4 +25,7 @@ void lfb_file_dump(void *ptr);
 void lfb_print(int32_t x,int32_t y, char *s);
 void lfb_special_print(int32_t x,int32_t y, char *s, bool set_background_color, char main_r, char main_g, char main_b, char back_r, char back_g, char back_b);
 
+void lfb_clear();
+void lfb_clear_rect();
+
 #endif

@@ -84,6 +84,7 @@ void dbg_getline()
 	cmd[0]=0;
 	// prompt
 	printf("\r> ");
+	//lfb_clear();
 	// read until Enter pressed
 	while((c=uart_getc())!='\n') {
 		// decode CSI key sequences (some, not all)

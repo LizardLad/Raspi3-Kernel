@@ -6,10 +6,10 @@ void main()
 	//uart_init();
 	lfb_init();
 	dynamic_memory_alloc_init();
-	console_init();
-	breakpoint;	
-	//clocks_init();
-
+	console_init();	
+	clocks_init();
+	breakpoint;
+	//PRINT_LOCK = 1;
 
 	// echo everything back
 	while(1) 

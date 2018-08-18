@@ -1,18 +1,18 @@
 #include "headers/project.h"
 
-void printf(char *fmt, ...) {
-    __builtin_va_list args, args2;
-    __builtin_va_start(args, fmt);
-    __builtin_va_copy(args2, args);
-    // we don't have memory allocation yet, so we
-    // simply place our string after our code
-    char *s = malloc(ammount_to_alloc_with_symbols(fmt, args2));
-    // use sprintf to format our string
-    vsprintf(s,fmt,args);
-    __builtin_va_end(args);
-    // print out as usual
-    console_print(s);
-    free(s);
+void printf(char *fmt, ...)
+{    
+	__builtin_va_list args, args2;
+	__builtin_va_start(args, fmt);
+	__builtin_va_copy(args2, args);
+	// malloc space for the string
+	char *s = malloc(ammount_to_alloc_with_symbols(fmt, args2));
+	// use sprintf to format our string
+	vsprintf(s,fmt,args);
+	__builtin_va_end(args);
+	// print out as usual
+	console_print(s);
+	free(s);
 }
 
 size_t ammount_to_alloc_with_symbols(char *str, __builtin_va_list args)

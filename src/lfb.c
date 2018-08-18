@@ -237,3 +237,29 @@ void lfb_dump(void *ptr)
 	}
 }
 
+void lfb_clear()
+{
+	mailbox[0] = 7*4;
+	mailbox[1] = MBOX_REQUEST;
+	mailbox[2] = 0x00040002;
+	mailbox[3] = 4;
+	mailbox[4] = 4;
+	mailbox[5] = 0;
+	mailbox[6] = MBOX_TAG_LAST;
+	mailbox_call(MBOX_CH_PROP);
+}
+
+void lfb_clear_rect()
+{
+	unsigned char *ptr = lfb;
+	//Clearing the whole screen
+	for(uint32_t y = 0; y < lfb_height; y++)
+	{
+		for(uint32_t x = 0; x < lfb_width; x++)
+		{
+			*((uint32_t*)ptr)=0x00000000;
+			ptr += 4;
+		}
+		ptr+=pitch-lfb_width*4;
+	}
+}

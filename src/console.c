@@ -132,6 +132,10 @@ void console_print(char *input)
 	}
 
 	int64_t number_of_newlines_req_diff = (number_of_lines - 1) - number_of_newlines;
+	
+	//Just before printing clear the screen for now until the mailbox is done just draw
+	//a big black rectangle
+	lfb_clear_rect();
 
 	if(number_of_newlines_req_diff < 0) //Have too many newlines!
 	{
