@@ -7,10 +7,10 @@ void core2_main()
 	//Core 2 will be playing with the stepper motor!
 	
 	printf("[CORE 2] [INFO] Setting up gpio pins 5, 6, 13, 19 as outputs\n");
-	gpio_setup(5, OUTPUT);
-	gpio_setup(6, OUTPUT);
-	gpio_setup(13, OUTPUT);
-	gpio_setup(19, OUTPUT);
+	gpio_setup(5, GPIO_OUTPUT);
+	gpio_setup(6, GPIO_OUTPUT);
+	gpio_setup(13, GPIO_OUTPUT);
+	gpio_setup(19, GPIO_OUTPUT);
 	printf("[CORE 2] [INFO] Finished setting up gpio pins 5, 6, 13, 19 as outputs\n");
 
 	printf("[CORE 2] [INFO] Setting up 4 wire stepper motor on pins 5, 6, 13, 19\n");
@@ -19,17 +19,17 @@ void core2_main()
 	printf("[CORE 2] [INFO] Finished 4 wire stepper motor setup\n");
 
 	printf("[CORE 2] [INFO] Set stepper motor speed 13rpm\n");
-	setSpeed(13, &StepperMotor1);
+	setStepperSpeed(13, &StepperMotor1);
 	printf("[CORE 2] [INFO] Stepper motor speed set!\n");
 		
 	printf("[CORE 2] [INFO] Starting run stepper motor on pins 5, 6, 13, 19\n");
 
 	while(1)
 	{
-		step(2048);
+		step(2048, &StepperMotor1);
 		printf("[CORE 2] [INFO] Revolution Complete\n");
 		printf("[CORE 2] [INFO] Starting reverse revolution\n");
-		step(-2048);
+		step(-2048, &StepperMotor1);
 		printf("[CORE 2] [INFO] Reverse revolution complete\n");
 		printf("[CORE 2] [INFO] Starting forwards revolution\n");
 	}

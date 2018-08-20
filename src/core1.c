@@ -25,7 +25,7 @@ void core1_main()
 			wait_usec(100);
 			gpio_output(21, false);
 			wait_usec(200);
-			gpio_ouput(20, true);
+			gpio_output(20, true);
 			wait_usec(100);
 			gpio_output(16, false);
 			wait_usec(200);

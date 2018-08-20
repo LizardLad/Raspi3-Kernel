@@ -8,8 +8,7 @@ void main()
 	dynamic_memory_alloc_init();
 	console_init();	
 	clocks_init();
-	breakpoint;
-	//PRINT_LOCK = 1;
+	start_other_3_cores();
 
 	// echo everything back
 	while(1) 

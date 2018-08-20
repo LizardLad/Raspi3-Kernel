@@ -26,7 +26,7 @@ void Stepper4WireInit(int32_t number_of_steps, int32_t motor_pin_1, int32_t moto
 void Stepper5WireInit(int32_t number_of_steps, int32_t motor_pin_1, int32_t motor_pin_2, int32_t motor_pin_3, int32_t motor_pin_4, int32_t motor_pin_5, StepperMotor *Stepper);
 
 // speed setter functions:
-void setSpeed(int64_t whatSpeed, StepperMotor *Stepper);
+void setStepperSpeed(int64_t whatSpeed, StepperMotor *Stepper);
 // mover functions:
 void step(int32_t steps_to_move, StepperMotor *Stepper);
 void stepMotor(int32_t this_step, StepperMotor *Stepper);

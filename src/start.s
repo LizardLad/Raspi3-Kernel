@@ -54,8 +54,64 @@ _start:
 	msr	vbar_el1, x0
 
 //"================================================================"
+//  Set up stack pointers
+//"================================================================"
+	mrs 	x1, mpidr_el1	// Read core id on AARCH64
+	and 	x1, x1, #0x3	// Make core 2 bit bitmask in x1
+	cmp	x1, #0
+	beq	Core0StackPointers
+	cmp	x1, #1
+	beq	Core1StackPointers
+	cmp	x1, #2
+	beq	Core2StackPointers
+	cmp	x1, #3
+	beq	Core3StackPointers
+	b	_hang
+
+//Core 1 stack pointers
+Core1StackPointers:
+	ldr	x1, =__EL0_stack_core1
+	ldr     x2, =__EL1_stack_core1
+	ldr	x3, =__EL2_stack_core1
+	msr	sp_el0, x1
+	msr     sp_el1, x2
+	mov	sp, x3
+	b 	EL2_ret
+
+//Core 2 stack pointers
+Core2StackPointers:
+	ldr	x1, =__EL0_stack_core2
+	ldr	x2, =__EL1_stack_core2
+	ldr	x3, =__EL2_stack_core2
+	msr	sp_el0, x1
+	msr     sp_el1, x2
+	mov	sp, x3
+	b 	EL2_ret
+
+//Core 3 stack pointers
+Core3StackPointers:
+	ldr	x1, =__EL0_stack_core3
+	ldr	x2, =__EL1_stack_core3
+	ldr	x3, =__EL2_stack_core3
+	msr	sp_el0, x1
+	msr     sp_el1, x2
+	mov	sp, x3
+	b	EL2_ret
+
+//Core 0 stack pointers
+Core0StackPointers:
+	ldr	x1, =__EL0_stack_core0
+	ldr     x2, =__EL1_stack_core0
+	ldr	x3, =__EL2_stack_core0
+	msr	sp_el0, x1
+	msr     sp_el1, x2
+	mov	sp, x3
+	b	EL2_ret
+
+//"================================================================"
 //  Return to the EL1_SP1 mode from EL2 for all Cores
 //"================================================================"
+EL2_ret:
 	mov	x0, #0x3c5					// EL1_SP1 | D | A | I | F
 	msr	spsr_el2, x0					// Set spsr_el2 with settings
 	adr	x0, exit_el1					// Address to exit EL2
@@ -66,25 +122,34 @@ _start:
 //  Branch all cores to their destination
 //"================================================================"
 exit_el1:	
-	mrs 	x1, mpidr_el1 // Read core id on AARCH64
-	and 	x1, x1, #0x3  // Make core 2 bit bitmask in x1
-	cbz  	x1, 2f	      // Core 0 jumps out to label 2
-	cmp 	x1, #1        // Check for core1
-	beq  	1f
+	mrs 	x1, mpidr_el1	// Read core id on AARCH64
+	and 	x1, x1, #0x3	// Make core 2 bit bitmask in x1
+	cbz  	x1, 4f		// Core 0 jumps out to label 2
+	cmp 	x1, #1		// Check for core1
+	beq  	1f		//Core 1 jumps out to lable 1
+	cmp	x1, #2		//Check for Core 2
+	beq	2f		//Core 2 jump to label 2
+	cmp	x1, #3		//Check for Core 3
+	beq	3f		//Core 3 jump to label 3
+	b 	_hang		//I don't know why this would actually happen
+
+//Core 1 main
+1:
+	bl       core1_main
 	b 	_hang
 
-1:
-	ldr     x1, =(_start-0x10000)
-	mov     sp, x1
-	bl       core1_main
-	b _hang
+//Core 2 main
+2:
+	bl	core2_main
+	b 	_hang
 
-// core0 main
-2:	
-	ldr     x1, =_start
-	mov     sp, x1
+//Core 3 main
+3:
+	bl	core3_main
+	b	_hang
 
-
+//Core 0 main
+4:
 //"================================================================"
 //  About to go to into C kernel clear BSS (Core0 only)
 //"================================================================"

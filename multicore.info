@@ -2,3 +2,30 @@
 		"mov	x2, #0x80000\n" \
 		"str	x2, [x1]\n"\
 		"sev");
+
+	//asm(  "mov	x1, #0xe8\n"\
+		"mov	x2, //Address to jump to\n"\
+		"str	x2, [x1]\n"\
+		"sev");
+char *core_execute(uint8_t core_num, void (*func)())
+{
+	if(core == 1)
+	{
+		char *a = 0xe0;
+		*a = func;
+		asm("sev");
+	}
+	else if(core == 2)
+	{
+		char *b = 0xe8;
+		*b = func;
+		asm("sev");
+	}
+	else if(core == 3)
+	{
+		char *c = 0xf0;
+		*b = func;
+		sam("sev");
+	}
+}
+		
