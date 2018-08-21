@@ -57,11 +57,12 @@ void dbg_decodeexc(uint64_t type)
 		switch(dbg_regs[33]&0x3) {
 			case 0: printf(" at level 0"); break;
 			case 1: printf(" at level 1"); break;
-			case 2: printf(" at level 2"); break;
+			case 2: printf(" at level 2 %x", dbg_regs[31]); break;
 			case 3: printf(" at level 3"); break;
 		}
 	}
 	printf("\n");
+	printf("%x\n", dbg_regs[31]);
 	// if the exception happened in the debugger, we stop to avoid infinite loop
 	if(dbg_running) {
 		printf("Exception in debugger!\n"

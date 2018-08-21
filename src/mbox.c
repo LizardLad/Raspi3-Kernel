@@ -41,13 +41,19 @@ int32_t mailbox_call(uint8_t ch)
 {
 	uint32_t r;
 	/* wait until we can write to the mailbox */
-	do{asm volatile("nop");}while(*MBOX_STATUS & MBOX_FULL);
+	do{asm volatile("dmb sy");}while(*MBOX_STATUS & MBOX_FULL);
 	/* write the address of our message to the mailbox with channel identifier */
+	asm("dmb sy");
 	*MBOX_WRITE = (((uint32_t)((uint64_t)&mailbox)&~0xF) | (ch&0xF));
 	/* now wait for the response */
 	while(1) {
 		/* is there a response? */
-		do{asm volatile("nop");}while(*MBOX_STATUS & MBOX_EMPTY);
+		do
+		{
+			asm volatile("dmb sy");
+		}
+		while(*MBOX_STATUS & MBOX_EMPTY);
+		asm("dmb sy");
 		r=*MBOX_READ;
 		/* is it a response to our message? */
 		if((unsigned char)(r&0xF)==ch && (r&~0xF)==(uint32_t)((uint64_t)&mailbox))
@@ -64,9 +70,11 @@ bool mailbox_tag_write(uint32_t message)
 	message |= 0x8; // OR the channel bits to the value
 	do
 	{
+		asm("dmb sy");
 		value = MAILBOX_FOR_READ_WRITES->status_1; // Read mailbox1 status from GPU
 	} 
 	while ((value & MAIL_FULL) != 0); // Make sure arm mailbox is not full
+	asm("dmb sy");
 	MAILBOX_FOR_READ_WRITES->write_1 = message; // Write value to mailbox
 	return true; // Write success
 }
@@ -78,12 +86,15 @@ uint32_t mailbox_tag_read ()
 	{
 		do
 		{
+			asm("dmb sy");
 			value = MAILBOX_FOR_READ_WRITES->status_0; // Read mailbox0 status
 		} 
 		while ((value & MAIL_EMPTY) != 0); // Wait for data in mailbox
+		asm("dmb sy");
 		value = MAILBOX_FOR_READ_WRITES->read_0; // Read the mailbox
 	}
 	while ((value & 0xF) != 0x8); // We have response back
 	value &= ~(0xF); // Lower 4 low channel bits are not part of message
+	asm("dmb sy");
 	return value; // Return the value
 }
