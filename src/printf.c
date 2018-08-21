@@ -5,6 +5,7 @@ static uint32_t printf_lock = 0;
 void printf(char *fmt, ...)
 {
 	semaphore_inc(&printf_lock);
+	lfb_print(0, 0, "Made it here 2");
 	__builtin_va_list args, args2;
 	__builtin_va_start(args, fmt);
 	__builtin_va_copy(args2, args);

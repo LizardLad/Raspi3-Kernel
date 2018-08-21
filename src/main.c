@@ -5,7 +5,7 @@ static uint32_t check_hello = 0;
 void main()
 {
 	// set up serial console
-	uart_init();
+	//uart_init();
 	lfb_init();
 
 	//Create mmu table on Core 0

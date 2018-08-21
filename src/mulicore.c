@@ -16,7 +16,7 @@ void start_other_3_cores()
 	
 	printf("[CORE 0] [INFO] Waiting on core 1\n");
 	while (*core1_ready == false) {};
-	
+		
 	asm(	"mov	x1, #0xe8\n"\
 		"mov    x2, #0x80000\n"\
 		"str	x2, [x1]\n"\

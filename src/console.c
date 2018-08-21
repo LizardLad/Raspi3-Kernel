@@ -164,7 +164,6 @@ void console_print(char *input)
 		lfb_print(0, number_of_newlines_req_diff - 3, console_rollback_buffer);
 	}
 	//Ok so in the case of not having enough newlines is done
-	//printf("%d", number_of_newlines_req_diff);
 	if(number_of_newlines_req_diff == 0)
 	{
 		lfb_print(0, 0, console_rollback_buffer);
