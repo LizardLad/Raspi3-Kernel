@@ -2,6 +2,9 @@
 
 void core2_main()
 {
+	*core2_ready = true;
+	mmu_init();
+
 	printf("[CORE 2] [INFO] Hello From CORE 2!\n");
 	
 	//Core 2 will be playing with the stepper motor!

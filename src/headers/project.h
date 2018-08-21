@@ -2,6 +2,8 @@
 #define PROJECT_H
 
 #include "stdint.h"
+#include "stdbool.h"
+#include "mmu.h"
 #include "color.h"
 #include "led.h"
 #include "delays.h"
@@ -12,7 +14,6 @@
 #include "math.h"
 #include "mbox.h"
 #include "sd.h"
-#include "stdbool.h"
 #include "stepper.h"
 #include "uart.h"
 #include "malloc.h"

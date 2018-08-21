@@ -1,7 +1,10 @@
 #include "headers/project.h"
 
+static uint32_t printf_lock = 0;
+
 void printf(char *fmt, ...)
-{    
+{
+	semaphore_inc(&printf_lock);
 	__builtin_va_list args, args2;
 	__builtin_va_start(args, fmt);
 	__builtin_va_copy(args2, args);
@@ -13,6 +16,7 @@ void printf(char *fmt, ...)
 	// print out as usual
 	console_print(s);
 	free(s);
+	semaphore_dec(&printf_lock);
 }
 
 size_t ammount_to_alloc_with_symbols(char *str, __builtin_va_list args)

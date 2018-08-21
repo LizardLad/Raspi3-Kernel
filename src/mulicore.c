@@ -1,15 +1,37 @@
 #include "headers/project.h"
 
+bool core_state[4] = { 0 };
+
+volatile bool *core0_ready = &core_state[0];
+volatile bool *core1_ready = &core_state[1];
+volatile bool *core2_ready = &core_state[2];
+volatile bool *core3_ready = &core_state[3];
+
 void start_other_3_cores()
 {
 	asm(	"mov	x1, #0xe0\n"\
 		"mov    x2, #0x80000\n"\
 		"str    x2, [x1]\n"\
-		"mov	x1, #0xe8\n"\
+		"sev\n");
+	
+	printf("[CORE 0] [INFO] Waiting on core 1\n");
+	while (*core1_ready == false) {};
+	
+	asm(	"mov	x1, #0xe8\n"\
+		"mov    x2, #0x80000\n"\
 		"str	x2, [x1]\n"\
-		"mov	x1, 0xf0\n"\
+		"sev\n");
+	
+	printf("[CORE 0] [INFO] Waiting on core 2\n");
+	while (*core2_ready == false) {};
+	
+	asm(	"mov	x1, 0xf0\n"\
+		"mov    x2, #0x80000\n"\
 		"str	x2, [x1]\n"\
 		"sev");
+	
+	printf("[CORE 0] [INFO] Waiting on core 3\n");
+	while (*core3_ready == false) {};
 }
 
 /*int core_execute(uint8_t core_num, void (*func)())

@@ -330,3 +330,49 @@ _vectors:
 	bl	register_restore	// restore corruptible registers .. does all but x29,x30
 	ldp	x29, x30, [sp], #16		// restore x29,x30 pulling stack back up 16
 eret
+
+//"+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+//				                 SEMAPHORE ROUTINES		    
+//"+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+
+//"========================================================================="
+//	semaphore_inc -- AARCH64 Pi3 code
+//	C Function: "void semaphore_inc (uint32_t* sem);"
+//	Entry: X0 will have semaphore address value
+//	Return: nothing
+//"========================================================================="
+.section .text.semaphore_inc, "ax", %progbits
+.balign	4
+.globl semaphore_inc;
+.type semaphore_inc, %function
+semaphore_inc:
+      mov   w2, 1
+	.p2align 2
+.lockloop:
+    ldaxr   w1, [x0]
+    stxr    w3, w2, [x0]
+    cbnz    w3, .lockloop
+    cbnz    w1, .lockloop
+	dmb ish
+    ret
+.balign	4
+.ltorg										// Tell assembler ltorg data for this code can go here
+.size	semaphore_inc, .-semaphore_inc
+
+//"========================================================================="
+//	semaphore_dec -- AARCH64 Pi3 code
+//	C Function: "void semaphore_dec (uint32_t* sem);"
+//	Entry: X0 will have semaphore address value
+//	Return: nothing
+//"========================================================================="
+.section .text.semaphore_dec, "ax", %progbits
+.balign	4
+.globl semaphore_dec;
+.type semaphore_dec, %function
+semaphore_dec:
+	stlrb	wzr, [x0]
+	dmb ish
+	ret
+.balign	4
+.ltorg										// Tell assembler ltorg data for this code can go here
+.size	semaphore_dec, .-semaphore_dec
