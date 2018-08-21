@@ -1,5 +1,5 @@
 To run this in QEMU please run 
 qemu-system-aarch64 -M raspi3 -drive file=raspi.iso,if=sd,format=raw -kernel kernel8.img -serial stdio
 
-I would like to acknowledge bztsrc for their awesome tutorials without them most of this wouldn't have been done.
-
+I would like to acknowledge bztsrc for their awesome tutorials without them most of this wouldn't have been done. Certainly not the sd and fat part.
+I would also like to thank LdB-ECM for their massive contribution to this project without them this kernel wouldn't be capable of multitasking and semaphores would have been impossible.
