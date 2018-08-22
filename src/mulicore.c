@@ -15,7 +15,7 @@ void start_other_3_cores()
 		"sev\n");
 	
 	//console_print("[CORE 0] [INFO] Waiting on core 1\n");
-	while (*core1_ready == false) {};
+	while (*core1_ready == false) {asm volatile("nop");}
 		
 	asm(	"mov	x1, #0xe8\n"\
 		"mov    x2, #0x80000\n"\
@@ -23,7 +23,7 @@ void start_other_3_cores()
 		"sev\n");
 	
 	//printf("[CORE 0] [INFO] Waiting on core 2\n");
-	while (*core2_ready == false) {};
+	while (*core2_ready == false) {asm volatile("nop");}
 	
 	asm(	"mov	x1, 0xf0\n"\
 		"mov    x2, #0x80000\n"\
@@ -31,7 +31,7 @@ void start_other_3_cores()
 		"sev");
 	
 	//printf("[CORE 0] [INFO] Waiting on core 3\n");
-	while (*core3_ready == false) {};
+	while (*core3_ready == false) {asm volatile("nop");}
 }
 
 /*int core_execute(uint8_t core_num, void (*func)())
