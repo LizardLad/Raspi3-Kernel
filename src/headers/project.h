@@ -27,5 +27,6 @@
 #include "gpu_memory.h"
 #include "multicore.h"
 #include "memcmp.h"
+#include "data_caches.h"
 
 #endif

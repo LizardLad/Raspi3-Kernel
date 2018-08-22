@@ -10,5 +10,8 @@ void set_ACT_LED(bool on)
 	mailbox[4] = 8;
 	mailbox[5] = 130;
 	mailbox[6] = (uint32_t)on;
-	mailbox_call(0x8);
+	uint32_t addr = (uint32_t)(uintptr_t)&mailbox[0];
+	InvalidateDataCacheRange(addr, sizeof(mailbox)/ DATA_CACHE_LINE_LENGTH_MIN);
+	mailbox_tag_write(addr);
+	mailbox_tag_read();
 }
