@@ -97,7 +97,7 @@ uint32_t fat_getcluster(char *fn)
 		// is it a valid entry?
 		if(dir->name[0]==0xE5 || dir->attr[0]==0xF) continue;
 		// filename match?
-		if(!__builtin_memcmp(dir->name,fn,11)) {
+		if(!memcmp(dir->name,fn,11)) {
 			//uart_puts("FAT File ");
 			//uart_puts(fn);
 			//uart_puts(" starts at cluster: ");

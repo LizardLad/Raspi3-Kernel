@@ -26,5 +26,6 @@
 #include "debug.h"
 #include "gpu_memory.h"
 #include "multicore.h"
+#include "memcmp.h"
 
 #endif
