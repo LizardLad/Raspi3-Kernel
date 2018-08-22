@@ -108,6 +108,7 @@ void console_print(char *input)
 								console_rollback_buffer[k] = 255;
 								k--;
 							}
+							break;
 						}
 					}
 					//Now do the same as the above
