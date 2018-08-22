@@ -15,7 +15,7 @@ void main()
 	console_init();	
 	clocks_init();
 
-	//start_other_3_cores();
+	start_other_3_cores();
 	mmu_init(); //Now turn on MMU on Core 0
 	
 	*core0_ready = true;
