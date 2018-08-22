@@ -14,7 +14,7 @@ void start_other_3_cores()
 		"str    x2, [x1]\n"\
 		"sev\n");
 	
-	printf("[CORE 0] [INFO] Waiting on core 1\n");
+	//console_print("[CORE 0] [INFO] Waiting on core 1\n");
 	while (*core1_ready == false) {};
 		
 	asm(	"mov	x1, #0xe8\n"\
@@ -22,7 +22,7 @@ void start_other_3_cores()
 		"str	x2, [x1]\n"\
 		"sev\n");
 	
-	printf("[CORE 0] [INFO] Waiting on core 2\n");
+	//printf("[CORE 0] [INFO] Waiting on core 2\n");
 	while (*core2_ready == false) {};
 	
 	asm(	"mov	x1, 0xf0\n"\
@@ -30,7 +30,7 @@ void start_other_3_cores()
 		"str	x2, [x1]\n"\
 		"sev");
 	
-	printf("[CORE 0] [INFO] Waiting on core 3\n");
+	//printf("[CORE 0] [INFO] Waiting on core 3\n");
 	while (*core3_ready == false) {};
 }
 

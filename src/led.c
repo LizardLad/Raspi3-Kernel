@@ -11,7 +11,8 @@ void set_ACT_LED(bool on)
 	mailbox[5] = 130;
 	mailbox[6] = (uint32_t)on;
 	uint32_t addr = (uint32_t)(uintptr_t)&mailbox[0];
-	InvalidateDataCacheRange(addr, sizeof(mailbox)/ DATA_CACHE_LINE_LENGTH_MIN);
-	mailbox_tag_write(addr);
+	//InvalidateDataCacheRange(addr, sizeof(mailbox)/ DATA_CACHE_LINE_LENGTH_MIN);
+	asm volatile ("dc civac, %0" : : "r" (addr) : "memory");
+	mailbox_tag_write(addr | 0xc0000000);
 	mailbox_tag_read();
 }
