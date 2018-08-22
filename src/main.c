@@ -1,6 +1,6 @@
 #include "headers/project.h"
 
-static uint32_t check_hello = 0;
+//static uint32_t check_hello = 0;
 
 void main()
 {
@@ -21,10 +21,11 @@ void main()
 	*core0_ready = true;
 
 	printf("[CORE 0] [INFO] 4 cores with MMU online\r\n");
-	semaphore_inc(&check_hello); // lock hello semaphore .. if MMU is not working it will lock here
-	printf("Semaphore count: %d\n", check_hello);
-	semaphore_dec(&check_hello);
-	printf("Semaphore count: %d\n", check_hello);
+	printf("[CORE 0] [TEST] Testing line wrapping GENERAL GRIEVOUS: General Kenobi, you are a bold one. I find your behavior bewildering . . . Surely you realize you're doomed, (to droids) Kill him!\n");
+	//semaphore_inc(&check_hello); // lock hello semaphore .. if MMU is not working it will lock here
+	//printf("Semaphore count: %d\n", check_hello);
+	//semaphore_dec(&check_hello);
+	//printf("Semaphore count: %d\n", check_hello);
 
 	// echo everything back
 	while(1) 

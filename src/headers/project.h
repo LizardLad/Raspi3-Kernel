@@ -28,5 +28,6 @@
 #include "multicore.h"
 #include "memcmp.h"
 #include "data_caches.h"
+#include "servo.h"
 
 #endif

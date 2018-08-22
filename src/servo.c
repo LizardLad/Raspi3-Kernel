@@ -12,10 +12,9 @@ void setup_servo(uint32_t pin)
 void move_servo(uint8_t angle)
 {
 	//A servo pulse is expected every 20ms or 20,000us
-	uint32_t i = 0;
-	i = 13.333333333333 * angle;
+	uint32_t pulse_width = angle / 90 + 0.5;
 	gpio_output(servo_c_servo_pin, true);
-	wait_usec(i); //Goto 0 degrees if 180 is desired use 2400us
+	wait_usec(pulse_width);
 	gpio_output(servo_c_servo_pin, false);
-	wait_usec(15000 - i);
+	wait_usec(20000 - pulse_width);
 }

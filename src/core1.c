@@ -25,17 +25,17 @@ void core1_main()
 			//pin 20 is green
 			//pin 21 is blue
 			gpio_output(16, true);
-			wait_usec(100);
+			wait_usec(100000);
 			gpio_output(21, false);
-			wait_usec(200);
+			wait_usec(200000);
 			gpio_output(20, true);
-			wait_usec(100);
+			wait_usec(100000);
 			gpio_output(16, false);
-			wait_usec(200);
+			wait_usec(200000);
 			gpio_output(21, true);
-			wait_usec(100);
+			wait_usec(100000);
 			gpio_output(20, false);
-			wait_usec(200);
+			wait_usec(200000);
 		}
 		printf("[CORE 1] [INFO] Finished RGB flash on pins 16, 20, 21\n");
 	}

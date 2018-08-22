@@ -153,6 +153,7 @@ void console_print(char *input)
 					console_rollback_buffer[i] = 255;
 					i--;
 				}
+				break;
 			}
 		}
 	}
@@ -161,8 +162,9 @@ void console_print(char *input)
 	{
 		//So instead of adding more newlines use the print offset in lfb_print
 		//number_of_newlines_req_diff will work as the y input
-		lfb_print(0, number_of_newlines_req_diff - 3, console_rollback_buffer);
+		lfb_print(0, number_of_newlines_req_diff, console_rollback_buffer);
 	}
+	
 	//Ok so in the case of not having enough newlines is done
 	if(number_of_newlines_req_diff == 0)
 	{
