@@ -83,7 +83,7 @@ void console_print(char *input)
 		}
 		else if(console_rollback_buffer[i] != 255)
 		{
-			if(characters_since_newline == (lfb_width / font->width) - 1)
+			if(characters_since_newline == (lfb_width / font->width) - 2)
 			{
 				characters_since_newline = 0; //After this i have to create a space 
 							      //that means if there isn't enough space in the 
@@ -95,11 +95,11 @@ void console_print(char *input)
                                         {
                                                 console_rollback_buffer[k-1] = console_rollback_buffer[k];
                                         }
-                                        console_rollback_buffer[i] = '\n';
+                                        console_rollback_buffer[i-1] = '\n';
 				}
 				else
 				{
-					for(uint64_t k = 0; k <= (lfb_width / font->width) * (lfb_height / font->height); k++)
+					for(uint64_t k = 0; k <= (lfb_width / font->width) * (lfb_height / font->height) - 2; k++)
 					{
 						if(console_rollback_buffer[k] == '\n')
 						{
@@ -116,7 +116,7 @@ void console_print(char *input)
 					{
 						console_rollback_buffer[k-1] = console_rollback_buffer[k];
 					}
-					console_rollback_buffer[i] = '\n';
+					console_rollback_buffer[i-1] = '\n';
 				}
 			}
 		characters_since_newline++;
