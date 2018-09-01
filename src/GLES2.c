@@ -302,7 +302,7 @@ static int32_t rotate_y(uint_fast32_t yOld) {
 	return (int32_t)(yOld * cosTheta);
 }
 
-void DoRotate (float delta) {
+void do_rotate (float delta) {
 	angle += delta;
 	if (angle >= (3.1415926384 * 2)) angle -= (3.1415926384 * 2);
 	cosTheta = cosf(angle);
