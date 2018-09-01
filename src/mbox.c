@@ -79,7 +79,7 @@ bool mailbox_tag_write(uint32_t message)
 	return true; // Write success
 }
 
-uint32_t mailbox_tag_read () 
+uint32_t mailbox_tag_read() 
 {
 	uint32_t value;	// Temporary read value
 	do
@@ -97,4 +97,35 @@ uint32_t mailbox_tag_read ()
 	value &= ~(0xF); // Lower 4 low channel bits are not part of message
 	asm("dmb sy");
 	return value; // Return the value
+}
+
+bool mailbox_tag_message (uint32_t* response_buf,	// Pointer to response buffer
+			  uint8_t data_count,		// Number of uint32_t data following
+			  ...)				// Variadic uint32_t values for call
+{
+	uint32_t __attribute__((aligned(16))) message[32];
+	__builtin_va_list list;
+	__builtin_va_start(list, data_count);		// Start variadic argument
+	message[0] = (data_count + 3) * 4;		// Size of message needed
+	message[data_count + 2] = 0;			// Set end pointer to zero
+	message[1] = 0;					// Zero response message
+	for (int i = 0; i < data_count; i++)
+	{
+		message[2 + i] = __builtin_va_arg(list, uint32_t);	// Fetch next variadic
+	}
+	__builtin_va_end(list);						// variadic cleanup
+	mailbox_tag_write(ARM_addr_to_GPU_addr(&message[0]));	// Write message to mailbox
+	mailbox_tag_read();					// Wait for write response
+	if (message[1] == 0x80000000)
+	{
+		if (response_buf)
+		{
+			for (int i = 0; i < data_count; i++)
+			{
+				response_buf[i] = message[2 + i];// Transfer out each response message
+			}
+		}
+		return true;	// message success
+	}
+	return false;	// Message failed
 }

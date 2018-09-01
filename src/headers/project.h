@@ -29,5 +29,7 @@
 #include "memcmp.h"
 #include "data_caches.h"
 #include "servo.h"
+#include "start.h"
+#include "GLES.h"
 
 #endif

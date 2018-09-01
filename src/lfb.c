@@ -1,7 +1,6 @@
 #include "headers/project.h"
 
 uint32_t pitch;
-unsigned char *lfb;
 
 /**
  * Set screen resolution to 1024x768

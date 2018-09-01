@@ -2,6 +2,7 @@
 #define LFB_H
 
 uint32_t lfb_height, lfb_width;
+unsigned char *lfb;
 
 /* PC Screen Font as used by Linux Console */
 typedef struct {

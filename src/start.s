@@ -376,3 +376,40 @@ semaphore_dec:
 .balign	4
 .ltorg										// Tell assembler ltorg data for this code can go here
 .size	semaphore_dec, .-semaphore_dec
+
+/* "PROVIDE C FUNCTION: uint32_t ARM_addr_to_GPU_addr (void* ARMaddress);" */
+.section .text.ARMaddrToGPUaddr, "ax", %progbits
+.balign	4
+.globl ARM_addr_to_GPU_addr;		
+.type ARM_addr_to_GPU_addr, %function
+//"================================================================"
+// ARMaddrToGPUaddr -- AARCH64 Pi3 code
+// C Function: uint32_t ARM_addr_to_GPU_addr (void* ARM_address);
+// Entry: x0 will have ARMAddress value
+//"================================================================"
+ARM_addr_to_GPU_addr:
+	mov x1, #0xC0000000						// ARM to VC conversion value
+	orr x0, x0, x1							// Create bus address
+	ret										// Return
+.balign	4
+.ltorg										// Tell assembler ltorg data for this code can go here
+.size	ARM_addr_to_GPU_addr, .-ARM_addr_to_GPU_addr
+
+
+/* "PROVIDE C FUNCTION: uint32_t GPU_addr_to_ARM_addr (uint32_t BUSaddress);" */
+.section .text.GPUaddrToARMaddr, "ax", %progbits
+.balign	4
+.globl GPU_addr_to_ARM_addr;		
+.type GPU_addr_to_ARM_addr, %function
+//"================================================================"
+// GPUaddrToARMaddr -- AARCH64 Pi3 code
+// C Function: uint32_t GPUaddrToARMaddr (uint32_t BUS_address);
+// Entry: x0 will have GPUAddress value
+//"================================================================"
+GPU_addr_to_ARM_addr:
+	mov x1, #0xC0000000						// ARM to VC conversion value	
+	bic x0, x0, x1							// Create arm address
+	ret										// Return
+.balign	4
+.ltorg										// Tell assembler ltorg data for this code can go here
+.size	GPU_addr_to_ARM_addr, .-GPU_addr_to_ARM_addr

@@ -9,5 +9,6 @@ extern volatile bool *core2_ready;
 extern volatile bool *core3_ready;
 
 void start_other_3_cores();
+int get_core_id();
 
 #endif

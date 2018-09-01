@@ -4,6 +4,9 @@
 
 void main()
 {
+	//Setup videocore
+	init_V3D();
+	
 	// set up serial console
 	uart_init();
 	lfb_init();
@@ -15,17 +18,22 @@ void main()
 	console_init();	
 	clocks_init();
 
-	start_other_3_cores();
+	//start_other_3_cores();
 	mmu_init(); //Now turn on MMU on Core 0
 	
 	*core0_ready = true;
 
 	printf("[CORE 0] [INFO] 4 cores with MMU online\r\n");
-	printf("[CORE 0] [TEST] Testing line wrapping GENERAL GRIEVOUS: General Kenobi, you are a bold one. I find your behavior bewildering . . . Surely you realize you're doomed, (to droids) Kill him!\n");
+
+	render_quad(lfb_width, lfb_height, ARM_addr_to_GPU_addr((void*)(uintptr_t)lfb));
+
+	//printf("[CORE 0] [TEST] Testing line wrapping GENERAL GRIEVOUS: General Kenobi, you are a bold one. I find your behavior bewildering . . . Surely you realize you're doomed, (to droids) Kill him!\n");
 	//semaphore_inc(&check_hello); // lock hello semaphore .. if MMU is not working it will lock here
 	//printf("Semaphore count: %d\n", check_hello);
 	//semaphore_dec(&check_hello);
 	//printf("Semaphore count: %d\n", check_hello);
+	
+
 
 	// echo everything back
 	while(1) 
