@@ -114,9 +114,13 @@ bool mailbox_tag_message (uint32_t* response_buf,	// Pointer to response buffer
 		message[2 + i] = __builtin_va_arg(list, uint32_t);	// Fetch next variadic
 	}
 	__builtin_va_end(list);						// variadic cleanup
+	if(((uint64_t)&(message[0])) % 16 != 0)
+	{
+		printf("[ERROR] Unaligned!");
+	}
 	uint32_t addr = (uint32_t)(uintptr_t)&message[0];
 	asm volatile ("dc civac, %0" : : "r" (addr) : "memory");
-	mailbox_tag_write(addr | 0xC0000000);	// Write message to mailbox
+	mailbox_tag_write(ARM_addr_to_GPU_addr(&(message[0])));	// Write message to mailbox
 	mailbox_tag_read();					// Wait for write response
 	if(message[1] == 0x80000000)
 	{

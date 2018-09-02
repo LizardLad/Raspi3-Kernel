@@ -5,7 +5,7 @@
 void main()
 {
 	//Setup videocore
-	init_V3D();
+	bool result = init_V3D();
 	
 	// set up serial console
 	uart_init();
@@ -17,10 +17,15 @@ void main()
 	dynamic_memory_alloc_init();
 	console_init();	
 	clocks_init();
+	//init_audio_jack();
 
 	//start_other_3_cores();
 	mmu_init(); //Now turn on MMU on Core 0
 	*core0_ready = true;
+
+	printf("%d\n", result);
+
+	//play_audio();
 
 	render_quad(lfb_width, lfb_height, ARM_addr_to_GPU_addr((void*)(uintptr_t)lfb));
 

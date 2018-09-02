@@ -10,6 +10,8 @@ uint32_t get_gpu_memory_split()
 	mailbox[5] = 0;
 	mailbox[6] = 0;
 	mailbox[7] = 0;
+	uint32_t addr = (uint32_t)(uintptr_t)&mailbox[0];
+	asm volatile ("dc civac, %0" : : "r" (addr) : "memory");
 	if(!mailbox_call(MBOX_CH_PROP))
 	{
 		mailbox[6]=512*1024*1024;

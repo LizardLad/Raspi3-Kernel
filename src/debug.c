@@ -62,7 +62,6 @@ void dbg_decodeexc(uint64_t type)
 		}
 	}
 	printf("\n");
-	printf("%x\n", dbg_regs[31]);
 	// if the exception happened in the debugger, we stop to avoid infinite loop
 	if(dbg_running) {
 		printf("Exception in debugger!\n"
@@ -197,8 +196,9 @@ void dbg_main()
 
 	// main debugger loop
 	while(1) {
+		cmd[0] = 'r';
 		// get command from user
-		dbg_getline();
+		//dbg_getline();
 		// parse commands
 		if(cmd[0]==0 || cmd[0]=='?' || cmd[0]=='h') {
 			// print help
