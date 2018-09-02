@@ -4,7 +4,7 @@ uint32_t get_gpu_memory_split()
 {
 	mailbox[0] = 8 * 4;
 	mailbox[1] = 0;
-	mailbox[2] = 0x10005;
+	mailbox[2] = 0x10006;
 	mailbox[3] = 8;
 	mailbox[4] = 0;
 	mailbox[5] = 0;
