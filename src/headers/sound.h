@@ -31,11 +31,12 @@
 #define PWM_STA			((uint32_t)(0x4))
 #define PWM_FULL1		((uint32_t)(0x1))
 
-extern volatile unsigned char _binary_src_audio_The_Amazons_bin_start, _binary_src_audio_The_Amazons_bin_end;
-extern volatile unsigned char _binary_src_audio_Interlude_bin_start, _binary_src_audio_Interlude_bin_end;
+extern uint16_t _binary_src_audio_The_Amazons_bin_start, _binary_src_audio_The_Amazons_bin_end;
+extern uint16_t _binary_src_audio_Interlude_bin_start, _binary_src_audio_Interlude_bin_end;
 
+void init_audio_jack_c();
 void init_audio_jack();
-//int play_16bit_unsigned_audio(char *start, char *end);
+int play_16bit_unsigned_audio(uint16_t *start, uint16_t *end);
 void play_audio();
 
 #endif

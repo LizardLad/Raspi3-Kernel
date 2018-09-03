@@ -1,6 +1,6 @@
 #include "headers/project.h"
 
-void init_audio_jack()//ERROR IN HERE
+void init_audio_jack_c()//ERROR IN HERE
 {
 	//Set phone jack to pwm output
 	uint32_t *gpio_addr = (uint32_t *)(PERIPHERAL_BASE + GPIO_BASE);
@@ -23,7 +23,7 @@ void init_audio_jack()//ERROR IN HERE
 	printf("[INFO] Audio Init Finished");
 }
 
-/*
+
 int32_t play_16bit_unsigned_audio(uint16_t *start, uint16_t *end)
 {
 	if(end < start) 
@@ -37,24 +37,24 @@ int32_t play_16bit_unsigned_audio(uint16_t *start, uint16_t *end)
 		return 2;
 	}
 
-	uint16_t *end_of_file = (end & 0x0000FFFF) | (end & 0xFFFF0000);
+	uint16_t *end_of_file = (uint16_t *)(uint64_t)(((uint32_t)(uintptr_t)end & 0x0000FFFF) | ((uint32_t)(uintptr_t)end & 0xFFFF0000));
 
 	//FIFO write
 	while(start != end_of_file)
 	{
 		uint16_t sample = start[0];
 		sample >>= 3;
-		*(uint32_t *)(((PERIPHERAL_BASE + PWM_BASE) & 0x0000FFFF) | ((PERIPHERAL_BASE + PWM_BASE) & 0xFFFF0000) + PWM_FIF1) = sample;
+		*(uint32_t *)((((uint32_t)(PERIPHERAL_BASE + PWM_BASE) & 0x0000FFFF) | ((uint32_t)(PERIPHERAL_BASE + PWM_BASE) & 0xFFFF0000)) + PWM_FIF1) = sample;
 		
 		start++;
 		sample = start[0];
 		sample >>= 3;
-		*(uint32_t *)(((PERIPHERAL_BASE + PWM_BASE) & 0x0000FFFF) | ((PERIPHERAL_BASE + PWM_BASE) & 0xFFFF0000) + PWM_FIF1) = sample;
+		*(uint32_t *)((((uint32_t)(PERIPHERAL_BASE + PWM_BASE) & 0x0000FFFF) | ((uint32_t)(PERIPHERAL_BASE + PWM_BASE) & 0xFFFF0000)) + PWM_FIF1) = sample;
 		
 		//FIFO wait
-		while(*(uint32_t *)(((PERIPHERAL_BASE + PWM_BASE) & 0x0000FFFF) | ((PERIPHERAL_BASE + PWM_BASE) & 0xFFFF0000) + PWM_STA) != PWM_FULL1);
+		while(*(uint32_t *)((((uint32_t)(PERIPHERAL_BASE + PWM_BASE) & 0x0000FFFF) | ((uint32_t)(PERIPHERAL_BASE + PWM_BASE) & 0xFFFF0000)) + PWM_STA) != PWM_FULL1);
 		start++;
 	}
 	printf("[INFO] Completed Audio");
 	return 0;
-}*/
+}

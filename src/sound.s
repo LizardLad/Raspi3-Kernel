@@ -812,7 +812,7 @@ PWM_STA4  = 0x1000 // PWM Status: Channel 4 State
 
 PWM_ENAB = 0x80000000 // PWM DMA Configuration: DMA Enable
 
-/*.section .text.init_audio_jack, "ax", %progbits
+.section .text.init_audio_jack, "ax", %progbits
 .balign	4
 .globl init_audio_jack;
 .type init_audio_jack, %function
@@ -858,7 +858,7 @@ init_audio_jack:
 
 	mov w1,PWM_USEF2 + PWM_PWEN2 + PWM_USEF1 + PWM_PWEN1 + PWM_CLRF1
 	str w1,[x0,PWM_CTL]
-*/
+
 
 .section .text.play_audio, "ax", %progbits
 .balign	4
