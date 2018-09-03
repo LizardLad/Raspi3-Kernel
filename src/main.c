@@ -12,7 +12,7 @@ void main()
 	lfb_init();
 
 	//Create mmu table on Core 0
-	init_page_table();
+	//init_page_table();
 
 	dynamic_memory_alloc_init();
 	console_init();	
@@ -20,10 +20,10 @@ void main()
 	//init_audio_jack();
 
 	//start_other_3_cores();
-	mmu_init(); //Now turn on MMU on Core 0
-	*core0_ready = true;
+	//mmu_init(); //Now turn on MMU on Core 0
+	//*core0_ready = true;
 
-	printf("%d\n", result);
+	//printf("hello: %d\n", get_gpu_memory_split());
 
 	//play_audio();
 
