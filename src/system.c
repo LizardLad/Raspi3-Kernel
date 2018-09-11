@@ -2,15 +2,7 @@
 
 void set_cpu_clock(uint32_t clock_rate)
 {
-	mailbox[0] = 8*4;
-	mailbox[7] = 0;
-	mailbox[1] = 0;
-	mailbox[2] = 0x00038002;
-	mailbox[3] = 8;
-	mailbox[4] = 8;
-	mailbox[5] = 3;
-	mailbox[6] = clock_rate;
-	mailbox_tag_write((uint32_t)((uintptr_t)&(mailbox[0])));
+	mailbox_tag_message(0, 5, 0x00038002, 8, 8, 3, clock_rate);
 }
 
 void get_cpu_clock()
@@ -20,23 +12,12 @@ void get_cpu_clock()
 
 uint32_t get_cpu_max_clock()
 {
-	mailbox[0] = 8 * 4; //TAG is 0x00030004
-	mailbox[7] = 0;
-	mailbox[1] = 0;
-	mailbox[2] = 0x00038004;
-        mailbox[3] = 8;
-        mailbox[4] = 8;
-        mailbox[5] = 3;
-        mailbox[6] = 0;
-	mailbox_tag_write((uint32_t)((uintptr_t)&(mailbox[0])));
-	mailbox_tag_read(0x8);
-
-	if(mailbox[1] == 0x80000000)
+	uint32_t buffer[5] = { 0 };
+	if(mailbox_tag_message(0, 5, 0x00030004, 8, 8, 3, 0))
 	{
-		return mailbox[6];
+		return buffer[4];
 	}
-
-	return 0; //Return 0 on error because returning non-zero is a clock rate!
+	return 0;
 }
 
 void clocks_init()

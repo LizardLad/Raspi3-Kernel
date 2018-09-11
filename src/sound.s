@@ -817,24 +817,17 @@ PWM_ENAB = 0x80000000 // PWM DMA Configuration: DMA Enable
 .globl init_audio_jack;
 .type init_audio_jack, %function
 init_audio_jack:
-	mov w0,PERIPHERAL_BASE + GPIO_BASE
+	mov x0,PERIPHERAL_BASE + GPIO_BASE
 	mov w1,GPIO_FSEL0_ALT0
 	orr w1,w1,GPIO_FSEL5_ALT0
 	str w1,[x0,GPIO_GPFSEL4]
 
 	// Set Clock
-	mov w0, PERIPHERAL_BASE
-	add w0, w0, CM_BASE
-	and w0, w0, 0x0000FFFF
-
-	mov w1, PERIPHERAL_BASE 
-	add w1, w1, CM_BASE
-	and w1, w1, 0xFFFF0000
-	
+	mov w0,(PERIPHERAL_BASE + CM_BASE) & 0x0000FFFF
+	mov w1,(PERIPHERAL_BASE + CM_BASE) & 0xFFFF0000
 	orr w0,w0,w1
 	mov w1,CM_PASSWORD
 	orr w1,w1,0x2000 // Bits 0..11 Fractional Part Of Divisor = 0, Bits 12..23 Integer Part Of Divisor = 2
-	brk #0
 	str w1,[x0,CM_PWMDIV]
 
 	mov w1,CM_PASSWORD
@@ -843,28 +836,27 @@ init_audio_jack:
 	str w1,[x0,CM_PWMCTL]
 
 	// Set PWM
-	mov w0, PERIPHERAL_BASE
-	add w0, w0, PWM_BASE
-	and w0, w0, 0x0000FFFF
-	
-	mov w1,PERIPHERAL_BASE
-	add w1, w1, PWM_BASE
-	and w1, w1, 0xFFFF0000
-	
+	mov w0,(PERIPHERAL_BASE + PWM_BASE) & 0x0000FFFF
+	mov w1,(PERIPHERAL_BASE + PWM_BASE) & 0xFFFF0000
 	orr w0,w0,w1
-	mov w1,0x1624 // Range = 13bit 44100Hz Mono
+	mov w1,0x2C48 // Range = 13bit 44100Hz Mono
 	str w1,[x0,PWM_RNG1]
 	str w1,[x0,PWM_RNG2]
 
 	mov w1,PWM_USEF2 + PWM_PWEN2 + PWM_USEF1 + PWM_PWEN1 + PWM_CLRF1
 	str w1,[x0,PWM_CTL]
-
+	ret
 
 .section .text.play_audio, "ax", %progbits
 .balign	4
 .globl play_audio;
 .type play_audio, %function
 play_audio:
+	mov x0,PERIPHERAL_BASE + GPIO_BASE
+	mov w0,(PERIPHERAL_BASE + PWM_BASE) & 0x0000FFFF
+	mov w1,(PERIPHERAL_BASE + PWM_BASE) & 0xFFFF0000
+	orr w0,w0,w1
+
 	Loop:
 		adr x1, _binary_src_audio_Interlude_bin_start // X1 = Sound Sample
 		ldr w2, =_binary_src_audio_Interlude_bin_end
@@ -887,4 +879,3 @@ play_audio:
 		cmp w1,w2 // Check End Of Sound Sample
 		b.ne FIFO_Write
 	b Loop // Play Sample Again
-

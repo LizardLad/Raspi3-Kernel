@@ -43,4 +43,4 @@ clean:
 	rm -rf $(TARGET)
 
 run:
-	/home/Oliver/Development/qemu/aarch64-softmmu/qemu-system-aarch64 -M raspi3 -kernel kernel8.img -drive file=raspi.iso,if=sd,format=raw -serial stdio
+	/home/Oliver/Development/qemu/aarch64-softmmu/qemu-system-aarch64 -M raspi3 -kernel kernel8.img -drive file=raspi.iso,if=sd,format=raw -serial stdio -d int,in_asm

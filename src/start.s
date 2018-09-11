@@ -284,6 +284,7 @@ _vectors:
 
 	// synchronous
 	.balign 0x80
+	b _hang
 	stp	x29, x30, [sp, #-16]!	 // Save x30 link register and x29 just so we dont waste space
 	bl	register_save		 // Save corruptible registers .. it assumes x29,x30 saved
 	bl      dbg_saveregs
@@ -298,6 +299,7 @@ _vectors:
 
 	// IRQ
 	.balign  0x80
+	b _hang
 	stp	x29, x30, [sp, #-16]!	 // Save x30 link register and x29
 	bl      dbg_saveregs
 	mov     x0, #1
@@ -309,6 +311,7 @@ _vectors:
 
 	// FIQ
 	.balign  0x80
+	b _hang
 	stp	x29, x30, [sp, #-16]!	 // Save x30 link register and x29 just so we dont waste space
 	bl	register_save		 // Save corruptible registers .. it assumes x29,x30 saved
 	bl      dbg_saveregs
@@ -321,6 +324,7 @@ _vectors:
 
 	// SError
 	.balign  0x80
+	b _hang
 	stp	x29, x30, [sp, #-16]!	 // Save x30 link register and x29 just so we dont waste space
 	bl	register_save		 // Save corruptible registers .. it assumes x29,x30 saved
 	bl      dbg_saveregs

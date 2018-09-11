@@ -5,7 +5,7 @@
 void main()
 {
 	//Setup videocore
-	bool result = init_V3D();
+	//bool result = init_V3D();
 	
 	// set up serial console
 	uart_init();
@@ -18,16 +18,24 @@ void main()
 	console_init();	
 	clocks_init();
 	//init_audio_jack_c();
-	init_audio_jack();
+	//init_audio_jack();
 
 	//start_other_3_cores();
-	//mmu_init(); //Now turn on MMU on Core 0
+	mmu_init(); //Now turn on MMU on Core 0
 	//*core0_ready = true;
+
+	printf("Hello world\n");
+	printf("Hello world\n");
+	printf("Hello world\n");
+	printf("Hello world\n");
+	printf("Hello world\n");
+
+	printf("[INFO] GPU memory split is: %d\n", get_gpu_memory_split());
 
 	//play_audio();
 	//play_16bit_unsigned_audio(&_binary_src_audio_Interlude_bin_start, &_binary_src_audio_Interlude_bin_end);
 
-	render_quad(lfb_width, lfb_height, ARM_addr_to_GPU_addr((void*)(uintptr_t)lfb));
+	//render_quad(lfb_width, lfb_height, ARM_addr_to_GPU_addr((void*)(uintptr_t)lfb));
 
 	// echo everything back
 	while(1) 
