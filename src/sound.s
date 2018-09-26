@@ -839,7 +839,7 @@ init_audio_jack:
 	mov w0,(PERIPHERAL_BASE + PWM_BASE) & 0x0000FFFF
 	mov w1,(PERIPHERAL_BASE + PWM_BASE) & 0xFFFF0000
 	orr w0,w0,w1
-	mov w1,0x2C48 // Range = 13bit 44100Hz Mono
+	mov w1,0x1624 // Range = 13bit 44100Hz Mono
 	str w1,[x0,PWM_RNG1]
 	str w1,[x0,PWM_RNG2]
 
@@ -866,11 +866,11 @@ play_audio:
 		orr w2,w2,w3
 		FIFO_Write:
 			ldrh w3,[x1],2 // Write 2 Bytes To FIFO
-			lsr w3,w3,3 // Convert 16bit To 13bit
+			lsr w3,w3,4 // Convert 16bit To 12bit
 			str w3,[x0,PWM_FIF1] // FIFO Address
 			
 			ldrh w3, [x1], 2
-			lsr w3, w3, 3
+			lsr w3, w3, 4
 			str w3, [x0, PWM_FIF1]
 		FIFO_Wait:
 			ldr w3,[x0,PWM_STA]
