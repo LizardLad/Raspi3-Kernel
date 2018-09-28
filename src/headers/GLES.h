@@ -45,7 +45,7 @@ bool V3D_execute_qpu (int32_t num_qpus, uint32_t control, uint32_t noflush, uint
 void do_rotate(float delta);
 int LoadShader(int shaderType);
 // Render a quad to memory
-void render_quad(uint16_t render_width, uint16_t render_height, uint32_t render_buffer_addr);
+void render_quad(uint16_t render_width, uint16_t render_height, uint32_t render_buffer_addr, uint32_t bus_addr);
 
 #ifdef __cplusplus								// If we are including to a C++ file
 }												// Close the extern C directive wrapper

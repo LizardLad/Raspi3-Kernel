@@ -310,30 +310,30 @@ void do_rotate (float delta) {
 }
 
 // Render a single quad to memory.
-void render_quad(uint16_t render_width, uint16_t render_height, uint32_t render_buffer_addr) {
+void render_quad(uint16_t render_width, uint16_t render_height, uint32_t render_buffer_addr, uint32_t bus_addr) {
 	//  We allocate/lock some videocore memory
 	// I'm just shoving everything in a single buffer because I'm lazy 8Mb, 4k alignment
 	// Normally you would do individual allocations but not sure of interface I want yet
 	// So lets just define some address in that one single buffer for now 
 	// You need to make sure they don't overlap if you expand sample
-	#define BUFFER_VERTEX_INDEX		0x70 
+	#define BUFFER_VERTEX_INDEX	0x70 
 	#define BUFFER_SHADER_OFFSET	0x80
-	#define BUFFER_VERTEX_DATA		0x100 
-	#define BUFFER_TILE_STATE		0x200
-	#define BUFFER_TILE_DATA		0x6000
+	#define BUFFER_VERTEX_DATA	0x100 
+	#define BUFFER_TILE_STATE	0x200
+	#define BUFFER_TILE_DATA	0x6000
 	#define BUFFER_RENDER_CONTROL	0xe200
 	#define BUFFER_FRAGMENT_SHADER	0xfe00
 	#define BUFFER_FRAGMENT_UNIFORM	0xff00
 
-	uint32_t handle = V3D_mem_alloc(0x800000, 0x1000, MEM_FLAG_COHERENT | MEM_FLAG_ZERO);
+	//uint32_t handle = V3D_mem_alloc(0x800000, 0x1000, MEM_FLAG_COHERENT | MEM_FLAG_ZERO);
 	
-	if(!handle)
-	{
-		printf("[CORE %d] [ERROR] Unable to allocate memory from VideoCore", get_core_id());
-		return;
-	}
+	//if(!handle)
+	//{
+	//	printf("[CORE %d] [ERROR] Unable to allocate memory from VideoCore", get_core_id());
+	//	return;
+	//}
 
-	uint32_t bus_addr = V3D_mem_lock(handle);
+	//uint32_t bus_addr = V3D_mem_lock(handle);
 	uint8_t *list = (uint8_t*)(uintptr_t)GPU_addr_to_ARM_addr(bus_addr);
 
 	uint8_t *p = list;
@@ -590,9 +590,4 @@ void render_quad(uint16_t render_width, uint16_t render_height, uint32_t render_
 
 	// stop the thread
 	v3d[V3D_CT1CS] = 0x20;
-
-	// Release resources
-	V3D_mem_unlock(handle);
-	V3D_mem_free(handle);
-
 }
