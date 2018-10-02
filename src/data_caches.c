@@ -1,4 +1,4 @@
-#include "headers/project.h"
+/*#include "headers/project.h"
 
 void InvalidateDataCacheRange(uint32_t nAddress, uint32_t nLength)
 {
@@ -13,4 +13,4 @@ void InvalidateDataCacheRange(uint32_t nAddress, uint32_t nLength)
 		nAddress += DATA_CACHE_LINE_LENGTH_MIN;
 		nLength -= DATA_CACHE_LINE_LENGTH_MIN;
 	}
-}
+}*/

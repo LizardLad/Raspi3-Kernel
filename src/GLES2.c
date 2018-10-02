@@ -1,4 +1,8 @@
-#include "headers/project.h"
+#include "include/stdint.h"
+#include "include/math.h"
+#include "include/mbox.h"
+#include "include/GLES.h"
+#include "include/start.h"
 
 /* REFERENCES */
 /* https://docs.broadcom.com/docs/12358545 */

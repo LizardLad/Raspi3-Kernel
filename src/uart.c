@@ -1,4 +1,9 @@
-#include "headers/project.h"
+#include "include/stdint.h"
+#include "include/stdbool.h"
+#include "include/mbox.h"
+#include "include/uart.h"
+#include "include/gpio.h"
+#include "include/delays.h"
 
 /* PL011 UART registers */
 #define UART0_DR        ((volatile uint32_t*)(MMIO_BASE+0x00201000))

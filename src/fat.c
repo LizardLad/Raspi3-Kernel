@@ -1,4 +1,8 @@
-#include "headers/project.h"
+#include "include/stdint.h"
+#include "include/sd.h"
+#include "include/uart.h"
+#include "include/memcmp.h"
+#include "include/fat.h"
 
 fatdir_t *rootdir;
 uint32_t *fat32;

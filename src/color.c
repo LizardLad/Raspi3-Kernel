@@ -1,4 +1,4 @@
-#include "headers/project.h"
+#include "include/stdint.h"
 
 void hsv_to_rgb(double h, double s, double v, char *r, char *g, char *b)
 {

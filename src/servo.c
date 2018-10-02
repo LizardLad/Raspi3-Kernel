@@ -1,4 +1,6 @@
-#include "headers/project.h"
+#include "include/stdint.h"
+#include "include/gpio.h"
+#include "include/delays.h"
 
 uint32_t servo_c_servo_pin;
 

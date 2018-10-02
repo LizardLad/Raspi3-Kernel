@@ -1,4 +1,6 @@
-#include "headers/project.h"
+#include "include/stdint.h"
+#include "include/gpio.h"
+#include "include/stepper.h"
 
 void Stepper2WireInit(int32_t number_of_steps, int32_t motor_pin_1, int32_t motor_pin_2, StepperMotor *Stepper)
 {

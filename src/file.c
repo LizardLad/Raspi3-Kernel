@@ -1,4 +1,7 @@
-#include "headers/project.h"
+#include "include/stdint.h"
+#include "include/sd.h"
+#include "include/fat.h"
+#include "include/file.h"
 
 /*uint32_t text_file_dump(char *fn)
 {

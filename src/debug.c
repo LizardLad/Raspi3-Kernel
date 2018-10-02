@@ -1,4 +1,6 @@
-#include "headers/project.h"
+#include "include/stdint.h"
+#include "include/printf.h"
+#include "include/uart.h"
 
 #define DISASSEMBLER 1
 
@@ -9,7 +11,7 @@ char cmd[256], dbg_running=0;
 
 #if DISASSEMBLER
 // include the Universal Disassembler Library
-#include "headers/disasm.h"
+#include "include/disasm.h"
 #endif
 
 /**

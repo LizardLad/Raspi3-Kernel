@@ -1,4 +1,5 @@
-#include "headers/project.h"
+#include "include/stdbool.h"
+#include "include/multicore.h"
 
 bool core_state[4] = { 0 };
 

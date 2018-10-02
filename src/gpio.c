@@ -1,4 +1,6 @@
-#include "headers/project.h"
+#include "include/stdbool.h"
+#include "include/stdint.h"
+#include "include/gpio.h"
 
 /*
  * This function is practically the same as the pinmode() function

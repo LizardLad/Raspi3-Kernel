@@ -1,4 +1,8 @@
-#include "headers/project.h"
+#include "include/printf.h"
+#include "include/gpio.h"
+#include "include/mmu.h"
+#include "include/stepper.h"
+#include "include/multicore.h"
 
 void core2_main()
 {

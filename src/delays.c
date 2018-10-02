@@ -1,4 +1,6 @@
-#include "headers/project.h"
+#include "include/stdint.h"
+#include "include/delays.h"
+#include "include/gpio.h"
 
 #define SYSTEM_TIMER_LOW	((volatile uint32_t *)(MMIO_BASE+0x000003004))
 #define SYSTEM_TIMER_HIGH	((volatile uint32_t *)(MMIO_BASE+0x000003008))

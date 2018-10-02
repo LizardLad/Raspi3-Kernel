@@ -1,4 +1,8 @@
-#include "headers/project.h"
+#include "include/stdint.h"
+#include "include/uart.h"
+#include "include/gpio.h"
+#include "include/sd.h"
+#include "include/delays.h"
 
 #define EMMC_ARG2           ((volatile uint32_t*)(MMIO_BASE+0x00300000))
 #define EMMC_BLKSIZECNT     ((volatile uint32_t*)(MMIO_BASE+0x00300004))

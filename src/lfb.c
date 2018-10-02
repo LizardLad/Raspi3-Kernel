@@ -1,4 +1,9 @@
-#include "headers/project.h"
+#include "include/stdint.h"
+#include "include/stdbool.h"
+#include "include/mbox.h"
+#include "include/lfb.h"
+#include "include/uart.h"
+#include "include/color.h"
 
 uint32_t pitch;
 

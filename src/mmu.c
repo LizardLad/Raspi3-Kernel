@@ -1,7 +1,7 @@
-#include "headers/stdbool.h"
-#include "headers/stdint.h"
-#include "headers/mbox.h"
-#include "headers/mmu.h"
+#include "include/stdbool.h"
+#include "include/stdint.h"
+#include "include/mbox.h"
+#include "include/mmu.h"
 
 /* REFERENCE FOR STAGE 1 NEXT LEVEL ENTRY */
 /* ARMv8-A_Architecture_Reference_Manual_(Issue_A.a).pdf  D5-1776 */

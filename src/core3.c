@@ -1,4 +1,8 @@
-#include "headers/project.h"
+#include "include/stdint.h"
+#include "include/servo.h"
+#include "include/printf.h"
+#include "include/multicore.h"
+#include "include/mmu.h"
 
 //Well use the servos
 

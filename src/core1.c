@@ -1,4 +1,9 @@
-#include "headers/project.h"
+#include "include/stdint.h"
+#include "include/gpio.h"
+#include "include/led.h"
+#include "include/printf.h"
+#include "include/multicore.h"
+#include "include/mmu.h"
 
 void core1_main()
 {

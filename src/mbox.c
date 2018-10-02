@@ -1,4 +1,9 @@
-#include "headers/project.h"
+#include "include/stdint.h"
+#include "include/stdbool.h"
+#include "include/mbox.h"
+#include "include/gpio.h"
+#include "include/start.h"
+#include "include/printf.h"
 
 /* mailbox message buffer */
 volatile uint32_t  __attribute__((aligned(16))) mailbox[36];

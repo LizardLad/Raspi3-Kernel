@@ -1,4 +1,6 @@
-#include "headers/project.h"
+#include "include/stdint.h"
+#include "include/malloc.h"
+#include "include/gpu_memory.h"
 
 void dynamic_memory_alloc_init()
 {

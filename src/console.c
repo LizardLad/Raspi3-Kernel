@@ -1,5 +1,9 @@
-#include "headers/project.h"
-//Yay! in this file you get to experience torture
+#include "include/stdint.h"
+#include "include/malloc.h"
+#include "include/string.h"
+#include "include/lfb.h"
+
+//Good luck is you are trying to debug this file
 //The function here is a wrapper around lfb_print to 
 //allow for a scrolling buffer
 //Since there are no HID yet there is no need to implement scrollback
