@@ -4,6 +4,7 @@
 #include "include/printf.h"
 #include "include/multicore.h"
 #include "include/mmu.h"
+#include "include/delays.h"
 
 void core1_main()
 {

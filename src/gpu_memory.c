@@ -2,6 +2,7 @@
 #include "include/mbox.h"
 #include "include/GLES.h"
 #include "include/printf.h"
+#include "include/multicore.h"
 
 enum {
 	MEM_FLAG_DISCARDABLE = 1 << 0,	/* can be resized to 0 at any time. Use for cached data */

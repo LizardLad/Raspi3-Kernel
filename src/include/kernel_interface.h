@@ -1,7 +1,7 @@
-#include "project.h"
 //================================================
 //Delay Functions
 //================================================
+#include "delays.h"
 #define (kernel_wait_cylces(number_of_cycles_to_wait)) 	(wait_cycles(number_of_cycles_to_wait)
 #define (kernel_wait_usec(usec)) 				(wait_usec(usec))
 #define (kernel_wait_usec_system_timer(num_micros))	(wait_usec_system_timer(num_micros))
@@ -13,6 +13,7 @@
 //================================================
 //FAT32 and FAT16 functions to access SD card
 //================================================
+#include "fat.h"
 #define (kernel_fat_getpartition()) 			(fat_getpartition())
 #define (kernel_fat_getcluster(fn))			(fat_getcluster(fn))
 #define (kernel_fat_listdirectory())			(fat_listdirectory())
@@ -20,6 +21,7 @@
 //================================================
 //GPIO functions
 //================================================
+#include "gpio.h"
 #define (kernel_gpio_setup(gpio_pin, mode))		(gpio_setup(gpio_setup, mode))
 #define (kernel_gpio_input(gpio_pin))			(gpio_input(gpio_pin))
 #define (kernel_gpio_output(gpio_pin, on))		(gpio_ouput(gpio_pin, on))
@@ -27,10 +29,12 @@
 //================================================
 //ACT LED functions
 //================================================
+#include "led.h"
 #define (kernel_set_ACT_LED(on))			(set_ACT_LED(on))
 //================================================
 //Framebuffer functions
 //================================================
+#include "lfb.h"
 #define (kernel_lfb_init())				(lfb_init())
 #define (kernel_lfb_draw_pixel(x, y, r, g, b))		(lfb_draw_pixel(x, y, r, g, b))
 #define (kenel_lfb_print(x, y, s))			(lfb_print(x, y, s)) //WARNING this is highly discouraged use printf instead
@@ -39,6 +43,7 @@
 //================================================
 //Memory allocation
 //================================================
+#include "malloc.h"
 #define (kernel_memory_alloc_init())			(memory_alloc_init())
 //There are no other special defines here as this complies to the ISO standard for libc
 //malloc
@@ -46,11 +51,14 @@
 //================================================
 //Print funcitons
 //================================================
+#include "printf.h"
 //No defines here the functions are as follows
 //printf
 //================================================
 //String formatting 
 //================================================
+#include "string.h"
+#include "sprintf.h"
 //vsprintf is here
 //so is sprintf
 //strlen
@@ -60,12 +68,14 @@
 //================================================
 //System functions
 //================================================
+#include "system.h"
 #define (kernel_set_cpu_clock(clock_rate))		(set_cpu_clock(clock_rate))
 #define (kernel_get_cpu_max_clock())			(get_cpu_max_clock())
 #define (kernel_clocks_init())				(clocks_init())
 //================================================
 //UART functions
 //================================================
+#include "uart.h"
 #define (kernel_uart_init())				(uart_init())
 #define (kernel_uart_send(c))				(uart_send(c))
 #define (kernel_uart_getc())				(uart_getc())

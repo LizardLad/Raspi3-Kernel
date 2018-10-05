@@ -268,29 +268,41 @@ bool V3D_execute_qpu (int32_t num_qpus, uint32_t control, uint32_t noflush, uint
 }
 
 static void emit_uint8_t(uint8_t **list, uint8_t d) {
+	asm volatile ("dc civac, %0" : : "r" (*list) : "memory");
+	asm volatile("dmb sy");
 	*((*list)++) = d;
+	asm volatile("dmb sy");
 }
 
 static void emit_uint16_t (uint8_t **list, uint16_t d) {
 	struct EMITDATA* data = (struct EMITDATA*)&d;
+	asm volatile ("dc civac, %0" : : "r" (*list) : "memory");
+	asm volatile("dmb sy");
 	*((*list)++) = (*data).byte1;
 	*((*list)++) = (*data).byte2;
+	asm volatile("dmb sy");
 }
 
 static void emit_uint32_t(uint8_t **list, uint32_t d) {
 	struct EMITDATA* data = (struct EMITDATA*)&d;
+	asm volatile ("dc civac, %0" : : "r" (*list) : "memory");
+	asm volatile("dmb sy");
 	*((*list)++) = (*data).byte1;
 	*((*list)++) = (*data).byte2;
 	*((*list)++) = (*data).byte3;
 	*((*list)++) = (*data).byte4;
+	asm volatile("dmb sy");
 }
 
 static void emit_float(uint8_t **list, float f) {
 	struct EMITDATA* data = (struct EMITDATA*)&f;
+	asm volatile ("dc civac, %0" : : "r" (*list) : "memory");
+	asm volatile("dmb sy");
 	*((*list)++) = (*data).byte1;
 	*((*list)++) = (*data).byte2;
 	*((*list)++) = (*data).byte3;
 	*((*list)++) = (*data).byte4;
+	asm volatile("dmb sy");
 }
 
 
@@ -566,32 +578,54 @@ void render_quad(uint16_t render_width, uint16_t render_height, uint32_t render_
 
 	int render_length = p - (list + BUFFER_RENDER_CONTROL);
 
-
+	//FIXME TODO add memory barriers 
 	// Run our control list
+	asm volatile("dmb sy");
 	v3d[V3D_BFC] = 1;                      // reset binning frame count
+	asm volatile("dmb sy");
 	v3d[V3D_CT0CA] = bus_addr;
+	asm volatile("dmb sy");
 	v3d[V3D_CT0EA] = bus_addr + length;
+	asm volatile("dmb sy");
 
 	// Wait for control list to execute
-	while (v3d[V3D_CT0CS] & 0x20);
-
+	while (v3d[V3D_CT0CS] & 0x20)
+	{
+		asm volatile("dmb sy");
+	}
 	// wait for binning to finish
-	while (v3d[V3D_BFC] == 0) {}            
+	while (v3d[V3D_BFC] == 0)
+	{
+		asm volatile("dmb sy");
+	}            
 
 	// stop the thread
+	asm volatile("dmb sy");
 	v3d[V3D_CT0CS] = 0x20;
 
 	// Run our render
+	asm volatile("dmb sy");
 	v3d[V3D_RFC] = 1;			// reset rendering frame count
+	asm volatile("dmb sy");
 	v3d[V3D_CT1CA] = bus_addr + BUFFER_RENDER_CONTROL;
+	asm volatile("dmb sy");
 	v3d[V3D_CT1EA] = bus_addr + BUFFER_RENDER_CONTROL + render_length;
+	asm volatile("dmb sy");
 
 	// Wait for render to execute
-	while (v3d[V3D_CT1CS] & 0x20);
+	while (v3d[V3D_CT1CS] & 0x20)
+	{	
+		asm volatile("dmb sy");
+	}
 
 	// wait for render to finish
-	while(v3d[V3D_RFC] == 0) {} 
+	while(v3d[V3D_RFC] == 0)
+	{
+		asm volatile("dmb sy");
+	} 
 
 	// stop the thread
+	asm volatile("dmb sy");
 	v3d[V3D_CT1CS] = 0x20;
+	asm volatile("dmb sy");
 }
