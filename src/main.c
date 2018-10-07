@@ -29,12 +29,12 @@ void main()
 	init_audio_jack();
 	
 	//Create mmu table on Core 0
-//	init_page_table();
+	init_page_table();
 
-	//start_other_3_cores();
-//	mmu_init(); //Now turn on MMU on Core 0
-//	*core0_ready = true;
+	mmu_init(); //Now turn on MMU on Core 0
+	*core0_ready = true;
 
+	multicore_init(); //Now core_execute is avalible to be run after this
 
 //	printf("[INFO] GPU memory split is: %d\n", get_gpu_memory_split());
 

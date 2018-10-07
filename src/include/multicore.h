@@ -8,7 +8,9 @@ extern volatile bool *core1_ready;
 extern volatile bool *core2_ready;
 extern volatile bool *core3_ready;
 
-void start_other_3_cores();
+void multicore_init();
 int get_core_id();
+
+int core_execute(char core_id, void (*func_ptr) (void *), void *data_ptr);
 
 #endif

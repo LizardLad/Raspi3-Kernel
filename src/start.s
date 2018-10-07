@@ -128,28 +128,18 @@ exit_el1:
 	cmp 	x1, #1		// Check for core1
 	beq  	1f		//Core 1 jumps out to lable 1
 	cmp	x1, #2		//Check for Core 2
-	beq	2f		//Core 2 jump to label 2
+	beq	1f		//Core 2 jump to label 2
 	cmp	x1, #3		//Check for Core 3
-	beq	3f		//Core 3 jump to label 3
+	beq	1f		//Core 3 jump to label 3
 	b 	_hang		//I don't know why this would actually happen
 
-//Core 1 main
+//Core 1, 2, 3 main
 1:
-	bl       core1_main
-	b 	_hang
-
-//Core 2 main
-2:
-	bl	core2_main
-	b 	_hang
-
-//Core 3 main
-3:
-	bl	core3_main
+	bl	core_wait_for_instruction
 	b	_hang
 
 //Core 0 main
-4:
+2:
 //"================================================================"
 //  About to go to into C kernel clear BSS (Core0 only)
 //"================================================================"
@@ -333,7 +323,39 @@ _vectors:
 	bl      dbg_main
 	bl	register_restore	// restore corruptible registers .. does all but x29,x30
 	ldp	x29, x30, [sp], #16		// restore x29,x30 pulling stack back up 16
-eret
+	eret
+	
+	// synchronous
+	.balign 0x80
+	b _hang
+
+	// IRQ
+	.balign 0x80
+	b _hang	
+
+	// FIQ
+	.balign 0x80
+	b _hang	
+
+	// SError
+	.balign 0x80
+	b _hang	
+
+	// synchronous
+	.balign 0x80
+	b _hang
+
+	// IRQ
+	.balign 0x80
+	b _hang	
+
+	// FIQ
+	.balign 0x80
+	b _hang	
+
+	// SError
+	.balign 0x80
+	b _hang	
 
 //"+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 //				                 SEMAPHORE ROUTINES		    

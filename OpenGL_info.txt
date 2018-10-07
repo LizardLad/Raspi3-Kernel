@@ -1,0 +1,7 @@
+The only use of OpenGL in this program is to be able to blank the screen really quickly
+Things that were created before mmu initialization can be rendered again after the mmu 
+has been turned on
+This means a black quad will be created that is the size of the screen and that will be
+used to blank the screen.
+The reason things cannot be created after initialization is because there are cache coherency
+issues.
