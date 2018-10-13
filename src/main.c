@@ -96,8 +96,6 @@ void main()
 	mmu_init(); //Now turn on MMU on Core 0
 	*core0_ready = true;
 
-	//V3D_RenderScene(&scene);
-
 	multicore_init(); //Now core_execute is avalible to be run after this
 
 	printf("[CORE %d] [TEST] Testing 64bit unsigned int print %u\n", get_core_id(), 0xFFFFFFFFFFFFFFFF);
@@ -112,9 +110,6 @@ void main()
 	while(1) 
 	{
 		uart_send(uart_getc());
-		//DoRotate(0.1f);
-		//V3D_RenderScene(&scene);
-		//wait_usec(10);
 	}
 
 	// Release resources

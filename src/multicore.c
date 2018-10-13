@@ -38,7 +38,7 @@ void multicore_init()
 		"str    x2, [x1]\n"\
 		"sev\n");
 	
-	while (*core1_ready == false) {asm volatile("nop");}
+	while (*core1_ready == false) {asm volatile("dmb sy");}
 		
 	lfb_print(0, 0, "1");
 	
@@ -47,7 +47,7 @@ void multicore_init()
 		"str	x2, [x1]\n"\
 		"sev\n");
 	
-	while (*core2_ready == false) {asm volatile("nop");}
+	while (*core2_ready == false) {asm volatile("dmb sy");}
 	
 	lfb_print(0, 1, "2");
 	
@@ -56,7 +56,7 @@ void multicore_init()
 		"str	x2, [x1]\n"\
 		"sev");
 	
-	while (*core3_ready == false) {asm volatile("nop");}
+	while (*core3_ready == false) {asm volatile("dmb sy");}
 
 	lfb_print(0, 2, "3");	
 }
@@ -78,13 +78,17 @@ void get_core_ready()
 {
 	switch(get_core_id())
 	{
+		//Cache stuff required here
 		case 1:
+			asm volatile ("dc civac, %0" : : "r" (core1_ready) : "memory");
 			*core1_ready = true;
 			break;
 		case 2:
+			asm volatile ("dc civac, %0" : : "r" (core2_ready) : "memory");
 			*core2_ready = true;
 			break;
 		case 3:
+			asm volatile ("dc civac, %0" : : "r" (core3_ready) : "memory");
 			*core3_ready = true;
 			break;
 		default:
