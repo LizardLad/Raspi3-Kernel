@@ -25,25 +25,25 @@ extern "C" {									// Put extern C directive wrapper around
 {***************************************************************************}
 {                                                                           }
 {++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-#include <stdbool.h>							// Needed for bool and true/false
-#include <stdint.h>								// Needed for uint8_t, uint32_t, etc
-#include "rpi-smartstart.h"						// Need for mailbox
+#include "stdbool.h"	// Needed for bool and true/false
+#include "stdint.h"	// Needed for uint8_t, uint32_t, etc
+#include "mbox.h"	// Need for mailbox
 
 /*--------------------------------------------------------------------------}
 ;{		  ENUMERATED GPU MEMORY ALLOCATE FLAGS FROM REFERENCE			  	}
 ;{--------------------------------------------------------------------------}
 ;{  https://github.com/raspberrypi/firmware/wiki/Mailbox-property-interface }
 ;{-------------------------------------------------------------------------*/
-	typedef enum {
-		MEM_FLAG_DISCARDABLE = 1 << 0,									/* can be resized to 0 at any time. Use for cached data */
-		MEM_FLAG_NORMAL = 0 << 2,									/* normal allocating alias. Don't use from ARM		*/
-		MEM_FLAG_DIRECT = 1 << 2,									/* 0xC alias uncached					*/
-		MEM_FLAG_COHERENT = 2 << 2,									/* 0x8 alias. Non-allocating in L2 but coherent		*/
-		MEM_FLAG_L1_NONALLOCATING = (MEM_FLAG_DIRECT | MEM_FLAG_COHERENT), /* Allocating in L2									*/
-		MEM_FLAG_ZERO = 1 << 4,										/* initialise buffer to all zeros			*/
-		MEM_FLAG_NO_INIT = 1 << 5,									/* don't initialise (default is initialise to all ones	*/
-		MEM_FLAG_HINT_PERMALOCK = 1 << 6,								/* Likely to be locked for long periods of time.	*/
-	} V3D_MEMALLOC_FLAGS;
+typedef enum {
+	MEM_FLAG_DISCARDABLE = 1 << 0,		/* can be resized to 0 at any time. Use for cached data */
+	MEM_FLAG_NORMAL = 0 << 2,		/* normal allocating alias. Don't use from ARM		*/
+	MEM_FLAG_DIRECT = 1 << 2,		/* 0xC alias uncached					*/
+	MEM_FLAG_COHERENT = 2 << 2,		/* 0x8 alias. Non-allocating in L2 but coherent		*/
+	MEM_FLAG_L1_NONALLOCATING = (MEM_FLAG_DIRECT | MEM_FLAG_COHERENT), /* Allocating in L2		*/
+	MEM_FLAG_ZERO = 1 << 4,			/* initialise buffer to all zeros			*/
+	MEM_FLAG_NO_INIT = 1 << 5,		/* don't initialise (default is initialise to all ones	*/
+	MEM_FLAG_HINT_PERMALOCK = 1 << 6,	/* Likely to be locked for long periods of time.	*/
+} V3D_MEMALLOC_FLAGS;
 
 /*--------------------------------------------------------------------------}
 ;{			  DEFINE A GPU MEMORY HANDLE TO STOP CONFUSION				  	}
@@ -106,11 +106,11 @@ typedef struct render_t
 
 /*-[ InitV3D ]--------------------------------------------------------------}
 . This must be called before any other function is called in this unit and
-. should be called after the any changes to teh ARM system clocks. That is
+. should be called after the any changes to the ARM system clocks. That is
 . because it needs to make settings based on the system clocks.
 . RETURN : TRUE if system could be initialized, FALSE if initialize fails
 .--------------------------------------------------------------------------*/
-bool InitV3D (void);
+bool init_V3D (void);
 
 /*==========================================================================}
 {					PUBLIC GPU MEMORY FUNCTIONS	    }	
@@ -147,13 +147,16 @@ bool V3D_execute_code (uint32_t code, uint32_t r0, uint32_t r1, uint32_t r2, uin
 bool V3D_execute_qpu (int32_t num_qpus, uint32_t control, uint32_t noflush, uint32_t timeout);
 
 
-bool V3D_InitializeScene (RENDER_STRUCT* scene, uint32_t renderWth, uint32_t renderHt);
-bool V3D_AddVertexesToScene (RENDER_STRUCT* scene);
-bool V3D_AddShadderToScene (RENDER_STRUCT* scene, uint32_t* frag_shader, uint32_t frag_shader_emits);
-bool V3D_SetupRenderControl(RENDER_STRUCT* scene, VC4_ADDR renderBufferAddr);
-bool V3D_SetupBinningConfig (RENDER_STRUCT* scene);
+bool V3D_InitializeScene(RENDER_STRUCT *scene, uint32_t renderWth, uint32_t renderHt);
+bool V3D_AddVertexesToScene(RENDER_STRUCT *scene);
+bool V3D_AddShadderToScene(RENDER_STRUCT *scene, uint32_t* frag_shader, uint32_t frag_shader_emits);
+bool V3D_SetupRenderControl(RENDER_STRUCT *scene, VC4_ADDR renderBufferAddr);
+bool V3D_SetupBinningConfig(RENDER_STRUCT *scene);
 
-void V3D_RenderScene (RENDER_STRUCT* scene);
+void V3D_RenderScene(RENDER_STRUCT *scene);
+void V3D_DestroyScene(RENDER_STRUCT *scene);
+
+void gl_quad_scene_init(RENDER_STRUCT *scene, uint32_t *shader); //This is used because in this kernels current state with the mmu on the only thing that can be done is a render call
 
 #ifdef __cplusplus			// If we are including to a C++ file
 }					// Close the extern C directive wrapper

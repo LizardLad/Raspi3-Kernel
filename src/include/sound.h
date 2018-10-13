@@ -29,8 +29,8 @@ extern const uint16_t __variable ## _end;
 extern const uint16_t *audio_start;
 extern const uint16_t *audio_end;
 
-void play_audio (void);
 void init_audio_jack(void);
+void play_audio (void *);
 
 
 #ifdef __cplusplus								// If we are including to a C++ file

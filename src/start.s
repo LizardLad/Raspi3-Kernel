@@ -124,7 +124,7 @@ EL2_ret:
 exit_el1:	
 	mrs 	x1, mpidr_el1	// Read core id on AARCH64
 	and 	x1, x1, #0x3	// Make core 2 bit bitmask in x1
-	cbz  	x1, 4f		// Core 0 jumps out to label 2
+	cbz  	x1, 2f		// Core 0 jumps out to label 2
 	cmp 	x1, #1		// Check for core1
 	beq  	1f		//Core 1 jumps out to lable 1
 	cmp	x1, #2		//Check for Core 2

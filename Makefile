@@ -1,44 +1,29 @@
 SOURCE = src/
-NONOPTIMISED = src/NoOptimisation/
+COMPILER_ROOT = ../Linaro\ Cross\ Compiler/bin/aarch64-elf-
 BUILD = build/
 TARGET = kernel8.img
-LINKER = link.ld
+LINKER_SCRIPT = link.ld
 FONT = src/font/font.psf
 FONTOBJ = build/font.o
-AUDIO = src/audio/Interlude.bin
-AUDIOOBJ = build/Interlude.o
-LIBS = lib/libopenlibm.a
-LIBOBJS = build/libopenlibm.o
 ASMOBJS = $(patsubst $(SOURCE)%.s,$(BUILD)%.o,$(wildcard $(SOURCE)*.s))
 COBJS = $(patsubst $(SOURCE)%.c,$(BUILD)%.o,$(wildcard $(SOURCE)*.c))
-COBJSNOOP = $(patsubst $(NONOPTIMISED)%.c,$(BUILD)%.o,$(wildcard $(NONOPTIMISED)*.c))
 
-CFLAGS = -Wall -O2 -ffreestanding -nostdinc -nostdlib -nostartfiles -std=gnu99 -mstrict-align
-CFLAGSNOOP = -Wall -ffreestanding -nostdinc -nostdlib -nostartfiles
+CFLAGS = -Wall -O2 -ffreestanding -nostartfiles -std=gnu11 -mstrict-align -mcpu=cortex-a53 -fno-tree-loop-vectorize -fno-tree-slp-vectorize -g -lm -lc -lgcc
 
 all: clean kernel8.img
 
 $(BUILD)%.o: $(SOURCE)%.s
-	aarch64-linux-gnu-gcc -g $(CFLAGS) -c  $< -o $@
+	$(COMPILER_ROOT)gcc $(CFLAGS) -c  $< -o $@
 
 $(BUILD)%.o: $(SOURCE)%.c
-	aarch64-linux-gnu-gcc -g $(CFLAGS) -c  $< -o $@  
+	$(COMPILER_ROOT)gcc $(CFLAGS) -c  $< -o $@  
 
 $(FONTOBJ): $(FONT)
-	aarch64-linux-gnu-ld -r -b binary -o $(FONTOBJ) $(FONT)
-
-#$(AUDIOOBJ): $(AUDIO)
-#	aarch64-linux-gnu-ld -r -b binary -o $(AUDIOOBJ) $(AUDIO)
-	
-$(BUILD)%.o: $(NONOPTIMISED)%.c
-	aarch64-linux-gnu-gcc $(CFLAGSNOOP) -c $< -o $@
-
-
-#aarch64-linux-gnu-ld -nostdlib -nostartfiles $(FONTOBJ) $(AUDIOOBJ) $(ASMOBJS) $(COBJSNOOP) $(COBJS) -L lib -l openlibm -T $(LINKER) -o $(BUILD)kernel.elf
+	$(COMPILER_ROOT)ld -r -b binary -o $(FONTOBJ) $(FONT)
 
 kernel8.img: $(ASMOBJS) $(COBJS) $(FONTOBJ) $(COBJSNOOP)
-	aarch64-linux-gnu-ld -nostdlib -nostartfiles $(FONTOBJ) $(ASMOBJS) $(COBJSNOOP) $(COBJS) -L lib -l openlibm -T $(LINKER) -o $(BUILD)kernel.elf
-	aarch64-linux-gnu-objcopy $(BUILD)kernel.elf -O binary $(TARGET)
+	$(COMPILER_ROOT)gcc -nostartfiles $(FONTOBJ) $(ASMOBJS) $(COBJS) -T $(LINKER_SCRIPT) -o $(BUILD)kernel.elf -lm -lc -lgcc
+	$(COMPILER_ROOT)objcopy $(BUILD)kernel.elf -O binary $(TARGET)
 
 clean:
 	rm -rf build/* 

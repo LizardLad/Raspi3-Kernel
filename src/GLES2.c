@@ -4,6 +4,9 @@
 #include "include/mbox.h" //Needed for mailbox
 #include "include/GLES.h"
 #include "include/start.h"
+#include "include/lfb.h"
+#include "include/printf.h"
+#include "include/gpio.h"
 
 /* REFERENCES */
 /* https://docs.broadcom.com/docs/12358545 */
@@ -184,19 +187,19 @@ struct __attribute__((__packed__, aligned(1))) EMITDATA {
 . because it needs to make settings based on the system clocks.
 . RETURN : TRUE if system could be initialized, FALSE if initialize fails
 .--------------------------------------------------------------------------*/
-bool InitV3D (void) {
+bool init_V3D (void) {
 	if (mailbox_tag_message(0, 9,
-		MAILBOX_TAG_SET_CLOCK_RATE, 8, 8, CLK_V3D_ID, 250000000,	// Set V3D clock to 250Mhz
-		MAILBOX_TAG_ENABLE_QPU, 4, 4, 1))				// Enable the QPU untis
+		MBOX_TAG_SET_CLKRATE, 8, 8, CLK_V3D_ID, 250000000,	// Set V3D clock to 250Mhz
+		MBOX_TAG_ENABLE_QPU, 4, 4, 1))				// Enable the QPU untis
 	{									// Message was successful
 		if (v3d[V3D_IDENT0] == 0x02443356) return true;			// We can read V3D ID number.
 	}
 	return false;								// Initialize failed
 }
 
-/*==========================================================================}
-{						  PUBLIC GPU MEMORY FUNCTIONS						}
-{==========================================================================*/
+/*==============================================================================}
+{					  PUBLIC GPU MEMORY FUNCTIONS		}
+{==============================================================================*/
 
 /*-[ V3D_mem_alloc ]--------------------------------------------------------}
 . Allocates contiguous memory on the GPU with size and alignment in bytes
@@ -207,7 +210,7 @@ GPU_HANDLE V3D_mem_alloc (uint32_t size, uint32_t align, V3D_MEMALLOC_FLAGS flag
 {
 	uint32_t buffer[6];
 	if (mailbox_tag_message(&buffer[0], 6,
-		MAILBOX_TAG_ALLOCATE_MEMORY, 12, 12, size, align, flags))	// Allocate memory tag 
+		MBOX_TAG_ALLOCATE_MEMORY, 12, 12, size, align, flags))		// Allocate memory tag 
 	{									// Message was successful
 		return buffer[3];						// GPU handle returned										
 	}
@@ -222,7 +225,7 @@ bool V3D_mem_free (GPU_HANDLE handle)
 {
 	uint32_t buffer[4] = { 0 };
 	if (mailbox_tag_message(0, 4,
-		MAILBOX_TAG_RELEASE_MEMORY, 4, 4, handle))			// Release memory tag
+		MBOX_TAG_RELEASE_MEMORY, 4, 4, handle))				// Release memory tag
 	{									// Release was successful
 		if (buffer[3] == 0) return true;				// Return true
 	}
@@ -237,7 +240,7 @@ uint32_t V3D_mem_lock (GPU_HANDLE handle)
 {
 	uint32_t buffer[4] = { 0 };
 	if (mailbox_tag_message(&buffer[0], 4,
-		MAILBOX_TAG_LOCK_MEMORY, 4, 4, handle))				// Lock memory tag
+		MBOX_TAG_LOCK_MEMORY, 4, 4, handle))				// Lock memory tag
 	{									// message was successful
 		return buffer[3];						// Return the bus address
 	}
@@ -252,7 +255,7 @@ bool V3D_mem_unlock (GPU_HANDLE handle)
 {
 	uint32_t buffer[4] = { 0 };
 	if (mailbox_tag_message(0, 4,
-		MAILBOX_TAG_UNLOCK_MEMORY, 4, 4, handle))			// Memory unlock tag
+		MBOX_TAG_UNLOCK_MEMORY, 4, 4, handle))				// Memory unlock tag
 	{									// Message was successful
 		if (buffer[3] == 0) return true;				// Return true
 	}
@@ -262,14 +265,14 @@ bool V3D_mem_unlock (GPU_HANDLE handle)
 bool V3D_execute_code (uint32_t code, uint32_t r0, uint32_t r1, uint32_t r2, uint32_t r3, uint32_t r4, uint32_t r5)
 {
 	return (mailbox_tag_message(0, 10,
-		MAILBOX_TAG_EXECUTE_CODE, 28, 28,
+		MBOX_TAG_EXECUTE_CODE, 28, 28,
 		code, r0, r1, r2, r3, r4, r5));
 }
 
 bool V3D_execute_qpu (int32_t num_qpus, uint32_t control, uint32_t noflush, uint32_t timeout) 
 {
 	return (mailbox_tag_message(0, 7,
-		MAILBOX_TAG_EXECUTE_QPU, 16, 16,
+		MBOX_TAG_EXECUTE_QPU, 16, 16,
 		num_qpus, control, noflush, timeout));
 }
 
@@ -331,7 +334,7 @@ bool V3D_AddVertexesToScene (RENDER_STRUCT* scene)
 	if (scene) 
 	{
 		scene->vertexVC4 = (scene->loadpos + 127) & ALIGN_128BIT_MASK;	// Hold vertex start adderss .. aligned to 128bits
-		uint8_t* p = (uint8_t*)(uintptr_t)GPUaddrToARMaddr(scene->vertexVC4);
+		uint8_t* p = (uint8_t*)(uintptr_t)GPU_addr_to_ARM_addr(scene->vertexVC4);
 		uint8_t* q = p;
 
 		/* Setup triangle vertices from OpenGL tutorial which used this */
@@ -391,7 +394,7 @@ bool V3D_AddVertexesToScene (RENDER_STRUCT* scene)
 		scene->loadpos = scene->vertexVC4 + (p - q);			// Update load position
 
 		scene->indexVertexVC4 = (scene->loadpos + 127) & ALIGN_128BIT_MASK;	// Hold index vertex start adderss .. align it to 128 bits
-		p = (uint8_t*)(uintptr_t)GPUaddrToARMaddr(scene->indexVertexVC4);
+		p = (uint8_t*)(uintptr_t)GPU_addr_to_ARM_addr(scene->indexVertexVC4);
 		q = p;
 
 		emit_uint8_t(&p, 0);	// quad - top left
@@ -417,7 +420,7 @@ bool V3D_AddShadderToScene (RENDER_STRUCT* scene, uint32_t* frag_shader, uint32_
 	if (scene)
 	{
 		scene->shaderStart = (scene->loadpos + 127) & ALIGN_128BIT_MASK;	// Hold shader start adderss .. aligned to 127 bits
-		uint8_t *p = (uint8_t*)(uintptr_t)GPUaddrToARMaddr(scene->shaderStart);	// ARM address for load
+		uint8_t *p = (uint8_t*)(uintptr_t)GPU_addr_to_ARM_addr(scene->shaderStart);	// ARM address for load
 		uint8_t *q = p;								// Hold start address
 
 		for (int i = 0; i < frag_shader_emits; i++)				// For the number of fragment shader emits
@@ -426,7 +429,7 @@ bool V3D_AddShadderToScene (RENDER_STRUCT* scene, uint32_t* frag_shader, uint32_
 		scene->loadpos = scene->shaderStart + (p - q);				// Update load position
 
 		scene->fragShaderRecStart = (scene->loadpos + 127) & ALIGN_128BIT_MASK;	// Hold frag shader start adderss .. .aligned to 128bits
-		p = (uint8_t*)(uintptr_t)GPUaddrToARMaddr(scene->fragShaderRecStart);
+		p = (uint8_t*)(uintptr_t)GPU_addr_to_ARM_addr(scene->fragShaderRecStart);
 		q = p;
 
 		// Okay now we need Shader Record to buffer
@@ -451,7 +454,7 @@ bool V3D_SetupRenderControl (RENDER_STRUCT* scene, VC4_ADDR renderBufferAddr)
 	if (scene)
 	{
 		scene->renderControlVC4 = (scene->loadpos + 127) & ALIGN_128BIT_MASK;		// Hold render control start adderss .. aligned to 128 bits
-		uint8_t *p = (uint8_t*)(uintptr_t)GPUaddrToARMaddr(scene->renderControlVC4);	// ARM address for load
+		uint8_t *p = (uint8_t*)(uintptr_t)GPU_addr_to_ARM_addr(scene->renderControlVC4);	// ARM address for load
 		uint8_t *q = p;									// Hold start address
 
 		// Clear colors
@@ -520,7 +523,7 @@ bool V3D_SetupBinningConfig (RENDER_STRUCT* scene)
 {
 	if (scene)
 	{
-		uint8_t *p = (uint8_t*)(uintptr_t)GPUaddrToARMaddr(scene->binningDataVC4);	// ARM address for binning data load
+		uint8_t *p = (uint8_t*)(uintptr_t)GPU_addr_to_ARM_addr(scene->binningDataVC4);	// ARM address for binning data load
 		uint8_t *list = p;								// Hold start address
 
 		emit_uint8_t(&p, GL_TILE_BINNING_CONFIG);					// tile binning config control 
@@ -623,4 +626,28 @@ void V3D_RenderScene (RENDER_STRUCT* scene)
 		while (v3d[V3D_RFC] == 0) {}
 
 	}
+}
+
+void V3D_DestroyScene(RENDER_STRUCT *scene)
+{
+	V3D_mem_unlock(scene->rendererHandle);
+	V3D_mem_free(scene->rendererHandle);
+}
+
+void gl_quad_scene_init(RENDER_STRUCT *scene, uint32_t *shader)
+{
+	// Step1: Initialize scene
+	V3D_InitializeScene(scene, lfb_width, lfb_height);
+
+	// Step2: Add vertexes to scene
+	V3D_AddVertexesToScene(scene);
+
+	// Step3: Add shader to scene
+	V3D_AddShadderToScene(scene, shader, 18); //The 18 represents the number of entries in the shader array
+
+	// Step4: Setup render control
+	V3D_SetupRenderControl(scene, ARM_addr_to_GPU_addr((void*)(uintptr_t)lfb));
+
+	// Step5: Setup binning
+	V3D_SetupBinningConfig(scene);
 }

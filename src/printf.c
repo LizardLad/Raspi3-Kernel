@@ -77,7 +77,7 @@ size_t ammount_to_alloc_with_symbols(char *str, __builtin_va_list args)
 			if(*str == 'x')
 			{
 				val += 18;				//Was 20 but reduced by two
-				__builtin_va_arg(args, int64_t);	//because %x already has space
+				__builtin_va_arg(args, uint64_t);	//because %x already has space
 			}						//allocated
 
 			//Check for %f
@@ -89,6 +89,12 @@ size_t ammount_to_alloc_with_symbols(char *str, __builtin_va_list args)
 			{
 				val -= 2;       
 	        		val += strlen((char *)__builtin_va_arg(args, char *));
+			}
+			
+			if(*str == 'u')
+			{
+				val += 22;
+				__builtin_va_arg(args, uint64_t);
 			}	
 		}
 		str++;

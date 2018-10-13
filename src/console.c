@@ -2,6 +2,8 @@
 #include "include/malloc.h"
 #include "include/string.h"
 #include "include/lfb.h"
+#include "include/GLES.h"
+#include "include/scene.h"
 
 //Good luck is you are trying to debug this file
 //The function here is a wrapper around lfb_print to 
@@ -140,7 +142,8 @@ void console_print(char *input)
 	
 	//Just before printing clear the screen for now until the mailbox is done just draw
 	//a big black rectangle
-	lfb_clear_rect();
+	//lfb_clear_rect();
+	V3D_RenderScene(&scene);
 
 	if(number_of_newlines_req_diff < 0) //Have too many newlines!
 	{

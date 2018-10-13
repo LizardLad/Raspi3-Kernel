@@ -28,11 +28,11 @@ void uart_init()
 	/* set up clock for consistent divisor values */
 	mailbox[0] = 8*4;
 	mailbox[1] = MBOX_REQUEST;
-	mailbox[2] = MBOX_TAG_SETCLKRATE; // set clock rate
+	mailbox[2] = MBOX_TAG_SET_CLKRATE; // set clock rate
 	mailbox[3] = 12;
 	mailbox[4] = 8;
-	mailbox[5] = 2;           // UART clock
-	mailbox[6] = 4000000;     // 4Mhz
+	mailbox[5] = CLK_UART_ID;	// UART clock
+	mailbox[6] = 4000000;		// 4Mhz
 	mailbox[7] = MBOX_TAG_LAST;
 	mailbox_call(MBOX_CH_PROP);
 
@@ -81,6 +81,7 @@ char uart_getc() {
  * Display a string
  */
 void uart_puts(char *s) {
+	//TODO semaphore here
 	while(*s) {
 		/* convert newline to carrige return + newline */
 		if(*s=='\n')
