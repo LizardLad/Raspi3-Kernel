@@ -36,6 +36,12 @@ void uart_init()
 	mailbox[7] = MBOX_TAG_LAST;
 	mailbox_call(MBOX_CH_PROP);
 
+	uint32_t buffer[5] = { 0 };
+	if(!mailbox_tag_message(buffer, 5, MBOX_TAG_SET_CLKRATE, 8, 8, CLK_UART_ID, 4000000))
+	{
+		return; //Fails silently be aware!
+	}
+
 	/* map UART0 to GPIO pins */
 	r=*GPFSEL1;
 	r&=~((7<<12)|(7<<15)); // gpio14, gpio15

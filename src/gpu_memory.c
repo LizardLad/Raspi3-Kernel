@@ -7,13 +7,7 @@
 uint32_t get_gpu_memory_split()
 {
 	uint32_t buffer[5] = { 0 };
-	//mailbox[0] = 8 * 4;
-	//mailbox[1] = 0;
-	//mailbox[2] = 0x10006;
-	//mailbox[3] = 8;
-	//mailbox[4] = 0;
-	//mailbox[5] = 0;
-	if(!mailbox_tag_message(buffer, 5, MBOX_TAG_GET_VC_MEMORY, 8, 0, 0, 0))
+	if(!mailbox_tag_message(buffer, 5, MBOX_TAG_GET_VC_MEMORY, 8, 8, 0, 0))
 	{
 		buffer[4]=512*1024*1024;
 	}
