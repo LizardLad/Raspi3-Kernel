@@ -1,4 +1,4 @@
-#include "include/stdint.h"
+#include <stdint.h>
 #include "include/mbox.h"
 #include "include/GLES.h"
 #include "include/printf.h"

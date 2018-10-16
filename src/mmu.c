@@ -1,7 +1,9 @@
-#include "include/stdbool.h"
-#include "include/stdint.h"
+#include <stdbool.h>
+#include <stdint.h>
 #include "include/mbox.h"
 #include "include/mmu.h"
+#include "include/multicore.h"
+#include "include/gpu_memory.h"
 
 /* REFERENCE FOR STAGE 1 NEXT LEVEL ENTRY */
 /* ARMv8-A_Architecture_Reference_Manual_(Issue_A.a).pdf  D5-1776 */
@@ -78,28 +80,25 @@ static __attribute__((aligned(4096))) VMSAv8_64_NEXTLEVEL_DESCRIPTOR Stage2virtu
 /* Stage3 ... Virtual mapping stage3 (final) ... basic minimum of a single table */
 static __attribute__((aligned(4096))) VMSAv8_64_STAGE2_BLOCK_DESCRIPTOR Stage3virtual[512] = { 0 };
 
+/* This is used to check if the mmu is enabled on a core */
+bool core_mmu_state[4] = { 0 };
+
+volatile bool *core0_mmu_ready = &core_mmu_state[0];
+volatile bool *core1_mmu_ready = &core_mmu_state[1];
+volatile bool *core2_mmu_ready = &core_mmu_state[2];
+volatile bool *core3_mmu_ready = &core_mmu_state[3];
+
 void init_page_table (void) {
 	uint32_t base = 0;
-	uint32_t  __attribute__((aligned(16))) msg[8] =
-	{
-		sizeof(msg),					// Message size
-		0,								// Response will go here
-		0x00010006,						// Get VC memory tag
-		8,								// 8 byte request
-		8,								// 8 byte response
-		0,								// Zero base response
-		0,								// Zero size response
-		0								// Tag end marker
-	};
-	if (mailbox_tag_write((uint32_t)(uintptr_t)&msg[0])) 			// Write message to mailbox
-		mailbox_tag_read();											// Read the status back
-	msg[5] /= 0x200000;												// 2MB block to VC base addr
+	uint32_t gpu_mem = 0;	
+       	gpu_mem = get_gpu_memory_split();
+	gpu_mem /= 0x200000;												// 2MB block to VC base addr
 
 	// initialize 1:1 mapping for TTBR0
 	/* The 21-12 entries are because that is only for 4K granual it makes it obvious to change for other granual sizes */
 
 	/* Ram from 0 to VC base addr*/
-	for (base = 0; base < msg[5] - 1; base++) {
+	for (base = 0; base < gpu_mem - 1; base++) {
 		// Each block descriptor (2 MB)
 		Stage2map1to1[base] = (VMSAv8_64_STAGE2_BLOCK_DESCRIPTOR) 
 		{ 
@@ -251,7 +250,25 @@ void mmu_init(void)
 		(1 << 1) |   // A, Alignment check enable bit
 		(1 << 0);     // set M, enable MMU
 	asm volatile ("msr sctlr_el1, %0; isb" : : "r" (r));
-
+	
+	switch(get_core_id())
+	{
+		case 0:
+			*core0_mmu_ready = true;
+			break;
+		case 1:
+			*core1_mmu_ready = true;
+			break;
+		case 2:
+			*core2_mmu_ready = true;
+			break;
+		case 3:
+			*core3_mmu_ready = true;
+			break;
+		default:
+			while(1); //Hang because there is certainly a problem
+			break;
+	}
 }
 
 

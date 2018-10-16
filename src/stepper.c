@@ -1,4 +1,5 @@
-#include "include/stdint.h"
+#include <stdint.h>
+#include <stdlib.h>
 #include "include/gpio.h"
 #include "include/stepper.h"
 

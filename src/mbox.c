@@ -1,5 +1,5 @@
-#include "include/stdint.h"
-#include "include/stdbool.h"
+#include <stdint.h>
+#include <stdbool.h>
 #include "include/mbox.h"
 #include "include/gpio.h"
 #include "include/start.h"

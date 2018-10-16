@@ -1,4 +1,4 @@
-#include "include/stdint.h"
+#include <stdint.h>
 #include "include/gpio.h"
 #include "include/led.h"
 #include "include/printf.h"
@@ -8,7 +8,7 @@
 
 void core1_main()
 {
-	*core1_ready = true;
+	core_ready[0] = true;
 	mmu_init();
 
 	printf("[CORE 1] [INFO] Hello from CORE 1!\n");

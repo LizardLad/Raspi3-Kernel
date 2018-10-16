@@ -1,4 +1,4 @@
-#include "include/stdint.h"
+#include <stdint.h>
 #include "include/malloc.h"
 #include "include/string.h"
 #include "include/lfb.h"
@@ -45,6 +45,14 @@ void console_init()
 	}
 	console_rollback_buffer[(lfb_width / font->width) * (lfb_height / font->height) + 1] = '\0';
 	//We are done here!
+}
+
+void console_print_char(char c)
+{
+	char temp[2];
+	temp[0] = c;
+	temp[1] = 0;
+	console_print(temp);
 }
 
 void console_print(char *input)
@@ -140,10 +148,12 @@ void console_print(char *input)
 
 	int64_t number_of_newlines_req_diff = (number_of_lines - 1) - number_of_newlines;
 	
-	//Just before printing clear the screen for now until the mailbox is done just draw
-	//a big black rectangle
-	//lfb_clear_rect();
-	V3D_RenderScene(&scene);
+	//Just before printing clear the screen for now just draw a big black rectangle
+	if(number_of_newlines != 0)
+	{
+		lfb_clear_rect();
+		//V3D_RenderScene(&scene);
+	}
 
 	if(number_of_newlines_req_diff < 0) //Have too many newlines!
 	{

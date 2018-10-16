@@ -1,11 +1,8 @@
 #ifndef MALLOC_H
 #define MALLOC_H
 
-#include "stdint.h"
-
-#define NULL 0x0
-
-#define size_t uint64_t
+#include <stdint.h>
+#include <stddef.h>
 
 void dynamic_memory_alloc_init();
 char *malloc(size_t amount_to_allocate);

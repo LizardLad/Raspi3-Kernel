@@ -3,10 +3,7 @@
 
 #include "stdbool.h"
 
-extern volatile bool *core0_ready;
-extern volatile bool *core1_ready;
-extern volatile bool *core2_ready;
-extern volatile bool *core3_ready;
+extern volatile bool core_ready[3];
 
 void multicore_init();
 int get_core_id();

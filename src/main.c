@@ -1,4 +1,5 @@
-#include "include/stdint.h"
+#include <stdint.h>
+#include <math.h>
 #include "include/GLES.h"
 #include "include/uart.h"
 #include "include/lfb.h"
@@ -11,7 +12,6 @@
 #include "include/multicore.h"
 #include "include/gpu_memory.h"
 #include "include/start.h"
-#include "include/math.h"
 #include "include/delays.h"
 #include "include/scene.h"
 
@@ -83,23 +83,27 @@ void main()
 	// set up serial console
 	uart_init();
 	lfb_init();
-
+	
 	dynamic_memory_alloc_init();
 	console_init();	
+	printf_init(console_print_char);
 	init_audio_jack();
 
-	gl_quad_scene_init(&scene, &(shader[0]));
+	//gl_quad_scene_init(&scene, &(shader[0]));
 
 	//Create mmu table on Core 0
 	init_page_table();
 
 	mmu_init(); //Now turn on MMU on Core 0
-	*core0_ready = true;
 
 	multicore_init(); //Now core_execute is avalible to be run after this
 
 	printf("[CORE %d] [TEST] Testing 64bit unsigned int print %u\n", get_core_id(), 0xFFFFFFFFFFFFFFFF);
 	printf("[INFO] GPU memory split is: %d\n", get_gpu_memory_split());
+	for(int i = 0; i < 20; i++)
+	{
+		printf("\n");
+	}
 
 	INCLUDE_BINARY_FILE(believer, "src/audio/believer.bin", ".rodata.believer");
 	audio_start = &believer_start;
@@ -113,5 +117,5 @@ void main()
 	}
 
 	// Release resources
-	V3D_DestroyScene(&scene);	
+	//V3D_DestroyScene(&scene);	
 }

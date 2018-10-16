@@ -1,4 +1,4 @@
-#include "include/stdint.h"
+#include <stdint.h>
 #include "include/servo.h"
 #include "include/printf.h"
 #include "include/multicore.h"
@@ -8,7 +8,7 @@
 
 void core3_main()
 {
-	*core3_ready = true;
+	core_ready[2] = true;
 	mmu_init();
 
 	printf("[CORE 3] [INFO] Hello from CORE 3!\n");

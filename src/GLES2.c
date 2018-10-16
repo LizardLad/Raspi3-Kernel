@@ -1,6 +1,7 @@
-#include "include/stdbool.h" //Needed for bool true and false
-#include "include/stdint.h" //Needed for set width integer types
-#include "include/math.h"
+#include <stdbool.h>	//Needed for bool true and false
+#include <stdint.h>	//Needed for set width integer types
+#include <math.h>
+
 #include "include/mbox.h" //Needed for mailbox
 #include "include/GLES.h"
 #include "include/start.h"

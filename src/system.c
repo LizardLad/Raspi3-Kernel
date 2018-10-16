@@ -1,4 +1,4 @@
-#include "include/stdint.h"
+#include <stdint.h>
 #include "include/mbox.h"
 
 void set_cpu_clock(uint32_t clock_rate)

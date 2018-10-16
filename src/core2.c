@@ -6,7 +6,7 @@
 
 void core2_main()
 {
-	*core2_ready = true;
+	core_ready[1] = true;
 	mmu_init();
 
 	printf("[CORE 2] [INFO] Hello From CORE 2!\n");

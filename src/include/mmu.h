@@ -1,10 +1,11 @@
 #ifndef _MMU_
 #define _MMU_
 
-#ifdef __cplusplus								// If we are including to a C++
-extern "C" {									// Put extern C directive wrapper around
+#ifdef __cplusplus	// If we are including to a C++
+extern "C" {		// Put extern C directive wrapper around
 #endif
-#include "stdint.h"								// Needed for uint8_t, uint32_t, etc
+#include <stdint.h>	// Needed for uint8_t, uint32_t, etc
+#include <stdbool.h>
 
 #define MT_DEVICE_nGnRnE	0
 #define MT_DEVICE_nGnRE		1
@@ -22,6 +23,11 @@ extern "C" {									// Put extern C directive wrapper around
 					 MAIR(0x44, MT_NORMAL_NC) | \
 					 MAIR(0xff, MT_NORMAL) | \
 					 MAIR(0xbb, MT_NORMAL_WT))
+
+extern volatile bool *core0_mmu_ready;
+extern volatile bool *core1_mmu_ready;
+extern volatile bool *core2_mmu_ready;
+extern volatile bool *core3_mmu_ready;
 
 void init_page_table (void);
 
