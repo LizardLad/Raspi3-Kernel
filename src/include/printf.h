@@ -45,7 +45,7 @@ extern "C" {									// Put extern C directive wrapper around
 . Until this function is called with a valid handler output will not occur.
 . 19Oct17 LdB
 .--------------------------------------------------------------------------*/
-void Init_EmbStdio ( void (*handler)(char ch));
+void printf_init( void (*handler)(char ch));
 
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++}

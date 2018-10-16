@@ -4,6 +4,7 @@
 #include "include/lfb.h"
 #include "include/GLES.h"
 #include "include/scene.h"
+#include "include/console.h"
 
 //Good luck is you are trying to debug this file
 //The function here is a wrapper around lfb_print to 
