@@ -64,6 +64,21 @@ int get_core_id()
 	return core_id;
 }
 
+void multicore_mmu_init()
+{
+	/* cores enter here .. turn on mmu and then park */
+	volatile uint32_t *mailbox = (uint32_t *)0x400000CC;
+	void(*func) (void) = 0;
+	mmu_init();
+	do
+	{
+		asm("wfe");
+		func = (void*)(uintptr_t)mailbox[get_core_id() * 4]; 
+		mailbox[get_core_id() * 4] = 0;
+	} while (func ==  0);
+	func();
+}
+
 void get_core_ready()
 {
 	switch(get_core_id())
@@ -129,10 +144,7 @@ int core_execute(char core_id, void (*func_ptr) (void *), void *data_ptr) //This
 void core_wait_for_instruction()
 {
 	//Here I have to do some init stuff as well to get the cores ready to opperate normally
-	//This mostly involves the mmu
-	//The mmu is required because semaphores are used in this very function!
 
-	mmu_init(); //The page table has already been created by core 0
 	printf("[CORE %d] [INFO] Hello from Core %d\n[CORE %d] [INFO] MMU Online\n", get_core_id(), get_core_id(), get_core_id());
 	
 	//This is a place the cores come when they are done and relaxing
@@ -191,4 +203,14 @@ void core_wait_for_instruction()
 				break;
 		}
 	}
+}
+
+void multicore_init_stage_2()
+{
+	volatile uint32_t *mailbox = (uint32_t *)0x4000009C;
+	mailbox[1 * 4] = (uintptr_t)(void *)core_wait_for_instruction;
+	mailbox[2 * 4] = (uintptr_t)(void *)core_wait_for_instruction;
+	mailbox[3 * 4] = (uintptr_t)(void *)core_wait_for_instruction;
+	asm(	"dmb sy\n"\
+		"sev");
 }

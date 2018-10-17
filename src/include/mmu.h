@@ -11,11 +11,11 @@ extern "C" {		// Put extern C directive wrapper around
 #define MT_DEVICE_nGnRE		1
 #define MT_DEVICE_GRE		2
 #define MT_NORMAL_NC		3
-#define MT_NORMAL		    4
+#define MT_NORMAL		4
 #define MT_NORMAL_WT		5
 
 // MACRO TO CREATE MAIR_BITS
-#define MAIR(attr, mt) ((unsigned long long)attr << ((mt) * 8))
+#define MAIR(attr, mt) ((uint64_t)attr << ((mt) * 8))
 
 #define MAIR_VALUE  (MAIR(0x00, MT_DEVICE_nGnRnE) | \
 					 MAIR(0x04, MT_DEVICE_nGnRE) | \
@@ -24,10 +24,7 @@ extern "C" {		// Put extern C directive wrapper around
 					 MAIR(0xff, MT_NORMAL) | \
 					 MAIR(0xbb, MT_NORMAL_WT))
 
-extern volatile bool *core0_mmu_ready;
-extern volatile bool *core1_mmu_ready;
-extern volatile bool *core2_mmu_ready;
-extern volatile bool *core3_mmu_ready;
+extern volatile bool core_mmu_online[4];
 
 void init_page_table (void);
 
@@ -35,8 +32,8 @@ void mmu_init (void);
 uint64_t virtualmap (uint32_t phys_addr, uint8_t memattrs);
 
 
-extern void semaphore_inc(uint32_t* sem);    // Code is in start.S
-extern void semaphore_dec(uint32_t* sem);	 // Code is in start.S
+extern void semaphore_inc(uint32_t* sem);	// Code is in start.S
+extern void semaphore_dec(uint32_t* sem);	// Code is in start.S
 
 #ifdef __cplusplus								// If we are including to a C++ file
 }												// Close the extern C directive wrapper

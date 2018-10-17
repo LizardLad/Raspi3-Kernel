@@ -102,6 +102,7 @@ void main()
 	mmu_init(); //Now turn on MMU on Core 0
 
 	multicore_init(); //Now core_execute is avalible to be run after this
+	multicore_init_stage_2();
 
 	printf("[CORE %d] [TEST] Testing 64bit unsigned int print %u\n", get_core_id(), 0xFFFFFFFFFFFFFFFF);
 	printf("[INFO] GPU memory split is: %d\n", get_gpu_memory_split());
