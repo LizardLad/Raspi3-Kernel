@@ -72,6 +72,11 @@ void DoRotate(double delta) {
 	vd[3].Y = centreY + (int16_t)((cosTheta * y4 + sinTheta * x4) * 16);
 }
 
+void core_print(void *data)
+{
+	printf("[CORE %d] [INFO] %s\n", get_core_id(), (char *)(uintptr_t)data);
+}
+
 void main()
 {
 	//Setup clocks first due to firmware bug
@@ -100,6 +105,10 @@ void main()
 
 	printf("[CORE %d] [TEST] Testing 64bit unsigned int print %u\n", get_core_id(), 0xFFFFFFFFFFFFFFFF);
 	printf("[INFO] GPU memory split is: %d\n", get_gpu_memory_split());
+
+	char *core_print_data = "Hello World";
+	core_execute(1, core_print, (void *)core_print_data);
+
 	for(int i = 0; i < 20; i++)
 	{
 		printf("\n");

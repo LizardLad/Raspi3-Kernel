@@ -4,6 +4,7 @@
 #include <stdarg.h>		// Standard C library needed for varadic arguments
 #include <string.h>		// Standard C librray needed for strnlen used
 #include "include/printf.h"	// This units header
+#include "include/mmu.h"
 
 /*------------------------------------------------------------------------------}
 { EMBEDDED SYSTEMS DO NOT HAVE M/SOFT BUFFER OVERRUN SAFE STRING FUNCTIONS  	}
@@ -708,8 +709,11 @@ void printf_init(void (*handler) (char* buffer))
 .	   FAIL: -1
 . 19Oct17 LdB
 .--------------------------------------------------------------------------*/
+static uint32_t printf_lock = 0;
+
 int printf(const char *fmt, ...)
 {
+	semaphore_inc(&printf_lock);
 	va_list args;	//Argument list
 	int count = -1;	//Preset fail to number of characters printed
 	if(console_write_char)
@@ -728,6 +732,7 @@ int printf(const char *fmt, ...)
 
 		va_end(args); //Clean up argument list
 	}
+	semaphore_dec(&printf_lock);
 	return count;
 }
 

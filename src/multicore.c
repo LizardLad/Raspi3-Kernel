@@ -97,7 +97,7 @@ void get_core_ready()
 int core_execute(char core_id, void (*func_ptr) (void *), void *data_ptr) //This will only run on core 0
 {
 	if(get_core_id()) return 1; //Not running on core 0
-	switch(get_core_id())
+	switch(core_id)
 	{
 		case 1:
 			semaphore_inc(&core_execute_lock[0]);
@@ -165,7 +165,7 @@ void core_wait_for_instruction()
 					core_execute_state[1] = false;
 					core_execute_local[1] = true;
 				}
-				semaphore_dec(&core_execute_lock[2]);
+				semaphore_dec(&core_execute_lock[1]);
 				if(core_execute_local[1] == true)
 				{
 					core2_jump_func_ptr(core2_data);
