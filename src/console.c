@@ -48,13 +48,13 @@ void console_init()
 	//We are done here!
 }
 
-void console_print_char(char c)
+/*void console_print_char(char c)
 {
 	char temp[2];
 	temp[0] = c;
 	temp[1] = 0;
 	console_print(temp);
-}
+}*/
 
 void console_print(char *input)
 {

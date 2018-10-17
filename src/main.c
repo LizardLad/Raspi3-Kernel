@@ -86,7 +86,7 @@ void main()
 	
 	dynamic_memory_alloc_init();
 	console_init();	
-	printf_init(console_print_char);
+	printf_init(console_print);
 	init_audio_jack();
 
 	//gl_quad_scene_init(&scene, &(shader[0]));

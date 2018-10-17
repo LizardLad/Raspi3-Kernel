@@ -21,7 +21,7 @@
 ****************************************************************************/
 static int max_out_count = INT_MAX;			// Max output count
 static int output_count = 0;				// Current output count								
-static void (*console_write_char) (char) = NULL;	// The output handler function
+static void (*console_write_char) (char *) = NULL;	// The output handler function
 
 /* EOF definition */
 #define EOF -1
@@ -652,6 +652,22 @@ static int prn_to_func(int c, void* prn_func)
 	return (int)c;
 }
 
+char intbuf[256];
+
+int blockprn_to_buf(int c, void *prn_func)
+{
+	intbuf[output_count] = (char)c;
+	output_count++;
+	if(output_count == sizeof(intbuf)-1)
+	{
+		void (*handler) (char *) = prn_func;
+		intbuf[sizeof(intbuf)-1] = 0;
+		handler(&intbuf[0]);
+		output_count = 0;
+	}
+	return (int)c;
+}
+
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++}
 {				 	PUBLIC FORMATTED OUTPUT ROUTINES	}
@@ -662,7 +678,7 @@ static int prn_to_func(int c, void* prn_func)
 {                       PUBLIC C INTERFACE ROUTINES                         }
 {***************************************************************************/
 
-/*-[Init_EmbStdio]----------------------------------------------------------}
+/*-[printf_init]------------------------------------------------------------}
 . Initialises the EmbStdio by setting the handler that will be called for
 . Each character to be output to the standard console. That routine could be 
 . a function that puts the character to a screen or something like a UART.
@@ -672,7 +688,7 @@ static int prn_to_func(int c, void* prn_func)
 . 19Oct17 LdB
 .--------------------------------------------------------------------------*/
 
-void printf_init(void (*handler) (char ch))
+void printf_init(void (*handler) (char* buffer))
 {
 	console_write_char = handler;		// Set new handler function
 }
@@ -694,17 +710,25 @@ void printf_init(void (*handler) (char ch))
 .--------------------------------------------------------------------------*/
 int printf(const char *fmt, ...)
 {
-	va_list args;								// Argument list
-	int count = -1;								// Preset fail to number of characters printed
+	va_list args;	//Argument list
+	int count = -1;	//Preset fail to number of characters printed
 	if(console_write_char)
 	{
-		output_count = 0;						// Zero output count
-		max_out_count = INT_MAX;					// This is a maximum size function
-		va_start(args, fmt);						// Create argument list
-		count = _doprnt(fmt, args, prn_to_func, console_write_char);	// Run conversions
-		va_end(args);							// Done with argument list
+		output_count = 0;	//Zero output count
+		max_out_count = INT_MAX;//This is a maximum size function
+		va_start(args, fmt);	//Creat argument list
+		count = _doprnt(fmt, args, blockprn_to_buf, console_write_char);	//Run conversions to the new block write function
+
+		/* If output_count > 0 there is still data in the buffer so we need to flush it */
+		if(output_count > 0)
+		{
+			intbuf[output_count] = 0; //Null terminate the string
+			console_write_char(&intbuf[0]);
+		}
+
+		va_end(args); //Clean up argument list
 	}
-	return count;								// Return number of characters printed
+	return count;
 }
 
 /*-[ sprintf ]--------------------------------------------------------------}

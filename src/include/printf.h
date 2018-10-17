@@ -38,14 +38,14 @@ extern "C" {									// Put extern C directive wrapper around
 {                       PUBLIC C INTERFACE ROUTINES                         }
 {***************************************************************************/
 
-/*-[Init_EmbStdio]----------------------------------------------------------}
+/*-[printf_init]------------------------------------------------------------}
 . Initialises the EmbStdio by setting the handler that will be called for
 . Each character to be output to the standard console. That routine could be
 . a function that puts the character to a screen or something like a UART.
 . Until this function is called with a valid handler output will not occur.
 . 19Oct17 LdB
 .--------------------------------------------------------------------------*/
-void printf_init( void (*handler)(char ch));
+void printf_init(void (*handler)(char *buffer));
 
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++}
