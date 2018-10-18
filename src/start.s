@@ -135,7 +135,7 @@ exit_el1:
 
 //Core 1, 2, 3 main
 1:
-	bl	multicore_mmu_init
+	bl	core_wait_for_instruction
 	b	_hang
 
 //Core 0 main

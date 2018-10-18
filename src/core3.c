@@ -8,7 +8,7 @@
 
 void core3_main()
 {
-	core_ready[2] = true;
+//	core_ready[2] = true;
 	mmu_init();
 
 	printf("[CORE 3] [INFO] Hello from CORE 3!\n");

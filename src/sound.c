@@ -49,7 +49,7 @@ void init_audio_jack(void)
 	PWM[PWM_CTL] = (PWM_USEF2 | PWM_PWEN2 | PWM_USEF1 | PWM_PWEN1 | PWM_CLRF1);
 }
 
-void play_audio(void *x)
+void play_audio(uint16_t *audio_start, uint16_t *audio_end)
 {
 	while (1) 
 	{

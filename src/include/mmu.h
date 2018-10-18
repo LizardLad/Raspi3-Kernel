@@ -32,8 +32,8 @@ void mmu_init (void);
 uint64_t virtualmap (uint32_t phys_addr, uint8_t memattrs);
 
 
-extern void semaphore_inc(uint32_t* sem);	// Code is in start.S
-extern void semaphore_dec(uint32_t* sem);	// Code is in start.S
+extern void semaphore_inc(uint32_t *sem);	// Code is in start.S
+extern void semaphore_dec(uint32_t *sem);	// Code is in start.S
 
 #ifdef __cplusplus								// If we are including to a C++ file
 }												// Close the extern C directive wrapper

@@ -2,21 +2,10 @@
 #include "include/multicore.h"
 #include "include/printf.h"
 #include "include/delays.h"
-#include "include/start.h"
 #include "include/mmu.h"
 #include "include/lfb.h"
 
-static uint32_t core_execute_lock[3] = { 0 };
-volatile bool core_execute_state[3] = { 0 };
 volatile bool core_ready[3] = { 0 };
-
-void (*core1_jump_func_ptr) (void *);
-void (*core2_jump_func_ptr) (void *);
-void (*core3_jump_func_ptr) (void *);
-
-void *core1_data;
-void *core2_data;
-void *core3_data;
 
 void multicore_init()
 {
@@ -24,30 +13,32 @@ void multicore_init()
 	
 	asm volatile (	"mov	x1, #0xe0\n"\
 			"mov    x2, #0x80000\n"\
-			"str    x2, [x1]\n");
-	asm volatile (	"dc civac, %0" : : "r" (0xe0) : "memory");		
-	asm volatile (	"sev\n");
+			"str    x2, [x1]\n"\
+			"dc civac, x1\n"\
+			"ic ivau, x1\n"\
+			"sev\n");
 	
-	while (core_ready[0] == false) {asm volatile("nop");}
-
+	while (core_ready[0] == false) {}
 	printf("[CORE %d] [INFO] CORE 1 acknoledged start\n", get_core_id());
 		
 	asm volatile (	"mov	x1, #0xe8\n"\
 			"mov    x2, #0x80000\n"\
-			"str	x2, [x1]\n");
-	asm volatile (	"dc civac, %0" : : "r" (0xe8) : "memory");		
-	asm volatile (	"sev\n");
+			"str	x2, [x1]\n"\
+			"dc civac, x1\n"\
+			"ic ivau, x1\n"\
+			"sev\n");
 	
-	while (core_ready[1] == false) {asm volatile("nop");}
+	while (core_ready[1] == false) {}
 	printf("[CORE %d] [INFO] CORE 2 acknoledged start\n", get_core_id());
 	
 	asm volatile (	"mov	x1, 0xf0\n"\
 			"mov    x2, #0x80000\n"\
-			"str	x2, [x1]\n");
-	asm volatile (	"dc civac, %0" : : "r" (0xf0) : "memory");		
-	asm volatile (	"sev\n");
+			"str	x2, [x1]\n"\
+			"dc civac, x1\n"\
+			"ic ivau, x1\n"\
+			"sev\n");
 	
-	while (core_ready[2] == false) {asm volatile("nop");}
+	while (core_ready[2] == false) {}
 	printf("[CORE %d] [INFO] CORE 3 acknoledged start\n", get_core_id());
 }
 
@@ -64,39 +55,6 @@ int get_core_id()
 	return core_id;
 }
 
-void multicore_mmu_init()
-{
-	/* cores enter here .. turn on mmu and then park */
-	volatile uint32_t *mailbox = (uint32_t *)0x400000CC;
-	void(*func) (void) = 0;
-	mmu_init();
-	do
-	{
-		asm("wfe");
-		func = (void*)(uintptr_t)mailbox[get_core_id() * 4]; 
-		mailbox[get_core_id() * 4] = 0;
-	} while (func ==  0);
-	func();
-}
-
-void get_core_ready()
-{
-	switch(get_core_id())
-	{
-		case 1:
-			core_ready[0] = true;
-			break;
-		case 2:
-			core_ready[1] = true;
-			break;
-		case 3:
-			core_ready[2] = true;
-			break;
-		default:
-			break; //I don't know how this would execute
-	}
-}
-
 //==============================================================================================//
 //	Documentation of core_execute(char core_id, void (*func_ptr) (void *), void *data_ptr)	//
 //												//
@@ -108,109 +66,62 @@ void get_core_ready()
 //												//
 //	The data is then passed as an argument to the function to be executed.			//
 //==============================================================================================//
-
-int core_execute(char core_id, void (*func_ptr) (void *), void *data_ptr) //This will only run on core 0
+int core_execute(char core_id, uint32_t functype, void* func, void* param1, void* param2)
 {
-	if(get_core_id()) return 1; //Not running on core 0
-	switch(core_id)
-	{
-		case 1:
-			semaphore_inc(&core_execute_lock[0]);
-			core1_jump_func_ptr = func_ptr;
-			core1_data = data_ptr;
-			core_execute_state[0] = true;
-			semaphore_dec(&core_execute_lock[0]);
-			break;
-		case 2:
-			semaphore_inc(&core_execute_lock[1]);
-			core2_jump_func_ptr = func_ptr;
-			core2_data = data_ptr;
-			core_execute_state[1] = true;
-			semaphore_dec(&core_execute_lock[1]);
-			break;
-		case 3:
-			semaphore_inc(&core_execute_lock[2]);
-			core3_jump_func_ptr = func_ptr;
-			core3_data = data_ptr;
-			core_execute_state[2] = true;
-			semaphore_dec(&core_execute_lock[2]);
-			break;
-		default:
-			return 2; //Invalid core id
-	}
+	volatile struct icm_message req;
+	req.func.val = func;
+	req.functype = functype;
+	req.response = 0;
+	req.param1 = param1;
+	req.param2 = param2;
+	volatile uint32_t* mailbox_write = (uint32_t*)0x4000008C;
+	mailbox_write[core_id * 4] = (uint32_t)(uintptr_t)&req;
+	asm("sev");
+	while (req.response == 0) {}; // wait for core to respond .. really should have a timeout error
 	return 0;
 }
 			
 void core_wait_for_instruction()
 {
 	//Here I have to do some init stuff as well to get the cores ready to opperate normally
+	//This mostly involves the mmu
+	//The mmu is required because semaphores are used in this very function!
+	int core_id = get_core_id();
+	volatile uint32_t* mailbox_read = (uint32_t*)0x400000CC;
+	if (core_id == 0) return;
 
-	printf("[CORE %d] [INFO] Hello from Core %d\n[CORE %d] [INFO] MMU Online\n", get_core_id(), get_core_id(), get_core_id());
+	mmu_init(); //The page table has already been created by core 0
+	printf("[CORE %d] [INFO] Hello from Core %d\n[CORE %d] [INFO] MMU Online\n", core_id, core_id, core_id);
+	core_ready[core_id-1] = true; // signal can start next core to start in
 	
-	//This is a place the cores come when they are done and relaxing
-	bool core_execute_local[3] = { false };
-	
-	get_core_ready(); //Toggle the ready flag and let another core be released
-	
-	while(1) //The cores never leave they only branch out and then come back
+	while (1)
 	{
-		switch(get_core_id())
-		{
-			case 1:
-				semaphore_inc(&core_execute_lock[0]);
-				if(core_execute_state[0] == true)
-				{
-					core_execute_state[0] = false;
-					core_execute_local[0] = true;
-				}
-				semaphore_dec(&core_execute_lock[0]);
-				if(core_execute_local[0] == true)
-				{
-					core1_jump_func_ptr(core1_data);
-					core_execute_local[0] = false;
-				}
-				break;
-			case 2:
-				semaphore_inc(&core_execute_lock[1]);
-				if(core_execute_state[1] == true)
-				{
-					core_execute_state[1] = false;
-					core_execute_local[1] = true;
-				}
-				semaphore_dec(&core_execute_lock[1]);
-				if(core_execute_local[1] == true)
-				{
-					core2_jump_func_ptr(core2_data);
-					core_execute_local[1] = false;
-				}
-				break;
-			case 3:
-				semaphore_inc(&core_execute_lock[2]);
-				if(core_execute_state[2] == true)
-				{
-					core_execute_state[2] = false;
-					core_execute_local[2] = true;
-				}
-				semaphore_dec(&core_execute_lock[2]);
-				if(core_execute_local[2] == true)
-				{
-					core3_jump_func_ptr(core3_data);
-					core_execute_local[2] = false;
-				}
-				break;
-			default:
-				//Not valid if this ever occured it isn't being run on the target board
-				break;
+		volatile struct icm_message* req = 0;
+		int mbox = get_core_id() * 4;
+		asm("wfe");
+		req = (struct icm_message*)(uintptr_t)mailbox_read[mbox];
+		mailbox_read[mbox] = 0;
+		if (req) {
+			/* Variables are on core_execute stack we must copy to here before we ack   */
+			/* The moment we acknowledge the core_execute will release the stack memory */
+			union caller_func func = req->func;
+			int ftype = req->functype;
+			uint16_t* p1 = req->param1;
+			uint16_t* p2 = req->param2;
+			req->response = 1;  // copied now safe to set acknowledge flag
+			printf("[CORE %d] type: %i, Sound start %#x, Sound end %#x\n", get_core_id(), ftype, p1, p2);
+			switch (ftype)
+			{
+				case 0:   /* void (*) (void) function */
+					func.func0();
+					break;
+				case 1:   /* void (*) (void*) function */
+					func.func1(p1);
+					break;
+				case 2:   /* void (*) (void*, void*) function */
+					func.func2(p1, p2);
+					break;
+			}
 		}
 	}
-}
-
-void multicore_init_stage_2()
-{
-	volatile uint32_t *mailbox = (uint32_t *)0x4000009C;
-	mailbox[1 * 4] = (uintptr_t)(void *)core_wait_for_instruction;
-	mailbox[2 * 4] = (uintptr_t)(void *)core_wait_for_instruction;
-	mailbox[3 * 4] = (uintptr_t)(void *)core_wait_for_instruction;
-	asm(	"dmb sy\n"\
-		"sev");
 }

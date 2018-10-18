@@ -26,11 +26,8 @@ __asm__ (                                                                       
 extern const uint16_t __variable ## _start;\
 extern const uint16_t __variable ## _end;                             
 
-extern const uint16_t *audio_start;
-extern const uint16_t *audio_end;
-
 void init_audio_jack(void);
-void play_audio (void *);
+void play_audio (uint16_t *audio_start, uint16_t *audio_end);
 
 
 #ifdef __cplusplus								// If we are including to a C++ file

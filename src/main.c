@@ -15,6 +15,8 @@
 #include "include/delays.h"
 #include "include/scene.h"
 
+INCLUDE_BINARY_FILE(believer, "src/audio/believer.bin", ".rodata.believer");
+
 static uint32_t shader[18] = {  	// Vertex Color Shader
 		0x958e0dbf, 0xd1724823,	/* mov r0, vary; mov r3.8d, 1.0 */
 		0x818e7176, 0x40024821,	/* fadd r0, r0, r5; mov r1, vary */
@@ -79,6 +81,8 @@ void core_print(void *data)
 
 void main()
 {
+	printf_init(console_print);
+	
 	//Setup clocks first due to firmware bug
 	clocks_init();
 
@@ -87,11 +91,12 @@ void main()
 	
 	// set up serial console
 	uart_init();
+	
+	//Setup framebuffer
 	lfb_init();
 	
 	dynamic_memory_alloc_init();
 	console_init();	
-	printf_init(console_print);
 	init_audio_jack();
 
 	//gl_quad_scene_init(&scene, &(shader[0]));
@@ -102,23 +107,18 @@ void main()
 	mmu_init(); //Now turn on MMU on Core 0
 
 	multicore_init(); //Now core_execute is avalible to be run after this
-	multicore_init_stage_2();
 
 	printf("[CORE %d] [TEST] Testing 64bit unsigned int print %u\n", get_core_id(), 0xFFFFFFFFFFFFFFFF);
 	printf("[INFO] GPU memory split is: %d\n", get_gpu_memory_split());
 
 	char *core_print_data = "Hello World";
-	core_execute(1, core_print, (void *)core_print_data);
+	core_execute(1, 1, &core_print, (void *)core_print_data, NULL);
+	core_execute(2, 2, &play_audio, (void *)&believer_start, (void *)&believer_end);
 
 	for(int i = 0; i < 20; i++)
 	{
 		printf("\n");
 	}
-
-	INCLUDE_BINARY_FILE(believer, "src/audio/believer.bin", ".rodata.believer");
-	audio_start = &believer_start;
-	audio_end = &believer_end;
-	core_execute(2, play_audio, NULL);
 
 	// echo everything back
 	while(1) 

@@ -245,29 +245,6 @@ void mmu_init(void)
 		(1 << 1) |   // A, Alignment check enable bit
 		(1 << 0);     // set M, enable MMU
 	asm volatile ("msr sctlr_el1, %0; isb" : : "r" (r));
-	
-	switch(get_core_id()) //FIXME
-	{
-		case 0:
-			core_mmu_online[0] = true;
-			asm volatile ("dc civac, %0" : : "r" (core_mmu_online) : "memory");
-			break;
-		case 1:
-			core_mmu_online[1] = true;
-			asm volatile ("dc civac, %0" : : "r" (&core_mmu_online[1]) : "memory");
-			break;
-		case 2:
-			core_mmu_online[2] = true;
-			asm volatile ("dc civac, %0" : : "r" (&core_mmu_online[2]) : "memory");
-			break;
-		case 3:
-			core_mmu_online[3] = true;
-			asm volatile ("dc civac, %0" : : "r" (&core_mmu_online[3]) : "memory");
-			break;
-		default:
-			while(1); //Hang because there is certainly a problem
-			break;
-	}
 }
 
 

@@ -109,16 +109,16 @@ bool mailbox_tag_message (uint32_t* response_buf,	// Pointer to response buffer
 			  ...)				// Variadic uint32_t values for call
 {
 	uint32_t __attribute__((aligned(16))) message[32];
-	__builtin_va_list list;
-	__builtin_va_start(list, data_count);		// Start variadic argument
+	va_list list;
+	va_start(list, data_count);			// Start variadic argument
 	message[0] = (data_count + 3) * 4;		// Size of message needed
 	message[data_count + 2] = 0;			// Set end pointer to zero
 	message[1] = 0;					// Zero response message
 	for (int i = 0; i < data_count; i++)
 	{
-		message[2 + i] = __builtin_va_arg(list, uint32_t);	// Fetch next variadic
+		message[2 + i] = va_arg(list, uint32_t);	// Fetch next variadic
 	}
-	__builtin_va_end(list);						// variadic cleanup
+	va_end(list);						// variadic cleanup
 	if(((uint64_t)&(message[0])) % 16 != 0)
 	{
 		printf("[ERROR] Unaligned!");

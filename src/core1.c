@@ -8,7 +8,7 @@
 
 void core1_main()
 {
-	core_ready[0] = true;
+//	core_ready[0] = true;
 	mmu_init();
 
 	printf("[CORE 1] [INFO] Hello from CORE 1!\n");

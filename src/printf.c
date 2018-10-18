@@ -36,7 +36,8 @@ enum integer_size {
 	SHORT_SHORT_SIZE,
 	SHORT_SIZE,
 	REGULAR_SIZE,
-	LONG_SIZE
+	LONG_SIZE,
+	LONG_LONG_SIZE
 };
 
 /**
@@ -253,6 +254,11 @@ flags_scanned:
 			{
 				size = LONG_SIZE;
 				fmt++;
+				if(*fmt == '1')
+				{
+					size = LONG_LONG_SIZE;
+					fmt++;
+				}
 			}
 			else if(*fmt == 'h')
 			{
@@ -362,7 +368,11 @@ flags_scanned:
 					goto handle_unsigned;
 	
 handle_unsigned:
-					if(size == LONG_SIZE)
+					if(size == LONG_LONG_SIZE)
+					{
+						ularg = va_arg(ap, unsigned long long);
+					}
+					else if(size == LONG_SIZE)
 					{
 						ularg = va_arg(ap, unsigned long);
 					}
