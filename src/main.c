@@ -90,7 +90,7 @@ void main()
 	}
 
 	map_timer_interupt_core_3();
-	core_execute(3, 0, (void *)core_3_enable_interupts_deadloop, NULL, NULL);
+	core_execute(3, 0, (void*)core_3_enable_interupts_deadloop, NULL, NULL);
 
 	// echo everything back
 	while(1) 
