@@ -288,8 +288,8 @@ _vectors:
 	// IRQ
 	.balign  0x80
 	b _hang
-	//stp	x29, x30, [sp, #-16]!	 // Save x30 link register and x29
-	//bl      dbg_saveregs
+	stp	x29, x30, [sp, #-16]!	 // Save x30 link register and x29
+	bl      dbg_saveregs
 	//mov     x0, #1
 	//bl      dbg_decodeexc
 	bl      c_irq_handler		//dbg_main is now only called if the IRQ didn't come from something that was set to deliver interupts
