@@ -3,7 +3,7 @@
 #include "include/interupts.h"
 #include "include/multicore.h"
 #include "include/led.h"
-
+#include "include/debug.h"
 
 //I'm not yet sure how this works or what I'm doing all of this is experimental
 

@@ -15,6 +15,7 @@
 #include "include/delays.h"
 #include "include/scene.h"
 #include "include/interupts.h"
+#include "include/debug.h"
 
 INCLUDE_BINARY_FILE(believer, "src/audio/believer.bin", ".rodata.believer");
 

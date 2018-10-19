@@ -256,6 +256,7 @@ register_restore:
 	// important, code has to be properly aligned
 	.balign 0x800
 _vectors:
+	/* from current EL with sp_el0 */
 	// synchronous
 	.balign 0x80
 	b _hang
@@ -272,9 +273,9 @@ _vectors:
 	.balign 0x80
 	b _hang	
 
+	/* from current EL with sp_elx, x != 0 */
 	// synchronous
 	.balign 0x80
-	b _hang
 	stp	x29, x30, [sp, #-16]!	 // Save x30 link register and x29 just so we dont waste space
 	bl	register_save		 // Save corruptible registers .. it assumes x29,x30 saved
 	bl      dbg_saveregs
@@ -287,7 +288,6 @@ _vectors:
 
 	// IRQ
 	.balign  0x80
-	b _hang
 	stp	x29, x30, [sp, #-16]!	 // Save x30 link register and x29
 	bl      dbg_saveregs
 	//mov     x0, #1
@@ -299,7 +299,6 @@ _vectors:
 
 	// FIQ
 	.balign  0x80
-	b _hang
 	stp	x29, x30, [sp, #-16]!	 // Save x30 link register and x29 just so we dont waste space
 	bl	register_save		 // Save corruptible registers .. it assumes x29,x30 saved
 	bl      dbg_saveregs
@@ -312,7 +311,6 @@ _vectors:
 
 	// SError
 	.balign  0x80
-	b _hang
 	stp	x29, x30, [sp, #-16]!	 // Save x30 link register and x29 just so we dont waste space
 	bl	register_save		 // Save corruptible registers .. it assumes x29,x30 saved
 	bl      dbg_saveregs
@@ -323,6 +321,7 @@ _vectors:
 	ldp	x29, x30, [sp], #16		// restore x29,x30 pulling stack back up 16
 	eret
 	
+	/* from lower EL, target minus 1 is AARCH64 */
 	// synchronous
 	.balign 0x80
 	b _hang
@@ -339,6 +338,7 @@ _vectors:
 	.balign 0x80
 	b _hang	
 
+	/* from lower EL, target minus 1 is AARCH32 */
 	// synchronous
 	.balign 0x80
 	b _hang
