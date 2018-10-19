@@ -109,7 +109,6 @@ void core_wait_for_instruction()
 			uint16_t* p1 = req->param1;
 			uint16_t* p2 = req->param2;
 			req->response = 1;  // copied now safe to set acknowledge flag
-			printf("[CORE %d] type: %i, Sound start %#x, Sound end %#x\n", get_core_id(), ftype, p1, p2);
 			switch (ftype)
 			{
 				case 0:   /* void (*) (void) function */

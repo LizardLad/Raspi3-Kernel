@@ -278,8 +278,6 @@ _vectors:
 	stp	x29, x30, [sp, #-16]!	 // Save x30 link register and x29 just so we dont waste space
 	bl	register_save		 // Save corruptible registers .. it assumes x29,x30 saved
 	bl      dbg_saveregs
-	//mov     x0, #1
-	//bl      set_ACT_LED
 	mov     x0, #0
 	bl      dbg_decodeexc
 	bl      dbg_main
@@ -290,11 +288,11 @@ _vectors:
 	// IRQ
 	.balign  0x80
 	b _hang
-	stp	x29, x30, [sp, #-16]!	 // Save x30 link register and x29
-	bl      dbg_saveregs
-	mov     x0, #1
-	bl      dbg_decodeexc
-	bl      dbg_main
+	//stp	x29, x30, [sp, #-16]!	 // Save x30 link register and x29
+	//bl      dbg_saveregs
+	//mov     x0, #1
+	//bl      dbg_decodeexc
+	bl      c_irq_handler		//dbg_main is now only called if the IRQ didn't come from something that was set to deliver interupts
 	bl	register_restore	// restore corruptible registers .. does all but x29,x30
 	ldp	x29, x30, [sp], #16		// restore x29,x30 pulling stack back up 16
 	eret

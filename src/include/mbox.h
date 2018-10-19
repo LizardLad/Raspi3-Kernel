@@ -1,7 +1,7 @@
 #ifndef MBOX_H
 #define MBOX_H
 
-#include "stdbool.h"
+#include <stdbool.h>
 
 /* a properly aligned buffer */
 extern volatile uint32_t mailbox[36];
@@ -52,6 +52,10 @@ extern volatile uint32_t mailbox[36];
 /* Temp Commands */
 #define MBOX_TAG_GET_TEMPERATURE	0x00030006
 #define MBOX_TAG_GET_MAX_TEMPERATURE	0x0003000A
+
+/* GPIO commands */
+#define MAILBOX_TAG_GET_GET_GPIO_STATE	0x00030041	// Get GPIO state
+#define MAILBOX_TAG_SET_GPIO_STATE	0x00038041	// Set GPIO state
 
 /* Mailbox status */
 #define MAIL_EMPTY	0x40000000	/* Mailbox Status Register: Mailbox Empty */

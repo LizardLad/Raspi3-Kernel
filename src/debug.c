@@ -6,7 +6,7 @@
 
 #define DISASSEMBLER 1
 
-// array to store register values (see dbg_saveregs in start.S)
+// array to store register values (see dbg_saveregs in start.s)
 uint64_t dbg_regs[38];
 // command line
 char cmd[256], dbg_running=0;
@@ -76,7 +76,7 @@ void dbg_decodeexc(uint64_t type)
 }
 
 /**
- * helper to read a line from user. We redefine some control caracters to handle CSI
+ * helper to read a line from user. We redefine some control characters to handle CSI
  * \e[3~ = 1, delete
  * \e[D  = 2, cursor left
  * \e[C  = 3, cursor right
@@ -88,7 +88,6 @@ void dbg_getline()
 	cmd[0]=0;
 	// prompt
 	printf("\r> ");
-	//lfb_clear();
 	// read until Enter pressed
 	while((c=uart_getc())!='\n') {
 		// decode CSI key sequences (some, not all)
@@ -202,7 +201,7 @@ void dbg_main()
 	while(1) {
 		cmd[0] = 'r';
 		// get command from user
-		//dbg_getline();
+		dbg_getline();
 		// parse commands
 		if(cmd[0]==0 || cmd[0]=='?' || cmd[0]=='h') {
 			// print help

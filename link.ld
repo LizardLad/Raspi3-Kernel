@@ -83,7 +83,7 @@ SECTIONS
 		. = ALIGN(16);
 		__stack_end_core3__ = .;
 	}
-	
+
 	_end = .;
 
 	/DISCARD/ : { *(.comment) *(.gnu*) *(.note*) *(.eh_frame*) }

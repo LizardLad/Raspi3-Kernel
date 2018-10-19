@@ -14,6 +14,7 @@
 #include "include/start.h"
 #include "include/delays.h"
 #include "include/scene.h"
+#include "include/interupts.h"
 
 INCLUDE_BINARY_FILE(believer, "src/audio/believer.bin", ".rodata.believer");
 
@@ -31,7 +32,7 @@ static uint32_t shader[18] = {  	// Vertex Color Shader
 
 RENDER_STRUCT scene = { 0 };
 
-struct VC4_Vertex {
+/*struct VC4_Vertex {
 	uint16_t  X;				// X in 12.4 fixed point
 	uint16_t  Y;				// Y in 12.4 fixed point
 	uint32_t  Z;				// Z in 4 byte float format
@@ -40,39 +41,7 @@ struct VC4_Vertex {
 	uint32_t  VGreen;			// Varying 1 (Green)
 	uint32_t  VBlue;			// Varying 2 (Blue)
 } __packed;
-
-static float angle = 0.0;
-
-
-void DoRotate(double delta) {
-	double cosTheta, sinTheta;
-	angle += delta;
-	if (angle >= (3.1415926384 * 2)) angle -= (3.1415926384 * 2);
-	cosTheta = cos(angle);
-	sinTheta = sin(angle);
-
-	uint16_t centreX = (scene.renderWth / 2) << 4;						// triangle centre x
-	uint16_t centreY = (scene.renderHt / 4) << 4;						// triangle centre y
-	uint16_t half_shape_size = scene.renderWth/8;						// Half size of triangle
-	double x1 = 0;
-	double y1 = -half_shape_size;
-	double x2 = -half_shape_size;
-	double y2 = half_shape_size;
-	double x3 = half_shape_size;
-	double y3 = half_shape_size;
-	double x4 = -half_shape_size;
-	double y4 = -half_shape_size;
-
-	struct VC4_Vertex* vd = (struct VC4_Vertex*)(uintptr_t)GPU_addr_to_ARM_addr(scene.vertexVC4);
-	vd[0].X = centreX + (int16_t)((cosTheta * x1 - sinTheta * y1) * 16);
-	vd[0].Y = centreY + (int16_t)((cosTheta * y1 + sinTheta * x1) * 16);
-	vd[1].X = centreX + (int16_t)((cosTheta * x2 - sinTheta * y2) * 16);
-	vd[1].Y = centreY + (int16_t)((cosTheta * y2 + sinTheta * x2) * 16);
-	vd[2].X = centreX + (int16_t)((cosTheta * x3 - sinTheta * y3) * 16);
-	vd[2].Y = centreY + (int16_t)((cosTheta * y3 + sinTheta * x3) * 16);
-	vd[2].X = centreX + (int16_t)((cosTheta * x4 - sinTheta * y4) * 16);
-	vd[3].Y = centreY + (int16_t)((cosTheta * y4 + sinTheta * x4) * 16);
-}
+*/
 
 void core_print(void *data)
 {
@@ -84,7 +53,9 @@ void main()
 	printf_init(console_print);
 	
 	//Setup clocks first due to firmware bug
-	clocks_init();
+	clocks_init(); //Just reclocks the CPU
+	//Eventually this function will save the clocks of everything and set them
+	//after setting the CPU just so the CPU doesn't mess with everything.
 
 	//Setup videocore
 	init_V3D();
@@ -103,7 +74,6 @@ void main()
 
 	//Create mmu table on Core 0
 	init_page_table();
-
 	mmu_init(); //Now turn on MMU on Core 0
 
 	multicore_init(); //Now core_execute is avalible to be run after this
@@ -114,11 +84,13 @@ void main()
 	char *core_print_data = "Hello World";
 	core_execute(1, 1, &core_print, (void *)core_print_data, NULL);
 	core_execute(2, 2, &play_audio, (void *)&believer_start, (void *)&believer_end);
-
 	for(int i = 0; i < 20; i++)
 	{
 		printf("\n");
 	}
+
+	map_timer_interupt_core_3();
+	core_execute(3, 0, core_3_enable_interupts_deadloop, NULL, NULL);
 
 	// echo everything back
 	while(1) 

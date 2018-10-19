@@ -355,41 +355,41 @@ bool V3D_AddVertexesToScene (RENDER_STRUCT* scene)
 		// fQuad[6] = 0.2f; fQuad[7] = -0.1f; fQuad[8] = 0.0f;
 		// fQuad[9] = 0.2f; fQuad[10] = -0.6f; fQuad[11] = 0.0f;
 
-		// Vertex: Top, left  vary blue
+		// Vertex: Top, left  vary red
 		emit_uint16_t(&p, (centreX - half_shape_wth) << 4);		// X in 12.4 fixed point
 		emit_uint16_t(&p, (centreY - half_shape_ht) << 4);		// Y in 12.4 fixed point
 		emit_float(&p, 1.0f);						// Z
 		emit_float(&p, 1.0f);						// 1/W
-		emit_float(&p, 0.0f);						// Varying 0 (Red)
+		emit_float(&p, 0.0f);						// Varying 0 (Blue)
 		emit_float(&p, 0.0f);						// Varying 1 (Green)
-		emit_float(&p, 1.0f);						// Varying 2 (Blue)
+		emit_float(&p, 1.0f);						// Varying 2 (Red)
 
-		// Vertex: bottom left, vary Green
+		// Vertex: bottom left, vary green
 		emit_uint16_t(&p, (centreX - half_shape_wth) << 4);		// X in 12.4 fixed point
 		emit_uint16_t(&p, (centreY + half_shape_ht) << 4);		// Y in 12.4 fixed point
 		emit_float(&p, 1.0f);						// Z
 		emit_float(&p, 1.0f);						// 1/W
-		emit_float(&p, 0.0f);						// Varying 0 (Red)
+		emit_float(&p, 0.0f);						// Varying 0 (Blue)
 		emit_float(&p, 1.0f);						// Varying 1 (Green)
-		emit_float(&p, 0.0f);						// Varying 2 (Blue)
+		emit_float(&p, 0.0f);						// Varying 2 (Red)
 
-		// Vertex: top right, vary red
+		// Vertex: top right, vary blue
 		emit_uint16_t(&p, (centreX + half_shape_wth) << 4);		// X in 12.4 fixed point
 		emit_uint16_t(&p, (centreY - half_shape_ht) << 4);		// Y in 12.4 fixed point
 		emit_float(&p, 1.0f);						// Z
 		emit_float(&p, 1.0f);						// 1/W
-		emit_float(&p, 1.0f);						// Varying 0 (Red)
+		emit_float(&p, 1.0f);						// Varying 0 (Blue)
 		emit_float(&p, 0.0f);						// Varying 1 (Green)
-		emit_float(&p, 0.0f);						// Varying 2 (Blue)
+		emit_float(&p, 0.0f);						// Varying 2 (Red)
 
 		// Vertex: bottom right, vary yellow
 		emit_uint16_t(&p, (centreX + half_shape_wth) << 4);		// X in 12.4 fixed point
 		emit_uint16_t(&p, (centreY + half_shape_ht) << 4);		// Y in 12.4 fixed point
 		emit_float(&p, 1.0f);						// Z
 		emit_float(&p, 1.0f);						// 1/W
-		emit_float(&p, 0.0f);						// Varying 0 (Red)
+		emit_float(&p, 1.0f);						// Varying 0 (Blue)
 		emit_float(&p, 1.0f);						// Varying 1 (Green)
-		emit_float(&p, 1.0f);						// Varying 2 (Blue)
+		emit_float(&p, 0.0f);						// Varying 2 (Red)
 
 		scene->num_verts = 7;
 		scene->loadpos = scene->vertexVC4 + (p - q);			// Update load position
