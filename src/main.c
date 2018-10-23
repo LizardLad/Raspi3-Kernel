@@ -78,6 +78,10 @@ void main()
 	mmu_init(); //Now turn on MMU on Core 0
 
 	multicore_init(); //Now core_execute is avalible to be run after this
+	
+	map_timer_interupt_core_3();
+	core_execute(3, 0, (void*)core_3_enable_interupts_deadloop, NULL, NULL);
+
 
 	printf("[CORE %d] [TEST] Testing 64bit unsigned int print %u\n", get_core_id(), 0xFFFFFFFFFFFFFFFF);
 	printf("[INFO] GPU memory split is: %d\n", get_gpu_memory_split());
@@ -89,9 +93,6 @@ void main()
 	{
 		printf("\n");
 	}
-
-	map_timer_interupt_core_3();
-	core_execute(3, 0, (void*)core_3_enable_interupts_deadloop, NULL, NULL);
 
 	// echo everything back
 	while(1) 

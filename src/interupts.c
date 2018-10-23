@@ -5,8 +5,6 @@
 #include "include/led.h"
 #include "include/debug.h"
 
-//I'm not yet sure how this works or what I'm doing all of this is experimental
-
 void enable_irq()
 {
 	asm volatile("msr daifclr, #2");
@@ -51,7 +49,7 @@ void timer_interupt_handler()
 
 void map_timer_interupt_core_3()
 {
-	if(!get_core_id()) return; //Core !0 running this function
+	//if(!get_core_id()) return; //Core !0 running this function
 
 	QA7->TimerRouting.Routing = LOCALTIMER_TO_CORE3_IRQ;	// Route local timer IRQ to Core0
 
