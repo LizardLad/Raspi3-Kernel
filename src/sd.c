@@ -38,6 +38,10 @@
 #define CMD_READ_SINGLE     0x11220010
 #define CMD_READ_MULTI      0x12220032
 #define CMD_SET_BLOCKCNT    0x17020000
+
+#define CMD_WRITE_SINGLE    0x18220000
+#define CMD_WRITE_MULTI     0x19220022
+
 #define CMD_APP_CMD         0x37000000
 #define CMD_SET_BUS_WIDTH   (0x06020000|CMD_NEED_APP)
 #define CMD_SEND_OP_COND    (0x29020000|CMD_NEED_APP)
@@ -152,7 +156,7 @@ int32_t sd_cmd(uint32_t code, uint32_t arg)
  * read a block from sd card and return the number of bytes read
  * returns 0 on error.
  */
-int32_t sd_readblock(uint32_t lba, unsigned char *buffer, uint32_t num)
+int sd_readblock(uint32_t lba, unsigned char *buffer, uint32_t num)
 {
 	int32_t r,c=0,d;
 	if(num<1) num=1;
@@ -181,6 +185,62 @@ int32_t sd_readblock(uint32_t lba, unsigned char *buffer, uint32_t num)
 	}
 	if( num > 1 && !(sd_scr[0] & SCR_SUPP_SET_BLKCNT) && (sd_scr[0] & SCR_SUPP_CCS)) sd_cmd(CMD_STOP_TRANS,0);
 	return sd_err!=SD_OK || c!=num? 0 : num*512;
+}
+
+/**
+ * Write a block to the sd card
+ * returns 0 on error
+ */
+int sd_writeblock(uint32_t lba, uint8_t *buffer, uint32_t num)
+{
+	//if(((uint64_t)buffer & (uint64_t)0x3) == 0) return 0; //Buffer not 32 bit aligned
+	//uint32_t *buf = (uint32_t *)buffer;
+	//int32_t c = 0;
+	//int32_t d, r;
+	//if(num < 1) return 0;
+	//if(sd_status(SR_DAT_INHIBIT))
+	//{
+		//sd_err = SD_TIMEOUT;
+		//return 0;
+	//}
+	//if(sd_scr[0] & SCR_SUPP_CCS)
+	//{
+		//if(num > 1 && (sd_scr[0] & SCR_SUPP_SET_BLKCNT))
+		//{
+			//sd_cmd(CMD_SET_BLOCKCNT, num);
+			//if(sd_err) return 0;
+		//}
+		//*EMMC_BLKSIZECNT = (num << 16) | 512;
+		//sd_cmd(num == 1 ? CMD_WRITE_SINGLE : CMD_WRITE_MULTI, lba);
+		//if(sd_err) return 0;
+	//}
+	//else
+	//{
+		//*EMMC_BLKSIZECNT = (1 << 16) | 512;
+	//}
+	//while(c < num)
+	//{
+		//if(!(sd_scr[0] & SCR_SUPP_CCS))
+		//{
+			//sd_cmd(CMD_WRITE_SINGLE, (lba + c) * 512);
+			//if((r = sd_int(INT_READ_RDY)))
+			//{
+				//uart_puts("\rERROR: Timeout waiting for ready to read\n"); 
+				//sd_err = r; 
+				//return 0;
+			//}
+			//for(d = 0; d < 128; d++)
+				//*EMMC_DATA = buf[d];
+			//if(sd_err) return 0;
+		//}
+		//c++;
+		//buf += 128;
+	//}
+
+	//if(sd_int(INT_DATA_DONE))
+		//return 1;
+	//else
+		return 0; //Make gcc happy
 }
 
 /**

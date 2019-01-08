@@ -1,31 +1,9 @@
-#ifndef _EMB_STDIO_
-#define _EMB_STDIO_
+#ifndef PRINTF_H
+#define PRINTF_H
 
 #ifdef __cplusplus								// If we are including to a C++
 extern "C" {									// Put extern C directive wrapper around
 #endif
-
-/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++}
-{										}			
-{       Filename: emd_stdio.h							}
-{       Copyright(c): Leon de Boer(LdB) 2017					}
-{       Version: 1.02								}
-{										}		
-{***************[ THIS CODE IS FREEWARE UNDER CC Attribution]*******************}
-{										}
-{      The SOURCE CODE is distributed "AS IS" WITHOUT WARRANTIES AS TO		}
-{   PERFORMANCE OF MERCHANTABILITY WHETHER EXPRESSED OR IMPLIED.		}
-{   Redistributions of source code must retain the copyright notices to		}
-{   maintain the author credit (attribution) .					}
-{										}
-{*******************************************************************************}
-{                                                                          	}
-{      On embedded system there is rarely a file system or console output   	}
-{   like that on a desktop system. This file creates the functionality of   	}
-{   of the C standards library stdio.h but for embedded systems. It allows  	}
-{   easy retargetting of console output to external screen or UART routine  	}
-{								            	}
-{++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 #include <stddef.h>	// Define size_t
 #include <stdarg.h>	// Standard C library needed for varadic arguments

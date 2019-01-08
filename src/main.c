@@ -16,6 +16,9 @@
 #include "include/scene.h"
 #include "include/interupts.h"
 #include "include/debug.h"
+#include "include/fat.h"
+#include "include/file.h"
+
 
 INCLUDE_BINARY_FILE(believer, "src/audio/believer.bin", ".rodata.believer");
 
@@ -51,7 +54,8 @@ void core_print(void *data)
 
 void main()
 {
-	printf_init(console_print);
+	//printf_init(console_print);
+	printf_init(uart_puts);
 	
 	//Setup clocks first due to firmware bug
 	clocks_init(); //Just reclocks the CPU
@@ -64,12 +68,22 @@ void main()
 	// set up serial console
 	uart_init();
 	
+	uart_send('H');
+	uart_send('e');
+	uart_send('l');
+	uart_send('l');
+	uart_send('o');
+	uart_send('\n');
+	
 	//Setup framebuffer
 	lfb_init();
 	
 	dynamic_memory_alloc_init();
 	console_init();	
 	init_audio_jack();
+
+	fat_init();
+	fileio_test();
 
 	//gl_quad_scene_init(&scene, &(shader[0]));
 
@@ -78,10 +92,6 @@ void main()
 	mmu_init(); //Now turn on MMU on Core 0
 
 	multicore_init(); //Now core_execute is avalible to be run after this
-	
-	map_timer_interupt_core_3();
-	core_execute(3, 0, (void*)core_3_enable_interupts_deadloop, NULL, NULL);
-
 
 	printf("[CORE %d] [TEST] Testing 64bit unsigned int print %u\n", get_core_id(), 0xFFFFFFFFFFFFFFFF);
 	printf("[INFO] GPU memory split is: %d\n", get_gpu_memory_split());
@@ -93,6 +103,9 @@ void main()
 	{
 		printf("\n");
 	}
+	
+	//map_timer_interupt_core_3();
+	//core_execute(3, 0, (void*)core_3_enable_interupts_deadloop, NULL, NULL);
 
 	// echo everything back
 	while(1) 

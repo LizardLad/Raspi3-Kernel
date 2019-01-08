@@ -1,0 +1,3557 @@
+GNU Make 4.2.1
+Built for x86_64-redhat-linux-gnu
+Copyright (C) 1988-2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Reading makefiles...
+Reading makefile 'Makefile'...
+Updating makefiles....
+ Considering target file 'Makefile'.
+  Looking for an implicit rule for 'Makefile'.
+  Trying pattern rule with stem 'Makefile'.
+  Trying implicit prerequisite 'Makefile.o'.
+  Trying pattern rule with stem 'Makefile'.
+  Trying implicit prerequisite 'Makefile.c'.
+  Trying pattern rule with stem 'Makefile'.
+  Trying implicit prerequisite 'Makefile.cc'.
+  Trying pattern rule with stem 'Makefile'.
+  Trying implicit prerequisite 'Makefile.C'.
+  Trying pattern rule with stem 'Makefile'.
+  Trying implicit prerequisite 'Makefile.cpp'.
+  Trying pattern rule with stem 'Makefile'.
+  Trying implicit prerequisite 'Makefile.p'.
+  Trying pattern rule with stem 'Makefile'.
+  Trying implicit prerequisite 'Makefile.f'.
+  Trying pattern rule with stem 'Makefile'.
+  Trying implicit prerequisite 'Makefile.F'.
+  Trying pattern rule with stem 'Makefile'.
+  Trying implicit prerequisite 'Makefile.m'.
+  Trying pattern rule with stem 'Makefile'.
+  Trying implicit prerequisite 'Makefile.r'.
+  Trying pattern rule with stem 'Makefile'.
+  Trying implicit prerequisite 'Makefile.s'.
+  Trying pattern rule with stem 'Makefile'.
+  Trying implicit prerequisite 'Makefile.S'.
+  Trying pattern rule with stem 'Makefile'.
+  Trying implicit prerequisite 'Makefile.mod'.
+  Trying pattern rule with stem 'Makefile'.
+  Trying implicit prerequisite 'Makefile.sh'.
+  Trying pattern rule with stem 'Makefile'.
+  Trying implicit prerequisite 'Makefile,v'.
+  Trying pattern rule with stem 'Makefile'.
+  Trying implicit prerequisite 'RCS/Makefile,v'.
+  Trying pattern rule with stem 'Makefile'.
+  Trying implicit prerequisite 'RCS/Makefile'.
+  Trying pattern rule with stem 'Makefile'.
+  Trying implicit prerequisite 's.Makefile'.
+  Trying pattern rule with stem 'Makefile'.
+  Trying implicit prerequisite 'SCCS/s.Makefile'.
+  Trying pattern rule with stem 'Makefile'.
+  Trying implicit prerequisite 'Makefile.o'.
+  Looking for a rule with intermediate file 'Makefile.o'.
+   Avoiding implicit rule recursion.
+   Trying pattern rule with stem 'Makefile'.
+   Trying implicit prerequisite 'Makefile.c'.
+   Trying pattern rule with stem 'Makefile'.
+   Trying implicit prerequisite 'Makefile.cc'.
+   Trying pattern rule with stem 'Makefile'.
+   Trying implicit prerequisite 'Makefile.C'.
+   Trying pattern rule with stem 'Makefile'.
+   Trying implicit prerequisite 'Makefile.cpp'.
+   Trying pattern rule with stem 'Makefile'.
+   Trying implicit prerequisite 'Makefile.p'.
+   Trying pattern rule with stem 'Makefile'.
+   Trying implicit prerequisite 'Makefile.f'.
+   Trying pattern rule with stem 'Makefile'.
+   Trying implicit prerequisite 'Makefile.F'.
+   Trying pattern rule with stem 'Makefile'.
+   Trying implicit prerequisite 'Makefile.m'.
+   Trying pattern rule with stem 'Makefile'.
+   Trying implicit prerequisite 'Makefile.r'.
+   Trying pattern rule with stem 'Makefile'.
+   Trying implicit prerequisite 'Makefile.s'.
+   Trying pattern rule with stem 'Makefile'.
+   Trying implicit prerequisite 'Makefile.S'.
+   Trying pattern rule with stem 'Makefile'.
+   Trying implicit prerequisite 'Makefile.mod'.
+   Trying pattern rule with stem 'Makefile.o'.
+   Trying implicit prerequisite 'Makefile.o,v'.
+   Trying pattern rule with stem 'Makefile.o'.
+   Trying implicit prerequisite 'RCS/Makefile.o,v'.
+   Trying pattern rule with stem 'Makefile.o'.
+   Trying implicit prerequisite 'RCS/Makefile.o'.
+   Trying pattern rule with stem 'Makefile.o'.
+   Trying implicit prerequisite 's.Makefile.o'.
+   Trying pattern rule with stem 'Makefile.o'.
+   Trying implicit prerequisite 'SCCS/s.Makefile.o'.
+   Trying pattern rule with stem 'Makefile'.
+   Trying implicit prerequisite 'Makefile.c'.
+   Looking for a rule with intermediate file 'Makefile.c'.
+    Avoiding implicit rule recursion.
+    Avoiding implicit rule recursion.
+    Trying pattern rule with stem 'Makefile'.
+    Trying implicit prerequisite 'Makefile.y'.
+    Trying pattern rule with stem 'Makefile'.
+    Trying implicit prerequisite 'Makefile.l'.
+    Trying pattern rule with stem 'Makefile'.
+    Trying implicit prerequisite 'Makefile.w'.
+    Trying pattern rule with stem 'Makefile'.
+    Trying implicit prerequisite 'Makefile.w'.
+    Trying pattern rule with stem 'Makefile.c'.
+    Trying implicit prerequisite 'Makefile.c,v'.
+    Trying pattern rule with stem 'Makefile.c'.
+    Trying implicit prerequisite 'RCS/Makefile.c,v'.
+    Trying pattern rule with stem 'Makefile.c'.
+    Trying implicit prerequisite 'RCS/Makefile.c'.
+    Trying pattern rule with stem 'Makefile.c'.
+    Trying implicit prerequisite 's.Makefile.c'.
+    Trying pattern rule with stem 'Makefile.c'.
+    Trying implicit prerequisite 'SCCS/s.Makefile.c'.
+    Trying pattern rule with stem 'Makefile'.
+    Trying implicit prerequisite 'Makefile.y'.
+    Looking for a rule with intermediate file 'Makefile.y'.
+     Avoiding implicit rule recursion.
+     Avoiding implicit rule recursion.
+     Avoiding implicit rule recursion.
+     Trying pattern rule with stem 'Makefile.y'.
+     Trying implicit prerequisite 'Makefile.y,v'.
+     Trying pattern rule with stem 'Makefile.y'.
+     Trying implicit prerequisite 'RCS/Makefile.y,v'.
+     Trying pattern rule with stem 'Makefile.y'.
+     Trying implicit prerequisite 'RCS/Makefile.y'.
+     Trying pattern rule with stem 'Makefile.y'.
+     Trying implicit prerequisite 's.Makefile.y'.
+     Trying pattern rule with stem 'Makefile.y'.
+     Trying implicit prerequisite 'SCCS/s.Makefile.y'.
+    Trying pattern rule with stem 'Makefile'.
+    Trying implicit prerequisite 'Makefile.l'.
+    Looking for a rule with intermediate file 'Makefile.l'.
+     Avoiding implicit rule recursion.
+     Avoiding implicit rule recursion.
+     Avoiding implicit rule recursion.
+     Trying pattern rule with stem 'Makefile.l'.
+     Trying implicit prerequisite 'Makefile.l,v'.
+     Trying pattern rule with stem 'Makefile.l'.
+     Trying implicit prerequisite 'RCS/Makefile.l,v'.
+     Trying pattern rule with stem 'Makefile.l'.
+     Trying implicit prerequisite 'RCS/Makefile.l'.
+     Trying pattern rule with stem 'Makefile.l'.
+     Trying implicit prerequisite 's.Makefile.l'.
+     Trying pattern rule with stem 'Makefile.l'.
+     Trying implicit prerequisite 'SCCS/s.Makefile.l'.
+    Trying pattern rule with stem 'Makefile'.
+    Trying implicit prerequisite 'Makefile.w'.
+    Looking for a rule with intermediate file 'Makefile.w'.
+     Avoiding implicit rule recursion.
+     Avoiding implicit rule recursion.
+     Avoiding implicit rule recursion.
+     Trying pattern rule with stem 'Makefile.w'.
+     Trying implicit prerequisite 'Makefile.w,v'.
+     Trying pattern rule with stem 'Makefile.w'.
+     Trying implicit prerequisite 'RCS/Makefile.w,v'.
+     Trying pattern rule with stem 'Makefile.w'.
+     Trying implicit prerequisite 'RCS/Makefile.w'.
+     Trying pattern rule with stem 'Makefile.w'.
+     Trying implicit prerequisite 's.Makefile.w'.
+     Trying pattern rule with stem 'Makefile.w'.
+     Trying implicit prerequisite 'SCCS/s.Makefile.w'.
+    Trying pattern rule with stem 'Makefile'.
+    Rejecting impossible implicit prerequisite 'Makefile.w'.
+   Trying pattern rule with stem 'Makefile'.
+   Trying implicit prerequisite 'Makefile.cc'.
+   Looking for a rule with intermediate file 'Makefile.cc'.
+    Avoiding implicit rule recursion.
+    Avoiding implicit rule recursion.
+    Trying pattern rule with stem 'Makefile.cc'.
+    Trying implicit prerequisite 'Makefile.cc,v'.
+    Trying pattern rule with stem 'Makefile.cc'.
+    Trying implicit prerequisite 'RCS/Makefile.cc,v'.
+    Trying pattern rule with stem 'Makefile.cc'.
+    Trying implicit prerequisite 'RCS/Makefile.cc'.
+    Trying pattern rule with stem 'Makefile.cc'.
+    Trying implicit prerequisite 's.Makefile.cc'.
+    Trying pattern rule with stem 'Makefile.cc'.
+    Trying implicit prerequisite 'SCCS/s.Makefile.cc'.
+   Trying pattern rule with stem 'Makefile'.
+   Trying implicit prerequisite 'Makefile.C'.
+   Looking for a rule with intermediate file 'Makefile.C'.
+    Avoiding implicit rule recursion.
+    Avoiding implicit rule recursion.
+    Trying pattern rule with stem 'Makefile.C'.
+    Trying implicit prerequisite 'Makefile.C,v'.
+    Trying pattern rule with stem 'Makefile.C'.
+    Trying implicit prerequisite 'RCS/Makefile.C,v'.
+    Trying pattern rule with stem 'Makefile.C'.
+    Trying implicit prerequisite 'RCS/Makefile.C'.
+    Trying pattern rule with stem 'Makefile.C'.
+    Trying implicit prerequisite 's.Makefile.C'.
+    Trying pattern rule with stem 'Makefile.C'.
+    Trying implicit prerequisite 'SCCS/s.Makefile.C'.
+   Trying pattern rule with stem 'Makefile'.
+   Trying implicit prerequisite 'Makefile.cpp'.
+   Looking for a rule with intermediate file 'Makefile.cpp'.
+    Avoiding implicit rule recursion.
+    Avoiding implicit rule recursion.
+    Trying pattern rule with stem 'Makefile.cpp'.
+    Trying implicit prerequisite 'Makefile.cpp,v'.
+    Trying pattern rule with stem 'Makefile.cpp'.
+    Trying implicit prerequisite 'RCS/Makefile.cpp,v'.
+    Trying pattern rule with stem 'Makefile.cpp'.
+    Trying implicit prerequisite 'RCS/Makefile.cpp'.
+    Trying pattern rule with stem 'Makefile.cpp'.
+    Trying implicit prerequisite 's.Makefile.cpp'.
+    Trying pattern rule with stem 'Makefile.cpp'.
+    Trying implicit prerequisite 'SCCS/s.Makefile.cpp'.
+   Trying pattern rule with stem 'Makefile'.
+   Trying implicit prerequisite 'Makefile.p'.
+   Looking for a rule with intermediate file 'Makefile.p'.
+    Avoiding implicit rule recursion.
+    Avoiding implicit rule recursion.
+    Trying pattern rule with stem 'Makefile'.
+    Trying implicit prerequisite 'Makefile.web'.
+    Trying pattern rule with stem 'Makefile.p'.
+    Trying implicit prerequisite 'Makefile.p,v'.
+    Trying pattern rule with stem 'Makefile.p'.
+    Trying implicit prerequisite 'RCS/Makefile.p,v'.
+    Trying pattern rule with stem 'Makefile.p'.
+    Trying implicit prerequisite 'RCS/Makefile.p'.
+    Trying pattern rule with stem 'Makefile.p'.
+    Trying implicit prerequisite 's.Makefile.p'.
+    Trying pattern rule with stem 'Makefile.p'.
+    Trying implicit prerequisite 'SCCS/s.Makefile.p'.
+    Trying pattern rule with stem 'Makefile'.
+    Trying implicit prerequisite 'Makefile.web'.
+    Looking for a rule with intermediate file 'Makefile.web'.
+     Avoiding implicit rule recursion.
+     Avoiding implicit rule recursion.
+     Avoiding implicit rule recursion.
+     Trying pattern rule with stem 'Makefile.web'.
+     Trying implicit prerequisite 'Makefile.web,v'.
+     Trying pattern rule with stem 'Makefile.web'.
+     Trying implicit prerequisite 'RCS/Makefile.web,v'.
+     Trying pattern rule with stem 'Makefile.web'.
+     Trying implicit prerequisite 'RCS/Makefile.web'.
+     Trying pattern rule with stem 'Makefile.web'.
+     Trying implicit prerequisite 's.Makefile.web'.
+     Trying pattern rule with stem 'Makefile.web'.
+     Trying implicit prerequisite 'SCCS/s.Makefile.web'.
+   Trying pattern rule with stem 'Makefile'.
+   Trying implicit prerequisite 'Makefile.f'.
+   Looking for a rule with intermediate file 'Makefile.f'.
+    Avoiding implicit rule recursion.
+    Avoiding implicit rule recursion.
+    Trying pattern rule with stem 'Makefile'.
+    Trying implicit prerequisite 'Makefile.F'.
+    Trying pattern rule with stem 'Makefile'.
+    Trying implicit prerequisite 'Makefile.r'.
+    Trying pattern rule with stem 'Makefile.f'.
+    Trying implicit prerequisite 'Makefile.f,v'.
+    Trying pattern rule with stem 'Makefile.f'.
+    Trying implicit prerequisite 'RCS/Makefile.f,v'.
+    Trying pattern rule with stem 'Makefile.f'.
+    Trying implicit prerequisite 'RCS/Makefile.f'.
+    Trying pattern rule with stem 'Makefile.f'.
+    Trying implicit prerequisite 's.Makefile.f'.
+    Trying pattern rule with stem 'Makefile.f'.
+    Trying implicit prerequisite 'SCCS/s.Makefile.f'.
+    Trying pattern rule with stem 'Makefile'.
+    Trying implicit prerequisite 'Makefile.F'.
+    Looking for a rule with intermediate file 'Makefile.F'.
+     Avoiding implicit rule recursion.
+     Avoiding implicit rule recursion.
+     Avoiding implicit rule recursion.
+     Trying pattern rule with stem 'Makefile.F'.
+     Trying implicit prerequisite 'Makefile.F,v'.
+     Trying pattern rule with stem 'Makefile.F'.
+     Trying implicit prerequisite 'RCS/Makefile.F,v'.
+     Trying pattern rule with stem 'Makefile.F'.
+     Trying implicit prerequisite 'RCS/Makefile.F'.
+     Trying pattern rule with stem 'Makefile.F'.
+     Trying implicit prerequisite 's.Makefile.F'.
+     Trying pattern rule with stem 'Makefile.F'.
+     Trying implicit prerequisite 'SCCS/s.Makefile.F'.
+    Trying pattern rule with stem 'Makefile'.
+    Trying implicit prerequisite 'Makefile.r'.
+    Looking for a rule with intermediate file 'Makefile.r'.
+     Avoiding implicit rule recursion.
+     Avoiding implicit rule recursion.
+     Avoiding implicit rule recursion.
+     Trying pattern rule with stem 'Makefile'.
+     Rejecting impossible implicit prerequisite 'Makefile.l'.
+     Trying pattern rule with stem 'Makefile.r'.
+     Trying implicit prerequisite 'Makefile.r,v'.
+     Trying pattern rule with stem 'Makefile.r'.
+     Trying implicit prerequisite 'RCS/Makefile.r,v'.
+     Trying pattern rule with stem 'Makefile.r'.
+     Trying implicit prerequisite 'RCS/Makefile.r'.
+     Trying pattern rule with stem 'Makefile.r'.
+     Trying implicit prerequisite 's.Makefile.r'.
+     Trying pattern rule with stem 'Makefile.r'.
+     Trying implicit prerequisite 'SCCS/s.Makefile.r'.
+   Trying pattern rule with stem 'Makefile'.
+   Rejecting impossible implicit prerequisite 'Makefile.F'.
+   Trying pattern rule with stem 'Makefile'.
+   Trying implicit prerequisite 'Makefile.m'.
+   Looking for a rule with intermediate file 'Makefile.m'.
+    Avoiding implicit rule recursion.
+    Avoiding implicit rule recursion.
+    Trying pattern rule with stem 'Makefile'.
+    Trying implicit prerequisite 'Makefile.ym'.
+    Trying pattern rule with stem 'Makefile.m'.
+    Trying implicit prerequisite 'Makefile.m,v'.
+    Trying pattern rule with stem 'Makefile.m'.
+    Trying implicit prerequisite 'RCS/Makefile.m,v'.
+    Trying pattern rule with stem 'Makefile.m'.
+    Trying implicit prerequisite 'RCS/Makefile.m'.
+    Trying pattern rule with stem 'Makefile.m'.
+    Trying implicit prerequisite 's.Makefile.m'.
+    Trying pattern rule with stem 'Makefile.m'.
+    Trying implicit prerequisite 'SCCS/s.Makefile.m'.
+    Trying pattern rule with stem 'Makefile'.
+    Trying implicit prerequisite 'Makefile.ym'.
+    Looking for a rule with intermediate file 'Makefile.ym'.
+     Avoiding implicit rule recursion.
+     Avoiding implicit rule recursion.
+     Avoiding implicit rule recursion.
+     Trying pattern rule with stem 'Makefile.ym'.
+     Trying implicit prerequisite 'Makefile.ym,v'.
+     Trying pattern rule with stem 'Makefile.ym'.
+     Trying implicit prerequisite 'RCS/Makefile.ym,v'.
+     Trying pattern rule with stem 'Makefile.ym'.
+     Trying implicit prerequisite 'RCS/Makefile.ym'.
+     Trying pattern rule with stem 'Makefile.ym'.
+     Trying implicit prerequisite 's.Makefile.ym'.
+     Trying pattern rule with stem 'Makefile.ym'.
+     Trying implicit prerequisite 'SCCS/s.Makefile.ym'.
+   Trying pattern rule with stem 'Makefile'.
+   Rejecting impossible implicit prerequisite 'Makefile.r'.
+   Trying pattern rule with stem 'Makefile'.
+   Trying implicit prerequisite 'Makefile.s'.
+   Looking for a rule with intermediate file 'Makefile.s'.
+    Avoiding implicit rule recursion.
+    Avoiding implicit rule recursion.
+    Trying pattern rule with stem 'Makefile'.
+    Trying implicit prerequisite 'Makefile.S'.
+    Trying pattern rule with stem 'Makefile.s'.
+    Trying implicit prerequisite 'Makefile.s,v'.
+    Trying pattern rule with stem 'Makefile.s'.
+    Trying implicit prerequisite 'RCS/Makefile.s,v'.
+    Trying pattern rule with stem 'Makefile.s'.
+    Trying implicit prerequisite 'RCS/Makefile.s'.
+    Trying pattern rule with stem 'Makefile.s'.
+    Trying implicit prerequisite 's.Makefile.s'.
+    Trying pattern rule with stem 'Makefile.s'.
+    Trying implicit prerequisite 'SCCS/s.Makefile.s'.
+    Trying pattern rule with stem 'Makefile'.
+    Trying implicit prerequisite 'Makefile.S'.
+    Looking for a rule with intermediate file 'Makefile.S'.
+     Avoiding implicit rule recursion.
+     Avoiding implicit rule recursion.
+     Avoiding implicit rule recursion.
+     Trying pattern rule with stem 'Makefile.S'.
+     Trying implicit prerequisite 'Makefile.S,v'.
+     Trying pattern rule with stem 'Makefile.S'.
+     Trying implicit prerequisite 'RCS/Makefile.S,v'.
+     Trying pattern rule with stem 'Makefile.S'.
+     Trying implicit prerequisite 'RCS/Makefile.S'.
+     Trying pattern rule with stem 'Makefile.S'.
+     Trying implicit prerequisite 's.Makefile.S'.
+     Trying pattern rule with stem 'Makefile.S'.
+     Trying implicit prerequisite 'SCCS/s.Makefile.S'.
+   Trying pattern rule with stem 'Makefile'.
+   Rejecting impossible implicit prerequisite 'Makefile.S'.
+   Trying pattern rule with stem 'Makefile'.
+   Trying implicit prerequisite 'Makefile.mod'.
+   Looking for a rule with intermediate file 'Makefile.mod'.
+    Avoiding implicit rule recursion.
+    Avoiding implicit rule recursion.
+    Trying pattern rule with stem 'Makefile.mod'.
+    Trying implicit prerequisite 'Makefile.mod,v'.
+    Trying pattern rule with stem 'Makefile.mod'.
+    Trying implicit prerequisite 'RCS/Makefile.mod,v'.
+    Trying pattern rule with stem 'Makefile.mod'.
+    Trying implicit prerequisite 'RCS/Makefile.mod'.
+    Trying pattern rule with stem 'Makefile.mod'.
+    Trying implicit prerequisite 's.Makefile.mod'.
+    Trying pattern rule with stem 'Makefile.mod'.
+    Trying implicit prerequisite 'SCCS/s.Makefile.mod'.
+  Trying pattern rule with stem 'Makefile'.
+  Rejecting impossible implicit prerequisite 'Makefile.c'.
+  Trying pattern rule with stem 'Makefile'.
+  Rejecting impossible implicit prerequisite 'Makefile.cc'.
+  Trying pattern rule with stem 'Makefile'.
+  Rejecting impossible implicit prerequisite 'Makefile.C'.
+  Trying pattern rule with stem 'Makefile'.
+  Rejecting impossible implicit prerequisite 'Makefile.cpp'.
+  Trying pattern rule with stem 'Makefile'.
+  Rejecting impossible implicit prerequisite 'Makefile.p'.
+  Trying pattern rule with stem 'Makefile'.
+  Rejecting impossible implicit prerequisite 'Makefile.f'.
+  Trying pattern rule with stem 'Makefile'.
+  Rejecting impossible implicit prerequisite 'Makefile.F'.
+  Trying pattern rule with stem 'Makefile'.
+  Rejecting impossible implicit prerequisite 'Makefile.m'.
+  Trying pattern rule with stem 'Makefile'.
+  Rejecting impossible implicit prerequisite 'Makefile.r'.
+  Trying pattern rule with stem 'Makefile'.
+  Rejecting impossible implicit prerequisite 'Makefile.s'.
+  Trying pattern rule with stem 'Makefile'.
+  Rejecting impossible implicit prerequisite 'Makefile.S'.
+  Trying pattern rule with stem 'Makefile'.
+  Rejecting impossible implicit prerequisite 'Makefile.mod'.
+  Trying pattern rule with stem 'Makefile'.
+  Trying implicit prerequisite 'Makefile.sh'.
+  Looking for a rule with intermediate file 'Makefile.sh'.
+   Avoiding implicit rule recursion.
+   Trying pattern rule with stem 'Makefile.sh'.
+   Trying implicit prerequisite 'Makefile.sh,v'.
+   Trying pattern rule with stem 'Makefile.sh'.
+   Trying implicit prerequisite 'RCS/Makefile.sh,v'.
+   Trying pattern rule with stem 'Makefile.sh'.
+   Trying implicit prerequisite 'RCS/Makefile.sh'.
+   Trying pattern rule with stem 'Makefile.sh'.
+   Trying implicit prerequisite 's.Makefile.sh'.
+   Trying pattern rule with stem 'Makefile.sh'.
+   Trying implicit prerequisite 'SCCS/s.Makefile.sh'.
+  No implicit rule found for 'Makefile'.
+  Finished prerequisites of target file 'Makefile'.
+ No need to remake target 'Makefile'.
+Updating goal targets....
+Considering target file 'all'.
+ File 'all' does not exist.
+ Looking for an implicit rule for 'all'.
+ Trying pattern rule with stem 'all'.
+ Trying implicit prerequisite 'all.o'.
+ Trying pattern rule with stem 'all'.
+ Trying implicit prerequisite 'all.c'.
+ Trying pattern rule with stem 'all'.
+ Trying implicit prerequisite 'all.cc'.
+ Trying pattern rule with stem 'all'.
+ Trying implicit prerequisite 'all.C'.
+ Trying pattern rule with stem 'all'.
+ Trying implicit prerequisite 'all.cpp'.
+ Trying pattern rule with stem 'all'.
+ Trying implicit prerequisite 'all.p'.
+ Trying pattern rule with stem 'all'.
+ Trying implicit prerequisite 'all.f'.
+ Trying pattern rule with stem 'all'.
+ Trying implicit prerequisite 'all.F'.
+ Trying pattern rule with stem 'all'.
+ Trying implicit prerequisite 'all.m'.
+ Trying pattern rule with stem 'all'.
+ Trying implicit prerequisite 'all.r'.
+ Trying pattern rule with stem 'all'.
+ Trying implicit prerequisite 'all.s'.
+ Trying pattern rule with stem 'all'.
+ Trying implicit prerequisite 'all.S'.
+ Trying pattern rule with stem 'all'.
+ Trying implicit prerequisite 'all.mod'.
+ Trying pattern rule with stem 'all'.
+ Trying implicit prerequisite 'all.sh'.
+ Trying pattern rule with stem 'all'.
+ Trying implicit prerequisite 'all,v'.
+ Trying pattern rule with stem 'all'.
+ Trying implicit prerequisite 'RCS/all,v'.
+ Trying pattern rule with stem 'all'.
+ Trying implicit prerequisite 'RCS/all'.
+ Trying pattern rule with stem 'all'.
+ Trying implicit prerequisite 's.all'.
+ Trying pattern rule with stem 'all'.
+ Trying implicit prerequisite 'SCCS/s.all'.
+ Trying pattern rule with stem 'all'.
+ Trying implicit prerequisite 'all.o'.
+ Looking for a rule with intermediate file 'all.o'.
+  Avoiding implicit rule recursion.
+  Trying pattern rule with stem 'all'.
+  Trying implicit prerequisite 'all.c'.
+  Trying pattern rule with stem 'all'.
+  Trying implicit prerequisite 'all.cc'.
+  Trying pattern rule with stem 'all'.
+  Trying implicit prerequisite 'all.C'.
+  Trying pattern rule with stem 'all'.
+  Trying implicit prerequisite 'all.cpp'.
+  Trying pattern rule with stem 'all'.
+  Trying implicit prerequisite 'all.p'.
+  Trying pattern rule with stem 'all'.
+  Trying implicit prerequisite 'all.f'.
+  Trying pattern rule with stem 'all'.
+  Trying implicit prerequisite 'all.F'.
+  Trying pattern rule with stem 'all'.
+  Trying implicit prerequisite 'all.m'.
+  Trying pattern rule with stem 'all'.
+  Trying implicit prerequisite 'all.r'.
+  Trying pattern rule with stem 'all'.
+  Trying implicit prerequisite 'all.s'.
+  Trying pattern rule with stem 'all'.
+  Trying implicit prerequisite 'all.S'.
+  Trying pattern rule with stem 'all'.
+  Trying implicit prerequisite 'all.mod'.
+  Trying pattern rule with stem 'all.o'.
+  Trying implicit prerequisite 'all.o,v'.
+  Trying pattern rule with stem 'all.o'.
+  Trying implicit prerequisite 'RCS/all.o,v'.
+  Trying pattern rule with stem 'all.o'.
+  Trying implicit prerequisite 'RCS/all.o'.
+  Trying pattern rule with stem 'all.o'.
+  Trying implicit prerequisite 's.all.o'.
+  Trying pattern rule with stem 'all.o'.
+  Trying implicit prerequisite 'SCCS/s.all.o'.
+  Trying pattern rule with stem 'all'.
+  Trying implicit prerequisite 'all.c'.
+  Looking for a rule with intermediate file 'all.c'.
+   Avoiding implicit rule recursion.
+   Avoiding implicit rule recursion.
+   Trying pattern rule with stem 'all'.
+   Trying implicit prerequisite 'all.y'.
+   Trying pattern rule with stem 'all'.
+   Trying implicit prerequisite 'all.l'.
+   Trying pattern rule with stem 'all'.
+   Trying implicit prerequisite 'all.w'.
+   Trying pattern rule with stem 'all'.
+   Trying implicit prerequisite 'all.w'.
+   Trying pattern rule with stem 'all.c'.
+   Trying implicit prerequisite 'all.c,v'.
+   Trying pattern rule with stem 'all.c'.
+   Trying implicit prerequisite 'RCS/all.c,v'.
+   Trying pattern rule with stem 'all.c'.
+   Trying implicit prerequisite 'RCS/all.c'.
+   Trying pattern rule with stem 'all.c'.
+   Trying implicit prerequisite 's.all.c'.
+   Trying pattern rule with stem 'all.c'.
+   Trying implicit prerequisite 'SCCS/s.all.c'.
+   Trying pattern rule with stem 'all'.
+   Trying implicit prerequisite 'all.y'.
+   Looking for a rule with intermediate file 'all.y'.
+    Avoiding implicit rule recursion.
+    Avoiding implicit rule recursion.
+    Avoiding implicit rule recursion.
+    Trying pattern rule with stem 'all.y'.
+    Trying implicit prerequisite 'all.y,v'.
+    Trying pattern rule with stem 'all.y'.
+    Trying implicit prerequisite 'RCS/all.y,v'.
+    Trying pattern rule with stem 'all.y'.
+    Trying implicit prerequisite 'RCS/all.y'.
+    Trying pattern rule with stem 'all.y'.
+    Trying implicit prerequisite 's.all.y'.
+    Trying pattern rule with stem 'all.y'.
+    Trying implicit prerequisite 'SCCS/s.all.y'.
+   Trying pattern rule with stem 'all'.
+   Trying implicit prerequisite 'all.l'.
+   Looking for a rule with intermediate file 'all.l'.
+    Avoiding implicit rule recursion.
+    Avoiding implicit rule recursion.
+    Avoiding implicit rule recursion.
+    Trying pattern rule with stem 'all.l'.
+    Trying implicit prerequisite 'all.l,v'.
+    Trying pattern rule with stem 'all.l'.
+    Trying implicit prerequisite 'RCS/all.l,v'.
+    Trying pattern rule with stem 'all.l'.
+    Trying implicit prerequisite 'RCS/all.l'.
+    Trying pattern rule with stem 'all.l'.
+    Trying implicit prerequisite 's.all.l'.
+    Trying pattern rule with stem 'all.l'.
+    Trying implicit prerequisite 'SCCS/s.all.l'.
+   Trying pattern rule with stem 'all'.
+   Trying implicit prerequisite 'all.w'.
+   Looking for a rule with intermediate file 'all.w'.
+    Avoiding implicit rule recursion.
+    Avoiding implicit rule recursion.
+    Avoiding implicit rule recursion.
+    Trying pattern rule with stem 'all.w'.
+    Trying implicit prerequisite 'all.w,v'.
+    Trying pattern rule with stem 'all.w'.
+    Trying implicit prerequisite 'RCS/all.w,v'.
+    Trying pattern rule with stem 'all.w'.
+    Trying implicit prerequisite 'RCS/all.w'.
+    Trying pattern rule with stem 'all.w'.
+    Trying implicit prerequisite 's.all.w'.
+    Trying pattern rule with stem 'all.w'.
+    Trying implicit prerequisite 'SCCS/s.all.w'.
+   Trying pattern rule with stem 'all'.
+   Rejecting impossible implicit prerequisite 'all.w'.
+  Trying pattern rule with stem 'all'.
+  Trying implicit prerequisite 'all.cc'.
+  Looking for a rule with intermediate file 'all.cc'.
+   Avoiding implicit rule recursion.
+   Avoiding implicit rule recursion.
+   Trying pattern rule with stem 'all.cc'.
+   Trying implicit prerequisite 'all.cc,v'.
+   Trying pattern rule with stem 'all.cc'.
+   Trying implicit prerequisite 'RCS/all.cc,v'.
+   Trying pattern rule with stem 'all.cc'.
+   Trying implicit prerequisite 'RCS/all.cc'.
+   Trying pattern rule with stem 'all.cc'.
+   Trying implicit prerequisite 's.all.cc'.
+   Trying pattern rule with stem 'all.cc'.
+   Trying implicit prerequisite 'SCCS/s.all.cc'.
+  Trying pattern rule with stem 'all'.
+  Trying implicit prerequisite 'all.C'.
+  Looking for a rule with intermediate file 'all.C'.
+   Avoiding implicit rule recursion.
+   Avoiding implicit rule recursion.
+   Trying pattern rule with stem 'all.C'.
+   Trying implicit prerequisite 'all.C,v'.
+   Trying pattern rule with stem 'all.C'.
+   Trying implicit prerequisite 'RCS/all.C,v'.
+   Trying pattern rule with stem 'all.C'.
+   Trying implicit prerequisite 'RCS/all.C'.
+   Trying pattern rule with stem 'all.C'.
+   Trying implicit prerequisite 's.all.C'.
+   Trying pattern rule with stem 'all.C'.
+   Trying implicit prerequisite 'SCCS/s.all.C'.
+  Trying pattern rule with stem 'all'.
+  Trying implicit prerequisite 'all.cpp'.
+  Looking for a rule with intermediate file 'all.cpp'.
+   Avoiding implicit rule recursion.
+   Avoiding implicit rule recursion.
+   Trying pattern rule with stem 'all.cpp'.
+   Trying implicit prerequisite 'all.cpp,v'.
+   Trying pattern rule with stem 'all.cpp'.
+   Trying implicit prerequisite 'RCS/all.cpp,v'.
+   Trying pattern rule with stem 'all.cpp'.
+   Trying implicit prerequisite 'RCS/all.cpp'.
+   Trying pattern rule with stem 'all.cpp'.
+   Trying implicit prerequisite 's.all.cpp'.
+   Trying pattern rule with stem 'all.cpp'.
+   Trying implicit prerequisite 'SCCS/s.all.cpp'.
+  Trying pattern rule with stem 'all'.
+  Trying implicit prerequisite 'all.p'.
+  Looking for a rule with intermediate file 'all.p'.
+   Avoiding implicit rule recursion.
+   Avoiding implicit rule recursion.
+   Trying pattern rule with stem 'all'.
+   Trying implicit prerequisite 'all.web'.
+   Trying pattern rule with stem 'all.p'.
+   Trying implicit prerequisite 'all.p,v'.
+   Trying pattern rule with stem 'all.p'.
+   Trying implicit prerequisite 'RCS/all.p,v'.
+   Trying pattern rule with stem 'all.p'.
+   Trying implicit prerequisite 'RCS/all.p'.
+   Trying pattern rule with stem 'all.p'.
+   Trying implicit prerequisite 's.all.p'.
+   Trying pattern rule with stem 'all.p'.
+   Trying implicit prerequisite 'SCCS/s.all.p'.
+   Trying pattern rule with stem 'all'.
+   Trying implicit prerequisite 'all.web'.
+   Looking for a rule with intermediate file 'all.web'.
+    Avoiding implicit rule recursion.
+    Avoiding implicit rule recursion.
+    Avoiding implicit rule recursion.
+    Trying pattern rule with stem 'all.web'.
+    Trying implicit prerequisite 'all.web,v'.
+    Trying pattern rule with stem 'all.web'.
+    Trying implicit prerequisite 'RCS/all.web,v'.
+    Trying pattern rule with stem 'all.web'.
+    Trying implicit prerequisite 'RCS/all.web'.
+    Trying pattern rule with stem 'all.web'.
+    Trying implicit prerequisite 's.all.web'.
+    Trying pattern rule with stem 'all.web'.
+    Trying implicit prerequisite 'SCCS/s.all.web'.
+  Trying pattern rule with stem 'all'.
+  Trying implicit prerequisite 'all.f'.
+  Looking for a rule with intermediate file 'all.f'.
+   Avoiding implicit rule recursion.
+   Avoiding implicit rule recursion.
+   Trying pattern rule with stem 'all'.
+   Trying implicit prerequisite 'all.F'.
+   Trying pattern rule with stem 'all'.
+   Trying implicit prerequisite 'all.r'.
+   Trying pattern rule with stem 'all.f'.
+   Trying implicit prerequisite 'all.f,v'.
+   Trying pattern rule with stem 'all.f'.
+   Trying implicit prerequisite 'RCS/all.f,v'.
+   Trying pattern rule with stem 'all.f'.
+   Trying implicit prerequisite 'RCS/all.f'.
+   Trying pattern rule with stem 'all.f'.
+   Trying implicit prerequisite 's.all.f'.
+   Trying pattern rule with stem 'all.f'.
+   Trying implicit prerequisite 'SCCS/s.all.f'.
+   Trying pattern rule with stem 'all'.
+   Trying implicit prerequisite 'all.F'.
+   Looking for a rule with intermediate file 'all.F'.
+    Avoiding implicit rule recursion.
+    Avoiding implicit rule recursion.
+    Avoiding implicit rule recursion.
+    Trying pattern rule with stem 'all.F'.
+    Trying implicit prerequisite 'all.F,v'.
+    Trying pattern rule with stem 'all.F'.
+    Trying implicit prerequisite 'RCS/all.F,v'.
+    Trying pattern rule with stem 'all.F'.
+    Trying implicit prerequisite 'RCS/all.F'.
+    Trying pattern rule with stem 'all.F'.
+    Trying implicit prerequisite 's.all.F'.
+    Trying pattern rule with stem 'all.F'.
+    Trying implicit prerequisite 'SCCS/s.all.F'.
+   Trying pattern rule with stem 'all'.
+   Trying implicit prerequisite 'all.r'.
+   Looking for a rule with intermediate file 'all.r'.
+    Avoiding implicit rule recursion.
+    Avoiding implicit rule recursion.
+    Avoiding implicit rule recursion.
+    Trying pattern rule with stem 'all'.
+    Rejecting impossible implicit prerequisite 'all.l'.
+    Trying pattern rule with stem 'all.r'.
+    Trying implicit prerequisite 'all.r,v'.
+    Trying pattern rule with stem 'all.r'.
+    Trying implicit prerequisite 'RCS/all.r,v'.
+    Trying pattern rule with stem 'all.r'.
+    Trying implicit prerequisite 'RCS/all.r'.
+    Trying pattern rule with stem 'all.r'.
+    Trying implicit prerequisite 's.all.r'.
+    Trying pattern rule with stem 'all.r'.
+    Trying implicit prerequisite 'SCCS/s.all.r'.
+  Trying pattern rule with stem 'all'.
+  Rejecting impossible implicit prerequisite 'all.F'.
+  Trying pattern rule with stem 'all'.
+  Trying implicit prerequisite 'all.m'.
+  Looking for a rule with intermediate file 'all.m'.
+   Avoiding implicit rule recursion.
+   Avoiding implicit rule recursion.
+   Trying pattern rule with stem 'all'.
+   Trying implicit prerequisite 'all.ym'.
+   Trying pattern rule with stem 'all.m'.
+   Trying implicit prerequisite 'all.m,v'.
+   Trying pattern rule with stem 'all.m'.
+   Trying implicit prerequisite 'RCS/all.m,v'.
+   Trying pattern rule with stem 'all.m'.
+   Trying implicit prerequisite 'RCS/all.m'.
+   Trying pattern rule with stem 'all.m'.
+   Trying implicit prerequisite 's.all.m'.
+   Trying pattern rule with stem 'all.m'.
+   Trying implicit prerequisite 'SCCS/s.all.m'.
+   Trying pattern rule with stem 'all'.
+   Trying implicit prerequisite 'all.ym'.
+   Looking for a rule with intermediate file 'all.ym'.
+    Avoiding implicit rule recursion.
+    Avoiding implicit rule recursion.
+    Avoiding implicit rule recursion.
+    Trying pattern rule with stem 'all.ym'.
+    Trying implicit prerequisite 'all.ym,v'.
+    Trying pattern rule with stem 'all.ym'.
+    Trying implicit prerequisite 'RCS/all.ym,v'.
+    Trying pattern rule with stem 'all.ym'.
+    Trying implicit prerequisite 'RCS/all.ym'.
+    Trying pattern rule with stem 'all.ym'.
+    Trying implicit prerequisite 's.all.ym'.
+    Trying pattern rule with stem 'all.ym'.
+    Trying implicit prerequisite 'SCCS/s.all.ym'.
+  Trying pattern rule with stem 'all'.
+  Rejecting impossible implicit prerequisite 'all.r'.
+  Trying pattern rule with stem 'all'.
+  Trying implicit prerequisite 'all.s'.
+  Looking for a rule with intermediate file 'all.s'.
+   Avoiding implicit rule recursion.
+   Avoiding implicit rule recursion.
+   Trying pattern rule with stem 'all'.
+   Trying implicit prerequisite 'all.S'.
+   Trying pattern rule with stem 'all.s'.
+   Trying implicit prerequisite 'all.s,v'.
+   Trying pattern rule with stem 'all.s'.
+   Trying implicit prerequisite 'RCS/all.s,v'.
+   Trying pattern rule with stem 'all.s'.
+   Trying implicit prerequisite 'RCS/all.s'.
+   Trying pattern rule with stem 'all.s'.
+   Trying implicit prerequisite 's.all.s'.
+   Trying pattern rule with stem 'all.s'.
+   Trying implicit prerequisite 'SCCS/s.all.s'.
+   Trying pattern rule with stem 'all'.
+   Trying implicit prerequisite 'all.S'.
+   Looking for a rule with intermediate file 'all.S'.
+    Avoiding implicit rule recursion.
+    Avoiding implicit rule recursion.
+    Avoiding implicit rule recursion.
+    Trying pattern rule with stem 'all.S'.
+    Trying implicit prerequisite 'all.S,v'.
+    Trying pattern rule with stem 'all.S'.
+    Trying implicit prerequisite 'RCS/all.S,v'.
+    Trying pattern rule with stem 'all.S'.
+    Trying implicit prerequisite 'RCS/all.S'.
+    Trying pattern rule with stem 'all.S'.
+    Trying implicit prerequisite 's.all.S'.
+    Trying pattern rule with stem 'all.S'.
+    Trying implicit prerequisite 'SCCS/s.all.S'.
+  Trying pattern rule with stem 'all'.
+  Rejecting impossible implicit prerequisite 'all.S'.
+  Trying pattern rule with stem 'all'.
+  Trying implicit prerequisite 'all.mod'.
+  Looking for a rule with intermediate file 'all.mod'.
+   Avoiding implicit rule recursion.
+   Avoiding implicit rule recursion.
+   Trying pattern rule with stem 'all.mod'.
+   Trying implicit prerequisite 'all.mod,v'.
+   Trying pattern rule with stem 'all.mod'.
+   Trying implicit prerequisite 'RCS/all.mod,v'.
+   Trying pattern rule with stem 'all.mod'.
+   Trying implicit prerequisite 'RCS/all.mod'.
+   Trying pattern rule with stem 'all.mod'.
+   Trying implicit prerequisite 's.all.mod'.
+   Trying pattern rule with stem 'all.mod'.
+   Trying implicit prerequisite 'SCCS/s.all.mod'.
+ Trying pattern rule with stem 'all'.
+ Rejecting impossible implicit prerequisite 'all.c'.
+ Trying pattern rule with stem 'all'.
+ Rejecting impossible implicit prerequisite 'all.cc'.
+ Trying pattern rule with stem 'all'.
+ Rejecting impossible implicit prerequisite 'all.C'.
+ Trying pattern rule with stem 'all'.
+ Rejecting impossible implicit prerequisite 'all.cpp'.
+ Trying pattern rule with stem 'all'.
+ Rejecting impossible implicit prerequisite 'all.p'.
+ Trying pattern rule with stem 'all'.
+ Rejecting impossible implicit prerequisite 'all.f'.
+ Trying pattern rule with stem 'all'.
+ Rejecting impossible implicit prerequisite 'all.F'.
+ Trying pattern rule with stem 'all'.
+ Rejecting impossible implicit prerequisite 'all.m'.
+ Trying pattern rule with stem 'all'.
+ Rejecting impossible implicit prerequisite 'all.r'.
+ Trying pattern rule with stem 'all'.
+ Rejecting impossible implicit prerequisite 'all.s'.
+ Trying pattern rule with stem 'all'.
+ Rejecting impossible implicit prerequisite 'all.S'.
+ Trying pattern rule with stem 'all'.
+ Rejecting impossible implicit prerequisite 'all.mod'.
+ Trying pattern rule with stem 'all'.
+ Trying implicit prerequisite 'all.sh'.
+ Looking for a rule with intermediate file 'all.sh'.
+  Avoiding implicit rule recursion.
+  Trying pattern rule with stem 'all.sh'.
+  Trying implicit prerequisite 'all.sh,v'.
+  Trying pattern rule with stem 'all.sh'.
+  Trying implicit prerequisite 'RCS/all.sh,v'.
+  Trying pattern rule with stem 'all.sh'.
+  Trying implicit prerequisite 'RCS/all.sh'.
+  Trying pattern rule with stem 'all.sh'.
+  Trying implicit prerequisite 's.all.sh'.
+  Trying pattern rule with stem 'all.sh'.
+  Trying implicit prerequisite 'SCCS/s.all.sh'.
+ No implicit rule found for 'all'.
+  Considering target file 'clean'.
+   File 'clean' does not exist.
+   Finished prerequisites of target file 'clean'.
+  Must remake target 'clean'.
+rm -rf build/* 
+Putting child 0x559c5980a7d0 (clean) PID 13915 on the chain.
+Live child 0x559c5980a7d0 (clean) PID 13915 
+Reaping winning child 0x559c5980a7d0 PID 13915 
+rm -rf kernel8.img
+Live child 0x559c5980a7d0 (clean) PID 13916 
+Reaping winning child 0x559c5980a7d0 PID 13916 
+Removing child 0x559c5980a7d0 PID 13916 from chain.
+  Successfully remade target file 'clean'.
+  Considering target file 'kernel8.img'.
+   File 'kernel8.img' does not exist.
+    Considering target file 'build/start.o'.
+     File 'build/start.o' does not exist.
+     Looking for an implicit rule for 'build/start.o'.
+     Trying pattern rule with stem 'start'.
+     Trying implicit prerequisite 'src/start.s'.
+     Found an implicit rule for 'build/start.o'.
+      Considering target file 'src/start.s'.
+       Looking for an implicit rule for 'src/start.s'.
+       Trying pattern rule with stem 'start'.
+       Trying implicit prerequisite 'src/start.S'.
+       Trying pattern rule with stem 'start.s'.
+       Trying implicit prerequisite 'src/start.s,v'.
+       Trying pattern rule with stem 'start.s'.
+       Trying implicit prerequisite 'src/RCS/start.s,v'.
+       Trying pattern rule with stem 'start.s'.
+       Trying implicit prerequisite 'src/RCS/start.s'.
+       Trying pattern rule with stem 'start.s'.
+       Trying implicit prerequisite 'src/s.start.s'.
+       Trying pattern rule with stem 'start.s'.
+       Trying implicit prerequisite 'src/SCCS/s.start.s'.
+       Trying pattern rule with stem 'start'.
+       Trying implicit prerequisite 'src/start.S'.
+       Looking for a rule with intermediate file 'src/start.S'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'start.S'.
+        Trying implicit prerequisite 'src/start.S,v'.
+        Trying pattern rule with stem 'start.S'.
+        Trying implicit prerequisite 'src/RCS/start.S,v'.
+        Trying pattern rule with stem 'start.S'.
+        Trying implicit prerequisite 'src/RCS/start.S'.
+        Trying pattern rule with stem 'start.S'.
+        Trying implicit prerequisite 'src/s.start.S'.
+        Trying pattern rule with stem 'start.S'.
+        Trying implicit prerequisite 'src/SCCS/s.start.S'.
+       No implicit rule found for 'src/start.s'.
+       Finished prerequisites of target file 'src/start.s'.
+      No need to remake target 'src/start.s'.
+     Finished prerequisites of target file 'build/start.o'.
+    Must remake target 'build/start.o'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-gcc -Wall -O2 -ffreestanding -nostartfiles -std=gnu11 -mstrict-align -mcpu=cortex-a53 -fno-tree-loop-vectorize -fno-tree-slp-vectorize -g -lm -lc -lgcc -c  src/start.s -o build/start.o
+Putting child 0x559c5980b930 (build/start.o) PID 13917 on the chain.
+Live child 0x559c5980b930 (build/start.o) PID 13917 
+Reaping winning child 0x559c5980b930 PID 13917 
+Removing child 0x559c5980b930 PID 13917 from chain.
+    Successfully remade target file 'build/start.o'.
+    Considering target file 'build/multicore.o'.
+     File 'build/multicore.o' does not exist.
+     Looking for an implicit rule for 'build/multicore.o'.
+     Trying pattern rule with stem 'multicore'.
+     Trying implicit prerequisite 'src/multicore.s'.
+     Trying pattern rule with stem 'multicore'.
+     Trying implicit prerequisite 'src/multicore.c'.
+     Found an implicit rule for 'build/multicore.o'.
+      Considering target file 'src/multicore.c'.
+       Looking for an implicit rule for 'src/multicore.c'.
+       Trying pattern rule with stem 'multicore'.
+       Trying implicit prerequisite 'src/multicore.y'.
+       Trying pattern rule with stem 'multicore'.
+       Trying implicit prerequisite 'src/multicore.l'.
+       Trying pattern rule with stem 'multicore'.
+       Trying implicit prerequisite 'src/multicore.w'.
+       Trying pattern rule with stem 'multicore'.
+       Trying implicit prerequisite 'src/multicore.w'.
+       Trying pattern rule with stem 'multicore.c'.
+       Trying implicit prerequisite 'src/multicore.c,v'.
+       Trying pattern rule with stem 'multicore.c'.
+       Trying implicit prerequisite 'src/RCS/multicore.c,v'.
+       Trying pattern rule with stem 'multicore.c'.
+       Trying implicit prerequisite 'src/RCS/multicore.c'.
+       Trying pattern rule with stem 'multicore.c'.
+       Trying implicit prerequisite 'src/s.multicore.c'.
+       Trying pattern rule with stem 'multicore.c'.
+       Trying implicit prerequisite 'src/SCCS/s.multicore.c'.
+       Trying pattern rule with stem 'multicore'.
+       Trying implicit prerequisite 'src/multicore.y'.
+       Looking for a rule with intermediate file 'src/multicore.y'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'multicore.y'.
+        Trying implicit prerequisite 'src/multicore.y,v'.
+        Trying pattern rule with stem 'multicore.y'.
+        Trying implicit prerequisite 'src/RCS/multicore.y,v'.
+        Trying pattern rule with stem 'multicore.y'.
+        Trying implicit prerequisite 'src/RCS/multicore.y'.
+        Trying pattern rule with stem 'multicore.y'.
+        Trying implicit prerequisite 'src/s.multicore.y'.
+        Trying pattern rule with stem 'multicore.y'.
+        Trying implicit prerequisite 'src/SCCS/s.multicore.y'.
+       Trying pattern rule with stem 'multicore'.
+       Trying implicit prerequisite 'src/multicore.l'.
+       Looking for a rule with intermediate file 'src/multicore.l'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'multicore.l'.
+        Trying implicit prerequisite 'src/multicore.l,v'.
+        Trying pattern rule with stem 'multicore.l'.
+        Trying implicit prerequisite 'src/RCS/multicore.l,v'.
+        Trying pattern rule with stem 'multicore.l'.
+        Trying implicit prerequisite 'src/RCS/multicore.l'.
+        Trying pattern rule with stem 'multicore.l'.
+        Trying implicit prerequisite 'src/s.multicore.l'.
+        Trying pattern rule with stem 'multicore.l'.
+        Trying implicit prerequisite 'src/SCCS/s.multicore.l'.
+       Trying pattern rule with stem 'multicore'.
+       Trying implicit prerequisite 'src/multicore.w'.
+       Looking for a rule with intermediate file 'src/multicore.w'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'multicore.w'.
+        Trying implicit prerequisite 'src/multicore.w,v'.
+        Trying pattern rule with stem 'multicore.w'.
+        Trying implicit prerequisite 'src/RCS/multicore.w,v'.
+        Trying pattern rule with stem 'multicore.w'.
+        Trying implicit prerequisite 'src/RCS/multicore.w'.
+        Trying pattern rule with stem 'multicore.w'.
+        Trying implicit prerequisite 'src/s.multicore.w'.
+        Trying pattern rule with stem 'multicore.w'.
+        Trying implicit prerequisite 'src/SCCS/s.multicore.w'.
+       Trying pattern rule with stem 'multicore'.
+       Rejecting impossible implicit prerequisite 'src/multicore.w'.
+       No implicit rule found for 'src/multicore.c'.
+       Finished prerequisites of target file 'src/multicore.c'.
+      No need to remake target 'src/multicore.c'.
+     Finished prerequisites of target file 'build/multicore.o'.
+    Must remake target 'build/multicore.o'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-gcc -Wall -O2 -ffreestanding -nostartfiles -std=gnu11 -mstrict-align -mcpu=cortex-a53 -fno-tree-loop-vectorize -fno-tree-slp-vectorize -g -lm -lc -lgcc -c  src/multicore.c -o build/multicore.o 
+Putting child 0x559c5980d2e0 (build/multicore.o) PID 13919 on the chain.
+Live child 0x559c5980d2e0 (build/multicore.o) PID 13919 
+Reaping winning child 0x559c5980d2e0 PID 13919 
+Removing child 0x559c5980d2e0 PID 13919 from chain.
+    Successfully remade target file 'build/multicore.o'.
+    Considering target file 'build/mmu.o'.
+     File 'build/mmu.o' does not exist.
+     Looking for an implicit rule for 'build/mmu.o'.
+     Trying pattern rule with stem 'mmu'.
+     Trying implicit prerequisite 'src/mmu.s'.
+     Trying pattern rule with stem 'mmu'.
+     Trying implicit prerequisite 'src/mmu.c'.
+     Found an implicit rule for 'build/mmu.o'.
+      Considering target file 'src/mmu.c'.
+       Looking for an implicit rule for 'src/mmu.c'.
+       Trying pattern rule with stem 'mmu'.
+       Trying implicit prerequisite 'src/mmu.y'.
+       Trying pattern rule with stem 'mmu'.
+       Trying implicit prerequisite 'src/mmu.l'.
+       Trying pattern rule with stem 'mmu'.
+       Trying implicit prerequisite 'src/mmu.w'.
+       Trying pattern rule with stem 'mmu'.
+       Trying implicit prerequisite 'src/mmu.w'.
+       Trying pattern rule with stem 'mmu.c'.
+       Trying implicit prerequisite 'src/mmu.c,v'.
+       Trying pattern rule with stem 'mmu.c'.
+       Trying implicit prerequisite 'src/RCS/mmu.c,v'.
+       Trying pattern rule with stem 'mmu.c'.
+       Trying implicit prerequisite 'src/RCS/mmu.c'.
+       Trying pattern rule with stem 'mmu.c'.
+       Trying implicit prerequisite 'src/s.mmu.c'.
+       Trying pattern rule with stem 'mmu.c'.
+       Trying implicit prerequisite 'src/SCCS/s.mmu.c'.
+       Trying pattern rule with stem 'mmu'.
+       Trying implicit prerequisite 'src/mmu.y'.
+       Looking for a rule with intermediate file 'src/mmu.y'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'mmu.y'.
+        Trying implicit prerequisite 'src/mmu.y,v'.
+        Trying pattern rule with stem 'mmu.y'.
+        Trying implicit prerequisite 'src/RCS/mmu.y,v'.
+        Trying pattern rule with stem 'mmu.y'.
+        Trying implicit prerequisite 'src/RCS/mmu.y'.
+        Trying pattern rule with stem 'mmu.y'.
+        Trying implicit prerequisite 'src/s.mmu.y'.
+        Trying pattern rule with stem 'mmu.y'.
+        Trying implicit prerequisite 'src/SCCS/s.mmu.y'.
+       Trying pattern rule with stem 'mmu'.
+       Trying implicit prerequisite 'src/mmu.l'.
+       Looking for a rule with intermediate file 'src/mmu.l'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'mmu.l'.
+        Trying implicit prerequisite 'src/mmu.l,v'.
+        Trying pattern rule with stem 'mmu.l'.
+        Trying implicit prerequisite 'src/RCS/mmu.l,v'.
+        Trying pattern rule with stem 'mmu.l'.
+        Trying implicit prerequisite 'src/RCS/mmu.l'.
+        Trying pattern rule with stem 'mmu.l'.
+        Trying implicit prerequisite 'src/s.mmu.l'.
+        Trying pattern rule with stem 'mmu.l'.
+        Trying implicit prerequisite 'src/SCCS/s.mmu.l'.
+       Trying pattern rule with stem 'mmu'.
+       Trying implicit prerequisite 'src/mmu.w'.
+       Looking for a rule with intermediate file 'src/mmu.w'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'mmu.w'.
+        Trying implicit prerequisite 'src/mmu.w,v'.
+        Trying pattern rule with stem 'mmu.w'.
+        Trying implicit prerequisite 'src/RCS/mmu.w,v'.
+        Trying pattern rule with stem 'mmu.w'.
+        Trying implicit prerequisite 'src/RCS/mmu.w'.
+        Trying pattern rule with stem 'mmu.w'.
+        Trying implicit prerequisite 'src/s.mmu.w'.
+        Trying pattern rule with stem 'mmu.w'.
+        Trying implicit prerequisite 'src/SCCS/s.mmu.w'.
+       Trying pattern rule with stem 'mmu'.
+       Rejecting impossible implicit prerequisite 'src/mmu.w'.
+       No implicit rule found for 'src/mmu.c'.
+       Finished prerequisites of target file 'src/mmu.c'.
+      No need to remake target 'src/mmu.c'.
+     Finished prerequisites of target file 'build/mmu.o'.
+    Must remake target 'build/mmu.o'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-gcc -Wall -O2 -ffreestanding -nostartfiles -std=gnu11 -mstrict-align -mcpu=cortex-a53 -fno-tree-loop-vectorize -fno-tree-slp-vectorize -g -lm -lc -lgcc -c  src/mmu.c -o build/mmu.o 
+Putting child 0x559c5980bc80 (build/mmu.o) PID 13922 on the chain.
+Live child 0x559c5980bc80 (build/mmu.o) PID 13922 
+Reaping winning child 0x559c5980bc80 PID 13922 
+Removing child 0x559c5980bc80 PID 13922 from chain.
+    Successfully remade target file 'build/mmu.o'.
+    Considering target file 'build/stepper.o'.
+     File 'build/stepper.o' does not exist.
+     Looking for an implicit rule for 'build/stepper.o'.
+     Trying pattern rule with stem 'stepper'.
+     Trying implicit prerequisite 'src/stepper.s'.
+     Trying pattern rule with stem 'stepper'.
+     Trying implicit prerequisite 'src/stepper.c'.
+     Found an implicit rule for 'build/stepper.o'.
+      Considering target file 'src/stepper.c'.
+       Looking for an implicit rule for 'src/stepper.c'.
+       Trying pattern rule with stem 'stepper'.
+       Trying implicit prerequisite 'src/stepper.y'.
+       Trying pattern rule with stem 'stepper'.
+       Trying implicit prerequisite 'src/stepper.l'.
+       Trying pattern rule with stem 'stepper'.
+       Trying implicit prerequisite 'src/stepper.w'.
+       Trying pattern rule with stem 'stepper'.
+       Trying implicit prerequisite 'src/stepper.w'.
+       Trying pattern rule with stem 'stepper.c'.
+       Trying implicit prerequisite 'src/stepper.c,v'.
+       Trying pattern rule with stem 'stepper.c'.
+       Trying implicit prerequisite 'src/RCS/stepper.c,v'.
+       Trying pattern rule with stem 'stepper.c'.
+       Trying implicit prerequisite 'src/RCS/stepper.c'.
+       Trying pattern rule with stem 'stepper.c'.
+       Trying implicit prerequisite 'src/s.stepper.c'.
+       Trying pattern rule with stem 'stepper.c'.
+       Trying implicit prerequisite 'src/SCCS/s.stepper.c'.
+       Trying pattern rule with stem 'stepper'.
+       Trying implicit prerequisite 'src/stepper.y'.
+       Looking for a rule with intermediate file 'src/stepper.y'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'stepper.y'.
+        Trying implicit prerequisite 'src/stepper.y,v'.
+        Trying pattern rule with stem 'stepper.y'.
+        Trying implicit prerequisite 'src/RCS/stepper.y,v'.
+        Trying pattern rule with stem 'stepper.y'.
+        Trying implicit prerequisite 'src/RCS/stepper.y'.
+        Trying pattern rule with stem 'stepper.y'.
+        Trying implicit prerequisite 'src/s.stepper.y'.
+        Trying pattern rule with stem 'stepper.y'.
+        Trying implicit prerequisite 'src/SCCS/s.stepper.y'.
+       Trying pattern rule with stem 'stepper'.
+       Trying implicit prerequisite 'src/stepper.l'.
+       Looking for a rule with intermediate file 'src/stepper.l'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'stepper.l'.
+        Trying implicit prerequisite 'src/stepper.l,v'.
+        Trying pattern rule with stem 'stepper.l'.
+        Trying implicit prerequisite 'src/RCS/stepper.l,v'.
+        Trying pattern rule with stem 'stepper.l'.
+        Trying implicit prerequisite 'src/RCS/stepper.l'.
+        Trying pattern rule with stem 'stepper.l'.
+        Trying implicit prerequisite 'src/s.stepper.l'.
+        Trying pattern rule with stem 'stepper.l'.
+        Trying implicit prerequisite 'src/SCCS/s.stepper.l'.
+       Trying pattern rule with stem 'stepper'.
+       Trying implicit prerequisite 'src/stepper.w'.
+       Looking for a rule with intermediate file 'src/stepper.w'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'stepper.w'.
+        Trying implicit prerequisite 'src/stepper.w,v'.
+        Trying pattern rule with stem 'stepper.w'.
+        Trying implicit prerequisite 'src/RCS/stepper.w,v'.
+        Trying pattern rule with stem 'stepper.w'.
+        Trying implicit prerequisite 'src/RCS/stepper.w'.
+        Trying pattern rule with stem 'stepper.w'.
+        Trying implicit prerequisite 'src/s.stepper.w'.
+        Trying pattern rule with stem 'stepper.w'.
+        Trying implicit prerequisite 'src/SCCS/s.stepper.w'.
+       Trying pattern rule with stem 'stepper'.
+       Rejecting impossible implicit prerequisite 'src/stepper.w'.
+       No implicit rule found for 'src/stepper.c'.
+       Finished prerequisites of target file 'src/stepper.c'.
+      No need to remake target 'src/stepper.c'.
+     Finished prerequisites of target file 'build/stepper.o'.
+    Must remake target 'build/stepper.o'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-gcc -Wall -O2 -ffreestanding -nostartfiles -std=gnu11 -mstrict-align -mcpu=cortex-a53 -fno-tree-loop-vectorize -fno-tree-slp-vectorize -g -lm -lc -lgcc -c  src/stepper.c -o build/stepper.o 
+Putting child 0x559c5980ca70 (build/stepper.o) PID 13925 on the chain.
+Live child 0x559c5980ca70 (build/stepper.o) PID 13925 
+Reaping winning child 0x559c5980ca70 PID 13925 
+Removing child 0x559c5980ca70 PID 13925 from chain.
+    Successfully remade target file 'build/stepper.o'.
+    Considering target file 'build/lfb.o'.
+     File 'build/lfb.o' does not exist.
+     Looking for an implicit rule for 'build/lfb.o'.
+     Trying pattern rule with stem 'lfb'.
+     Trying implicit prerequisite 'src/lfb.s'.
+     Trying pattern rule with stem 'lfb'.
+     Trying implicit prerequisite 'src/lfb.c'.
+     Found an implicit rule for 'build/lfb.o'.
+      Considering target file 'src/lfb.c'.
+       Looking for an implicit rule for 'src/lfb.c'.
+       Trying pattern rule with stem 'lfb'.
+       Trying implicit prerequisite 'src/lfb.y'.
+       Trying pattern rule with stem 'lfb'.
+       Trying implicit prerequisite 'src/lfb.l'.
+       Trying pattern rule with stem 'lfb'.
+       Trying implicit prerequisite 'src/lfb.w'.
+       Trying pattern rule with stem 'lfb'.
+       Trying implicit prerequisite 'src/lfb.w'.
+       Trying pattern rule with stem 'lfb.c'.
+       Trying implicit prerequisite 'src/lfb.c,v'.
+       Trying pattern rule with stem 'lfb.c'.
+       Trying implicit prerequisite 'src/RCS/lfb.c,v'.
+       Trying pattern rule with stem 'lfb.c'.
+       Trying implicit prerequisite 'src/RCS/lfb.c'.
+       Trying pattern rule with stem 'lfb.c'.
+       Trying implicit prerequisite 'src/s.lfb.c'.
+       Trying pattern rule with stem 'lfb.c'.
+       Trying implicit prerequisite 'src/SCCS/s.lfb.c'.
+       Trying pattern rule with stem 'lfb'.
+       Trying implicit prerequisite 'src/lfb.y'.
+       Looking for a rule with intermediate file 'src/lfb.y'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'lfb.y'.
+        Trying implicit prerequisite 'src/lfb.y,v'.
+        Trying pattern rule with stem 'lfb.y'.
+        Trying implicit prerequisite 'src/RCS/lfb.y,v'.
+        Trying pattern rule with stem 'lfb.y'.
+        Trying implicit prerequisite 'src/RCS/lfb.y'.
+        Trying pattern rule with stem 'lfb.y'.
+        Trying implicit prerequisite 'src/s.lfb.y'.
+        Trying pattern rule with stem 'lfb.y'.
+        Trying implicit prerequisite 'src/SCCS/s.lfb.y'.
+       Trying pattern rule with stem 'lfb'.
+       Trying implicit prerequisite 'src/lfb.l'.
+       Looking for a rule with intermediate file 'src/lfb.l'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'lfb.l'.
+        Trying implicit prerequisite 'src/lfb.l,v'.
+        Trying pattern rule with stem 'lfb.l'.
+        Trying implicit prerequisite 'src/RCS/lfb.l,v'.
+        Trying pattern rule with stem 'lfb.l'.
+        Trying implicit prerequisite 'src/RCS/lfb.l'.
+        Trying pattern rule with stem 'lfb.l'.
+        Trying implicit prerequisite 'src/s.lfb.l'.
+        Trying pattern rule with stem 'lfb.l'.
+        Trying implicit prerequisite 'src/SCCS/s.lfb.l'.
+       Trying pattern rule with stem 'lfb'.
+       Trying implicit prerequisite 'src/lfb.w'.
+       Looking for a rule with intermediate file 'src/lfb.w'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'lfb.w'.
+        Trying implicit prerequisite 'src/lfb.w,v'.
+        Trying pattern rule with stem 'lfb.w'.
+        Trying implicit prerequisite 'src/RCS/lfb.w,v'.
+        Trying pattern rule with stem 'lfb.w'.
+        Trying implicit prerequisite 'src/RCS/lfb.w'.
+        Trying pattern rule with stem 'lfb.w'.
+        Trying implicit prerequisite 'src/s.lfb.w'.
+        Trying pattern rule with stem 'lfb.w'.
+        Trying implicit prerequisite 'src/SCCS/s.lfb.w'.
+       Trying pattern rule with stem 'lfb'.
+       Rejecting impossible implicit prerequisite 'src/lfb.w'.
+       No implicit rule found for 'src/lfb.c'.
+       Finished prerequisites of target file 'src/lfb.c'.
+      No need to remake target 'src/lfb.c'.
+     Finished prerequisites of target file 'build/lfb.o'.
+    Must remake target 'build/lfb.o'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-gcc -Wall -O2 -ffreestanding -nostartfiles -std=gnu11 -mstrict-align -mcpu=cortex-a53 -fno-tree-loop-vectorize -fno-tree-slp-vectorize -g -lm -lc -lgcc -c  src/lfb.c -o build/lfb.o 
+Putting child 0x559c59810e70 (build/lfb.o) PID 13928 on the chain.
+Live child 0x559c59810e70 (build/lfb.o) PID 13928 
+Reaping winning child 0x559c59810e70 PID 13928 
+Removing child 0x559c59810e70 PID 13928 from chain.
+    Successfully remade target file 'build/lfb.o'.
+    Considering target file 'build/uart.o'.
+     File 'build/uart.o' does not exist.
+     Looking for an implicit rule for 'build/uart.o'.
+     Trying pattern rule with stem 'uart'.
+     Trying implicit prerequisite 'src/uart.s'.
+     Trying pattern rule with stem 'uart'.
+     Trying implicit prerequisite 'src/uart.c'.
+     Found an implicit rule for 'build/uart.o'.
+      Considering target file 'src/uart.c'.
+       Looking for an implicit rule for 'src/uart.c'.
+       Trying pattern rule with stem 'uart'.
+       Trying implicit prerequisite 'src/uart.y'.
+       Trying pattern rule with stem 'uart'.
+       Trying implicit prerequisite 'src/uart.l'.
+       Trying pattern rule with stem 'uart'.
+       Trying implicit prerequisite 'src/uart.w'.
+       Trying pattern rule with stem 'uart'.
+       Trying implicit prerequisite 'src/uart.w'.
+       Trying pattern rule with stem 'uart.c'.
+       Trying implicit prerequisite 'src/uart.c,v'.
+       Trying pattern rule with stem 'uart.c'.
+       Trying implicit prerequisite 'src/RCS/uart.c,v'.
+       Trying pattern rule with stem 'uart.c'.
+       Trying implicit prerequisite 'src/RCS/uart.c'.
+       Trying pattern rule with stem 'uart.c'.
+       Trying implicit prerequisite 'src/s.uart.c'.
+       Trying pattern rule with stem 'uart.c'.
+       Trying implicit prerequisite 'src/SCCS/s.uart.c'.
+       Trying pattern rule with stem 'uart'.
+       Trying implicit prerequisite 'src/uart.y'.
+       Looking for a rule with intermediate file 'src/uart.y'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'uart.y'.
+        Trying implicit prerequisite 'src/uart.y,v'.
+        Trying pattern rule with stem 'uart.y'.
+        Trying implicit prerequisite 'src/RCS/uart.y,v'.
+        Trying pattern rule with stem 'uart.y'.
+        Trying implicit prerequisite 'src/RCS/uart.y'.
+        Trying pattern rule with stem 'uart.y'.
+        Trying implicit prerequisite 'src/s.uart.y'.
+        Trying pattern rule with stem 'uart.y'.
+        Trying implicit prerequisite 'src/SCCS/s.uart.y'.
+       Trying pattern rule with stem 'uart'.
+       Trying implicit prerequisite 'src/uart.l'.
+       Looking for a rule with intermediate file 'src/uart.l'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'uart.l'.
+        Trying implicit prerequisite 'src/uart.l,v'.
+        Trying pattern rule with stem 'uart.l'.
+        Trying implicit prerequisite 'src/RCS/uart.l,v'.
+        Trying pattern rule with stem 'uart.l'.
+        Trying implicit prerequisite 'src/RCS/uart.l'.
+        Trying pattern rule with stem 'uart.l'.
+        Trying implicit prerequisite 'src/s.uart.l'.
+        Trying pattern rule with stem 'uart.l'.
+        Trying implicit prerequisite 'src/SCCS/s.uart.l'.
+       Trying pattern rule with stem 'uart'.
+       Trying implicit prerequisite 'src/uart.w'.
+       Looking for a rule with intermediate file 'src/uart.w'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'uart.w'.
+        Trying implicit prerequisite 'src/uart.w,v'.
+        Trying pattern rule with stem 'uart.w'.
+        Trying implicit prerequisite 'src/RCS/uart.w,v'.
+        Trying pattern rule with stem 'uart.w'.
+        Trying implicit prerequisite 'src/RCS/uart.w'.
+        Trying pattern rule with stem 'uart.w'.
+        Trying implicit prerequisite 'src/s.uart.w'.
+        Trying pattern rule with stem 'uart.w'.
+        Trying implicit prerequisite 'src/SCCS/s.uart.w'.
+       Trying pattern rule with stem 'uart'.
+       Rejecting impossible implicit prerequisite 'src/uart.w'.
+       No implicit rule found for 'src/uart.c'.
+       Finished prerequisites of target file 'src/uart.c'.
+      No need to remake target 'src/uart.c'.
+     Finished prerequisites of target file 'build/uart.o'.
+    Must remake target 'build/uart.o'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-gcc -Wall -O2 -ffreestanding -nostartfiles -std=gnu11 -mstrict-align -mcpu=cortex-a53 -fno-tree-loop-vectorize -fno-tree-slp-vectorize -g -lm -lc -lgcc -c  src/uart.c -o build/uart.o 
+Putting child 0x559c59810760 (build/uart.o) PID 13931 on the chain.
+Live child 0x559c59810760 (build/uart.o) PID 13931 
+Reaping winning child 0x559c59810760 PID 13931 
+Removing child 0x559c59810760 PID 13931 from chain.
+    Successfully remade target file 'build/uart.o'.
+    Considering target file 'build/file.o'.
+     File 'build/file.o' does not exist.
+     Looking for an implicit rule for 'build/file.o'.
+     Trying pattern rule with stem 'file'.
+     Trying implicit prerequisite 'src/file.s'.
+     Trying pattern rule with stem 'file'.
+     Trying implicit prerequisite 'src/file.c'.
+     Found an implicit rule for 'build/file.o'.
+      Considering target file 'src/file.c'.
+       Looking for an implicit rule for 'src/file.c'.
+       Trying pattern rule with stem 'file'.
+       Trying implicit prerequisite 'src/file.y'.
+       Trying pattern rule with stem 'file'.
+       Trying implicit prerequisite 'src/file.l'.
+       Trying pattern rule with stem 'file'.
+       Trying implicit prerequisite 'src/file.w'.
+       Trying pattern rule with stem 'file'.
+       Trying implicit prerequisite 'src/file.w'.
+       Trying pattern rule with stem 'file.c'.
+       Trying implicit prerequisite 'src/file.c,v'.
+       Trying pattern rule with stem 'file.c'.
+       Trying implicit prerequisite 'src/RCS/file.c,v'.
+       Trying pattern rule with stem 'file.c'.
+       Trying implicit prerequisite 'src/RCS/file.c'.
+       Trying pattern rule with stem 'file.c'.
+       Trying implicit prerequisite 'src/s.file.c'.
+       Trying pattern rule with stem 'file.c'.
+       Trying implicit prerequisite 'src/SCCS/s.file.c'.
+       Trying pattern rule with stem 'file'.
+       Trying implicit prerequisite 'src/file.y'.
+       Looking for a rule with intermediate file 'src/file.y'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'file.y'.
+        Trying implicit prerequisite 'src/file.y,v'.
+        Trying pattern rule with stem 'file.y'.
+        Trying implicit prerequisite 'src/RCS/file.y,v'.
+        Trying pattern rule with stem 'file.y'.
+        Trying implicit prerequisite 'src/RCS/file.y'.
+        Trying pattern rule with stem 'file.y'.
+        Trying implicit prerequisite 'src/s.file.y'.
+        Trying pattern rule with stem 'file.y'.
+        Trying implicit prerequisite 'src/SCCS/s.file.y'.
+       Trying pattern rule with stem 'file'.
+       Trying implicit prerequisite 'src/file.l'.
+       Looking for a rule with intermediate file 'src/file.l'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'file.l'.
+        Trying implicit prerequisite 'src/file.l,v'.
+        Trying pattern rule with stem 'file.l'.
+        Trying implicit prerequisite 'src/RCS/file.l,v'.
+        Trying pattern rule with stem 'file.l'.
+        Trying implicit prerequisite 'src/RCS/file.l'.
+        Trying pattern rule with stem 'file.l'.
+        Trying implicit prerequisite 'src/s.file.l'.
+        Trying pattern rule with stem 'file.l'.
+        Trying implicit prerequisite 'src/SCCS/s.file.l'.
+       Trying pattern rule with stem 'file'.
+       Trying implicit prerequisite 'src/file.w'.
+       Looking for a rule with intermediate file 'src/file.w'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'file.w'.
+        Trying implicit prerequisite 'src/file.w,v'.
+        Trying pattern rule with stem 'file.w'.
+        Trying implicit prerequisite 'src/RCS/file.w,v'.
+        Trying pattern rule with stem 'file.w'.
+        Trying implicit prerequisite 'src/RCS/file.w'.
+        Trying pattern rule with stem 'file.w'.
+        Trying implicit prerequisite 'src/s.file.w'.
+        Trying pattern rule with stem 'file.w'.
+        Trying implicit prerequisite 'src/SCCS/s.file.w'.
+       Trying pattern rule with stem 'file'.
+       Rejecting impossible implicit prerequisite 'src/file.w'.
+       No implicit rule found for 'src/file.c'.
+       Finished prerequisites of target file 'src/file.c'.
+      No need to remake target 'src/file.c'.
+     Finished prerequisites of target file 'build/file.o'.
+    Must remake target 'build/file.o'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-gcc -Wall -O2 -ffreestanding -nostartfiles -std=gnu11 -mstrict-align -mcpu=cortex-a53 -fno-tree-loop-vectorize -fno-tree-slp-vectorize -g -lm -lc -lgcc -c  src/file.c -o build/file.o 
+Putting child 0x559c5980edf0 (build/file.o) PID 13934 on the chain.
+Live child 0x559c5980edf0 (build/file.o) PID 13934 
+Reaping winning child 0x559c5980edf0 PID 13934 
+Removing child 0x559c5980edf0 PID 13934 from chain.
+    Successfully remade target file 'build/file.o'.
+    Considering target file 'build/servo.o'.
+     File 'build/servo.o' does not exist.
+     Looking for an implicit rule for 'build/servo.o'.
+     Trying pattern rule with stem 'servo'.
+     Trying implicit prerequisite 'src/servo.s'.
+     Trying pattern rule with stem 'servo'.
+     Trying implicit prerequisite 'src/servo.c'.
+     Found an implicit rule for 'build/servo.o'.
+      Considering target file 'src/servo.c'.
+       Looking for an implicit rule for 'src/servo.c'.
+       Trying pattern rule with stem 'servo'.
+       Trying implicit prerequisite 'src/servo.y'.
+       Trying pattern rule with stem 'servo'.
+       Trying implicit prerequisite 'src/servo.l'.
+       Trying pattern rule with stem 'servo'.
+       Trying implicit prerequisite 'src/servo.w'.
+       Trying pattern rule with stem 'servo'.
+       Trying implicit prerequisite 'src/servo.w'.
+       Trying pattern rule with stem 'servo.c'.
+       Trying implicit prerequisite 'src/servo.c,v'.
+       Trying pattern rule with stem 'servo.c'.
+       Trying implicit prerequisite 'src/RCS/servo.c,v'.
+       Trying pattern rule with stem 'servo.c'.
+       Trying implicit prerequisite 'src/RCS/servo.c'.
+       Trying pattern rule with stem 'servo.c'.
+       Trying implicit prerequisite 'src/s.servo.c'.
+       Trying pattern rule with stem 'servo.c'.
+       Trying implicit prerequisite 'src/SCCS/s.servo.c'.
+       Trying pattern rule with stem 'servo'.
+       Trying implicit prerequisite 'src/servo.y'.
+       Looking for a rule with intermediate file 'src/servo.y'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'servo.y'.
+        Trying implicit prerequisite 'src/servo.y,v'.
+        Trying pattern rule with stem 'servo.y'.
+        Trying implicit prerequisite 'src/RCS/servo.y,v'.
+        Trying pattern rule with stem 'servo.y'.
+        Trying implicit prerequisite 'src/RCS/servo.y'.
+        Trying pattern rule with stem 'servo.y'.
+        Trying implicit prerequisite 'src/s.servo.y'.
+        Trying pattern rule with stem 'servo.y'.
+        Trying implicit prerequisite 'src/SCCS/s.servo.y'.
+       Trying pattern rule with stem 'servo'.
+       Trying implicit prerequisite 'src/servo.l'.
+       Looking for a rule with intermediate file 'src/servo.l'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'servo.l'.
+        Trying implicit prerequisite 'src/servo.l,v'.
+        Trying pattern rule with stem 'servo.l'.
+        Trying implicit prerequisite 'src/RCS/servo.l,v'.
+        Trying pattern rule with stem 'servo.l'.
+        Trying implicit prerequisite 'src/RCS/servo.l'.
+        Trying pattern rule with stem 'servo.l'.
+        Trying implicit prerequisite 'src/s.servo.l'.
+        Trying pattern rule with stem 'servo.l'.
+        Trying implicit prerequisite 'src/SCCS/s.servo.l'.
+       Trying pattern rule with stem 'servo'.
+       Trying implicit prerequisite 'src/servo.w'.
+       Looking for a rule with intermediate file 'src/servo.w'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'servo.w'.
+        Trying implicit prerequisite 'src/servo.w,v'.
+        Trying pattern rule with stem 'servo.w'.
+        Trying implicit prerequisite 'src/RCS/servo.w,v'.
+        Trying pattern rule with stem 'servo.w'.
+        Trying implicit prerequisite 'src/RCS/servo.w'.
+        Trying pattern rule with stem 'servo.w'.
+        Trying implicit prerequisite 'src/s.servo.w'.
+        Trying pattern rule with stem 'servo.w'.
+        Trying implicit prerequisite 'src/SCCS/s.servo.w'.
+       Trying pattern rule with stem 'servo'.
+       Rejecting impossible implicit prerequisite 'src/servo.w'.
+       No implicit rule found for 'src/servo.c'.
+       Finished prerequisites of target file 'src/servo.c'.
+      No need to remake target 'src/servo.c'.
+     Finished prerequisites of target file 'build/servo.o'.
+    Must remake target 'build/servo.o'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-gcc -Wall -O2 -ffreestanding -nostartfiles -std=gnu11 -mstrict-align -mcpu=cortex-a53 -fno-tree-loop-vectorize -fno-tree-slp-vectorize -g -lm -lc -lgcc -c  src/servo.c -o build/servo.o 
+Putting child 0x559c5980efa0 (build/servo.o) PID 13937 on the chain.
+Live child 0x559c5980efa0 (build/servo.o) PID 13937 
+Reaping winning child 0x559c5980efa0 PID 13937 
+Removing child 0x559c5980efa0 PID 13937 from chain.
+    Successfully remade target file 'build/servo.o'.
+    Considering target file 'build/system.o'.
+     File 'build/system.o' does not exist.
+     Looking for an implicit rule for 'build/system.o'.
+     Trying pattern rule with stem 'system'.
+     Trying implicit prerequisite 'src/system.s'.
+     Trying pattern rule with stem 'system'.
+     Trying implicit prerequisite 'src/system.c'.
+     Found an implicit rule for 'build/system.o'.
+      Considering target file 'src/system.c'.
+       Looking for an implicit rule for 'src/system.c'.
+       Trying pattern rule with stem 'system'.
+       Trying implicit prerequisite 'src/system.y'.
+       Trying pattern rule with stem 'system'.
+       Trying implicit prerequisite 'src/system.l'.
+       Trying pattern rule with stem 'system'.
+       Trying implicit prerequisite 'src/system.w'.
+       Trying pattern rule with stem 'system'.
+       Trying implicit prerequisite 'src/system.w'.
+       Trying pattern rule with stem 'system.c'.
+       Trying implicit prerequisite 'src/system.c,v'.
+       Trying pattern rule with stem 'system.c'.
+       Trying implicit prerequisite 'src/RCS/system.c,v'.
+       Trying pattern rule with stem 'system.c'.
+       Trying implicit prerequisite 'src/RCS/system.c'.
+       Trying pattern rule with stem 'system.c'.
+       Trying implicit prerequisite 'src/s.system.c'.
+       Trying pattern rule with stem 'system.c'.
+       Trying implicit prerequisite 'src/SCCS/s.system.c'.
+       Trying pattern rule with stem 'system'.
+       Trying implicit prerequisite 'src/system.y'.
+       Looking for a rule with intermediate file 'src/system.y'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'system.y'.
+        Trying implicit prerequisite 'src/system.y,v'.
+        Trying pattern rule with stem 'system.y'.
+        Trying implicit prerequisite 'src/RCS/system.y,v'.
+        Trying pattern rule with stem 'system.y'.
+        Trying implicit prerequisite 'src/RCS/system.y'.
+        Trying pattern rule with stem 'system.y'.
+        Trying implicit prerequisite 'src/s.system.y'.
+        Trying pattern rule with stem 'system.y'.
+        Trying implicit prerequisite 'src/SCCS/s.system.y'.
+       Trying pattern rule with stem 'system'.
+       Trying implicit prerequisite 'src/system.l'.
+       Looking for a rule with intermediate file 'src/system.l'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'system.l'.
+        Trying implicit prerequisite 'src/system.l,v'.
+        Trying pattern rule with stem 'system.l'.
+        Trying implicit prerequisite 'src/RCS/system.l,v'.
+        Trying pattern rule with stem 'system.l'.
+        Trying implicit prerequisite 'src/RCS/system.l'.
+        Trying pattern rule with stem 'system.l'.
+        Trying implicit prerequisite 'src/s.system.l'.
+        Trying pattern rule with stem 'system.l'.
+        Trying implicit prerequisite 'src/SCCS/s.system.l'.
+       Trying pattern rule with stem 'system'.
+       Trying implicit prerequisite 'src/system.w'.
+       Looking for a rule with intermediate file 'src/system.w'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'system.w'.
+        Trying implicit prerequisite 'src/system.w,v'.
+        Trying pattern rule with stem 'system.w'.
+        Trying implicit prerequisite 'src/RCS/system.w,v'.
+        Trying pattern rule with stem 'system.w'.
+        Trying implicit prerequisite 'src/RCS/system.w'.
+        Trying pattern rule with stem 'system.w'.
+        Trying implicit prerequisite 'src/s.system.w'.
+        Trying pattern rule with stem 'system.w'.
+        Trying implicit prerequisite 'src/SCCS/s.system.w'.
+       Trying pattern rule with stem 'system'.
+       Rejecting impossible implicit prerequisite 'src/system.w'.
+       No implicit rule found for 'src/system.c'.
+       Finished prerequisites of target file 'src/system.c'.
+      No need to remake target 'src/system.c'.
+     Finished prerequisites of target file 'build/system.o'.
+    Must remake target 'build/system.o'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-gcc -Wall -O2 -ffreestanding -nostartfiles -std=gnu11 -mstrict-align -mcpu=cortex-a53 -fno-tree-loop-vectorize -fno-tree-slp-vectorize -g -lm -lc -lgcc -c  src/system.c -o build/system.o 
+Putting child 0x559c5980fe10 (build/system.o) PID 13940 on the chain.
+Live child 0x559c5980fe10 (build/system.o) PID 13940 
+Reaping winning child 0x559c5980fe10 PID 13940 
+Removing child 0x559c5980fe10 PID 13940 from chain.
+    Successfully remade target file 'build/system.o'.
+    Considering target file 'build/memcmp.o'.
+     File 'build/memcmp.o' does not exist.
+     Looking for an implicit rule for 'build/memcmp.o'.
+     Trying pattern rule with stem 'memcmp'.
+     Trying implicit prerequisite 'src/memcmp.s'.
+     Trying pattern rule with stem 'memcmp'.
+     Trying implicit prerequisite 'src/memcmp.c'.
+     Found an implicit rule for 'build/memcmp.o'.
+      Considering target file 'src/memcmp.c'.
+       Looking for an implicit rule for 'src/memcmp.c'.
+       Trying pattern rule with stem 'memcmp'.
+       Trying implicit prerequisite 'src/memcmp.y'.
+       Trying pattern rule with stem 'memcmp'.
+       Trying implicit prerequisite 'src/memcmp.l'.
+       Trying pattern rule with stem 'memcmp'.
+       Trying implicit prerequisite 'src/memcmp.w'.
+       Trying pattern rule with stem 'memcmp'.
+       Trying implicit prerequisite 'src/memcmp.w'.
+       Trying pattern rule with stem 'memcmp.c'.
+       Trying implicit prerequisite 'src/memcmp.c,v'.
+       Trying pattern rule with stem 'memcmp.c'.
+       Trying implicit prerequisite 'src/RCS/memcmp.c,v'.
+       Trying pattern rule with stem 'memcmp.c'.
+       Trying implicit prerequisite 'src/RCS/memcmp.c'.
+       Trying pattern rule with stem 'memcmp.c'.
+       Trying implicit prerequisite 'src/s.memcmp.c'.
+       Trying pattern rule with stem 'memcmp.c'.
+       Trying implicit prerequisite 'src/SCCS/s.memcmp.c'.
+       Trying pattern rule with stem 'memcmp'.
+       Trying implicit prerequisite 'src/memcmp.y'.
+       Looking for a rule with intermediate file 'src/memcmp.y'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'memcmp.y'.
+        Trying implicit prerequisite 'src/memcmp.y,v'.
+        Trying pattern rule with stem 'memcmp.y'.
+        Trying implicit prerequisite 'src/RCS/memcmp.y,v'.
+        Trying pattern rule with stem 'memcmp.y'.
+        Trying implicit prerequisite 'src/RCS/memcmp.y'.
+        Trying pattern rule with stem 'memcmp.y'.
+        Trying implicit prerequisite 'src/s.memcmp.y'.
+        Trying pattern rule with stem 'memcmp.y'.
+        Trying implicit prerequisite 'src/SCCS/s.memcmp.y'.
+       Trying pattern rule with stem 'memcmp'.
+       Trying implicit prerequisite 'src/memcmp.l'.
+       Looking for a rule with intermediate file 'src/memcmp.l'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'memcmp.l'.
+        Trying implicit prerequisite 'src/memcmp.l,v'.
+        Trying pattern rule with stem 'memcmp.l'.
+        Trying implicit prerequisite 'src/RCS/memcmp.l,v'.
+        Trying pattern rule with stem 'memcmp.l'.
+        Trying implicit prerequisite 'src/RCS/memcmp.l'.
+        Trying pattern rule with stem 'memcmp.l'.
+        Trying implicit prerequisite 'src/s.memcmp.l'.
+        Trying pattern rule with stem 'memcmp.l'.
+        Trying implicit prerequisite 'src/SCCS/s.memcmp.l'.
+       Trying pattern rule with stem 'memcmp'.
+       Trying implicit prerequisite 'src/memcmp.w'.
+       Looking for a rule with intermediate file 'src/memcmp.w'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'memcmp.w'.
+        Trying implicit prerequisite 'src/memcmp.w,v'.
+        Trying pattern rule with stem 'memcmp.w'.
+        Trying implicit prerequisite 'src/RCS/memcmp.w,v'.
+        Trying pattern rule with stem 'memcmp.w'.
+        Trying implicit prerequisite 'src/RCS/memcmp.w'.
+        Trying pattern rule with stem 'memcmp.w'.
+        Trying implicit prerequisite 'src/s.memcmp.w'.
+        Trying pattern rule with stem 'memcmp.w'.
+        Trying implicit prerequisite 'src/SCCS/s.memcmp.w'.
+       Trying pattern rule with stem 'memcmp'.
+       Rejecting impossible implicit prerequisite 'src/memcmp.w'.
+       No implicit rule found for 'src/memcmp.c'.
+       Finished prerequisites of target file 'src/memcmp.c'.
+      No need to remake target 'src/memcmp.c'.
+     Finished prerequisites of target file 'build/memcmp.o'.
+    Must remake target 'build/memcmp.o'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-gcc -Wall -O2 -ffreestanding -nostartfiles -std=gnu11 -mstrict-align -mcpu=cortex-a53 -fno-tree-loop-vectorize -fno-tree-slp-vectorize -g -lm -lc -lgcc -c  src/memcmp.c -o build/memcmp.o 
+Putting child 0x559c59810000 (build/memcmp.o) PID 13943 on the chain.
+Live child 0x559c59810000 (build/memcmp.o) PID 13943 
+Reaping winning child 0x559c59810000 PID 13943 
+Removing child 0x559c59810000 PID 13943 from chain.
+    Successfully remade target file 'build/memcmp.o'.
+    Considering target file 'build/GLES2.o'.
+     File 'build/GLES2.o' does not exist.
+     Looking for an implicit rule for 'build/GLES2.o'.
+     Trying pattern rule with stem 'GLES2'.
+     Trying implicit prerequisite 'src/GLES2.s'.
+     Trying pattern rule with stem 'GLES2'.
+     Trying implicit prerequisite 'src/GLES2.c'.
+     Found an implicit rule for 'build/GLES2.o'.
+      Considering target file 'src/GLES2.c'.
+       Looking for an implicit rule for 'src/GLES2.c'.
+       Trying pattern rule with stem 'GLES2'.
+       Trying implicit prerequisite 'src/GLES2.y'.
+       Trying pattern rule with stem 'GLES2'.
+       Trying implicit prerequisite 'src/GLES2.l'.
+       Trying pattern rule with stem 'GLES2'.
+       Trying implicit prerequisite 'src/GLES2.w'.
+       Trying pattern rule with stem 'GLES2'.
+       Trying implicit prerequisite 'src/GLES2.w'.
+       Trying pattern rule with stem 'GLES2.c'.
+       Trying implicit prerequisite 'src/GLES2.c,v'.
+       Trying pattern rule with stem 'GLES2.c'.
+       Trying implicit prerequisite 'src/RCS/GLES2.c,v'.
+       Trying pattern rule with stem 'GLES2.c'.
+       Trying implicit prerequisite 'src/RCS/GLES2.c'.
+       Trying pattern rule with stem 'GLES2.c'.
+       Trying implicit prerequisite 'src/s.GLES2.c'.
+       Trying pattern rule with stem 'GLES2.c'.
+       Trying implicit prerequisite 'src/SCCS/s.GLES2.c'.
+       Trying pattern rule with stem 'GLES2'.
+       Trying implicit prerequisite 'src/GLES2.y'.
+       Looking for a rule with intermediate file 'src/GLES2.y'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'GLES2.y'.
+        Trying implicit prerequisite 'src/GLES2.y,v'.
+        Trying pattern rule with stem 'GLES2.y'.
+        Trying implicit prerequisite 'src/RCS/GLES2.y,v'.
+        Trying pattern rule with stem 'GLES2.y'.
+        Trying implicit prerequisite 'src/RCS/GLES2.y'.
+        Trying pattern rule with stem 'GLES2.y'.
+        Trying implicit prerequisite 'src/s.GLES2.y'.
+        Trying pattern rule with stem 'GLES2.y'.
+        Trying implicit prerequisite 'src/SCCS/s.GLES2.y'.
+       Trying pattern rule with stem 'GLES2'.
+       Trying implicit prerequisite 'src/GLES2.l'.
+       Looking for a rule with intermediate file 'src/GLES2.l'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'GLES2.l'.
+        Trying implicit prerequisite 'src/GLES2.l,v'.
+        Trying pattern rule with stem 'GLES2.l'.
+        Trying implicit prerequisite 'src/RCS/GLES2.l,v'.
+        Trying pattern rule with stem 'GLES2.l'.
+        Trying implicit prerequisite 'src/RCS/GLES2.l'.
+        Trying pattern rule with stem 'GLES2.l'.
+        Trying implicit prerequisite 'src/s.GLES2.l'.
+        Trying pattern rule with stem 'GLES2.l'.
+        Trying implicit prerequisite 'src/SCCS/s.GLES2.l'.
+       Trying pattern rule with stem 'GLES2'.
+       Trying implicit prerequisite 'src/GLES2.w'.
+       Looking for a rule with intermediate file 'src/GLES2.w'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'GLES2.w'.
+        Trying implicit prerequisite 'src/GLES2.w,v'.
+        Trying pattern rule with stem 'GLES2.w'.
+        Trying implicit prerequisite 'src/RCS/GLES2.w,v'.
+        Trying pattern rule with stem 'GLES2.w'.
+        Trying implicit prerequisite 'src/RCS/GLES2.w'.
+        Trying pattern rule with stem 'GLES2.w'.
+        Trying implicit prerequisite 'src/s.GLES2.w'.
+        Trying pattern rule with stem 'GLES2.w'.
+        Trying implicit prerequisite 'src/SCCS/s.GLES2.w'.
+       Trying pattern rule with stem 'GLES2'.
+       Rejecting impossible implicit prerequisite 'src/GLES2.w'.
+       No implicit rule found for 'src/GLES2.c'.
+       Finished prerequisites of target file 'src/GLES2.c'.
+      No need to remake target 'src/GLES2.c'.
+     Finished prerequisites of target file 'build/GLES2.o'.
+    Must remake target 'build/GLES2.o'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-gcc -Wall -O2 -ffreestanding -nostartfiles -std=gnu11 -mstrict-align -mcpu=cortex-a53 -fno-tree-loop-vectorize -fno-tree-slp-vectorize -g -lm -lc -lgcc -c  src/GLES2.c -o build/GLES2.o 
+Putting child 0x559c59811470 (build/GLES2.o) PID 13946 on the chain.
+Live child 0x559c59811470 (build/GLES2.o) PID 13946 
+Reaping winning child 0x559c59811470 PID 13946 
+Removing child 0x559c59811470 PID 13946 from chain.
+    Successfully remade target file 'build/GLES2.o'.
+    Considering target file 'build/console.o'.
+     File 'build/console.o' does not exist.
+     Looking for an implicit rule for 'build/console.o'.
+     Trying pattern rule with stem 'console'.
+     Trying implicit prerequisite 'src/console.s'.
+     Trying pattern rule with stem 'console'.
+     Trying implicit prerequisite 'src/console.c'.
+     Found an implicit rule for 'build/console.o'.
+      Considering target file 'src/console.c'.
+       Looking for an implicit rule for 'src/console.c'.
+       Trying pattern rule with stem 'console'.
+       Trying implicit prerequisite 'src/console.y'.
+       Trying pattern rule with stem 'console'.
+       Trying implicit prerequisite 'src/console.l'.
+       Trying pattern rule with stem 'console'.
+       Trying implicit prerequisite 'src/console.w'.
+       Trying pattern rule with stem 'console'.
+       Trying implicit prerequisite 'src/console.w'.
+       Trying pattern rule with stem 'console.c'.
+       Trying implicit prerequisite 'src/console.c,v'.
+       Trying pattern rule with stem 'console.c'.
+       Trying implicit prerequisite 'src/RCS/console.c,v'.
+       Trying pattern rule with stem 'console.c'.
+       Trying implicit prerequisite 'src/RCS/console.c'.
+       Trying pattern rule with stem 'console.c'.
+       Trying implicit prerequisite 'src/s.console.c'.
+       Trying pattern rule with stem 'console.c'.
+       Trying implicit prerequisite 'src/SCCS/s.console.c'.
+       Trying pattern rule with stem 'console'.
+       Trying implicit prerequisite 'src/console.y'.
+       Looking for a rule with intermediate file 'src/console.y'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'console.y'.
+        Trying implicit prerequisite 'src/console.y,v'.
+        Trying pattern rule with stem 'console.y'.
+        Trying implicit prerequisite 'src/RCS/console.y,v'.
+        Trying pattern rule with stem 'console.y'.
+        Trying implicit prerequisite 'src/RCS/console.y'.
+        Trying pattern rule with stem 'console.y'.
+        Trying implicit prerequisite 'src/s.console.y'.
+        Trying pattern rule with stem 'console.y'.
+        Trying implicit prerequisite 'src/SCCS/s.console.y'.
+       Trying pattern rule with stem 'console'.
+       Trying implicit prerequisite 'src/console.l'.
+       Looking for a rule with intermediate file 'src/console.l'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'console.l'.
+        Trying implicit prerequisite 'src/console.l,v'.
+        Trying pattern rule with stem 'console.l'.
+        Trying implicit prerequisite 'src/RCS/console.l,v'.
+        Trying pattern rule with stem 'console.l'.
+        Trying implicit prerequisite 'src/RCS/console.l'.
+        Trying pattern rule with stem 'console.l'.
+        Trying implicit prerequisite 'src/s.console.l'.
+        Trying pattern rule with stem 'console.l'.
+        Trying implicit prerequisite 'src/SCCS/s.console.l'.
+       Trying pattern rule with stem 'console'.
+       Trying implicit prerequisite 'src/console.w'.
+       Looking for a rule with intermediate file 'src/console.w'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'console.w'.
+        Trying implicit prerequisite 'src/console.w,v'.
+        Trying pattern rule with stem 'console.w'.
+        Trying implicit prerequisite 'src/RCS/console.w,v'.
+        Trying pattern rule with stem 'console.w'.
+        Trying implicit prerequisite 'src/RCS/console.w'.
+        Trying pattern rule with stem 'console.w'.
+        Trying implicit prerequisite 'src/s.console.w'.
+        Trying pattern rule with stem 'console.w'.
+        Trying implicit prerequisite 'src/SCCS/s.console.w'.
+       Trying pattern rule with stem 'console'.
+       Rejecting impossible implicit prerequisite 'src/console.w'.
+       No implicit rule found for 'src/console.c'.
+       Finished prerequisites of target file 'src/console.c'.
+      No need to remake target 'src/console.c'.
+     Finished prerequisites of target file 'build/console.o'.
+    Must remake target 'build/console.o'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-gcc -Wall -O2 -ffreestanding -nostartfiles -std=gnu11 -mstrict-align -mcpu=cortex-a53 -fno-tree-loop-vectorize -fno-tree-slp-vectorize -g -lm -lc -lgcc -c  src/console.c -o build/console.o 
+Putting child 0x559c59811c90 (build/console.o) PID 13949 on the chain.
+Live child 0x559c59811c90 (build/console.o) PID 13949 
+Reaping winning child 0x559c59811c90 PID 13949 
+Removing child 0x559c59811c90 PID 13949 from chain.
+    Successfully remade target file 'build/console.o'.
+    Considering target file 'build/string.o'.
+     File 'build/string.o' does not exist.
+     Looking for an implicit rule for 'build/string.o'.
+     Trying pattern rule with stem 'string'.
+     Trying implicit prerequisite 'src/string.s'.
+     Trying pattern rule with stem 'string'.
+     Trying implicit prerequisite 'src/string.c'.
+     Found an implicit rule for 'build/string.o'.
+      Considering target file 'src/string.c'.
+       Looking for an implicit rule for 'src/string.c'.
+       Trying pattern rule with stem 'string'.
+       Trying implicit prerequisite 'src/string.y'.
+       Trying pattern rule with stem 'string'.
+       Trying implicit prerequisite 'src/string.l'.
+       Trying pattern rule with stem 'string'.
+       Trying implicit prerequisite 'src/string.w'.
+       Trying pattern rule with stem 'string'.
+       Trying implicit prerequisite 'src/string.w'.
+       Trying pattern rule with stem 'string.c'.
+       Trying implicit prerequisite 'src/string.c,v'.
+       Trying pattern rule with stem 'string.c'.
+       Trying implicit prerequisite 'src/RCS/string.c,v'.
+       Trying pattern rule with stem 'string.c'.
+       Trying implicit prerequisite 'src/RCS/string.c'.
+       Trying pattern rule with stem 'string.c'.
+       Trying implicit prerequisite 'src/s.string.c'.
+       Trying pattern rule with stem 'string.c'.
+       Trying implicit prerequisite 'src/SCCS/s.string.c'.
+       Trying pattern rule with stem 'string'.
+       Trying implicit prerequisite 'src/string.y'.
+       Looking for a rule with intermediate file 'src/string.y'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'string.y'.
+        Trying implicit prerequisite 'src/string.y,v'.
+        Trying pattern rule with stem 'string.y'.
+        Trying implicit prerequisite 'src/RCS/string.y,v'.
+        Trying pattern rule with stem 'string.y'.
+        Trying implicit prerequisite 'src/RCS/string.y'.
+        Trying pattern rule with stem 'string.y'.
+        Trying implicit prerequisite 'src/s.string.y'.
+        Trying pattern rule with stem 'string.y'.
+        Trying implicit prerequisite 'src/SCCS/s.string.y'.
+       Trying pattern rule with stem 'string'.
+       Trying implicit prerequisite 'src/string.l'.
+       Looking for a rule with intermediate file 'src/string.l'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'string.l'.
+        Trying implicit prerequisite 'src/string.l,v'.
+        Trying pattern rule with stem 'string.l'.
+        Trying implicit prerequisite 'src/RCS/string.l,v'.
+        Trying pattern rule with stem 'string.l'.
+        Trying implicit prerequisite 'src/RCS/string.l'.
+        Trying pattern rule with stem 'string.l'.
+        Trying implicit prerequisite 'src/s.string.l'.
+        Trying pattern rule with stem 'string.l'.
+        Trying implicit prerequisite 'src/SCCS/s.string.l'.
+       Trying pattern rule with stem 'string'.
+       Trying implicit prerequisite 'src/string.w'.
+       Looking for a rule with intermediate file 'src/string.w'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'string.w'.
+        Trying implicit prerequisite 'src/string.w,v'.
+        Trying pattern rule with stem 'string.w'.
+        Trying implicit prerequisite 'src/RCS/string.w,v'.
+        Trying pattern rule with stem 'string.w'.
+        Trying implicit prerequisite 'src/RCS/string.w'.
+        Trying pattern rule with stem 'string.w'.
+        Trying implicit prerequisite 'src/s.string.w'.
+        Trying pattern rule with stem 'string.w'.
+        Trying implicit prerequisite 'src/SCCS/s.string.w'.
+       Trying pattern rule with stem 'string'.
+       Rejecting impossible implicit prerequisite 'src/string.w'.
+       No implicit rule found for 'src/string.c'.
+       Finished prerequisites of target file 'src/string.c'.
+      No need to remake target 'src/string.c'.
+     Finished prerequisites of target file 'build/string.o'.
+    Must remake target 'build/string.o'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-gcc -Wall -O2 -ffreestanding -nostartfiles -std=gnu11 -mstrict-align -mcpu=cortex-a53 -fno-tree-loop-vectorize -fno-tree-slp-vectorize -g -lm -lc -lgcc -c  src/string.c -o build/string.o 
+Putting child 0x559c598146c0 (build/string.o) PID 13952 on the chain.
+Live child 0x559c598146c0 (build/string.o) PID 13952 
+Reaping winning child 0x559c598146c0 PID 13952 
+Removing child 0x559c598146c0 PID 13952 from chain.
+    Successfully remade target file 'build/string.o'.
+    Considering target file 'build/gpio.o'.
+     File 'build/gpio.o' does not exist.
+     Looking for an implicit rule for 'build/gpio.o'.
+     Trying pattern rule with stem 'gpio'.
+     Trying implicit prerequisite 'src/gpio.s'.
+     Trying pattern rule with stem 'gpio'.
+     Trying implicit prerequisite 'src/gpio.c'.
+     Found an implicit rule for 'build/gpio.o'.
+      Considering target file 'src/gpio.c'.
+       Looking for an implicit rule for 'src/gpio.c'.
+       Trying pattern rule with stem 'gpio'.
+       Trying implicit prerequisite 'src/gpio.y'.
+       Trying pattern rule with stem 'gpio'.
+       Trying implicit prerequisite 'src/gpio.l'.
+       Trying pattern rule with stem 'gpio'.
+       Trying implicit prerequisite 'src/gpio.w'.
+       Trying pattern rule with stem 'gpio'.
+       Trying implicit prerequisite 'src/gpio.w'.
+       Trying pattern rule with stem 'gpio.c'.
+       Trying implicit prerequisite 'src/gpio.c,v'.
+       Trying pattern rule with stem 'gpio.c'.
+       Trying implicit prerequisite 'src/RCS/gpio.c,v'.
+       Trying pattern rule with stem 'gpio.c'.
+       Trying implicit prerequisite 'src/RCS/gpio.c'.
+       Trying pattern rule with stem 'gpio.c'.
+       Trying implicit prerequisite 'src/s.gpio.c'.
+       Trying pattern rule with stem 'gpio.c'.
+       Trying implicit prerequisite 'src/SCCS/s.gpio.c'.
+       Trying pattern rule with stem 'gpio'.
+       Trying implicit prerequisite 'src/gpio.y'.
+       Looking for a rule with intermediate file 'src/gpio.y'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'gpio.y'.
+        Trying implicit prerequisite 'src/gpio.y,v'.
+        Trying pattern rule with stem 'gpio.y'.
+        Trying implicit prerequisite 'src/RCS/gpio.y,v'.
+        Trying pattern rule with stem 'gpio.y'.
+        Trying implicit prerequisite 'src/RCS/gpio.y'.
+        Trying pattern rule with stem 'gpio.y'.
+        Trying implicit prerequisite 'src/s.gpio.y'.
+        Trying pattern rule with stem 'gpio.y'.
+        Trying implicit prerequisite 'src/SCCS/s.gpio.y'.
+       Trying pattern rule with stem 'gpio'.
+       Trying implicit prerequisite 'src/gpio.l'.
+       Looking for a rule with intermediate file 'src/gpio.l'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'gpio.l'.
+        Trying implicit prerequisite 'src/gpio.l,v'.
+        Trying pattern rule with stem 'gpio.l'.
+        Trying implicit prerequisite 'src/RCS/gpio.l,v'.
+        Trying pattern rule with stem 'gpio.l'.
+        Trying implicit prerequisite 'src/RCS/gpio.l'.
+        Trying pattern rule with stem 'gpio.l'.
+        Trying implicit prerequisite 'src/s.gpio.l'.
+        Trying pattern rule with stem 'gpio.l'.
+        Trying implicit prerequisite 'src/SCCS/s.gpio.l'.
+       Trying pattern rule with stem 'gpio'.
+       Trying implicit prerequisite 'src/gpio.w'.
+       Looking for a rule with intermediate file 'src/gpio.w'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'gpio.w'.
+        Trying implicit prerequisite 'src/gpio.w,v'.
+        Trying pattern rule with stem 'gpio.w'.
+        Trying implicit prerequisite 'src/RCS/gpio.w,v'.
+        Trying pattern rule with stem 'gpio.w'.
+        Trying implicit prerequisite 'src/RCS/gpio.w'.
+        Trying pattern rule with stem 'gpio.w'.
+        Trying implicit prerequisite 'src/s.gpio.w'.
+        Trying pattern rule with stem 'gpio.w'.
+        Trying implicit prerequisite 'src/SCCS/s.gpio.w'.
+       Trying pattern rule with stem 'gpio'.
+       Rejecting impossible implicit prerequisite 'src/gpio.w'.
+       No implicit rule found for 'src/gpio.c'.
+       Finished prerequisites of target file 'src/gpio.c'.
+      No need to remake target 'src/gpio.c'.
+     Finished prerequisites of target file 'build/gpio.o'.
+    Must remake target 'build/gpio.o'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-gcc -Wall -O2 -ffreestanding -nostartfiles -std=gnu11 -mstrict-align -mcpu=cortex-a53 -fno-tree-loop-vectorize -fno-tree-slp-vectorize -g -lm -lc -lgcc -c  src/gpio.c -o build/gpio.o 
+Putting child 0x559c59814830 (build/gpio.o) PID 13955 on the chain.
+Live child 0x559c59814830 (build/gpio.o) PID 13955 
+Reaping winning child 0x559c59814830 PID 13955 
+Removing child 0x559c59814830 PID 13955 from chain.
+    Successfully remade target file 'build/gpio.o'.
+    Considering target file 'build/delays.o'.
+     File 'build/delays.o' does not exist.
+     Looking for an implicit rule for 'build/delays.o'.
+     Trying pattern rule with stem 'delays'.
+     Trying implicit prerequisite 'src/delays.s'.
+     Trying pattern rule with stem 'delays'.
+     Trying implicit prerequisite 'src/delays.c'.
+     Found an implicit rule for 'build/delays.o'.
+      Considering target file 'src/delays.c'.
+       Looking for an implicit rule for 'src/delays.c'.
+       Trying pattern rule with stem 'delays'.
+       Trying implicit prerequisite 'src/delays.y'.
+       Trying pattern rule with stem 'delays'.
+       Trying implicit prerequisite 'src/delays.l'.
+       Trying pattern rule with stem 'delays'.
+       Trying implicit prerequisite 'src/delays.w'.
+       Trying pattern rule with stem 'delays'.
+       Trying implicit prerequisite 'src/delays.w'.
+       Trying pattern rule with stem 'delays.c'.
+       Trying implicit prerequisite 'src/delays.c,v'.
+       Trying pattern rule with stem 'delays.c'.
+       Trying implicit prerequisite 'src/RCS/delays.c,v'.
+       Trying pattern rule with stem 'delays.c'.
+       Trying implicit prerequisite 'src/RCS/delays.c'.
+       Trying pattern rule with stem 'delays.c'.
+       Trying implicit prerequisite 'src/s.delays.c'.
+       Trying pattern rule with stem 'delays.c'.
+       Trying implicit prerequisite 'src/SCCS/s.delays.c'.
+       Trying pattern rule with stem 'delays'.
+       Trying implicit prerequisite 'src/delays.y'.
+       Looking for a rule with intermediate file 'src/delays.y'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'delays.y'.
+        Trying implicit prerequisite 'src/delays.y,v'.
+        Trying pattern rule with stem 'delays.y'.
+        Trying implicit prerequisite 'src/RCS/delays.y,v'.
+        Trying pattern rule with stem 'delays.y'.
+        Trying implicit prerequisite 'src/RCS/delays.y'.
+        Trying pattern rule with stem 'delays.y'.
+        Trying implicit prerequisite 'src/s.delays.y'.
+        Trying pattern rule with stem 'delays.y'.
+        Trying implicit prerequisite 'src/SCCS/s.delays.y'.
+       Trying pattern rule with stem 'delays'.
+       Trying implicit prerequisite 'src/delays.l'.
+       Looking for a rule with intermediate file 'src/delays.l'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'delays.l'.
+        Trying implicit prerequisite 'src/delays.l,v'.
+        Trying pattern rule with stem 'delays.l'.
+        Trying implicit prerequisite 'src/RCS/delays.l,v'.
+        Trying pattern rule with stem 'delays.l'.
+        Trying implicit prerequisite 'src/RCS/delays.l'.
+        Trying pattern rule with stem 'delays.l'.
+        Trying implicit prerequisite 'src/s.delays.l'.
+        Trying pattern rule with stem 'delays.l'.
+        Trying implicit prerequisite 'src/SCCS/s.delays.l'.
+       Trying pattern rule with stem 'delays'.
+       Trying implicit prerequisite 'src/delays.w'.
+       Looking for a rule with intermediate file 'src/delays.w'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'delays.w'.
+        Trying implicit prerequisite 'src/delays.w,v'.
+        Trying pattern rule with stem 'delays.w'.
+        Trying implicit prerequisite 'src/RCS/delays.w,v'.
+        Trying pattern rule with stem 'delays.w'.
+        Trying implicit prerequisite 'src/RCS/delays.w'.
+        Trying pattern rule with stem 'delays.w'.
+        Trying implicit prerequisite 'src/s.delays.w'.
+        Trying pattern rule with stem 'delays.w'.
+        Trying implicit prerequisite 'src/SCCS/s.delays.w'.
+       Trying pattern rule with stem 'delays'.
+       Rejecting impossible implicit prerequisite 'src/delays.w'.
+       No implicit rule found for 'src/delays.c'.
+       Finished prerequisites of target file 'src/delays.c'.
+      No need to remake target 'src/delays.c'.
+     Finished prerequisites of target file 'build/delays.o'.
+    Must remake target 'build/delays.o'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-gcc -Wall -O2 -ffreestanding -nostartfiles -std=gnu11 -mstrict-align -mcpu=cortex-a53 -fno-tree-loop-vectorize -fno-tree-slp-vectorize -g -lm -lc -lgcc -c  src/delays.c -o build/delays.o 
+Putting child 0x559c59814a40 (build/delays.o) PID 13958 on the chain.
+Live child 0x559c59814a40 (build/delays.o) PID 13958 
+Reaping winning child 0x559c59814a40 PID 13958 
+Removing child 0x559c59814a40 PID 13958 from chain.
+    Successfully remade target file 'build/delays.o'.
+    Considering target file 'build/fat.o'.
+     File 'build/fat.o' does not exist.
+     Looking for an implicit rule for 'build/fat.o'.
+     Trying pattern rule with stem 'fat'.
+     Trying implicit prerequisite 'src/fat.s'.
+     Trying pattern rule with stem 'fat'.
+     Trying implicit prerequisite 'src/fat.c'.
+     Found an implicit rule for 'build/fat.o'.
+      Considering target file 'src/fat.c'.
+       Looking for an implicit rule for 'src/fat.c'.
+       Trying pattern rule with stem 'fat'.
+       Trying implicit prerequisite 'src/fat.y'.
+       Trying pattern rule with stem 'fat'.
+       Trying implicit prerequisite 'src/fat.l'.
+       Trying pattern rule with stem 'fat'.
+       Trying implicit prerequisite 'src/fat.w'.
+       Trying pattern rule with stem 'fat'.
+       Trying implicit prerequisite 'src/fat.w'.
+       Trying pattern rule with stem 'fat.c'.
+       Trying implicit prerequisite 'src/fat.c,v'.
+       Trying pattern rule with stem 'fat.c'.
+       Trying implicit prerequisite 'src/RCS/fat.c,v'.
+       Trying pattern rule with stem 'fat.c'.
+       Trying implicit prerequisite 'src/RCS/fat.c'.
+       Trying pattern rule with stem 'fat.c'.
+       Trying implicit prerequisite 'src/s.fat.c'.
+       Trying pattern rule with stem 'fat.c'.
+       Trying implicit prerequisite 'src/SCCS/s.fat.c'.
+       Trying pattern rule with stem 'fat'.
+       Trying implicit prerequisite 'src/fat.y'.
+       Looking for a rule with intermediate file 'src/fat.y'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'fat.y'.
+        Trying implicit prerequisite 'src/fat.y,v'.
+        Trying pattern rule with stem 'fat.y'.
+        Trying implicit prerequisite 'src/RCS/fat.y,v'.
+        Trying pattern rule with stem 'fat.y'.
+        Trying implicit prerequisite 'src/RCS/fat.y'.
+        Trying pattern rule with stem 'fat.y'.
+        Trying implicit prerequisite 'src/s.fat.y'.
+        Trying pattern rule with stem 'fat.y'.
+        Trying implicit prerequisite 'src/SCCS/s.fat.y'.
+       Trying pattern rule with stem 'fat'.
+       Trying implicit prerequisite 'src/fat.l'.
+       Looking for a rule with intermediate file 'src/fat.l'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'fat.l'.
+        Trying implicit prerequisite 'src/fat.l,v'.
+        Trying pattern rule with stem 'fat.l'.
+        Trying implicit prerequisite 'src/RCS/fat.l,v'.
+        Trying pattern rule with stem 'fat.l'.
+        Trying implicit prerequisite 'src/RCS/fat.l'.
+        Trying pattern rule with stem 'fat.l'.
+        Trying implicit prerequisite 'src/s.fat.l'.
+        Trying pattern rule with stem 'fat.l'.
+        Trying implicit prerequisite 'src/SCCS/s.fat.l'.
+       Trying pattern rule with stem 'fat'.
+       Trying implicit prerequisite 'src/fat.w'.
+       Looking for a rule with intermediate file 'src/fat.w'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'fat.w'.
+        Trying implicit prerequisite 'src/fat.w,v'.
+        Trying pattern rule with stem 'fat.w'.
+        Trying implicit prerequisite 'src/RCS/fat.w,v'.
+        Trying pattern rule with stem 'fat.w'.
+        Trying implicit prerequisite 'src/RCS/fat.w'.
+        Trying pattern rule with stem 'fat.w'.
+        Trying implicit prerequisite 'src/s.fat.w'.
+        Trying pattern rule with stem 'fat.w'.
+        Trying implicit prerequisite 'src/SCCS/s.fat.w'.
+       Trying pattern rule with stem 'fat'.
+       Rejecting impossible implicit prerequisite 'src/fat.w'.
+       No implicit rule found for 'src/fat.c'.
+       Finished prerequisites of target file 'src/fat.c'.
+      No need to remake target 'src/fat.c'.
+     Finished prerequisites of target file 'build/fat.o'.
+    Must remake target 'build/fat.o'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-gcc -Wall -O2 -ffreestanding -nostartfiles -std=gnu11 -mstrict-align -mcpu=cortex-a53 -fno-tree-loop-vectorize -fno-tree-slp-vectorize -g -lm -lc -lgcc -c  src/fat.c -o build/fat.o 
+Putting child 0x559c59814e90 (build/fat.o) PID 13961 on the chain.
+Live child 0x559c59814e90 (build/fat.o) PID 13961 
+Reaping winning child 0x559c59814e90 PID 13961 
+Removing child 0x559c59814e90 PID 13961 from chain.
+    Successfully remade target file 'build/fat.o'.
+    Considering target file 'build/main.o'.
+     File 'build/main.o' does not exist.
+     Looking for an implicit rule for 'build/main.o'.
+     Trying pattern rule with stem 'main'.
+     Trying implicit prerequisite 'src/main.s'.
+     Trying pattern rule with stem 'main'.
+     Trying implicit prerequisite 'src/main.c'.
+     Found an implicit rule for 'build/main.o'.
+      Considering target file 'src/main.c'.
+       Looking for an implicit rule for 'src/main.c'.
+       Trying pattern rule with stem 'main'.
+       Trying implicit prerequisite 'src/main.y'.
+       Trying pattern rule with stem 'main'.
+       Trying implicit prerequisite 'src/main.l'.
+       Trying pattern rule with stem 'main'.
+       Trying implicit prerequisite 'src/main.w'.
+       Trying pattern rule with stem 'main'.
+       Trying implicit prerequisite 'src/main.w'.
+       Trying pattern rule with stem 'main.c'.
+       Trying implicit prerequisite 'src/main.c,v'.
+       Trying pattern rule with stem 'main.c'.
+       Trying implicit prerequisite 'src/RCS/main.c,v'.
+       Trying pattern rule with stem 'main.c'.
+       Trying implicit prerequisite 'src/RCS/main.c'.
+       Trying pattern rule with stem 'main.c'.
+       Trying implicit prerequisite 'src/s.main.c'.
+       Trying pattern rule with stem 'main.c'.
+       Trying implicit prerequisite 'src/SCCS/s.main.c'.
+       Trying pattern rule with stem 'main'.
+       Trying implicit prerequisite 'src/main.y'.
+       Looking for a rule with intermediate file 'src/main.y'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'main.y'.
+        Trying implicit prerequisite 'src/main.y,v'.
+        Trying pattern rule with stem 'main.y'.
+        Trying implicit prerequisite 'src/RCS/main.y,v'.
+        Trying pattern rule with stem 'main.y'.
+        Trying implicit prerequisite 'src/RCS/main.y'.
+        Trying pattern rule with stem 'main.y'.
+        Trying implicit prerequisite 'src/s.main.y'.
+        Trying pattern rule with stem 'main.y'.
+        Trying implicit prerequisite 'src/SCCS/s.main.y'.
+       Trying pattern rule with stem 'main'.
+       Trying implicit prerequisite 'src/main.l'.
+       Looking for a rule with intermediate file 'src/main.l'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'main.l'.
+        Trying implicit prerequisite 'src/main.l,v'.
+        Trying pattern rule with stem 'main.l'.
+        Trying implicit prerequisite 'src/RCS/main.l,v'.
+        Trying pattern rule with stem 'main.l'.
+        Trying implicit prerequisite 'src/RCS/main.l'.
+        Trying pattern rule with stem 'main.l'.
+        Trying implicit prerequisite 'src/s.main.l'.
+        Trying pattern rule with stem 'main.l'.
+        Trying implicit prerequisite 'src/SCCS/s.main.l'.
+       Trying pattern rule with stem 'main'.
+       Trying implicit prerequisite 'src/main.w'.
+       Looking for a rule with intermediate file 'src/main.w'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'main.w'.
+        Trying implicit prerequisite 'src/main.w,v'.
+        Trying pattern rule with stem 'main.w'.
+        Trying implicit prerequisite 'src/RCS/main.w,v'.
+        Trying pattern rule with stem 'main.w'.
+        Trying implicit prerequisite 'src/RCS/main.w'.
+        Trying pattern rule with stem 'main.w'.
+        Trying implicit prerequisite 'src/s.main.w'.
+        Trying pattern rule with stem 'main.w'.
+        Trying implicit prerequisite 'src/SCCS/s.main.w'.
+       Trying pattern rule with stem 'main'.
+       Rejecting impossible implicit prerequisite 'src/main.w'.
+       No implicit rule found for 'src/main.c'.
+       Finished prerequisites of target file 'src/main.c'.
+      No need to remake target 'src/main.c'.
+     Finished prerequisites of target file 'build/main.o'.
+    Must remake target 'build/main.o'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-gcc -Wall -O2 -ffreestanding -nostartfiles -std=gnu11 -mstrict-align -mcpu=cortex-a53 -fno-tree-loop-vectorize -fno-tree-slp-vectorize -g -lm -lc -lgcc -c  src/main.c -o build/main.o 
+Putting child 0x559c59816e20 (build/main.o) PID 13964 on the chain.
+Live child 0x559c59816e20 (build/main.o) PID 13964 
+Reaping winning child 0x559c59816e20 PID 13964 
+Removing child 0x559c59816e20 PID 13964 from chain.
+    Successfully remade target file 'build/main.o'.
+    Considering target file 'build/debug.o'.
+     File 'build/debug.o' does not exist.
+     Looking for an implicit rule for 'build/debug.o'.
+     Trying pattern rule with stem 'debug'.
+     Trying implicit prerequisite 'src/debug.s'.
+     Trying pattern rule with stem 'debug'.
+     Trying implicit prerequisite 'src/debug.c'.
+     Found an implicit rule for 'build/debug.o'.
+      Considering target file 'src/debug.c'.
+       Looking for an implicit rule for 'src/debug.c'.
+       Trying pattern rule with stem 'debug'.
+       Trying implicit prerequisite 'src/debug.y'.
+       Trying pattern rule with stem 'debug'.
+       Trying implicit prerequisite 'src/debug.l'.
+       Trying pattern rule with stem 'debug'.
+       Trying implicit prerequisite 'src/debug.w'.
+       Trying pattern rule with stem 'debug'.
+       Trying implicit prerequisite 'src/debug.w'.
+       Trying pattern rule with stem 'debug.c'.
+       Trying implicit prerequisite 'src/debug.c,v'.
+       Trying pattern rule with stem 'debug.c'.
+       Trying implicit prerequisite 'src/RCS/debug.c,v'.
+       Trying pattern rule with stem 'debug.c'.
+       Trying implicit prerequisite 'src/RCS/debug.c'.
+       Trying pattern rule with stem 'debug.c'.
+       Trying implicit prerequisite 'src/s.debug.c'.
+       Trying pattern rule with stem 'debug.c'.
+       Trying implicit prerequisite 'src/SCCS/s.debug.c'.
+       Trying pattern rule with stem 'debug'.
+       Trying implicit prerequisite 'src/debug.y'.
+       Looking for a rule with intermediate file 'src/debug.y'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'debug.y'.
+        Trying implicit prerequisite 'src/debug.y,v'.
+        Trying pattern rule with stem 'debug.y'.
+        Trying implicit prerequisite 'src/RCS/debug.y,v'.
+        Trying pattern rule with stem 'debug.y'.
+        Trying implicit prerequisite 'src/RCS/debug.y'.
+        Trying pattern rule with stem 'debug.y'.
+        Trying implicit prerequisite 'src/s.debug.y'.
+        Trying pattern rule with stem 'debug.y'.
+        Trying implicit prerequisite 'src/SCCS/s.debug.y'.
+       Trying pattern rule with stem 'debug'.
+       Trying implicit prerequisite 'src/debug.l'.
+       Looking for a rule with intermediate file 'src/debug.l'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'debug.l'.
+        Trying implicit prerequisite 'src/debug.l,v'.
+        Trying pattern rule with stem 'debug.l'.
+        Trying implicit prerequisite 'src/RCS/debug.l,v'.
+        Trying pattern rule with stem 'debug.l'.
+        Trying implicit prerequisite 'src/RCS/debug.l'.
+        Trying pattern rule with stem 'debug.l'.
+        Trying implicit prerequisite 'src/s.debug.l'.
+        Trying pattern rule with stem 'debug.l'.
+        Trying implicit prerequisite 'src/SCCS/s.debug.l'.
+       Trying pattern rule with stem 'debug'.
+       Trying implicit prerequisite 'src/debug.w'.
+       Looking for a rule with intermediate file 'src/debug.w'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'debug.w'.
+        Trying implicit prerequisite 'src/debug.w,v'.
+        Trying pattern rule with stem 'debug.w'.
+        Trying implicit prerequisite 'src/RCS/debug.w,v'.
+        Trying pattern rule with stem 'debug.w'.
+        Trying implicit prerequisite 'src/RCS/debug.w'.
+        Trying pattern rule with stem 'debug.w'.
+        Trying implicit prerequisite 'src/s.debug.w'.
+        Trying pattern rule with stem 'debug.w'.
+        Trying implicit prerequisite 'src/SCCS/s.debug.w'.
+       Trying pattern rule with stem 'debug'.
+       Rejecting impossible implicit prerequisite 'src/debug.w'.
+       No implicit rule found for 'src/debug.c'.
+       Finished prerequisites of target file 'src/debug.c'.
+      No need to remake target 'src/debug.c'.
+     Finished prerequisites of target file 'build/debug.o'.
+    Must remake target 'build/debug.o'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-gcc -Wall -O2 -ffreestanding -nostartfiles -std=gnu11 -mstrict-align -mcpu=cortex-a53 -fno-tree-loop-vectorize -fno-tree-slp-vectorize -g -lm -lc -lgcc -c  src/debug.c -o build/debug.o 
+Putting child 0x559c59816850 (build/debug.o) PID 13967 on the chain.
+Live child 0x559c59816850 (build/debug.o) PID 13967 
+Reaping winning child 0x559c59816850 PID 13967 
+Removing child 0x559c59816850 PID 13967 from chain.
+    Successfully remade target file 'build/debug.o'.
+    Considering target file 'build/malloc.o'.
+     File 'build/malloc.o' does not exist.
+     Looking for an implicit rule for 'build/malloc.o'.
+     Trying pattern rule with stem 'malloc'.
+     Trying implicit prerequisite 'src/malloc.s'.
+     Trying pattern rule with stem 'malloc'.
+     Trying implicit prerequisite 'src/malloc.c'.
+     Found an implicit rule for 'build/malloc.o'.
+      Considering target file 'src/malloc.c'.
+       Looking for an implicit rule for 'src/malloc.c'.
+       Trying pattern rule with stem 'malloc'.
+       Trying implicit prerequisite 'src/malloc.y'.
+       Trying pattern rule with stem 'malloc'.
+       Trying implicit prerequisite 'src/malloc.l'.
+       Trying pattern rule with stem 'malloc'.
+       Trying implicit prerequisite 'src/malloc.w'.
+       Trying pattern rule with stem 'malloc'.
+       Trying implicit prerequisite 'src/malloc.w'.
+       Trying pattern rule with stem 'malloc.c'.
+       Trying implicit prerequisite 'src/malloc.c,v'.
+       Trying pattern rule with stem 'malloc.c'.
+       Trying implicit prerequisite 'src/RCS/malloc.c,v'.
+       Trying pattern rule with stem 'malloc.c'.
+       Trying implicit prerequisite 'src/RCS/malloc.c'.
+       Trying pattern rule with stem 'malloc.c'.
+       Trying implicit prerequisite 'src/s.malloc.c'.
+       Trying pattern rule with stem 'malloc.c'.
+       Trying implicit prerequisite 'src/SCCS/s.malloc.c'.
+       Trying pattern rule with stem 'malloc'.
+       Trying implicit prerequisite 'src/malloc.y'.
+       Looking for a rule with intermediate file 'src/malloc.y'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'malloc.y'.
+        Trying implicit prerequisite 'src/malloc.y,v'.
+        Trying pattern rule with stem 'malloc.y'.
+        Trying implicit prerequisite 'src/RCS/malloc.y,v'.
+        Trying pattern rule with stem 'malloc.y'.
+        Trying implicit prerequisite 'src/RCS/malloc.y'.
+        Trying pattern rule with stem 'malloc.y'.
+        Trying implicit prerequisite 'src/s.malloc.y'.
+        Trying pattern rule with stem 'malloc.y'.
+        Trying implicit prerequisite 'src/SCCS/s.malloc.y'.
+       Trying pattern rule with stem 'malloc'.
+       Trying implicit prerequisite 'src/malloc.l'.
+       Looking for a rule with intermediate file 'src/malloc.l'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'malloc.l'.
+        Trying implicit prerequisite 'src/malloc.l,v'.
+        Trying pattern rule with stem 'malloc.l'.
+        Trying implicit prerequisite 'src/RCS/malloc.l,v'.
+        Trying pattern rule with stem 'malloc.l'.
+        Trying implicit prerequisite 'src/RCS/malloc.l'.
+        Trying pattern rule with stem 'malloc.l'.
+        Trying implicit prerequisite 'src/s.malloc.l'.
+        Trying pattern rule with stem 'malloc.l'.
+        Trying implicit prerequisite 'src/SCCS/s.malloc.l'.
+       Trying pattern rule with stem 'malloc'.
+       Trying implicit prerequisite 'src/malloc.w'.
+       Looking for a rule with intermediate file 'src/malloc.w'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'malloc.w'.
+        Trying implicit prerequisite 'src/malloc.w,v'.
+        Trying pattern rule with stem 'malloc.w'.
+        Trying implicit prerequisite 'src/RCS/malloc.w,v'.
+        Trying pattern rule with stem 'malloc.w'.
+        Trying implicit prerequisite 'src/RCS/malloc.w'.
+        Trying pattern rule with stem 'malloc.w'.
+        Trying implicit prerequisite 'src/s.malloc.w'.
+        Trying pattern rule with stem 'malloc.w'.
+        Trying implicit prerequisite 'src/SCCS/s.malloc.w'.
+       Trying pattern rule with stem 'malloc'.
+       Rejecting impossible implicit prerequisite 'src/malloc.w'.
+       No implicit rule found for 'src/malloc.c'.
+       Finished prerequisites of target file 'src/malloc.c'.
+      No need to remake target 'src/malloc.c'.
+     Finished prerequisites of target file 'build/malloc.o'.
+    Must remake target 'build/malloc.o'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-gcc -Wall -O2 -ffreestanding -nostartfiles -std=gnu11 -mstrict-align -mcpu=cortex-a53 -fno-tree-loop-vectorize -fno-tree-slp-vectorize -g -lm -lc -lgcc -c  src/malloc.c -o build/malloc.o 
+Putting child 0x559c59815ff0 (build/malloc.o) PID 13972 on the chain.
+Live child 0x559c59815ff0 (build/malloc.o) PID 13972 
+Reaping winning child 0x559c59815ff0 PID 13972 
+Removing child 0x559c59815ff0 PID 13972 from chain.
+    Successfully remade target file 'build/malloc.o'.
+    Considering target file 'build/led.o'.
+     File 'build/led.o' does not exist.
+     Looking for an implicit rule for 'build/led.o'.
+     Trying pattern rule with stem 'led'.
+     Trying implicit prerequisite 'src/led.s'.
+     Trying pattern rule with stem 'led'.
+     Trying implicit prerequisite 'src/led.c'.
+     Found an implicit rule for 'build/led.o'.
+      Considering target file 'src/led.c'.
+       Looking for an implicit rule for 'src/led.c'.
+       Trying pattern rule with stem 'led'.
+       Trying implicit prerequisite 'src/led.y'.
+       Trying pattern rule with stem 'led'.
+       Trying implicit prerequisite 'src/led.l'.
+       Trying pattern rule with stem 'led'.
+       Trying implicit prerequisite 'src/led.w'.
+       Trying pattern rule with stem 'led'.
+       Trying implicit prerequisite 'src/led.w'.
+       Trying pattern rule with stem 'led.c'.
+       Trying implicit prerequisite 'src/led.c,v'.
+       Trying pattern rule with stem 'led.c'.
+       Trying implicit prerequisite 'src/RCS/led.c,v'.
+       Trying pattern rule with stem 'led.c'.
+       Trying implicit prerequisite 'src/RCS/led.c'.
+       Trying pattern rule with stem 'led.c'.
+       Trying implicit prerequisite 'src/s.led.c'.
+       Trying pattern rule with stem 'led.c'.
+       Trying implicit prerequisite 'src/SCCS/s.led.c'.
+       Trying pattern rule with stem 'led'.
+       Trying implicit prerequisite 'src/led.y'.
+       Looking for a rule with intermediate file 'src/led.y'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'led.y'.
+        Trying implicit prerequisite 'src/led.y,v'.
+        Trying pattern rule with stem 'led.y'.
+        Trying implicit prerequisite 'src/RCS/led.y,v'.
+        Trying pattern rule with stem 'led.y'.
+        Trying implicit prerequisite 'src/RCS/led.y'.
+        Trying pattern rule with stem 'led.y'.
+        Trying implicit prerequisite 'src/s.led.y'.
+        Trying pattern rule with stem 'led.y'.
+        Trying implicit prerequisite 'src/SCCS/s.led.y'.
+       Trying pattern rule with stem 'led'.
+       Trying implicit prerequisite 'src/led.l'.
+       Looking for a rule with intermediate file 'src/led.l'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'led.l'.
+        Trying implicit prerequisite 'src/led.l,v'.
+        Trying pattern rule with stem 'led.l'.
+        Trying implicit prerequisite 'src/RCS/led.l,v'.
+        Trying pattern rule with stem 'led.l'.
+        Trying implicit prerequisite 'src/RCS/led.l'.
+        Trying pattern rule with stem 'led.l'.
+        Trying implicit prerequisite 'src/s.led.l'.
+        Trying pattern rule with stem 'led.l'.
+        Trying implicit prerequisite 'src/SCCS/s.led.l'.
+       Trying pattern rule with stem 'led'.
+       Trying implicit prerequisite 'src/led.w'.
+       Looking for a rule with intermediate file 'src/led.w'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'led.w'.
+        Trying implicit prerequisite 'src/led.w,v'.
+        Trying pattern rule with stem 'led.w'.
+        Trying implicit prerequisite 'src/RCS/led.w,v'.
+        Trying pattern rule with stem 'led.w'.
+        Trying implicit prerequisite 'src/RCS/led.w'.
+        Trying pattern rule with stem 'led.w'.
+        Trying implicit prerequisite 'src/s.led.w'.
+        Trying pattern rule with stem 'led.w'.
+        Trying implicit prerequisite 'src/SCCS/s.led.w'.
+       Trying pattern rule with stem 'led'.
+       Rejecting impossible implicit prerequisite 'src/led.w'.
+       No implicit rule found for 'src/led.c'.
+       Finished prerequisites of target file 'src/led.c'.
+      No need to remake target 'src/led.c'.
+     Finished prerequisites of target file 'build/led.o'.
+    Must remake target 'build/led.o'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-gcc -Wall -O2 -ffreestanding -nostartfiles -std=gnu11 -mstrict-align -mcpu=cortex-a53 -fno-tree-loop-vectorize -fno-tree-slp-vectorize -g -lm -lc -lgcc -c  src/led.c -o build/led.o 
+Putting child 0x559c59816200 (build/led.o) PID 13975 on the chain.
+Live child 0x559c59816200 (build/led.o) PID 13975 
+Reaping winning child 0x559c59816200 PID 13975 
+Removing child 0x559c59816200 PID 13975 from chain.
+    Successfully remade target file 'build/led.o'.
+    Considering target file 'build/interupts.o'.
+     File 'build/interupts.o' does not exist.
+     Looking for an implicit rule for 'build/interupts.o'.
+     Trying pattern rule with stem 'interupts'.
+     Trying implicit prerequisite 'src/interupts.s'.
+     Trying pattern rule with stem 'interupts'.
+     Trying implicit prerequisite 'src/interupts.c'.
+     Found an implicit rule for 'build/interupts.o'.
+      Considering target file 'src/interupts.c'.
+       Looking for an implicit rule for 'src/interupts.c'.
+       Trying pattern rule with stem 'interupts'.
+       Trying implicit prerequisite 'src/interupts.y'.
+       Trying pattern rule with stem 'interupts'.
+       Trying implicit prerequisite 'src/interupts.l'.
+       Trying pattern rule with stem 'interupts'.
+       Trying implicit prerequisite 'src/interupts.w'.
+       Trying pattern rule with stem 'interupts'.
+       Trying implicit prerequisite 'src/interupts.w'.
+       Trying pattern rule with stem 'interupts.c'.
+       Trying implicit prerequisite 'src/interupts.c,v'.
+       Trying pattern rule with stem 'interupts.c'.
+       Trying implicit prerequisite 'src/RCS/interupts.c,v'.
+       Trying pattern rule with stem 'interupts.c'.
+       Trying implicit prerequisite 'src/RCS/interupts.c'.
+       Trying pattern rule with stem 'interupts.c'.
+       Trying implicit prerequisite 'src/s.interupts.c'.
+       Trying pattern rule with stem 'interupts.c'.
+       Trying implicit prerequisite 'src/SCCS/s.interupts.c'.
+       Trying pattern rule with stem 'interupts'.
+       Trying implicit prerequisite 'src/interupts.y'.
+       Looking for a rule with intermediate file 'src/interupts.y'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'interupts.y'.
+        Trying implicit prerequisite 'src/interupts.y,v'.
+        Trying pattern rule with stem 'interupts.y'.
+        Trying implicit prerequisite 'src/RCS/interupts.y,v'.
+        Trying pattern rule with stem 'interupts.y'.
+        Trying implicit prerequisite 'src/RCS/interupts.y'.
+        Trying pattern rule with stem 'interupts.y'.
+        Trying implicit prerequisite 'src/s.interupts.y'.
+        Trying pattern rule with stem 'interupts.y'.
+        Trying implicit prerequisite 'src/SCCS/s.interupts.y'.
+       Trying pattern rule with stem 'interupts'.
+       Trying implicit prerequisite 'src/interupts.l'.
+       Looking for a rule with intermediate file 'src/interupts.l'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'interupts.l'.
+        Trying implicit prerequisite 'src/interupts.l,v'.
+        Trying pattern rule with stem 'interupts.l'.
+        Trying implicit prerequisite 'src/RCS/interupts.l,v'.
+        Trying pattern rule with stem 'interupts.l'.
+        Trying implicit prerequisite 'src/RCS/interupts.l'.
+        Trying pattern rule with stem 'interupts.l'.
+        Trying implicit prerequisite 'src/s.interupts.l'.
+        Trying pattern rule with stem 'interupts.l'.
+        Trying implicit prerequisite 'src/SCCS/s.interupts.l'.
+       Trying pattern rule with stem 'interupts'.
+       Trying implicit prerequisite 'src/interupts.w'.
+       Looking for a rule with intermediate file 'src/interupts.w'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'interupts.w'.
+        Trying implicit prerequisite 'src/interupts.w,v'.
+        Trying pattern rule with stem 'interupts.w'.
+        Trying implicit prerequisite 'src/RCS/interupts.w,v'.
+        Trying pattern rule with stem 'interupts.w'.
+        Trying implicit prerequisite 'src/RCS/interupts.w'.
+        Trying pattern rule with stem 'interupts.w'.
+        Trying implicit prerequisite 'src/s.interupts.w'.
+        Trying pattern rule with stem 'interupts.w'.
+        Trying implicit prerequisite 'src/SCCS/s.interupts.w'.
+       Trying pattern rule with stem 'interupts'.
+       Rejecting impossible implicit prerequisite 'src/interupts.w'.
+       No implicit rule found for 'src/interupts.c'.
+       Finished prerequisites of target file 'src/interupts.c'.
+      No need to remake target 'src/interupts.c'.
+     Finished prerequisites of target file 'build/interupts.o'.
+    Must remake target 'build/interupts.o'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-gcc -Wall -O2 -ffreestanding -nostartfiles -std=gnu11 -mstrict-align -mcpu=cortex-a53 -fno-tree-loop-vectorize -fno-tree-slp-vectorize -g -lm -lc -lgcc -c  src/interupts.c -o build/interupts.o 
+Putting child 0x559c59817a90 (build/interupts.o) PID 13978 on the chain.
+Live child 0x559c59817a90 (build/interupts.o) PID 13978 
+Reaping winning child 0x559c59817a90 PID 13978 
+Removing child 0x559c59817a90 PID 13978 from chain.
+    Successfully remade target file 'build/interupts.o'.
+    Considering target file 'build/gpu_memory.o'.
+     File 'build/gpu_memory.o' does not exist.
+     Looking for an implicit rule for 'build/gpu_memory.o'.
+     Trying pattern rule with stem 'gpu_memory'.
+     Trying implicit prerequisite 'src/gpu_memory.s'.
+     Trying pattern rule with stem 'gpu_memory'.
+     Trying implicit prerequisite 'src/gpu_memory.c'.
+     Found an implicit rule for 'build/gpu_memory.o'.
+      Considering target file 'src/gpu_memory.c'.
+       Looking for an implicit rule for 'src/gpu_memory.c'.
+       Trying pattern rule with stem 'gpu_memory'.
+       Trying implicit prerequisite 'src/gpu_memory.y'.
+       Trying pattern rule with stem 'gpu_memory'.
+       Trying implicit prerequisite 'src/gpu_memory.l'.
+       Trying pattern rule with stem 'gpu_memory'.
+       Trying implicit prerequisite 'src/gpu_memory.w'.
+       Trying pattern rule with stem 'gpu_memory'.
+       Trying implicit prerequisite 'src/gpu_memory.w'.
+       Trying pattern rule with stem 'gpu_memory.c'.
+       Trying implicit prerequisite 'src/gpu_memory.c,v'.
+       Trying pattern rule with stem 'gpu_memory.c'.
+       Trying implicit prerequisite 'src/RCS/gpu_memory.c,v'.
+       Trying pattern rule with stem 'gpu_memory.c'.
+       Trying implicit prerequisite 'src/RCS/gpu_memory.c'.
+       Trying pattern rule with stem 'gpu_memory.c'.
+       Trying implicit prerequisite 'src/s.gpu_memory.c'.
+       Trying pattern rule with stem 'gpu_memory.c'.
+       Trying implicit prerequisite 'src/SCCS/s.gpu_memory.c'.
+       Trying pattern rule with stem 'gpu_memory'.
+       Trying implicit prerequisite 'src/gpu_memory.y'.
+       Looking for a rule with intermediate file 'src/gpu_memory.y'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'gpu_memory.y'.
+        Trying implicit prerequisite 'src/gpu_memory.y,v'.
+        Trying pattern rule with stem 'gpu_memory.y'.
+        Trying implicit prerequisite 'src/RCS/gpu_memory.y,v'.
+        Trying pattern rule with stem 'gpu_memory.y'.
+        Trying implicit prerequisite 'src/RCS/gpu_memory.y'.
+        Trying pattern rule with stem 'gpu_memory.y'.
+        Trying implicit prerequisite 'src/s.gpu_memory.y'.
+        Trying pattern rule with stem 'gpu_memory.y'.
+        Trying implicit prerequisite 'src/SCCS/s.gpu_memory.y'.
+       Trying pattern rule with stem 'gpu_memory'.
+       Trying implicit prerequisite 'src/gpu_memory.l'.
+       Looking for a rule with intermediate file 'src/gpu_memory.l'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'gpu_memory.l'.
+        Trying implicit prerequisite 'src/gpu_memory.l,v'.
+        Trying pattern rule with stem 'gpu_memory.l'.
+        Trying implicit prerequisite 'src/RCS/gpu_memory.l,v'.
+        Trying pattern rule with stem 'gpu_memory.l'.
+        Trying implicit prerequisite 'src/RCS/gpu_memory.l'.
+        Trying pattern rule with stem 'gpu_memory.l'.
+        Trying implicit prerequisite 'src/s.gpu_memory.l'.
+        Trying pattern rule with stem 'gpu_memory.l'.
+        Trying implicit prerequisite 'src/SCCS/s.gpu_memory.l'.
+       Trying pattern rule with stem 'gpu_memory'.
+       Trying implicit prerequisite 'src/gpu_memory.w'.
+       Looking for a rule with intermediate file 'src/gpu_memory.w'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'gpu_memory.w'.
+        Trying implicit prerequisite 'src/gpu_memory.w,v'.
+        Trying pattern rule with stem 'gpu_memory.w'.
+        Trying implicit prerequisite 'src/RCS/gpu_memory.w,v'.
+        Trying pattern rule with stem 'gpu_memory.w'.
+        Trying implicit prerequisite 'src/RCS/gpu_memory.w'.
+        Trying pattern rule with stem 'gpu_memory.w'.
+        Trying implicit prerequisite 'src/s.gpu_memory.w'.
+        Trying pattern rule with stem 'gpu_memory.w'.
+        Trying implicit prerequisite 'src/SCCS/s.gpu_memory.w'.
+       Trying pattern rule with stem 'gpu_memory'.
+       Rejecting impossible implicit prerequisite 'src/gpu_memory.w'.
+       No implicit rule found for 'src/gpu_memory.c'.
+       Finished prerequisites of target file 'src/gpu_memory.c'.
+      No need to remake target 'src/gpu_memory.c'.
+     Finished prerequisites of target file 'build/gpu_memory.o'.
+    Must remake target 'build/gpu_memory.o'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-gcc -Wall -O2 -ffreestanding -nostartfiles -std=gnu11 -mstrict-align -mcpu=cortex-a53 -fno-tree-loop-vectorize -fno-tree-slp-vectorize -g -lm -lc -lgcc -c  src/gpu_memory.c -o build/gpu_memory.o 
+Putting child 0x559c59818660 (build/gpu_memory.o) PID 13981 on the chain.
+Live child 0x559c59818660 (build/gpu_memory.o) PID 13981 
+Reaping winning child 0x559c59818660 PID 13981 
+Removing child 0x559c59818660 PID 13981 from chain.
+    Successfully remade target file 'build/gpu_memory.o'.
+    Considering target file 'build/sound.o'.
+     File 'build/sound.o' does not exist.
+     Looking for an implicit rule for 'build/sound.o'.
+     Trying pattern rule with stem 'sound'.
+     Trying implicit prerequisite 'src/sound.s'.
+     Trying pattern rule with stem 'sound'.
+     Trying implicit prerequisite 'src/sound.c'.
+     Found an implicit rule for 'build/sound.o'.
+      Considering target file 'src/sound.c'.
+       Looking for an implicit rule for 'src/sound.c'.
+       Trying pattern rule with stem 'sound'.
+       Trying implicit prerequisite 'src/sound.y'.
+       Trying pattern rule with stem 'sound'.
+       Trying implicit prerequisite 'src/sound.l'.
+       Trying pattern rule with stem 'sound'.
+       Trying implicit prerequisite 'src/sound.w'.
+       Trying pattern rule with stem 'sound'.
+       Trying implicit prerequisite 'src/sound.w'.
+       Trying pattern rule with stem 'sound.c'.
+       Trying implicit prerequisite 'src/sound.c,v'.
+       Trying pattern rule with stem 'sound.c'.
+       Trying implicit prerequisite 'src/RCS/sound.c,v'.
+       Trying pattern rule with stem 'sound.c'.
+       Trying implicit prerequisite 'src/RCS/sound.c'.
+       Trying pattern rule with stem 'sound.c'.
+       Trying implicit prerequisite 'src/s.sound.c'.
+       Trying pattern rule with stem 'sound.c'.
+       Trying implicit prerequisite 'src/SCCS/s.sound.c'.
+       Trying pattern rule with stem 'sound'.
+       Trying implicit prerequisite 'src/sound.y'.
+       Looking for a rule with intermediate file 'src/sound.y'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'sound.y'.
+        Trying implicit prerequisite 'src/sound.y,v'.
+        Trying pattern rule with stem 'sound.y'.
+        Trying implicit prerequisite 'src/RCS/sound.y,v'.
+        Trying pattern rule with stem 'sound.y'.
+        Trying implicit prerequisite 'src/RCS/sound.y'.
+        Trying pattern rule with stem 'sound.y'.
+        Trying implicit prerequisite 'src/s.sound.y'.
+        Trying pattern rule with stem 'sound.y'.
+        Trying implicit prerequisite 'src/SCCS/s.sound.y'.
+       Trying pattern rule with stem 'sound'.
+       Trying implicit prerequisite 'src/sound.l'.
+       Looking for a rule with intermediate file 'src/sound.l'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'sound.l'.
+        Trying implicit prerequisite 'src/sound.l,v'.
+        Trying pattern rule with stem 'sound.l'.
+        Trying implicit prerequisite 'src/RCS/sound.l,v'.
+        Trying pattern rule with stem 'sound.l'.
+        Trying implicit prerequisite 'src/RCS/sound.l'.
+        Trying pattern rule with stem 'sound.l'.
+        Trying implicit prerequisite 'src/s.sound.l'.
+        Trying pattern rule with stem 'sound.l'.
+        Trying implicit prerequisite 'src/SCCS/s.sound.l'.
+       Trying pattern rule with stem 'sound'.
+       Trying implicit prerequisite 'src/sound.w'.
+       Looking for a rule with intermediate file 'src/sound.w'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'sound.w'.
+        Trying implicit prerequisite 'src/sound.w,v'.
+        Trying pattern rule with stem 'sound.w'.
+        Trying implicit prerequisite 'src/RCS/sound.w,v'.
+        Trying pattern rule with stem 'sound.w'.
+        Trying implicit prerequisite 'src/RCS/sound.w'.
+        Trying pattern rule with stem 'sound.w'.
+        Trying implicit prerequisite 'src/s.sound.w'.
+        Trying pattern rule with stem 'sound.w'.
+        Trying implicit prerequisite 'src/SCCS/s.sound.w'.
+       Trying pattern rule with stem 'sound'.
+       Rejecting impossible implicit prerequisite 'src/sound.w'.
+       No implicit rule found for 'src/sound.c'.
+       Finished prerequisites of target file 'src/sound.c'.
+      No need to remake target 'src/sound.c'.
+     Finished prerequisites of target file 'build/sound.o'.
+    Must remake target 'build/sound.o'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-gcc -Wall -O2 -ffreestanding -nostartfiles -std=gnu11 -mstrict-align -mcpu=cortex-a53 -fno-tree-loop-vectorize -fno-tree-slp-vectorize -g -lm -lc -lgcc -c  src/sound.c -o build/sound.o 
+Putting child 0x559c598198b0 (build/sound.o) PID 13984 on the chain.
+Live child 0x559c598198b0 (build/sound.o) PID 13984 
+Reaping winning child 0x559c598198b0 PID 13984 
+Removing child 0x559c598198b0 PID 13984 from chain.
+    Successfully remade target file 'build/sound.o'.
+    Considering target file 'build/color.o'.
+     File 'build/color.o' does not exist.
+     Looking for an implicit rule for 'build/color.o'.
+     Trying pattern rule with stem 'color'.
+     Trying implicit prerequisite 'src/color.s'.
+     Trying pattern rule with stem 'color'.
+     Trying implicit prerequisite 'src/color.c'.
+     Found an implicit rule for 'build/color.o'.
+      Considering target file 'src/color.c'.
+       Looking for an implicit rule for 'src/color.c'.
+       Trying pattern rule with stem 'color'.
+       Trying implicit prerequisite 'src/color.y'.
+       Trying pattern rule with stem 'color'.
+       Trying implicit prerequisite 'src/color.l'.
+       Trying pattern rule with stem 'color'.
+       Trying implicit prerequisite 'src/color.w'.
+       Trying pattern rule with stem 'color'.
+       Trying implicit prerequisite 'src/color.w'.
+       Trying pattern rule with stem 'color.c'.
+       Trying implicit prerequisite 'src/color.c,v'.
+       Trying pattern rule with stem 'color.c'.
+       Trying implicit prerequisite 'src/RCS/color.c,v'.
+       Trying pattern rule with stem 'color.c'.
+       Trying implicit prerequisite 'src/RCS/color.c'.
+       Trying pattern rule with stem 'color.c'.
+       Trying implicit prerequisite 'src/s.color.c'.
+       Trying pattern rule with stem 'color.c'.
+       Trying implicit prerequisite 'src/SCCS/s.color.c'.
+       Trying pattern rule with stem 'color'.
+       Trying implicit prerequisite 'src/color.y'.
+       Looking for a rule with intermediate file 'src/color.y'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'color.y'.
+        Trying implicit prerequisite 'src/color.y,v'.
+        Trying pattern rule with stem 'color.y'.
+        Trying implicit prerequisite 'src/RCS/color.y,v'.
+        Trying pattern rule with stem 'color.y'.
+        Trying implicit prerequisite 'src/RCS/color.y'.
+        Trying pattern rule with stem 'color.y'.
+        Trying implicit prerequisite 'src/s.color.y'.
+        Trying pattern rule with stem 'color.y'.
+        Trying implicit prerequisite 'src/SCCS/s.color.y'.
+       Trying pattern rule with stem 'color'.
+       Trying implicit prerequisite 'src/color.l'.
+       Looking for a rule with intermediate file 'src/color.l'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'color.l'.
+        Trying implicit prerequisite 'src/color.l,v'.
+        Trying pattern rule with stem 'color.l'.
+        Trying implicit prerequisite 'src/RCS/color.l,v'.
+        Trying pattern rule with stem 'color.l'.
+        Trying implicit prerequisite 'src/RCS/color.l'.
+        Trying pattern rule with stem 'color.l'.
+        Trying implicit prerequisite 'src/s.color.l'.
+        Trying pattern rule with stem 'color.l'.
+        Trying implicit prerequisite 'src/SCCS/s.color.l'.
+       Trying pattern rule with stem 'color'.
+       Trying implicit prerequisite 'src/color.w'.
+       Looking for a rule with intermediate file 'src/color.w'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'color.w'.
+        Trying implicit prerequisite 'src/color.w,v'.
+        Trying pattern rule with stem 'color.w'.
+        Trying implicit prerequisite 'src/RCS/color.w,v'.
+        Trying pattern rule with stem 'color.w'.
+        Trying implicit prerequisite 'src/RCS/color.w'.
+        Trying pattern rule with stem 'color.w'.
+        Trying implicit prerequisite 'src/s.color.w'.
+        Trying pattern rule with stem 'color.w'.
+        Trying implicit prerequisite 'src/SCCS/s.color.w'.
+       Trying pattern rule with stem 'color'.
+       Rejecting impossible implicit prerequisite 'src/color.w'.
+       No implicit rule found for 'src/color.c'.
+       Finished prerequisites of target file 'src/color.c'.
+      No need to remake target 'src/color.c'.
+     Finished prerequisites of target file 'build/color.o'.
+    Must remake target 'build/color.o'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-gcc -Wall -O2 -ffreestanding -nostartfiles -std=gnu11 -mstrict-align -mcpu=cortex-a53 -fno-tree-loop-vectorize -fno-tree-slp-vectorize -g -lm -lc -lgcc -c  src/color.c -o build/color.o 
+Putting child 0x559c59819ea0 (build/color.o) PID 13987 on the chain.
+Live child 0x559c59819ea0 (build/color.o) PID 13987 
+Reaping winning child 0x559c59819ea0 PID 13987 
+Removing child 0x559c59819ea0 PID 13987 from chain.
+    Successfully remade target file 'build/color.o'.
+    Considering target file 'build/printf.o'.
+     File 'build/printf.o' does not exist.
+     Looking for an implicit rule for 'build/printf.o'.
+     Trying pattern rule with stem 'printf'.
+     Trying implicit prerequisite 'src/printf.s'.
+     Trying pattern rule with stem 'printf'.
+     Trying implicit prerequisite 'src/printf.c'.
+     Found an implicit rule for 'build/printf.o'.
+      Considering target file 'src/printf.c'.
+       Looking for an implicit rule for 'src/printf.c'.
+       Trying pattern rule with stem 'printf'.
+       Trying implicit prerequisite 'src/printf.y'.
+       Trying pattern rule with stem 'printf'.
+       Trying implicit prerequisite 'src/printf.l'.
+       Trying pattern rule with stem 'printf'.
+       Trying implicit prerequisite 'src/printf.w'.
+       Trying pattern rule with stem 'printf'.
+       Trying implicit prerequisite 'src/printf.w'.
+       Trying pattern rule with stem 'printf.c'.
+       Trying implicit prerequisite 'src/printf.c,v'.
+       Trying pattern rule with stem 'printf.c'.
+       Trying implicit prerequisite 'src/RCS/printf.c,v'.
+       Trying pattern rule with stem 'printf.c'.
+       Trying implicit prerequisite 'src/RCS/printf.c'.
+       Trying pattern rule with stem 'printf.c'.
+       Trying implicit prerequisite 'src/s.printf.c'.
+       Trying pattern rule with stem 'printf.c'.
+       Trying implicit prerequisite 'src/SCCS/s.printf.c'.
+       Trying pattern rule with stem 'printf'.
+       Trying implicit prerequisite 'src/printf.y'.
+       Looking for a rule with intermediate file 'src/printf.y'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'printf.y'.
+        Trying implicit prerequisite 'src/printf.y,v'.
+        Trying pattern rule with stem 'printf.y'.
+        Trying implicit prerequisite 'src/RCS/printf.y,v'.
+        Trying pattern rule with stem 'printf.y'.
+        Trying implicit prerequisite 'src/RCS/printf.y'.
+        Trying pattern rule with stem 'printf.y'.
+        Trying implicit prerequisite 'src/s.printf.y'.
+        Trying pattern rule with stem 'printf.y'.
+        Trying implicit prerequisite 'src/SCCS/s.printf.y'.
+       Trying pattern rule with stem 'printf'.
+       Trying implicit prerequisite 'src/printf.l'.
+       Looking for a rule with intermediate file 'src/printf.l'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'printf.l'.
+        Trying implicit prerequisite 'src/printf.l,v'.
+        Trying pattern rule with stem 'printf.l'.
+        Trying implicit prerequisite 'src/RCS/printf.l,v'.
+        Trying pattern rule with stem 'printf.l'.
+        Trying implicit prerequisite 'src/RCS/printf.l'.
+        Trying pattern rule with stem 'printf.l'.
+        Trying implicit prerequisite 'src/s.printf.l'.
+        Trying pattern rule with stem 'printf.l'.
+        Trying implicit prerequisite 'src/SCCS/s.printf.l'.
+       Trying pattern rule with stem 'printf'.
+       Trying implicit prerequisite 'src/printf.w'.
+       Looking for a rule with intermediate file 'src/printf.w'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'printf.w'.
+        Trying implicit prerequisite 'src/printf.w,v'.
+        Trying pattern rule with stem 'printf.w'.
+        Trying implicit prerequisite 'src/RCS/printf.w,v'.
+        Trying pattern rule with stem 'printf.w'.
+        Trying implicit prerequisite 'src/RCS/printf.w'.
+        Trying pattern rule with stem 'printf.w'.
+        Trying implicit prerequisite 'src/s.printf.w'.
+        Trying pattern rule with stem 'printf.w'.
+        Trying implicit prerequisite 'src/SCCS/s.printf.w'.
+       Trying pattern rule with stem 'printf'.
+       Rejecting impossible implicit prerequisite 'src/printf.w'.
+       No implicit rule found for 'src/printf.c'.
+       Finished prerequisites of target file 'src/printf.c'.
+      No need to remake target 'src/printf.c'.
+     Finished prerequisites of target file 'build/printf.o'.
+    Must remake target 'build/printf.o'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-gcc -Wall -O2 -ffreestanding -nostartfiles -std=gnu11 -mstrict-align -mcpu=cortex-a53 -fno-tree-loop-vectorize -fno-tree-slp-vectorize -g -lm -lc -lgcc -c  src/printf.c -o build/printf.o 
+Putting child 0x559c59818000 (build/printf.o) PID 13990 on the chain.
+Live child 0x559c59818000 (build/printf.o) PID 13990 
+Reaping winning child 0x559c59818000 PID 13990 
+Removing child 0x559c59818000 PID 13990 from chain.
+    Successfully remade target file 'build/printf.o'.
+    Considering target file 'build/mbox.o'.
+     File 'build/mbox.o' does not exist.
+     Looking for an implicit rule for 'build/mbox.o'.
+     Trying pattern rule with stem 'mbox'.
+     Trying implicit prerequisite 'src/mbox.s'.
+     Trying pattern rule with stem 'mbox'.
+     Trying implicit prerequisite 'src/mbox.c'.
+     Found an implicit rule for 'build/mbox.o'.
+      Considering target file 'src/mbox.c'.
+       Looking for an implicit rule for 'src/mbox.c'.
+       Trying pattern rule with stem 'mbox'.
+       Trying implicit prerequisite 'src/mbox.y'.
+       Trying pattern rule with stem 'mbox'.
+       Trying implicit prerequisite 'src/mbox.l'.
+       Trying pattern rule with stem 'mbox'.
+       Trying implicit prerequisite 'src/mbox.w'.
+       Trying pattern rule with stem 'mbox'.
+       Trying implicit prerequisite 'src/mbox.w'.
+       Trying pattern rule with stem 'mbox.c'.
+       Trying implicit prerequisite 'src/mbox.c,v'.
+       Trying pattern rule with stem 'mbox.c'.
+       Trying implicit prerequisite 'src/RCS/mbox.c,v'.
+       Trying pattern rule with stem 'mbox.c'.
+       Trying implicit prerequisite 'src/RCS/mbox.c'.
+       Trying pattern rule with stem 'mbox.c'.
+       Trying implicit prerequisite 'src/s.mbox.c'.
+       Trying pattern rule with stem 'mbox.c'.
+       Trying implicit prerequisite 'src/SCCS/s.mbox.c'.
+       Trying pattern rule with stem 'mbox'.
+       Trying implicit prerequisite 'src/mbox.y'.
+       Looking for a rule with intermediate file 'src/mbox.y'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'mbox.y'.
+        Trying implicit prerequisite 'src/mbox.y,v'.
+        Trying pattern rule with stem 'mbox.y'.
+        Trying implicit prerequisite 'src/RCS/mbox.y,v'.
+        Trying pattern rule with stem 'mbox.y'.
+        Trying implicit prerequisite 'src/RCS/mbox.y'.
+        Trying pattern rule with stem 'mbox.y'.
+        Trying implicit prerequisite 'src/s.mbox.y'.
+        Trying pattern rule with stem 'mbox.y'.
+        Trying implicit prerequisite 'src/SCCS/s.mbox.y'.
+       Trying pattern rule with stem 'mbox'.
+       Trying implicit prerequisite 'src/mbox.l'.
+       Looking for a rule with intermediate file 'src/mbox.l'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'mbox.l'.
+        Trying implicit prerequisite 'src/mbox.l,v'.
+        Trying pattern rule with stem 'mbox.l'.
+        Trying implicit prerequisite 'src/RCS/mbox.l,v'.
+        Trying pattern rule with stem 'mbox.l'.
+        Trying implicit prerequisite 'src/RCS/mbox.l'.
+        Trying pattern rule with stem 'mbox.l'.
+        Trying implicit prerequisite 'src/s.mbox.l'.
+        Trying pattern rule with stem 'mbox.l'.
+        Trying implicit prerequisite 'src/SCCS/s.mbox.l'.
+       Trying pattern rule with stem 'mbox'.
+       Trying implicit prerequisite 'src/mbox.w'.
+       Looking for a rule with intermediate file 'src/mbox.w'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'mbox.w'.
+        Trying implicit prerequisite 'src/mbox.w,v'.
+        Trying pattern rule with stem 'mbox.w'.
+        Trying implicit prerequisite 'src/RCS/mbox.w,v'.
+        Trying pattern rule with stem 'mbox.w'.
+        Trying implicit prerequisite 'src/RCS/mbox.w'.
+        Trying pattern rule with stem 'mbox.w'.
+        Trying implicit prerequisite 'src/s.mbox.w'.
+        Trying pattern rule with stem 'mbox.w'.
+        Trying implicit prerequisite 'src/SCCS/s.mbox.w'.
+       Trying pattern rule with stem 'mbox'.
+       Rejecting impossible implicit prerequisite 'src/mbox.w'.
+       No implicit rule found for 'src/mbox.c'.
+       Finished prerequisites of target file 'src/mbox.c'.
+      No need to remake target 'src/mbox.c'.
+     Finished prerequisites of target file 'build/mbox.o'.
+    Must remake target 'build/mbox.o'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-gcc -Wall -O2 -ffreestanding -nostartfiles -std=gnu11 -mstrict-align -mcpu=cortex-a53 -fno-tree-loop-vectorize -fno-tree-slp-vectorize -g -lm -lc -lgcc -c  src/mbox.c -o build/mbox.o 
+Putting child 0x559c59818e60 (build/mbox.o) PID 13993 on the chain.
+Live child 0x559c59818e60 (build/mbox.o) PID 13993 
+Reaping winning child 0x559c59818e60 PID 13993 
+Removing child 0x559c59818e60 PID 13993 from chain.
+    Successfully remade target file 'build/mbox.o'.
+    Considering target file 'build/sd.o'.
+     File 'build/sd.o' does not exist.
+     Looking for an implicit rule for 'build/sd.o'.
+     Trying pattern rule with stem 'sd'.
+     Trying implicit prerequisite 'src/sd.s'.
+     Trying pattern rule with stem 'sd'.
+     Trying implicit prerequisite 'src/sd.c'.
+     Found an implicit rule for 'build/sd.o'.
+      Considering target file 'src/sd.c'.
+       Looking for an implicit rule for 'src/sd.c'.
+       Trying pattern rule with stem 'sd'.
+       Trying implicit prerequisite 'src/sd.y'.
+       Trying pattern rule with stem 'sd'.
+       Trying implicit prerequisite 'src/sd.l'.
+       Trying pattern rule with stem 'sd'.
+       Trying implicit prerequisite 'src/sd.w'.
+       Trying pattern rule with stem 'sd'.
+       Trying implicit prerequisite 'src/sd.w'.
+       Trying pattern rule with stem 'sd.c'.
+       Trying implicit prerequisite 'src/sd.c,v'.
+       Trying pattern rule with stem 'sd.c'.
+       Trying implicit prerequisite 'src/RCS/sd.c,v'.
+       Trying pattern rule with stem 'sd.c'.
+       Trying implicit prerequisite 'src/RCS/sd.c'.
+       Trying pattern rule with stem 'sd.c'.
+       Trying implicit prerequisite 'src/s.sd.c'.
+       Trying pattern rule with stem 'sd.c'.
+       Trying implicit prerequisite 'src/SCCS/s.sd.c'.
+       Trying pattern rule with stem 'sd'.
+       Trying implicit prerequisite 'src/sd.y'.
+       Looking for a rule with intermediate file 'src/sd.y'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'sd.y'.
+        Trying implicit prerequisite 'src/sd.y,v'.
+        Trying pattern rule with stem 'sd.y'.
+        Trying implicit prerequisite 'src/RCS/sd.y,v'.
+        Trying pattern rule with stem 'sd.y'.
+        Trying implicit prerequisite 'src/RCS/sd.y'.
+        Trying pattern rule with stem 'sd.y'.
+        Trying implicit prerequisite 'src/s.sd.y'.
+        Trying pattern rule with stem 'sd.y'.
+        Trying implicit prerequisite 'src/SCCS/s.sd.y'.
+       Trying pattern rule with stem 'sd'.
+       Trying implicit prerequisite 'src/sd.l'.
+       Looking for a rule with intermediate file 'src/sd.l'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'sd.l'.
+        Trying implicit prerequisite 'src/sd.l,v'.
+        Trying pattern rule with stem 'sd.l'.
+        Trying implicit prerequisite 'src/RCS/sd.l,v'.
+        Trying pattern rule with stem 'sd.l'.
+        Trying implicit prerequisite 'src/RCS/sd.l'.
+        Trying pattern rule with stem 'sd.l'.
+        Trying implicit prerequisite 'src/s.sd.l'.
+        Trying pattern rule with stem 'sd.l'.
+        Trying implicit prerequisite 'src/SCCS/s.sd.l'.
+       Trying pattern rule with stem 'sd'.
+       Trying implicit prerequisite 'src/sd.w'.
+       Looking for a rule with intermediate file 'src/sd.w'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'sd.w'.
+        Trying implicit prerequisite 'src/sd.w,v'.
+        Trying pattern rule with stem 'sd.w'.
+        Trying implicit prerequisite 'src/RCS/sd.w,v'.
+        Trying pattern rule with stem 'sd.w'.
+        Trying implicit prerequisite 'src/RCS/sd.w'.
+        Trying pattern rule with stem 'sd.w'.
+        Trying implicit prerequisite 'src/s.sd.w'.
+        Trying pattern rule with stem 'sd.w'.
+        Trying implicit prerequisite 'src/SCCS/s.sd.w'.
+       Trying pattern rule with stem 'sd'.
+       Rejecting impossible implicit prerequisite 'src/sd.w'.
+       No implicit rule found for 'src/sd.c'.
+       Finished prerequisites of target file 'src/sd.c'.
+      No need to remake target 'src/sd.c'.
+     Finished prerequisites of target file 'build/sd.o'.
+    Must remake target 'build/sd.o'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-gcc -Wall -O2 -ffreestanding -nostartfiles -std=gnu11 -mstrict-align -mcpu=cortex-a53 -fno-tree-loop-vectorize -fno-tree-slp-vectorize -g -lm -lc -lgcc -c  src/sd.c -o build/sd.o 
+Putting child 0x559c59819070 (build/sd.o) PID 13996 on the chain.
+Live child 0x559c59819070 (build/sd.o) PID 13996 
+Reaping winning child 0x559c59819070 PID 13996 
+Removing child 0x559c59819070 PID 13996 from chain.
+    Successfully remade target file 'build/sd.o'.
+    Considering target file 'build/data_caches.o'.
+     File 'build/data_caches.o' does not exist.
+     Looking for an implicit rule for 'build/data_caches.o'.
+     Trying pattern rule with stem 'data_caches'.
+     Trying implicit prerequisite 'src/data_caches.s'.
+     Trying pattern rule with stem 'data_caches'.
+     Trying implicit prerequisite 'src/data_caches.c'.
+     Found an implicit rule for 'build/data_caches.o'.
+      Considering target file 'src/data_caches.c'.
+       Looking for an implicit rule for 'src/data_caches.c'.
+       Trying pattern rule with stem 'data_caches'.
+       Trying implicit prerequisite 'src/data_caches.y'.
+       Trying pattern rule with stem 'data_caches'.
+       Trying implicit prerequisite 'src/data_caches.l'.
+       Trying pattern rule with stem 'data_caches'.
+       Trying implicit prerequisite 'src/data_caches.w'.
+       Trying pattern rule with stem 'data_caches'.
+       Trying implicit prerequisite 'src/data_caches.w'.
+       Trying pattern rule with stem 'data_caches.c'.
+       Trying implicit prerequisite 'src/data_caches.c,v'.
+       Trying pattern rule with stem 'data_caches.c'.
+       Trying implicit prerequisite 'src/RCS/data_caches.c,v'.
+       Trying pattern rule with stem 'data_caches.c'.
+       Trying implicit prerequisite 'src/RCS/data_caches.c'.
+       Trying pattern rule with stem 'data_caches.c'.
+       Trying implicit prerequisite 'src/s.data_caches.c'.
+       Trying pattern rule with stem 'data_caches.c'.
+       Trying implicit prerequisite 'src/SCCS/s.data_caches.c'.
+       Trying pattern rule with stem 'data_caches'.
+       Trying implicit prerequisite 'src/data_caches.y'.
+       Looking for a rule with intermediate file 'src/data_caches.y'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'data_caches.y'.
+        Trying implicit prerequisite 'src/data_caches.y,v'.
+        Trying pattern rule with stem 'data_caches.y'.
+        Trying implicit prerequisite 'src/RCS/data_caches.y,v'.
+        Trying pattern rule with stem 'data_caches.y'.
+        Trying implicit prerequisite 'src/RCS/data_caches.y'.
+        Trying pattern rule with stem 'data_caches.y'.
+        Trying implicit prerequisite 'src/s.data_caches.y'.
+        Trying pattern rule with stem 'data_caches.y'.
+        Trying implicit prerequisite 'src/SCCS/s.data_caches.y'.
+       Trying pattern rule with stem 'data_caches'.
+       Trying implicit prerequisite 'src/data_caches.l'.
+       Looking for a rule with intermediate file 'src/data_caches.l'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'data_caches.l'.
+        Trying implicit prerequisite 'src/data_caches.l,v'.
+        Trying pattern rule with stem 'data_caches.l'.
+        Trying implicit prerequisite 'src/RCS/data_caches.l,v'.
+        Trying pattern rule with stem 'data_caches.l'.
+        Trying implicit prerequisite 'src/RCS/data_caches.l'.
+        Trying pattern rule with stem 'data_caches.l'.
+        Trying implicit prerequisite 'src/s.data_caches.l'.
+        Trying pattern rule with stem 'data_caches.l'.
+        Trying implicit prerequisite 'src/SCCS/s.data_caches.l'.
+       Trying pattern rule with stem 'data_caches'.
+       Trying implicit prerequisite 'src/data_caches.w'.
+       Looking for a rule with intermediate file 'src/data_caches.w'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'data_caches.w'.
+        Trying implicit prerequisite 'src/data_caches.w,v'.
+        Trying pattern rule with stem 'data_caches.w'.
+        Trying implicit prerequisite 'src/RCS/data_caches.w,v'.
+        Trying pattern rule with stem 'data_caches.w'.
+        Trying implicit prerequisite 'src/RCS/data_caches.w'.
+        Trying pattern rule with stem 'data_caches.w'.
+        Trying implicit prerequisite 'src/s.data_caches.w'.
+        Trying pattern rule with stem 'data_caches.w'.
+        Trying implicit prerequisite 'src/SCCS/s.data_caches.w'.
+       Trying pattern rule with stem 'data_caches'.
+       Rejecting impossible implicit prerequisite 'src/data_caches.w'.
+       No implicit rule found for 'src/data_caches.c'.
+       Finished prerequisites of target file 'src/data_caches.c'.
+      No need to remake target 'src/data_caches.c'.
+     Finished prerequisites of target file 'build/data_caches.o'.
+    Must remake target 'build/data_caches.o'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-gcc -Wall -O2 -ffreestanding -nostartfiles -std=gnu11 -mstrict-align -mcpu=cortex-a53 -fno-tree-loop-vectorize -fno-tree-slp-vectorize -g -lm -lc -lgcc -c  src/data_caches.c -o build/data_caches.o 
+Putting child 0x559c5981aa30 (build/data_caches.o) PID 13999 on the chain.
+Live child 0x559c5981aa30 (build/data_caches.o) PID 13999 
+Reaping winning child 0x559c5981aa30 PID 13999 
+Removing child 0x559c5981aa30 PID 13999 from chain.
+    Successfully remade target file 'build/data_caches.o'.
+    Considering target file 'build/font.o'.
+     File 'build/font.o' does not exist.
+      Considering target file 'src/font/font.psf'.
+       Looking for an implicit rule for 'src/font/font.psf'.
+       Trying pattern rule with stem 'font.psf'.
+       Trying implicit prerequisite 'src/font/font.psf.o'.
+       Trying pattern rule with stem 'font.psf'.
+       Trying implicit prerequisite 'src/font/font.psf.c'.
+       Trying pattern rule with stem 'font.psf'.
+       Trying implicit prerequisite 'src/font/font.psf.cc'.
+       Trying pattern rule with stem 'font.psf'.
+       Trying implicit prerequisite 'src/font/font.psf.C'.
+       Trying pattern rule with stem 'font.psf'.
+       Trying implicit prerequisite 'src/font/font.psf.cpp'.
+       Trying pattern rule with stem 'font.psf'.
+       Trying implicit prerequisite 'src/font/font.psf.p'.
+       Trying pattern rule with stem 'font.psf'.
+       Trying implicit prerequisite 'src/font/font.psf.f'.
+       Trying pattern rule with stem 'font.psf'.
+       Trying implicit prerequisite 'src/font/font.psf.F'.
+       Trying pattern rule with stem 'font.psf'.
+       Trying implicit prerequisite 'src/font/font.psf.m'.
+       Trying pattern rule with stem 'font.psf'.
+       Trying implicit prerequisite 'src/font/font.psf.r'.
+       Trying pattern rule with stem 'font.psf'.
+       Trying implicit prerequisite 'src/font/font.psf.s'.
+       Trying pattern rule with stem 'font.psf'.
+       Trying implicit prerequisite 'src/font/font.psf.S'.
+       Trying pattern rule with stem 'font.psf'.
+       Trying implicit prerequisite 'src/font/font.psf.mod'.
+       Trying pattern rule with stem 'font.psf'.
+       Trying implicit prerequisite 'src/font/font.psf.sh'.
+       Trying pattern rule with stem 'font.psf'.
+       Trying implicit prerequisite 'src/font/font.psf,v'.
+       Trying pattern rule with stem 'font.psf'.
+       Trying implicit prerequisite 'src/font/RCS/font.psf,v'.
+       Trying pattern rule with stem 'font.psf'.
+       Trying implicit prerequisite 'src/font/RCS/font.psf'.
+       Trying pattern rule with stem 'font.psf'.
+       Trying implicit prerequisite 'src/font/s.font.psf'.
+       Trying pattern rule with stem 'font.psf'.
+       Trying implicit prerequisite 'src/font/SCCS/s.font.psf'.
+       Trying pattern rule with stem 'font.psf'.
+       Trying implicit prerequisite 'src/font/font.psf.o'.
+       Looking for a rule with intermediate file 'src/font/font.psf.o'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'font.psf'.
+        Trying implicit prerequisite 'src/font/font.psf.c'.
+        Trying pattern rule with stem 'font.psf'.
+        Trying implicit prerequisite 'src/font/font.psf.cc'.
+        Trying pattern rule with stem 'font.psf'.
+        Trying implicit prerequisite 'src/font/font.psf.C'.
+        Trying pattern rule with stem 'font.psf'.
+        Trying implicit prerequisite 'src/font/font.psf.cpp'.
+        Trying pattern rule with stem 'font.psf'.
+        Trying implicit prerequisite 'src/font/font.psf.p'.
+        Trying pattern rule with stem 'font.psf'.
+        Trying implicit prerequisite 'src/font/font.psf.f'.
+        Trying pattern rule with stem 'font.psf'.
+        Trying implicit prerequisite 'src/font/font.psf.F'.
+        Trying pattern rule with stem 'font.psf'.
+        Trying implicit prerequisite 'src/font/font.psf.m'.
+        Trying pattern rule with stem 'font.psf'.
+        Trying implicit prerequisite 'src/font/font.psf.r'.
+        Trying pattern rule with stem 'font.psf'.
+        Trying implicit prerequisite 'src/font/font.psf.s'.
+        Trying pattern rule with stem 'font.psf'.
+        Trying implicit prerequisite 'src/font/font.psf.S'.
+        Trying pattern rule with stem 'font.psf'.
+        Trying implicit prerequisite 'src/font/font.psf.mod'.
+        Trying pattern rule with stem 'font.psf.o'.
+        Trying implicit prerequisite 'src/font/font.psf.o,v'.
+        Trying pattern rule with stem 'font.psf.o'.
+        Trying implicit prerequisite 'src/font/RCS/font.psf.o,v'.
+        Trying pattern rule with stem 'font.psf.o'.
+        Trying implicit prerequisite 'src/font/RCS/font.psf.o'.
+        Trying pattern rule with stem 'font.psf.o'.
+        Trying implicit prerequisite 'src/font/s.font.psf.o'.
+        Trying pattern rule with stem 'font.psf.o'.
+        Trying implicit prerequisite 'src/font/SCCS/s.font.psf.o'.
+        Trying pattern rule with stem 'font.psf'.
+        Trying implicit prerequisite 'src/font/font.psf.c'.
+        Looking for a rule with intermediate file 'src/font/font.psf.c'.
+         Avoiding implicit rule recursion.
+         Avoiding implicit rule recursion.
+         Trying pattern rule with stem 'font.psf'.
+         Trying implicit prerequisite 'src/font/font.psf.y'.
+         Trying pattern rule with stem 'font.psf'.
+         Trying implicit prerequisite 'src/font/font.psf.l'.
+         Trying pattern rule with stem 'font.psf'.
+         Trying implicit prerequisite 'src/font/font.psf.w'.
+         Trying pattern rule with stem 'font.psf'.
+         Trying implicit prerequisite 'src/font/font.psf.w'.
+         Trying pattern rule with stem 'font.psf.c'.
+         Trying implicit prerequisite 'src/font/font.psf.c,v'.
+         Trying pattern rule with stem 'font.psf.c'.
+         Trying implicit prerequisite 'src/font/RCS/font.psf.c,v'.
+         Trying pattern rule with stem 'font.psf.c'.
+         Trying implicit prerequisite 'src/font/RCS/font.psf.c'.
+         Trying pattern rule with stem 'font.psf.c'.
+         Trying implicit prerequisite 'src/font/s.font.psf.c'.
+         Trying pattern rule with stem 'font.psf.c'.
+         Trying implicit prerequisite 'src/font/SCCS/s.font.psf.c'.
+         Trying pattern rule with stem 'font.psf'.
+         Trying implicit prerequisite 'src/font/font.psf.y'.
+         Looking for a rule with intermediate file 'src/font/font.psf.y'.
+          Avoiding implicit rule recursion.
+          Avoiding implicit rule recursion.
+          Avoiding implicit rule recursion.
+          Trying pattern rule with stem 'font.psf.y'.
+          Trying implicit prerequisite 'src/font/font.psf.y,v'.
+          Trying pattern rule with stem 'font.psf.y'.
+          Trying implicit prerequisite 'src/font/RCS/font.psf.y,v'.
+          Trying pattern rule with stem 'font.psf.y'.
+          Trying implicit prerequisite 'src/font/RCS/font.psf.y'.
+          Trying pattern rule with stem 'font.psf.y'.
+          Trying implicit prerequisite 'src/font/s.font.psf.y'.
+          Trying pattern rule with stem 'font.psf.y'.
+          Trying implicit prerequisite 'src/font/SCCS/s.font.psf.y'.
+         Trying pattern rule with stem 'font.psf'.
+         Trying implicit prerequisite 'src/font/font.psf.l'.
+         Looking for a rule with intermediate file 'src/font/font.psf.l'.
+          Avoiding implicit rule recursion.
+          Avoiding implicit rule recursion.
+          Avoiding implicit rule recursion.
+          Trying pattern rule with stem 'font.psf.l'.
+          Trying implicit prerequisite 'src/font/font.psf.l,v'.
+          Trying pattern rule with stem 'font.psf.l'.
+          Trying implicit prerequisite 'src/font/RCS/font.psf.l,v'.
+          Trying pattern rule with stem 'font.psf.l'.
+          Trying implicit prerequisite 'src/font/RCS/font.psf.l'.
+          Trying pattern rule with stem 'font.psf.l'.
+          Trying implicit prerequisite 'src/font/s.font.psf.l'.
+          Trying pattern rule with stem 'font.psf.l'.
+          Trying implicit prerequisite 'src/font/SCCS/s.font.psf.l'.
+         Trying pattern rule with stem 'font.psf'.
+         Trying implicit prerequisite 'src/font/font.psf.w'.
+         Looking for a rule with intermediate file 'src/font/font.psf.w'.
+          Avoiding implicit rule recursion.
+          Avoiding implicit rule recursion.
+          Avoiding implicit rule recursion.
+          Trying pattern rule with stem 'font.psf.w'.
+          Trying implicit prerequisite 'src/font/font.psf.w,v'.
+          Trying pattern rule with stem 'font.psf.w'.
+          Trying implicit prerequisite 'src/font/RCS/font.psf.w,v'.
+          Trying pattern rule with stem 'font.psf.w'.
+          Trying implicit prerequisite 'src/font/RCS/font.psf.w'.
+          Trying pattern rule with stem 'font.psf.w'.
+          Trying implicit prerequisite 'src/font/s.font.psf.w'.
+          Trying pattern rule with stem 'font.psf.w'.
+          Trying implicit prerequisite 'src/font/SCCS/s.font.psf.w'.
+         Trying pattern rule with stem 'font.psf'.
+         Rejecting impossible implicit prerequisite 'src/font/font.psf.w'.
+        Trying pattern rule with stem 'font.psf'.
+        Trying implicit prerequisite 'src/font/font.psf.cc'.
+        Looking for a rule with intermediate file 'src/font/font.psf.cc'.
+         Avoiding implicit rule recursion.
+         Avoiding implicit rule recursion.
+         Trying pattern rule with stem 'font.psf.cc'.
+         Trying implicit prerequisite 'src/font/font.psf.cc,v'.
+         Trying pattern rule with stem 'font.psf.cc'.
+         Trying implicit prerequisite 'src/font/RCS/font.psf.cc,v'.
+         Trying pattern rule with stem 'font.psf.cc'.
+         Trying implicit prerequisite 'src/font/RCS/font.psf.cc'.
+         Trying pattern rule with stem 'font.psf.cc'.
+         Trying implicit prerequisite 'src/font/s.font.psf.cc'.
+         Trying pattern rule with stem 'font.psf.cc'.
+         Trying implicit prerequisite 'src/font/SCCS/s.font.psf.cc'.
+        Trying pattern rule with stem 'font.psf'.
+        Trying implicit prerequisite 'src/font/font.psf.C'.
+        Looking for a rule with intermediate file 'src/font/font.psf.C'.
+         Avoiding implicit rule recursion.
+         Avoiding implicit rule recursion.
+         Trying pattern rule with stem 'font.psf.C'.
+         Trying implicit prerequisite 'src/font/font.psf.C,v'.
+         Trying pattern rule with stem 'font.psf.C'.
+         Trying implicit prerequisite 'src/font/RCS/font.psf.C,v'.
+         Trying pattern rule with stem 'font.psf.C'.
+         Trying implicit prerequisite 'src/font/RCS/font.psf.C'.
+         Trying pattern rule with stem 'font.psf.C'.
+         Trying implicit prerequisite 'src/font/s.font.psf.C'.
+         Trying pattern rule with stem 'font.psf.C'.
+         Trying implicit prerequisite 'src/font/SCCS/s.font.psf.C'.
+        Trying pattern rule with stem 'font.psf'.
+        Trying implicit prerequisite 'src/font/font.psf.cpp'.
+        Looking for a rule with intermediate file 'src/font/font.psf.cpp'.
+         Avoiding implicit rule recursion.
+         Avoiding implicit rule recursion.
+         Trying pattern rule with stem 'font.psf.cpp'.
+         Trying implicit prerequisite 'src/font/font.psf.cpp,v'.
+         Trying pattern rule with stem 'font.psf.cpp'.
+         Trying implicit prerequisite 'src/font/RCS/font.psf.cpp,v'.
+         Trying pattern rule with stem 'font.psf.cpp'.
+         Trying implicit prerequisite 'src/font/RCS/font.psf.cpp'.
+         Trying pattern rule with stem 'font.psf.cpp'.
+         Trying implicit prerequisite 'src/font/s.font.psf.cpp'.
+         Trying pattern rule with stem 'font.psf.cpp'.
+         Trying implicit prerequisite 'src/font/SCCS/s.font.psf.cpp'.
+        Trying pattern rule with stem 'font.psf'.
+        Trying implicit prerequisite 'src/font/font.psf.p'.
+        Looking for a rule with intermediate file 'src/font/font.psf.p'.
+         Avoiding implicit rule recursion.
+         Avoiding implicit rule recursion.
+         Trying pattern rule with stem 'font.psf'.
+         Trying implicit prerequisite 'src/font/font.psf.web'.
+         Trying pattern rule with stem 'font.psf.p'.
+         Trying implicit prerequisite 'src/font/font.psf.p,v'.
+         Trying pattern rule with stem 'font.psf.p'.
+         Trying implicit prerequisite 'src/font/RCS/font.psf.p,v'.
+         Trying pattern rule with stem 'font.psf.p'.
+         Trying implicit prerequisite 'src/font/RCS/font.psf.p'.
+         Trying pattern rule with stem 'font.psf.p'.
+         Trying implicit prerequisite 'src/font/s.font.psf.p'.
+         Trying pattern rule with stem 'font.psf.p'.
+         Trying implicit prerequisite 'src/font/SCCS/s.font.psf.p'.
+         Trying pattern rule with stem 'font.psf'.
+         Trying implicit prerequisite 'src/font/font.psf.web'.
+         Looking for a rule with intermediate file 'src/font/font.psf.web'.
+          Avoiding implicit rule recursion.
+          Avoiding implicit rule recursion.
+          Avoiding implicit rule recursion.
+          Trying pattern rule with stem 'font.psf.web'.
+          Trying implicit prerequisite 'src/font/font.psf.web,v'.
+          Trying pattern rule with stem 'font.psf.web'.
+          Trying implicit prerequisite 'src/font/RCS/font.psf.web,v'.
+          Trying pattern rule with stem 'font.psf.web'.
+          Trying implicit prerequisite 'src/font/RCS/font.psf.web'.
+          Trying pattern rule with stem 'font.psf.web'.
+          Trying implicit prerequisite 'src/font/s.font.psf.web'.
+          Trying pattern rule with stem 'font.psf.web'.
+          Trying implicit prerequisite 'src/font/SCCS/s.font.psf.web'.
+        Trying pattern rule with stem 'font.psf'.
+        Trying implicit prerequisite 'src/font/font.psf.f'.
+        Looking for a rule with intermediate file 'src/font/font.psf.f'.
+         Avoiding implicit rule recursion.
+         Avoiding implicit rule recursion.
+         Trying pattern rule with stem 'font.psf'.
+         Trying implicit prerequisite 'src/font/font.psf.F'.
+         Trying pattern rule with stem 'font.psf'.
+         Trying implicit prerequisite 'src/font/font.psf.r'.
+         Trying pattern rule with stem 'font.psf.f'.
+         Trying implicit prerequisite 'src/font/font.psf.f,v'.
+         Trying pattern rule with stem 'font.psf.f'.
+         Trying implicit prerequisite 'src/font/RCS/font.psf.f,v'.
+         Trying pattern rule with stem 'font.psf.f'.
+         Trying implicit prerequisite 'src/font/RCS/font.psf.f'.
+         Trying pattern rule with stem 'font.psf.f'.
+         Trying implicit prerequisite 'src/font/s.font.psf.f'.
+         Trying pattern rule with stem 'font.psf.f'.
+         Trying implicit prerequisite 'src/font/SCCS/s.font.psf.f'.
+         Trying pattern rule with stem 'font.psf'.
+         Trying implicit prerequisite 'src/font/font.psf.F'.
+         Looking for a rule with intermediate file 'src/font/font.psf.F'.
+          Avoiding implicit rule recursion.
+          Avoiding implicit rule recursion.
+          Avoiding implicit rule recursion.
+          Trying pattern rule with stem 'font.psf.F'.
+          Trying implicit prerequisite 'src/font/font.psf.F,v'.
+          Trying pattern rule with stem 'font.psf.F'.
+          Trying implicit prerequisite 'src/font/RCS/font.psf.F,v'.
+          Trying pattern rule with stem 'font.psf.F'.
+          Trying implicit prerequisite 'src/font/RCS/font.psf.F'.
+          Trying pattern rule with stem 'font.psf.F'.
+          Trying implicit prerequisite 'src/font/s.font.psf.F'.
+          Trying pattern rule with stem 'font.psf.F'.
+          Trying implicit prerequisite 'src/font/SCCS/s.font.psf.F'.
+         Trying pattern rule with stem 'font.psf'.
+         Trying implicit prerequisite 'src/font/font.psf.r'.
+         Looking for a rule with intermediate file 'src/font/font.psf.r'.
+          Avoiding implicit rule recursion.
+          Avoiding implicit rule recursion.
+          Avoiding implicit rule recursion.
+          Trying pattern rule with stem 'font.psf'.
+          Rejecting impossible implicit prerequisite 'src/font/font.psf.l'.
+          Trying pattern rule with stem 'font.psf.r'.
+          Trying implicit prerequisite 'src/font/font.psf.r,v'.
+          Trying pattern rule with stem 'font.psf.r'.
+          Trying implicit prerequisite 'src/font/RCS/font.psf.r,v'.
+          Trying pattern rule with stem 'font.psf.r'.
+          Trying implicit prerequisite 'src/font/RCS/font.psf.r'.
+          Trying pattern rule with stem 'font.psf.r'.
+          Trying implicit prerequisite 'src/font/s.font.psf.r'.
+          Trying pattern rule with stem 'font.psf.r'.
+          Trying implicit prerequisite 'src/font/SCCS/s.font.psf.r'.
+        Trying pattern rule with stem 'font.psf'.
+        Rejecting impossible implicit prerequisite 'src/font/font.psf.F'.
+        Trying pattern rule with stem 'font.psf'.
+        Trying implicit prerequisite 'src/font/font.psf.m'.
+        Looking for a rule with intermediate file 'src/font/font.psf.m'.
+         Avoiding implicit rule recursion.
+         Avoiding implicit rule recursion.
+         Trying pattern rule with stem 'font.psf'.
+         Trying implicit prerequisite 'src/font/font.psf.ym'.
+         Trying pattern rule with stem 'font.psf.m'.
+         Trying implicit prerequisite 'src/font/font.psf.m,v'.
+         Trying pattern rule with stem 'font.psf.m'.
+         Trying implicit prerequisite 'src/font/RCS/font.psf.m,v'.
+         Trying pattern rule with stem 'font.psf.m'.
+         Trying implicit prerequisite 'src/font/RCS/font.psf.m'.
+         Trying pattern rule with stem 'font.psf.m'.
+         Trying implicit prerequisite 'src/font/s.font.psf.m'.
+         Trying pattern rule with stem 'font.psf.m'.
+         Trying implicit prerequisite 'src/font/SCCS/s.font.psf.m'.
+         Trying pattern rule with stem 'font.psf'.
+         Trying implicit prerequisite 'src/font/font.psf.ym'.
+         Looking for a rule with intermediate file 'src/font/font.psf.ym'.
+          Avoiding implicit rule recursion.
+          Avoiding implicit rule recursion.
+          Avoiding implicit rule recursion.
+          Trying pattern rule with stem 'font.psf.ym'.
+          Trying implicit prerequisite 'src/font/font.psf.ym,v'.
+          Trying pattern rule with stem 'font.psf.ym'.
+          Trying implicit prerequisite 'src/font/RCS/font.psf.ym,v'.
+          Trying pattern rule with stem 'font.psf.ym'.
+          Trying implicit prerequisite 'src/font/RCS/font.psf.ym'.
+          Trying pattern rule with stem 'font.psf.ym'.
+          Trying implicit prerequisite 'src/font/s.font.psf.ym'.
+          Trying pattern rule with stem 'font.psf.ym'.
+          Trying implicit prerequisite 'src/font/SCCS/s.font.psf.ym'.
+        Trying pattern rule with stem 'font.psf'.
+        Rejecting impossible implicit prerequisite 'src/font/font.psf.r'.
+        Trying pattern rule with stem 'font.psf'.
+        Trying implicit prerequisite 'src/font/font.psf.s'.
+        Looking for a rule with intermediate file 'src/font/font.psf.s'.
+         Avoiding implicit rule recursion.
+         Avoiding implicit rule recursion.
+         Trying pattern rule with stem 'font.psf'.
+         Trying implicit prerequisite 'src/font/font.psf.S'.
+         Trying pattern rule with stem 'font.psf.s'.
+         Trying implicit prerequisite 'src/font/font.psf.s,v'.
+         Trying pattern rule with stem 'font.psf.s'.
+         Trying implicit prerequisite 'src/font/RCS/font.psf.s,v'.
+         Trying pattern rule with stem 'font.psf.s'.
+         Trying implicit prerequisite 'src/font/RCS/font.psf.s'.
+         Trying pattern rule with stem 'font.psf.s'.
+         Trying implicit prerequisite 'src/font/s.font.psf.s'.
+         Trying pattern rule with stem 'font.psf.s'.
+         Trying implicit prerequisite 'src/font/SCCS/s.font.psf.s'.
+         Trying pattern rule with stem 'font.psf'.
+         Trying implicit prerequisite 'src/font/font.psf.S'.
+         Looking for a rule with intermediate file 'src/font/font.psf.S'.
+          Avoiding implicit rule recursion.
+          Avoiding implicit rule recursion.
+          Avoiding implicit rule recursion.
+          Trying pattern rule with stem 'font.psf.S'.
+          Trying implicit prerequisite 'src/font/font.psf.S,v'.
+          Trying pattern rule with stem 'font.psf.S'.
+          Trying implicit prerequisite 'src/font/RCS/font.psf.S,v'.
+          Trying pattern rule with stem 'font.psf.S'.
+          Trying implicit prerequisite 'src/font/RCS/font.psf.S'.
+          Trying pattern rule with stem 'font.psf.S'.
+          Trying implicit prerequisite 'src/font/s.font.psf.S'.
+          Trying pattern rule with stem 'font.psf.S'.
+          Trying implicit prerequisite 'src/font/SCCS/s.font.psf.S'.
+        Trying pattern rule with stem 'font.psf'.
+        Rejecting impossible implicit prerequisite 'src/font/font.psf.S'.
+        Trying pattern rule with stem 'font.psf'.
+        Trying implicit prerequisite 'src/font/font.psf.mod'.
+        Looking for a rule with intermediate file 'src/font/font.psf.mod'.
+         Avoiding implicit rule recursion.
+         Avoiding implicit rule recursion.
+         Trying pattern rule with stem 'font.psf.mod'.
+         Trying implicit prerequisite 'src/font/font.psf.mod,v'.
+         Trying pattern rule with stem 'font.psf.mod'.
+         Trying implicit prerequisite 'src/font/RCS/font.psf.mod,v'.
+         Trying pattern rule with stem 'font.psf.mod'.
+         Trying implicit prerequisite 'src/font/RCS/font.psf.mod'.
+         Trying pattern rule with stem 'font.psf.mod'.
+         Trying implicit prerequisite 'src/font/s.font.psf.mod'.
+         Trying pattern rule with stem 'font.psf.mod'.
+         Trying implicit prerequisite 'src/font/SCCS/s.font.psf.mod'.
+       Trying pattern rule with stem 'font.psf'.
+       Rejecting impossible implicit prerequisite 'src/font/font.psf.c'.
+       Trying pattern rule with stem 'font.psf'.
+       Rejecting impossible implicit prerequisite 'src/font/font.psf.cc'.
+       Trying pattern rule with stem 'font.psf'.
+       Rejecting impossible implicit prerequisite 'src/font/font.psf.C'.
+       Trying pattern rule with stem 'font.psf'.
+       Rejecting impossible implicit prerequisite 'src/font/font.psf.cpp'.
+       Trying pattern rule with stem 'font.psf'.
+       Rejecting impossible implicit prerequisite 'src/font/font.psf.p'.
+       Trying pattern rule with stem 'font.psf'.
+       Rejecting impossible implicit prerequisite 'src/font/font.psf.f'.
+       Trying pattern rule with stem 'font.psf'.
+       Rejecting impossible implicit prerequisite 'src/font/font.psf.F'.
+       Trying pattern rule with stem 'font.psf'.
+       Rejecting impossible implicit prerequisite 'src/font/font.psf.m'.
+       Trying pattern rule with stem 'font.psf'.
+       Rejecting impossible implicit prerequisite 'src/font/font.psf.r'.
+       Trying pattern rule with stem 'font.psf'.
+       Rejecting impossible implicit prerequisite 'src/font/font.psf.s'.
+       Trying pattern rule with stem 'font.psf'.
+       Rejecting impossible implicit prerequisite 'src/font/font.psf.S'.
+       Trying pattern rule with stem 'font.psf'.
+       Rejecting impossible implicit prerequisite 'src/font/font.psf.mod'.
+       Trying pattern rule with stem 'font.psf'.
+       Trying implicit prerequisite 'src/font/font.psf.sh'.
+       Looking for a rule with intermediate file 'src/font/font.psf.sh'.
+        Avoiding implicit rule recursion.
+        Trying pattern rule with stem 'font.psf.sh'.
+        Trying implicit prerequisite 'src/font/font.psf.sh,v'.
+        Trying pattern rule with stem 'font.psf.sh'.
+        Trying implicit prerequisite 'src/font/RCS/font.psf.sh,v'.
+        Trying pattern rule with stem 'font.psf.sh'.
+        Trying implicit prerequisite 'src/font/RCS/font.psf.sh'.
+        Trying pattern rule with stem 'font.psf.sh'.
+        Trying implicit prerequisite 'src/font/s.font.psf.sh'.
+        Trying pattern rule with stem 'font.psf.sh'.
+        Trying implicit prerequisite 'src/font/SCCS/s.font.psf.sh'.
+       No implicit rule found for 'src/font/font.psf'.
+       Finished prerequisites of target file 'src/font/font.psf'.
+      No need to remake target 'src/font/font.psf'.
+     Finished prerequisites of target file 'build/font.o'.
+    Must remake target 'build/font.o'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-ld -r -b binary -o build/font.o src/font/font.psf
+Putting child 0x559c5981aea0 (build/font.o) PID 14002 on the chain.
+Live child 0x559c5981aea0 (build/font.o) PID 14002 
+Reaping winning child 0x559c5981aea0 PID 14002 
+Removing child 0x559c5981aea0 PID 14002 from chain.
+    Successfully remade target file 'build/font.o'.
+   Finished prerequisites of target file 'kernel8.img'.
+  Must remake target 'kernel8.img'.
+../Linaro\ Cross\ Compiler/bin/aarch64-elf-gcc -nostartfiles build/font.o build/start.o build/multicore.o build/mmu.o build/stepper.o build/lfb.o build/uart.o build/file.o build/servo.o build/system.o build/memcmp.o build/GLES2.o build/console.o build/string.o build/gpio.o build/delays.o build/fat.o build/main.o build/debug.o build/malloc.o build/led.o build/interupts.o build/gpu_memory.o build/sound.o build/color.o build/printf.o build/mbox.o build/sd.o build/data_caches.o  -T link.ld -o build/kernel.elf -lm -lc -lgcc
+Putting child 0x559c5981aea0 (kernel8.img) PID 14003 on the chain.
+Live child 0x559c5981aea0 (kernel8.img) PID 14003 
+Reaping losing child 0x559c5981aea0 PID 14003 
+Removing child 0x559c5981aea0 PID 14003 from chain.
