@@ -499,4 +499,4 @@ int fatlib_format(struct fatfs *fs, uint32_t volume_sectors, const char *name)
 		return fatlib_format_fat32(fs, volume_sectors, name);
 }
 
-#endif /*FATFS_INC_FORMAT_SUPPORT*/
+#endif /*FATLIB_INC_FORMAT_SUPPORT*/

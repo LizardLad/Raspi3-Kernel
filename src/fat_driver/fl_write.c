@@ -12,7 +12,7 @@
 // fatlib_add_free_space:
 // Allocate another cluster of free space to the end of a cluster chain
 //==========================================================================
-int fatlib_add_free_space(struct fatfs, fs, uint32_t *start_cluster, uint32_t clusters)
+int fatlib_add_free_space(struct fatfs *fs, uint32_t *start_cluster, uint32_t clusters)
 {
 	uint32_t next_cluster;
 	uint32_t start = *start_cluster;
@@ -138,7 +138,7 @@ static int fatlib_find_free_dir_offset(struct fatfs *fs, uint32_t dir_cluster, i
 				directory_entry = (struct fat_dir_entry *)(fs->current_sector.sector + record_offset);
 
 				//LFN Entry
-				if(fatfs_entry lfn_text(directory_entry))
+				if(fatlib_entry_lfn_text(directory_entry))
 				{
 					//First entry?
 					if(possible_spaces == 0)
@@ -163,7 +163,7 @@ static int fatlib_find_free_dir_offset(struct fatfs *fs, uint32_t dir_cluster, i
 						{
 							//Store start
 							*p_sector = x - 1;
-							*p_ offset = item;
+							*p_offset = item;
 							start_recorded = 1;
 						}
 
@@ -218,7 +218,7 @@ static int fatlib_find_free_dir_offset(struct fatfs *fs, uint32_t dir_cluster, i
 			}
 
 			//Add cluster to end of directory tree
-			if(!fatlib_fat_add cluster_to_chain(fs, dir_cluster, new_cluster))
+			if(!fatlib_fat_add_cluster_to_chain(fs, dir_cluster, new_cluster))
 			{
 				return 0;
 			}
@@ -291,13 +291,13 @@ int fatlib_add_file_entry(struct fatfs *fs, uint32_t dir_cluster, char *filename
 
 	//Find space in the directory for the filname (or allocate more)
 	//NOTE: we need to find space for at least the LFN + SFN ( or just the SFN if LFNs not supported).
-	if(!fatlib_find_free_dir_offset(fs, dir_cluster, enrty_count + 1, &dir_sector, &dir_offset))
+	if(!fatlib_find_free_dir_offset(fs, dir_cluster, entry_count + 1, &dir_sector, &dir_offset))
 	{
 		return 0;
 	}
 
 	//Generate a checksum
-	p_sname = (uint8 *)short_filename;
+	p_sname = (uint8_t *)short_filename;
 	checksum = 0;
 	for(i = 11; i != 0; i--)
 	{

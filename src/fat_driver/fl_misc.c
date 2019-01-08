@@ -182,7 +182,7 @@ int fatlib_entry_is_file(struct fat_dir_entry *entry)
 //=========================================================================
 // fatlib_lfn_entries_required: Calculate number of 13 char entries
 //=========================================================================
-#if FATFS_INC_LFN_SUPPORT
+#if FATLIB_INC_LFN_SUPPORT
 int fatlib_lfn_entries_required(char *filename)
 {
 	int length = (int)strlen(filename);
