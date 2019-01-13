@@ -1273,7 +1273,7 @@ FL_DIR *fl_opendir(const char *path, FL_DIR *dir)
 
 	FL_LOCK(&_fs);
 	
-	levels = fatlib_total_path_levels((char *)path) + 1;
+	levels = fatlib_total_path_levels((char *)path);// + 1;
 
 	if(levels == 0) //Potentially never executes FIXME
 		cluster = fatlib_get_root_cluster(&_fs);

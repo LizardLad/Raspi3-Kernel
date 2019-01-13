@@ -5,6 +5,7 @@
 
 int fileio_test()
 {
+	fl_list_directory("/");
 	FILE *licence = fopen("/cmdline.txt", "r");
 	if(licence == NULL)
 	{
