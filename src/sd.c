@@ -160,7 +160,7 @@ int sd_readblock(uint32_t lba, unsigned char *buffer, uint32_t num)
 {
 	int32_t r,c=0,d;
 	if(num<1) num=1;
-	uart_puts("sd_readblock lba ");uart_hex(lba);uart_puts(" num ");uart_hex(num);uart_send('\n');
+	uart_puts("sd_readblock lba ");uart_hex(lba);uart_puts(" num ");uart_hex(num);uart_send('\n');uart_send('\r');
 	if(sd_status(SR_DAT_INHIBIT)) {sd_err=SD_TIMEOUT; return 0;}
 	uint32_t *buf=(uint32_t *)buffer;
 	if(sd_scr[0] & SCR_SUPP_CCS) {

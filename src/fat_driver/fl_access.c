@@ -304,13 +304,13 @@ int fatlib_write_sector(struct fatfs *fs, uint32_t cluster, uint32_t sector, uin
 //==========================================================================
 void fatlib_show_details(struct fatfs *fs)
 {
-#ifndef FAT_PRINTF
-	FAT_PRINTF(("FAT details:\n"));
-	FAT_PRINTF(("    |Type: %s|", (fs->fat_type == FAT_TYPE_32) ? "FAT32" : "FAT16"));
-	FAT_PRINTF(("Root dir first cluster: %x|", fs->rootdir_first_cluster));
-	FAT_PRINTF(("FAT begin LBA: 0x%x|", fs->fat_begin_lba));
-	FAT_PRINTF(("Cluster begin LBA: 0x%x|", fs->cluster_begin_lba));
-	FAT_PRINTF(("Sectors per cluster: %d|\n", fs->sectors_per_cluster));
+#ifndef printf
+	printf("FAT details:\n");
+	printf("    |Type: %s|", (fs->fat_type == FAT_TYPE_32) ? "FAT32" : "FAT16");
+	printf("Root dir first cluster: %x|", fs->rootdir_first_cluster);
+	printf("FAT begin LBA: 0x%x|", fs->fat_begin_lba);
+	printf("Cluster begin LBA: 0x%x|", fs->cluster_begin_lba);
+	printf("Sectors per cluster: %d|\n", fs->sectors_per_cluster);
 #endif
 }
 
@@ -352,12 +352,19 @@ uint32_t fatlib_get_file_entry(struct fatfs *fs, uint32_t cluster, char *name_to
 					fatlib_lfn_cache_entry(&lfn, fs->current_sector.sector + record_offset);
 
 				else if(fatlib_entry_lfn_invalid(directory_entry))
+				{
 					fatlib_lfn_cache_init(&lfn, 0);
+					printf("[DEBUG] LFN entry invalid in function fatlib_get_file_entry\n");
+				}
+
 				else if(fatlib_entry_lfn_exists(&lfn, directory_entry))
 				{
 					long_filename = fatlib_lfn_cache_get(&lfn);
 					if(fatlib_compare_names(long_filename, name_to_find))
 					{
+						printf("[DEBUG] Compared the names and file found!\n");
+						printf("[DEBUG] Long filename is: %s\n", long_filename);
+						printf("[DEBUG] Name to find is: %s\n", name_to_find); 
 						memcpy(short_file_entry, directory_entry, sizeof(struct fat_dir_entry));
 						return 1;
 					}
@@ -689,7 +696,7 @@ int fatlib_list_directory_next(struct fatfs *fs, struct fs_dir_list_status *dirl
 #if FATLIB_INC_TIME_DATE_SUPPORT
 
 					entry->create_time = ((uint16_t)directory_entry->crt_time[1] << 8) | directory_entry->crt_time[0];
-					entry->create_date = ((uint16_t)directory_entry->crt_date[1] << 8) | directory_entry->crt_date[0];
+			#define FAT_SECTOR_SIZE                     512		entry->create_date = ((uint16_t)directory_entry->crt_date[1] << 8) | directory_entry->crt_date[0];
 					entry->access_date = ((uint16_t)directory_entry->lst_acc_date[1] << 8) | directory_entry->last_access_date[0];
 					entry->write_time = ((uint16_t)directory_entry->wrt_time[1] << 8) | directory_entry->wrt_time[0];
 					entry->write_date = ((uint16_t)directory_entry->wrt_date[1] << 8) | directory_entry->wrt_date[0];

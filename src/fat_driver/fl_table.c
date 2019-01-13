@@ -253,7 +253,7 @@ void fatlib_set_fs_info_next_free_cluster(struct fatfs *fs, uint32_t new_value)
 //==========================================================================
 // fatlib_find_blank_cluster: Find a free cluster entry by reading the FAT
 //==========================================================================
-#ifndef FATLIB_INC_WRITE_SUPPORT
+#ifdef FATLIB_INC_WRITE_SUPPORT
 int fatlib_find_blank_cluster(struct fatfs *fs, uint32_t start_cluster, uint32_t *free_cluster)
 {
 	uint32_t fat_sector_offset, position;
@@ -280,7 +280,7 @@ int fatlib_find_blank_cluster(struct fatfs *fs, uint32_t start_cluster, uint32_t
 				//Find 32bit entry of current sector relating to cluster number
 				position = (current_cluster - (fat_sector_offset * 256)) * 2;
 				//Read next value from buffer
-				next_cluster = FAT16_get_16BIT_WORD(pbuf, (uint16_t)position);
+				next_cluster = FAT16_GET_16BIT_WORD(pbuf, (uint16_t)position);
 			}
 			else
 			{

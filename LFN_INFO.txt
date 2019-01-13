@@ -1,2 +1,0 @@
-files without LFN entries where neither the directory nor volume label bit is set
-files with LFNs have LFN diectory enteries with their volume label, system, hidden, and read only attributes set to 1

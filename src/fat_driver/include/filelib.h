@@ -47,9 +47,9 @@ typedef struct sFL_FILE
 	char filename[FATLIB_MAX_LONG_FILENAME];
 	uint8_t short_filename[11];
 
-#ifdef FAT_FAT_CLUSTER_CACHE_ENTRIES
+#ifdef FAT_CLUSTER_CACHE_ENTRIES
 	uint32_t cluster_cache_index[FAT_CLUSTER_CACHE_ENTRIES];
-	uint32_t cluster_cache_data[FAT_CLUSTER_CACHE_ENTIRES];
+	uint32_t cluster_cache_data[FAT_CLUSTER_CACHE_ENTRIES];
 #endif
 
 	struct cluster_lookup last_fat_lookup;

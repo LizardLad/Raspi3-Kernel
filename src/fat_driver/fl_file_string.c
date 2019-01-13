@@ -140,7 +140,7 @@ int filename_strcmp_case_sensitive(char *string_1, char *string_2, int n)
 		diff = a - b;
 		if(diff) return diff;
 
-		if((*string_1 == 0) || (*string_2 == 0)) break; //FIXME should be &&
+		if((*string_1 == 0) || (*string_2 == 0)) break;
 		string_1++;
 		string_2++;
 	}
@@ -197,6 +197,8 @@ int fatlib_compare_names(char *string_a, char *string_b)
 	int ext_1_pos, ext_2_pos;
 	int file_1_length, file_2_length;
 
+	if(strlen(string_a) != strlen(string_b)) return 0; //Not the same length
+
 	ext_1_pos = filename_get_extention(string_a);
 	ext_2_pos = filename_get_extention(string_b);
 
@@ -208,11 +210,11 @@ int fatlib_compare_names(char *string_a, char *string_b)
 	{
 		ext_1 = string_a + ext_1_pos + 1;
 		ext_2 = string_b + ext_2_pos + 1;
-		 if(strlen(ext_1) != strlen(ext_2)) return 0;
-		 if(filename_strcmp_case_sensitive(ext_1, ext_2, strlen(ext_1)) != 0) return 0;
+		if(strlen(ext_1) != strlen(ext_2)) return 0;
+		if(filename_strcmp_case_sensitive(ext_1, ext_2, strlen(ext_1)) != 0) return 0;
 
-		 file_1_length = ext_1_pos;
-		 file_2_length = ext_2_pos;
+		file_1_length = ext_1_pos;
+		file_2_length = ext_2_pos;
 	}
 	//No extensions
 	else

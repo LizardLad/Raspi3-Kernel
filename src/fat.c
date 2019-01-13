@@ -7,6 +7,7 @@ int fat_init()
 {
 	sd_init();
 	fl_init();
+	printf("Not frozen\n");
 
 	if(fl_attach_media(sd_readblock, sd_writeblock) != FAT_INIT_OK)
 	{

@@ -131,7 +131,7 @@ int fatlib_entry_lfn_invalid(struct fat_dir_entry * entry)
 #if FATLIB_INC_LFN_SUPPORT
 int fatlib_entry_lfn_exists(struct lfn_cache *lfn, struct fat_dir_entry *entry)
 {
-	if(entry->attr != FILE_ATTR_LFN_TEXT && entry->name[0] != FILE_HEADER_BLANK && entry->name[0] != FILE_HEADER_DELETED && entry->attr != FILE_ATTR_VOLUME_ID && !(entry->attr & FILE_ATTR_SYSHID) && lfn->no_of_strings)
+	if(entry->attr != FILE_ATTR_LFN_TEXT && entry->name[0] != FILE_HEADER_BLANK && entry->name[0] != FILE_HEADER_DELETED && entry->attr != FILE_ATTR_VOLUME_ID && (!(entry->attr & FILE_ATTR_SYSHID)) && (lfn->no_of_strings))
 	{
 		return 1;
 	}
@@ -487,24 +487,24 @@ uint16_t fatlib_convert_to_fat_date(int day, int month, int year)
 #ifdef FATFS_DEBUG
 void fatlib_print_sector(uint32_t sector, uint8_t *data)
 {
-	FAT_PRINTF(("Sector %d:\n", sector));
+	printf(("Sector %d:\n", sector));
 
 	for(int i = 0; i < FAT_SECTOR_SIZE; i++)
 	{
 		if(!((i) % 16))
 		{
-			FAT_PRINTF(("  %04d: ", i));
+			printf(("  %04d: ", i));
 		}
 
-		FAT_PRINTF(("%02x", data[i]));
+		printf(("%02x", data[i]));
 		if(!((i + 1) % 4))
 		{
-			FAT_PRINTF((" "));
+			printf((" "));
 		}
 
 		if(!((i + 1) % 16))
 		{
-			FAT_PRINTF(("   "));
+			printf(("   "));
 			for(int j = 0; j < 16; j++)
 			{
 				char ch = data[i - 15 + j];
@@ -512,14 +512,14 @@ void fatlib_print_sector(uint32_t sector, uint8_t *data)
 				//Is printable?
 				if(ch > 31 && ch < 127)
 				{
-					FAT_PRINTF(("%c", ch));
+					printf(("%c", ch));
 				}
 				else
 				{
-					FAT_PRINTF(("."));
+					printf(("."));
 				}
 			}
-			FAT_PRINTF(("\n"));
+			printf(("\n"));
 		}
 	}
 }

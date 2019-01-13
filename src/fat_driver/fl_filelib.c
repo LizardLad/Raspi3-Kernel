@@ -9,7 +9,9 @@
 #include "include/filelib.h"
 #include "include/cache.h"
 #include "include/format.h"
+#include "include/fl_debug.h"
 #include "../include/mutex.h"
+#include "../include/printf.h"
 
 //==========================================================================
 // Local global vars
@@ -250,6 +252,8 @@ static int _create_directory(char *path)
 //==========================================================================
 static FL_FILE *_open_file(const char *path)
 {
+	//FIXME There is an error where the incorrect file is found
+
 	FL_FILE *file = _allocate_file();
 	struct fat_dir_entry short_file_entry;
 	if(!file)
@@ -282,6 +286,7 @@ static FL_FILE *_open_file(const char *path)
 	}
 
 	if(fatlib_get_file_entry(&_fs, file->parent_cluster, file->filename, &short_file_entry))
+	{
 		if(fatlib_entry_is_file(&short_file_entry))
 		{
 			memcpy(file->short_filename, short_file_entry.name, FAT_SFN_SIZE_FULL);
@@ -298,8 +303,10 @@ static FL_FILE *_open_file(const char *path)
 
 			fatlib_cache_init(&_fs, file);
 			fatlib_fat_purge(&_fs);
+			//fatlib_debug_print_file(file);
 			return file;
 		}
+	}
 	_free_file(file);
 	return NULL;
 }
@@ -525,7 +532,7 @@ int fl_attach_media(fn_diskio_read rd, fn_diskio_write wr)
 	//Init FAT params
 	if((res = fatlib_init(&_fs)) != FAT_INIT_OK) //Does this function even exist? FIXME
 	{
-		FAT_PRINTF(("FAT_FS: Error couldn't load FAT details (%d)!\n", res));
+		printf("FAT_FS: Error couldn't load FAT details (%d)!\n", res);
 		return res;
 	}
 	_filelib_valid = 1;
@@ -636,6 +643,7 @@ void *fl_fopen(const char *path, const char *mode)
 	//Read
 	if(flags & FILE_READ)
 		file = _open_file(path);
+
 	//Create new
 #if FATLIB_INC_WRITE_SUPPORT
 	if(!file && (flags & FILE_CREATE))
@@ -1222,7 +1230,7 @@ void fl_list_directory(const char *path)
 
 	FL_LOCK(&_fs);
 
-	FAT_PRINTF(("\nDirectory %s\n", path));
+	printf("\nDirectory %s\n", path);
 
 	if(fl_opendir(path, &dir_stat))
 	{
@@ -1234,15 +1242,15 @@ void fl_list_directory(const char *path)
 			int d, m, y, h, mn, s;
 			fatlib_convert_from_fat_time(dir_entry.write_time, &h, &mn, &s);
 			fatlib_convert_from_fat_date(dir_entry.write_date, &d, &m, &y);
-			FAT_PRINTF(("%02d/%02d/%04d  %02d:%02d", d, m, y, h, mn));
+			printf("%02d/%02d/%04d  %02d:%02d", d, m, y, h, mn);
 #endif
 			if(dir_entry.is_dir)
 			{
-				FAT_PRINTF(("%s <DIR>\n", dir_entry.filename));
+				printf("%s <DIR>\n", dir_entry.filename);
 			}
 			else
 			{
-				FAT_PRINTF(("%s [%d bytes]\n", dir_entry.filename, dir_entry.size));
+				printf("%s [%d bytes]\n", dir_entry.filename, dir_entry.size);
 			}
 		}
 		fl_closedir(&dir_stat);
