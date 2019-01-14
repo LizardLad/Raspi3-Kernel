@@ -620,7 +620,7 @@ int fatlib_list_directory_next(struct fatfs *fs, struct fs_dir_list_status *dirl
 
 	fatlib_lfn_cache_init(&lfn, 0);
 
-	while(1)
+	while(1) //Infinite loop FIXME
 	{
 		if(fatlib_sector_reader(fs, dirls->cluster, dirls->sector, 0))
 		{
@@ -696,7 +696,7 @@ int fatlib_list_directory_next(struct fatfs *fs, struct fs_dir_list_status *dirl
 #if FATLIB_INC_TIME_DATE_SUPPORT
 
 					entry->create_time = ((uint16_t)directory_entry->crt_time[1] << 8) | directory_entry->crt_time[0];
-			#define FAT_SECTOR_SIZE                     512		entry->create_date = ((uint16_t)directory_entry->crt_date[1] << 8) | directory_entry->crt_date[0];
+					entry->create_date = ((uint16_t)directory_entry->crt_date[1] << 8) | directory_entry->crt_date[0];
 					entry->access_date = ((uint16_t)directory_entry->lst_acc_date[1] << 8) | directory_entry->last_access_date[0];
 					entry->write_time = ((uint16_t)directory_entry->wrt_time[1] << 8) | directory_entry->wrt_time[0];
 					entry->write_date = ((uint16_t)directory_entry->wrt_date[1] << 8) | directory_entry->wrt_date[0];

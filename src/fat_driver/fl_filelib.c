@@ -530,7 +530,7 @@ int fl_attach_media(fn_diskio_read rd, fn_diskio_write wr)
 	_fs.disk_io.write_media = wr;
 
 	//Init FAT params
-	if((res = fatlib_init(&_fs)) != FAT_INIT_OK) //Does this function even exist? FIXME
+	if((res = fatlib_init(&_fs)) != FAT_INIT_OK) 
 	{
 		printf("FAT_FS: Error couldn't load FAT details (%d)!\n", res);
 		return res;
@@ -1275,7 +1275,7 @@ FL_DIR *fl_opendir(const char *path, FL_DIR *dir)
 	
 	levels = fatlib_total_path_levels((char *)path) + 1;
 
-	if(levels == 0) //Potentially never executes FIXME
+	if(levels == 0) //Never executes FIXME
 		cluster = fatlib_get_root_cluster(&_fs);
 	else
 		res = _open_directory((char *)path, &cluster);
