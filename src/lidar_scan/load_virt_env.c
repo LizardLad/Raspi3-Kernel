@@ -1,6 +1,7 @@
 #include "../include/fat.h"
 #include "../include/printf.h"
 #include "include/env_file_type.h"
+#include "include/virt_env.h"
 
 int get_world_dimentions_from_file(int32_t *SCX, int32_t *SCY, int32_t *SCZ, int32_t *CX, int32_t *CY, int32_t *CZ, const char *file_name)
 {
