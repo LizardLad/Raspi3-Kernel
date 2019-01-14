@@ -1,5 +1,6 @@
 #include "../include/fat.h"
 #include "../include/printf.h"
+#include "../include/multicore.h"
 #include "include/env_file_type.h"
 #include "include/virt_env.h"
 
@@ -105,11 +106,11 @@ void chunk_load(int chunk_x, int chunk_y, int chunk_z, FILE *voxel_world_save_fi
 {
 	struct block_save_data_t block_save_data = { 0 };
 
-	for(int x = 0; x < CX; x++)
+	for(int z = 0; z < CZ; z++)
 	{
 		for(int y = 0; y < CY; y++)
 		{
-			for(int z = 0; z < CZ; z++)
+			for(int x = 0; x < CX; x++)
 			{
 				fread(&block_save_data, sizeof(struct block_save_data_t), 1, voxel_world_save_file);
 				if(strncmp(block_save_data.name, "BLOCK", 5)) //Encountered data isn't a block

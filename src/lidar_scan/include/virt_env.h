@@ -10,7 +10,10 @@ extern bool env_loaded;
 
 int init_virt_env();
 inline void env_set(int32_t x, int32_t y, int32_t z, uint8_t val);
-inline uint8_t env_get(int32_t x, int32_t y, int32_t z, uint8_t val);
+inline uint8_t env_get(int32_t x, int32_t y, int32_t z);
+
+inline void out_env_set(int32_t x, int32_t y, int32_t z, uint8_t val);
+
 inline void set_env_loaded(bool val);
 inline bool get_env_loaded();
 inline bool is_env_loaded();
