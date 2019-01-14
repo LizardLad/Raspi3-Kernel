@@ -20,7 +20,7 @@
 #include "include/file.h"
 
 
-//INCLUDE_BINARY_FILE(believer, "src/audio/believer.bin", ".rodata.believer");
+INCLUDE_BINARY_FILE(believer, "src/audio/believer.bin", ".rodata.believer");
 
 //static uint32_t shader[18] = {  	// Vertex Color Shader
 //		0x958e0dbf, 0xd1724823,	/* mov r0, vary; mov r3.8d, 1.0 */
@@ -80,17 +80,14 @@ void main()
 	//gl_quad_scene_init(&scene, &(shader[0]));
 
 	//Create mmu table on Core 0
-	//init_page_table();
-	//mmu_init(); //Now turn on MMU on Core 0
+	init_page_table();
+	mmu_init(); //Now turn on MMU on Core 0
 
-	//multicore_init(); //Now core_execute is avalible to be run after this
+	multicore_init(); //Now core_execute is avalible to be run after this
 
-	//char *core_print_data = "Hello World";
-	//core_execute(1, 1, &core_print, (void *)core_print_data, NULL);
-	//core_execute(2, 2, &play_audio, (void *)&believer_start, (void *)&believer_end);
-	
-	//map_timer_interupt_core_3();
-	//core_execute(3, 0, (void*)core_3_enable_interupts_deadloop, NULL, NULL);
+	char *core_print_data = "Hello World";
+	core_execute(1, 1, &core_print, (void *)core_print_data, NULL);
+	core_execute(2, 2, &play_audio, (void *)&believer_start, (void *)&believer_end);
 
 	// echo everything back
 	while(1) 
