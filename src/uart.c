@@ -26,15 +26,15 @@ void uart_init()
 	*UART0_CR = 0;         // turn off UART0
 
 	/* set up clock for consistent divisor values */
-	mailbox[0] = 8*4;
-	mailbox[1] = MBOX_REQUEST;
-	mailbox[2] = MBOX_TAG_SET_CLKRATE; // set clock rate
-	mailbox[3] = 12;
-	mailbox[4] = 8;
-	mailbox[5] = CLK_UART_ID;	// UART clock
-	mailbox[6] = 4000000;		// 4Mhz
-	mailbox[7] = MBOX_TAG_LAST;
-	mailbox_call(MBOX_CH_PROP);
+	//mailbox[0] = 8*4;
+	//mailbox[1] = MBOX_REQUEST;
+	//mailbox[2] = MBOX_TAG_SET_CLKRATE; // set clock rate
+	//mailbox[3] = 12;
+	//mailbox[4] = 8;
+	//mailbox[5] = CLK_UART_ID;	// UART clock
+	//mailbox[6] = 4000000;		// 4Mhz
+	//mailbox[7] = MBOX_TAG_LAST;
+	//mailbox_call(MBOX_CH_PROP);
 
 	uint32_t buffer[5] = { 0 };
 	if(!mailbox_tag_message(buffer, 5, MBOX_TAG_SET_CLKRATE, 8, 8, CLK_UART_ID, 4000000))

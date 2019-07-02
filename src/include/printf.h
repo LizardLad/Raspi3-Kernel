@@ -114,8 +114,8 @@ int vsprintf (char* buf, const char* fmt, va_list arg);
 .--------------------------------------------------------------------------*/
 int vsnprintf (char* buf, size_t bufSize, const char* fmt, va_list arg);
 
-#ifdef __cplusplus								// If we are including to a C++ file
-}												// Close the extern C directive wrapper
+#ifdef __cplusplus			// If we are including to a C++ file
+}					// Close the extern C directive wrapper
 #endif
 
 #endif

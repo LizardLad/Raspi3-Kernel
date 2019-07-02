@@ -37,7 +37,10 @@ clean:
 	mkdir build/fat/
 
 run_debug:
-	/home/Oliver/Development/qemu/aarch64-softmmu/qemu-system-aarch64 -M raspi3 -kernel kernel8.img -drive file=raspi.iso,if=sd,format=raw -serial stdio -d int,in_asm > qemu-output.info
+	qemu-system-aarch64 -M raspi3 -kernel kernel8.img -drive file=raspi.iso,if=sd,format=raw -serial stdio -d int,in_asm > qemu-output.info
+
+run_gdb:
+	qemu-system-aarch64 -M raspi3 -kernel kernel8.img -drive file=raspi.iso,if=sd,format=raw -serial stdio -s -S
 
 run:
-	/home/Oliver/Development/qemu/aarch64-softmmu/qemu-system-aarch64 -M raspi3 -kernel kernel8.img -drive file=raspi.iso,if=sd,format=raw -serial stdio
+	qemu-system-aarch64 -M raspi3 -kernel kernel8.img -drive file=raspi.iso,if=sd,format=raw -serial stdio

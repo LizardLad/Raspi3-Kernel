@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include <math.h>
+#include <string.h>
 #include "include/GLES.h"
 #include "include/uart.h"
 #include "include/lfb.h"
@@ -19,6 +20,8 @@
 #include "include/fat.h"
 #include "include/file.h"
 
+#include "include/mbox_calls.h"
+#include "include/edid.h"
 
 INCLUDE_BINARY_FILE(believer, "src/audio/believer.bin", ".rodata.believer");
 
@@ -54,8 +57,8 @@ void core_print(void *data)
 
 void main()
 {
-	//printf_init(console_print);
-	printf_init(uart_puts);
+	printf_init(console_print);
+	//printf_init(uart_puts);
 	
 	//Setup clocks first due to firmware bug
 	clocks_init(); //Just reclocks the CPU
@@ -63,19 +66,19 @@ void main()
 	//after setting the CPU just so the CPU doesn't mess with everything.
 
 	//Setup videocore
-	init_V3D();
+	//init_V3D();
 	
 	// set up serial console
 	uart_init();
 	//Setup framebuffer
 	lfb_init();
 	
-	dynamic_memory_alloc_init();
+	//dynamic_memory_alloc_init();
 	console_init();	
 	init_audio_jack();
 
-	fat_init();
-	fileio_test();
+	//fat_init();
+	//fileio_test();
 
 	//gl_quad_scene_init(&scene, &(shader[0]));
 
@@ -83,16 +86,24 @@ void main()
 	init_page_table();
 	mmu_init(); //Now turn on MMU on Core 0
 
-	multicore_init(); //Now core_execute is avalible to be run after this
+	//multicore_init(); //Now core_execute is avalible to be run after this
 
-	char *core_print_data = "Hello World";
-	core_execute(1, 1, &core_print, (void *)core_print_data, NULL);
-	core_execute(2, 2, &play_audio, (void *)&believer_start, (void *)&believer_end);
+	//char *core_print_data = "Hello World";
+	//core_execute(1, 1, &core_print, (void *)core_print_data, NULL);
+	//core_execute(2, 2, &play_audio, (void *)&believer_start, (void *)&believer_end);
+
+	printf("[INFO] Core 0 made it this far\n");
+
+	struct edid_data data;
+	memset(&data, 0, 128);
+	get_edid(&data);
+	print_three_letter_code(&data);
 
 	// echo everything back
 	while(1) 
 	{
 		uart_send(uart_getc());
+		printf(" ");
 	}
 
 	// Release resources
